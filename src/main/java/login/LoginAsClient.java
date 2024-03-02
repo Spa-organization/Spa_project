@@ -1,6 +1,7 @@
 package login;
 
-import database.ServiceProvider_DB;
+import Entities.Client;
+import database.Client_DB;
 
 public class LoginAsClient {
 
@@ -24,19 +25,22 @@ public class LoginAsClient {
 
 	        isLoggedIn = true;
 	    }
-	    
-	    
-	    
-	    public void loggIn_Check(String idd, String password) 
-	    {
 
-	    	if(idd=="1"&&password=="123")
-	    	{
-	    	login();	
-	    	}	
-	    	
-	        
-	    }
+
+
+	public void loggIn_Check(String id, String password)
+	{
+		for( Client client: Client_DB.getClients() )
+		{
+			if( id.equals(client.getId()) && password.equals(client.getPassword()) )
+				login();
+		}
+
+
+
+
+
+	}
 	    
 	    public void errorInLogin() {}
 	

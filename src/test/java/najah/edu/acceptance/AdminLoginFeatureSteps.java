@@ -1,17 +1,16 @@
 package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import database.Admin_DB;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import login.LoginAsAdmin;
  
 
 public class AdminLoginFeatureSteps {
-static String pass="123";
-static int id=1;
+ String pass;
+ String id;
 LoginAsAdmin app;
-Admin_DB adminDB;
+
 public AdminLoginFeatureSteps()
 {
 app=new LoginAsAdmin();
@@ -23,24 +22,23 @@ app=new LoginAsAdmin();
 	}
 	@Given("the ID is {string}")
 	public void theIDIs(String id) {
+	this.id=id;
 
 	}
 	@Given("the password is {string}")
 	public void thePasswordIs(String password) {
-		AdminLoginFeatureSteps.pass=password;
+		this.pass=password;
 	}
 	@Then("the admin is logged in the app successfully")
 	public void theAdminIsLoggedInTheAppSuccessfully() {
-		
-	app.loggIn_Check(id, pass);
+	app.loggIn_Check(id,pass);
     assertTrue(app.isLoggedIn());
 	}
 	
 	@Then("the admin will not login")
 	public void theAdminWillNotLogin() {
-		
-		app.loggIn_Check(id, pass);
-	    assertFalse(app.isLoggedIn());	
+		app.loggIn_Check(id,pass);
+		assertFalse(app.isLoggedIn());
 	}
 	@Then("the message appear to tell the admin what's wrong")
 	

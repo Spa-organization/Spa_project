@@ -10,7 +10,12 @@ public class Client {
         this.password = password;
         this.id = id;
 
-
+    }
+    public void setName(String idd) {
+        this.id = idd;
+    }
+    public void setPassword(String pass) {
+        this.password = pass;
     }
 
     public String getId() {

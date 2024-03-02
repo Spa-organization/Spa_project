@@ -1,5 +1,8 @@
 package login;
 
+import Entities.Admin;
+import database.Admin_DB;
+
 public class LoginAsAdmin {
     private boolean isLoggedIn;
 
@@ -21,19 +24,25 @@ public class LoginAsAdmin {
 
         isLoggedIn = true;
     }
-    
-    
-    
-    public void loggIn_Check(int id, String password) 
+
+    public void loggIn_Check(String id, String password)
     {
-    	if((1==id)&&(password.equals("123")))
-    	{
-    	login();	
-    	}	
-    	
-        
+        for( Admin admin:Admin_DB.getAdmins() )
+        {
+         if( id.equals(admin.getId()) && password.equals(admin.getPassword()) ) {
+             login();
+         }
+        }
+
+
+
+
+
     }
     
-    public void errorInLogin() {}
+    public void errorInLogin()
+    {
+
+    }
 
 }

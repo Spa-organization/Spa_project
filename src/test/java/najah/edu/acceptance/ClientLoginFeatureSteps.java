@@ -9,8 +9,8 @@ import io.cucumber.java.en.Then;
 import login.LoginAsClient;
 
 public class ClientLoginFeatureSteps {
- String pass="123";
- String idd="1";
+ String pass;
+ String id;
 	LoginAsClient app;
 	public ClientLoginFeatureSteps()
 	{
@@ -25,7 +25,7 @@ public class ClientLoginFeatureSteps {
 	@Given("the ID is {string}")
 	
 	public void theIDIs(String id) {
-	this.idd=id;
+	this.id=id;
 
 	}
 	@Given("the password is {string}")
@@ -36,18 +36,19 @@ public class ClientLoginFeatureSteps {
 	
 	@Then("the client is logged in the app successfully")
 	public void theClientIsLoggedInTheAppSuccessfully() {
-	app.loggIn_Check(idd, pass);
+	app.loggIn_Check(id, pass);
     assertTrue(app.isLoggedIn());
 	  
 	}
 	@Then("the client will not login")
 	public void theClientWillNotLogin() {
-	app.loggIn_Check(idd, pass);
+	app.loggIn_Check(id, pass);
     assertFalse(app.isLoggedIn());
 	}
 	@Then("the message appear to tell the client what's wrong")
 	public void theMessageAppearToTellTheClientWhatSWrong() {
-	   
+		app.errorInLogin();
+
 	}
 
 

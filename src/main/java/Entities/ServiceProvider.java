@@ -23,4 +23,10 @@ public class ServiceProvider {
         return password;
 
     }
+    public void setName(String idd) {
+        this.id = idd;
+    }
+    public void setPassword(String pass) {
+        this.password = pass;
+    }
 }
