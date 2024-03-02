@@ -1,6 +1,6 @@
 package login;
 
-import database.Employee;
+import database.ServiceProvider_DB;
 
 public class LoginAsClient {
 
@@ -29,7 +29,7 @@ public class LoginAsClient {
 	    
 	    public void loggIn_Check(String idd, String password) 
 	    {
-	    	Employee employee=new Employee();
+
 	    	if(idd=="1"&&password=="123")
 	    	{
 	    	login();	

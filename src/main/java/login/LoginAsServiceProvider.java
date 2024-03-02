@@ -1,12 +1,12 @@
 package login;
 
-import database.Employee;
+import database.ServiceProvider_DB;
 
-public class LoginAsEmployee {
+public class LoginAsServiceProvider {
 	 private boolean isLoggedIn;
 
 
-	    public LoginAsEmployee() {
+	    public LoginAsServiceProvider() {
 	        this.isLoggedIn = false;
 
 	    }
@@ -28,8 +28,8 @@ public class LoginAsEmployee {
 	    
 	    public void loggIn_Check(int id, String password) 
 	    {
-	    	Employee employee=new Employee();
-	    	if((employee.get_Employee_id()==id)&&(password.equals(employee.get_Pass())))
+
+	    	//if((serviceProviderDB.get_Employee_id()==id)&&(password.equals(serviceProviderDB.get_Pass())))
 	    	{
 	    	login();	
 	    	}	

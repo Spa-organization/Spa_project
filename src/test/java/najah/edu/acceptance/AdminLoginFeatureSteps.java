@@ -1,7 +1,7 @@
 package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import database.Admin;
+import database.Admin_DB;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import login.LoginAsAdmin;
@@ -11,7 +11,7 @@ public class AdminLoginFeatureSteps {
 static String pass="123";
 static int id=1;
 LoginAsAdmin app;
-Admin admin;
+Admin_DB adminDB;
 public AdminLoginFeatureSteps()
 {
 app=new LoginAsAdmin();
