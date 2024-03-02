@@ -22,13 +22,13 @@ public class ClientLoginFeatureSteps {
 	{
         assertFalse(app.isLoggedIn());
 	}
-	@Given("the ID is {string}")
+	@Given("the client ID is {string}")
 	
 	public void theIDIs(String id) {
 	this.id=id;
 
 	}
-	@Given("the password is {string}")
+	@Given("the client password is {string}")
 	
 	public void thePasswordIs(String password) {
 	this.pass=password;
