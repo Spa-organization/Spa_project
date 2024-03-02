@@ -9,9 +9,6 @@ int id;
 
 public Admin() 
 {
- pass=get_Pass();
- id=get_Admin_id();
- name=get_name();
 }
 public String get_name() {
 	try
