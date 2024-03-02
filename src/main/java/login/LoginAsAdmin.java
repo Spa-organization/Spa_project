@@ -33,13 +33,7 @@ public class LoginAsAdmin {
              login();
          }
         }
-
-
-
-
-
     }
-    
     public void errorInLogin()
     {
 

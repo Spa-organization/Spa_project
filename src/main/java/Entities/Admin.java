@@ -8,7 +8,7 @@ public class Admin {
         this.id = id;
     }
 
-    public void setName(String idd) {
+    public void setId(String idd) {
         this.id = idd;
     }
     public void setPassword(String pass) {
