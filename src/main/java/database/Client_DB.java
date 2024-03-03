@@ -50,6 +50,24 @@ public class Client_DB {
 		int length=idd.length();
         return length == 4;
     }
+	public static boolean check_idFormat_validate (String idd)
+	{
+		boolean is_digit=false;
+		char []check= idd.toCharArray();
+		for(int i=0;check.length>i;i++)
+		{
+		if(Character.isDigit(check[i]))
+		{is_digit=true;}
+		}
+		return   is_digit;
+	}
+	public  static boolean checkPassword_Strong(String pass)
+	{
+
+        return (pass.length()>2);
+    }
+
+
 
 
 
