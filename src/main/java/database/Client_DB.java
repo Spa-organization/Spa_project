@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client_DB {
+	 static boolean flag=true;
+
 	static List<Client> clients= new ArrayList<Client>();
 	private Client_DB() {
 		throw new IllegalStateException("Utility class");
@@ -25,5 +27,27 @@ public class Client_DB {
 	public static List<Client> getClients() {
 		return clients;
 	}
+	public static boolean check_validate_ID(String idd)
+	{
+		for( Client client:Client_DB.getClients() )
+		{
+            if (idd.equals(client.getId())) {
+                flag = false;
+                break;
+            }
+				break;
+
+		}
+		return flag;
+
+	}
+
+	public static boolean check_digit_validate (String idd)
+	{
+		int length=idd.length();
+        return length == 4;
+    }
+
+
 
 }

@@ -1,5 +1,7 @@
 package Entities;
 
+import database.Client_DB;
+
 public class Client {
     private String id ;
     private String password;
@@ -11,7 +13,12 @@ public class Client {
         this.id = id;
 
     }
-    public void setName(String idd) {
+
+    public Client() {
+
+    }
+
+    public void setID(String idd) {
         this.id = idd;
     }
     public void setPassword(String pass) {
@@ -23,11 +30,8 @@ public class Client {
         return id;
 
     }
-
-
     public String getPassword() {
         return password;
 
     }
-
 }
