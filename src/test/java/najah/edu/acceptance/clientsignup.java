@@ -9,13 +9,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Client_SignUp {
+public class clientsignup {
     LogUpAsClient app;
-    public Client_SignUp()
+    public clientsignup()
     {
         app=new LogUpAsClient();
     }
-    String id="8888";
+    String id="2222";
     String password="1234";
 
     @Given("the client does not have an account")
@@ -36,28 +36,44 @@ public class Client_SignUp {
         assertSame(this.password, pass2);
     }
     @Then("their account should be created and they should be logged in automatically")
-    @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
        if((Client_DB.check_digit_validate(id))&&(Client_DB.check_validate_ID(id)))
        {
-               Client_DB.addClient(id, password);
-               app.logUp();
+           Client_DB.addClient(id, password);
+           app.logUp();
        }
         assertTrue(app.isLoggedUp());
     }
     @Given("the client provides an ID that is already associated with another account {string}")
-    public void the_client_provides_an_id_that_is_already_associated_with_another_account(String id) {
-        this.id=id;
+    public void theClientProvidesAnIDThatIsAlreadyAssociatedWithAnotherAccount(String id) {
+        this.id =id;
     }
     @When("the client attempts to sign up")
-
-    public void the_client_attempts_to_sign_up() {
-        assertFalse((Client_DB.check_validate_ID(this.id))&&(Client_DB.check_digit_validate(this.id)));
+    @Test
+    public void theClientAttemptsToSignUp() {
+        if((Client_DB.check_digit_validate(id))&&(Client_DB.check_validate_ID(id)))
+        {
+            Client_DB.addClient(id, password);
+            app.logUp();
+        }
+        assertFalse(app.isLoggedUp());
     }
     @Then("they should be shown an error message indicating the ID is already in use")
+    @Test
+    public void theyShouldBeShownAnErrorMessageIndicatingTheIDIsAlreadyInUse() {
+        System.out.println("__________________________________________");
+                      System.out.println("error exist id");
+        System.out.print("__________________________________________");
+    }
 
-    public void they_should_be_shown_an_error_message_indicating_the_id_is_already_in_use() {
-        System.out.println("ssssssss");
+    @Given("the client provides an ID in an incorrect format {string}")
+    public void theClientProvidesAnIDInAnIncorrectFormat(String id) {
+        this.id=id;
+    }
+    @Then("they should be shown an error message indicating the ID format is invalid")
+    public void theyShouldBeShownAnErrorMessageIndicatingTheIDFormatIsInvalid() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
 
 }
