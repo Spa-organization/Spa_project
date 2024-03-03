@@ -33,12 +33,13 @@ public class AdminLoginFeatureSteps {
 		this.pass=password;
 	}
 	@Then("the admin is logged in the app successfully")
-
+	@Test
 	public void theAdminIsLoggedInTheAppSuccessfully() {
 		app.loggIn_Check(id,pass);
 		assertTrue(app.isLoggedIn());
 	}
 	@Then("the admin will not login")
+	@Test
 	public void theAdminWillNotLogin() {
 		app.loggIn_Check(id,pass);
 		assertFalse(app.isLoggedIn());
