@@ -16,6 +16,7 @@ public class Admin_DB {
 		admins.add(new Admin("5555","yanal"));
 	}
 
+
 	public static void addAdmin(String id,String password) {
 
 		admins.add(new Admin(id, password));

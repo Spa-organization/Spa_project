@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client_DB {
-	 static boolean flag=true;
+	public static boolean flag=true;
 
 	static List<Client> clients= new ArrayList<Client>();
 	private Client_DB() {
@@ -23,6 +23,10 @@ public class Client_DB {
 
 		clients.add(new Client(id, password));
 	}
+	public static void call()
+	{
+		new Client_DB();
+	}
 
 	public static List<Client> getClients() {
 		return clients;
@@ -35,7 +39,6 @@ public class Client_DB {
                 flag = false;
                 break;
             }
-				break;
 
 		}
 		return flag;

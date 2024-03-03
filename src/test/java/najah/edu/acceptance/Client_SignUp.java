@@ -15,7 +15,7 @@ public class Client_SignUp {
     {
         app=new LogUpAsClient();
     }
-    String id="2222";
+    String id="8888";
     String password="1234";
 
     @Given("the client does not have an account")
@@ -38,10 +38,11 @@ public class Client_SignUp {
     @Then("their account should be created and they should be logged in automatically")
     @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
-        if ((Client_DB.check_digit_validate("id")) && (Client_DB.check_validate_ID(id))) {
-            Client_DB.addClient("2222", "omg");
-            app.logUp();
-        }
+       if((Client_DB.check_digit_validate(id))&&(Client_DB.check_validate_ID(id)))
+       {
+               Client_DB.addClient(id, password);
+               app.logUp();
+       }
         assertTrue(app.isLoggedUp());
     }
     @Given("the client provides an ID that is already associated with another account {string}")
