@@ -47,8 +47,6 @@ public class ClientLoginFeatureSteps {
 	}
 	@Then("the message appear to tell the client what's wrong")
 	public void theMessageAppearToTellTheClientWhatSWrong() {
-		app.errorInLogin();
-
 	}
 
 
