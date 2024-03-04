@@ -37,6 +37,28 @@ public class LoginAsServiceProvider {
 				login();
 		}
 	}
-	    
-	    public void errorInLogin() {}
+
+	public boolean loggIn_IDCheck(String id)
+	{
+
+		for( ServiceProvider serviceProvider:ServiceProvider_DB.getServiceProviders() )
+		{
+			if( id.equals(serviceProvider.getId())  ) {
+				return true ;
+			}
+		}
+		return false;
+	}
+	public boolean loggIn_PassCheck(String pass)
+	{
+		for( ServiceProvider serviceProvider:ServiceProvider_DB.getServiceProviders() )
+		{
+			if( pass.equals(serviceProvider.getPassword())  ) {
+				return true ;
+			}
+		}
+		return false;
+	}
+
+	  //  public void errorInLogin() {}
 }
