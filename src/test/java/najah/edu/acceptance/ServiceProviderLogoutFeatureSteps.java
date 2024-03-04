@@ -25,7 +25,11 @@ public class ServiceProviderLogoutFeatureSteps {
     @Then("the system signs the service provider out")
     public void theSystemSignsTheServiceProviderOut() {
        app.logout();
-       assertFalse(app.isLoggedIn());
+        assertFalse(app.isLoggedIn());
+        System.out.println("___________________________________");
+        System.out.print("\t\t");
+        System.out.println("logout");
+        System.out.println("___________________________________");
     }
 
 

@@ -59,7 +59,7 @@ public class AdminLoginFeatureSteps {
 		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass)))
 		{
 			assertFalse(app.isLoggedIn());
-			System.out.println("____________________________________");
+			System.out.println("___________________________________");
 			System.out.print("\t\t");
 			System.out.println("wrong password or id try again");
 			System.out.println("___________________________________");

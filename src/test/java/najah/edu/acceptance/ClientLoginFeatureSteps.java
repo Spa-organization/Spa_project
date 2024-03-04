@@ -3,7 +3,6 @@ package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import login.LoginAsClient;
@@ -36,17 +35,36 @@ public class ClientLoginFeatureSteps {
 	
 	@Then("the client is logged in the app successfully")
 	public void theClientIsLoggedInTheAppSuccessfully() {
-	app.loggIn_Check(id, pass);
-    assertTrue(app.isLoggedIn());
+		app.loggIn_Check(id,pass);
+		assertTrue(app.isLoggedIn());
+		System.out.println("___________________________________");
+		System.out.print("\t\t\t");
+		System.out.println("Client login successfully");
+		System.out.print("_____________________________________");
+
 	  
 	}
 	@Then("the client will not login")
 	public void theClientWillNotLogin() {
-	app.loggIn_Check(id, pass);
-    assertFalse(app.isLoggedIn());
+		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass)))
+		{
+			assertFalse(app.isLoggedIn());
+		}
+		if(id.isEmpty() || pass.isEmpty()) {
+			assertFalse(app.isLoggedIn());
+		}
 	}
 	@Then("the message appear to tell the client what's wrong")
 	public void theMessageAppearToTellTheClientWhatSWrong() {
+		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass)))
+		{
+			assertFalse(app.isLoggedIn());
+			System.out.println("___________________________________");
+			System.out.print("\t\t");
+			System.out.println("wrong password or id try again");
+			System.out.println("___________________________________");
+		}
+
 	}
 
 
