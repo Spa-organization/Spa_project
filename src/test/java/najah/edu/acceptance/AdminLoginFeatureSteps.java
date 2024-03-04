@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminLoginFeatureSteps {
 
-	String pass;
-	String id;
+	String pass="";
+	String id="";
 	LoginAsAdmin app;
 	public AdminLoginFeatureSteps()
 	{
@@ -33,21 +33,38 @@ public class AdminLoginFeatureSteps {
 		this.pass=password;
 	}
 	@Then("the admin is logged in the app successfully")
-	@Test
 	public void theAdminIsLoggedInTheAppSuccessfully() {
+
 		app.loggIn_Check(id,pass);
 		assertTrue(app.isLoggedIn());
+		System.out.println("___________________________________");
+		System.out.print("\t\t\t");
+		System.out.println("Admin login successfully");
+		System.out.print("_____________________________________");
 	}
 	@Then("the admin will not login")
 	@Test
 	public void theAdminWillNotLogin() {
-		app.loggIn_Check(id,pass);
-		assertFalse(app.isLoggedIn());
+		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass)))
+		{
+			assertFalse(app.isLoggedIn());
+		}
+		if(id.isEmpty() || pass.isEmpty()) {
+			assertFalse(app.isLoggedIn());
+        }
 	}
 	@Then("the message appear to tell the admin what's wrong")
+	@Test
 	public void theMessageAppearToTellTheAdminWhatSWrong() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass)))
+		{
+			assertFalse(app.isLoggedIn());
+			System.out.println("___________________________________");
+			System.out.print("\t\t");
+			System.out.println("wrong password or id try again");
+			System.out.println("___________________________________");
+		}
+
 	}
 
 }

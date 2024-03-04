@@ -34,9 +34,31 @@ public class LoginAsAdmin {
          }
         }
     }
-    public void errorInLogin()
+    public boolean loggIn_IDCheck(String id)
     {
-
+        for( Admin admin:Admin_DB.getAdmins() )
+        {
+            if( id.equals(admin.getId())  ) {
+               return true ;
+            }
+        }
+        return false;
     }
+    public boolean loggIn_PassCheck(String pass)
+    {
+        for( Admin admin:Admin_DB.getAdmins() )
+        {
+            if( pass.equals(admin.getPassword())  ) {
+                return true ;
+            }
+        }
+        return false;
+    }
+
+
+   // public void errorInLogin()
+  //  {
+
+  //  }
 
 }
