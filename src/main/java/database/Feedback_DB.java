@@ -1,6 +1,5 @@
 package database;
 
-import Entities.Client;
 import Entities.FeedBack;
 
 import java.util.ArrayList;

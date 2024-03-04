@@ -49,7 +49,7 @@ public class AdminLoginFeatureSteps {
 		{
 			assertFalse(app.isLoggedIn());
 		}
-		if(id.equals("") || pass.equals("")) {
+		if(id.isEmpty() || pass.isEmpty()) {
 			assertFalse(app.isLoggedIn());
         }
 	}
