@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Admin_mangment {
+public class Admin_management {
     @Given("I am logged in as an admin")
     public void iAmLoggedInAsAnAdmin() {
 
