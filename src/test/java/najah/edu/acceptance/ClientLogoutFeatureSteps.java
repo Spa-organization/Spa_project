@@ -1,8 +1,9 @@
 package najah.edu.acceptance;
 
+import Controller.ClientController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import login.LoginAsClient;
+
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,10 +12,10 @@ public class ClientLogoutFeatureSteps {
 
     String pass;
     String id;
-    LoginAsClient app;
+    ClientController app;
     public ClientLogoutFeatureSteps()
     {
-        app=new LoginAsClient();
+        app=new ClientController();
         app.login();
     }
     @Given("the client chose to sign out")

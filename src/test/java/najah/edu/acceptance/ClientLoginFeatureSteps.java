@@ -3,17 +3,18 @@ package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import Controller.ClientController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import login.LoginAsClient;
+
 
 public class ClientLoginFeatureSteps {
  String pass;
  String id;
-	LoginAsClient app;
+	ClientController app;
 	public ClientLoginFeatureSteps()
 	{
-	app=new LoginAsClient();
+	app=new ClientController();
 	}
 
 	@Given("that the client is not logged in the app")

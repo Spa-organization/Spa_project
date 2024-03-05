@@ -1,8 +1,9 @@
 package najah.edu.acceptance;
 
+import Controller.EmployeeController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import login.LoginAsClient;
+
 import org.junit.Before;
 
 import static org.junit.Assert.assertFalse;
@@ -11,10 +12,10 @@ import static org.junit.Assert.assertTrue;
 public class ServiceProviderLogoutFeatureSteps {
     String pass;
     String id;
-    LoginAsClient app;
+    EmployeeController app;
     public ServiceProviderLogoutFeatureSteps()
     {
-        app=new LoginAsClient();
+        app=new EmployeeController();
         app.login();
     }
 

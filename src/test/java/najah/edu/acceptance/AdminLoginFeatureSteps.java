@@ -1,9 +1,10 @@
 package najah.edu.acceptance;
 
 
+import Controller.AdminController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import login.LoginAsAdmin;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -13,10 +14,10 @@ public class AdminLoginFeatureSteps {
 
 	String pass="abdullah";
 	String id="12345";
-	LoginAsAdmin app;
+	AdminController app;
 	public AdminLoginFeatureSteps()
 	{
-		app=new LoginAsAdmin();
+		app=new AdminController();
 	}
 
 	@Given("that the admin is not logged in the app")

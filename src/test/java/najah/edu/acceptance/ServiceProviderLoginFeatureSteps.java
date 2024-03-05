@@ -1,9 +1,10 @@
 package najah.edu.acceptance;
 
+import Controller.EmployeeController;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import login.LoginAsServiceProvider;
+
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,11 +12,11 @@ import static org.junit.Assert.assertTrue;
 public class ServiceProviderLoginFeatureSteps {
     String pass;
     String id;
-    LoginAsServiceProvider app;
+    EmployeeController app;
 
     public ServiceProviderLoginFeatureSteps()
     {
-        app= new LoginAsServiceProvider();
+        app= new EmployeeController();
 
     }
     @Given("that the service provider is not logged in the app")

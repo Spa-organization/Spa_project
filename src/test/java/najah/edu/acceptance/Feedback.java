@@ -1,18 +1,19 @@
 package najah.edu.acceptance;
 
+import Controller.ClientController;
 import database.Feedback_DB;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import login.LoginAsClient;
+
 
 import static org.junit.Assert.assertTrue;
 
 public class Feedback {
-    LoginAsClient app;
+    ClientController app;
     public Feedback()
     {
-     app=new LoginAsClient();
+     app=new ClientController();
      app.login();
     }
     @Given("I am logged in as a client")
