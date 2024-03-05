@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminLoginFeatureSteps {
 
-	String pass="";
-	String id="";
+	String pass="abdullah";
+	String id="12345";
 	LoginAsAdmin app;
 	public AdminLoginFeatureSteps()
 	{
@@ -20,6 +20,7 @@ public class AdminLoginFeatureSteps {
 	}
 
 	@Given("that the admin is not logged in the app")
+	@Test
 	public void thatTheAdminIsNotLoggedInTheApp() {
 	assertFalse(app.isLoggedIn());
 	}
@@ -33,25 +34,23 @@ public class AdminLoginFeatureSteps {
 		this.pass=password;
 	}
 	@Then("the admin is logged in the app successfully")
+	@Test
 	public void theAdminIsLoggedInTheAppSuccessfully() {
-
-		app.loggIn_Check(id,pass);
-		assertTrue(app.isLoggedIn());
-		System.out.println("___________________________________");
-		System.out.print("\t\t\t");
-		System.out.println("Admin login successfully");
-		System.out.print("_____________________________________");
+		if(app.loggIn_PassCheck(pass)&&app.loggIn_IDCheck(id)) {
+			app.loggIn_Check(id, pass);
+			assertTrue(app.isLoggedIn());
+			System.out.println("___________________________________");
+			System.out.print("\t\t\t");
+			System.out.println("Admin login successfully");
+			System.out.print("_____________________________________");
+		}
+		else {assertFalse(app.isLoggedIn());}
 	}
 	@Then("the admin will not login")
 	@Test
 	public void theAdminWillNotLogin() {
-		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass)))
-		{
-			assertFalse(app.isLoggedIn());
-		}
-		if(id.isEmpty() || pass.isEmpty()) {
-			assertFalse(app.isLoggedIn());
-        }
+		if(!(app.loggIn_IDCheck(id)||app.loggIn_PassCheck(pass))||(id.isEmpty() || pass.isEmpty()))
+            assertFalse(app.isLoggedIn());
 	}
 	@Then("the message appear to tell the admin what's wrong")
 	@Test

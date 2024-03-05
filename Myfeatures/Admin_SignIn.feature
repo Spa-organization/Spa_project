@@ -8,15 +8,15 @@ Feature: admin sign in
 
   Scenario: Sign in with incorrect ID
     Given that the admin is not logged in the app
-    And the ID is "incorrect"
+    And the ID is "wrong"
     And the password is "abdullah"
     Then the admin will not login
     And the message appear to tell the admin what's wrong
 
   Scenario: Sign in with incorrect password
     Given that the admin is not logged in the app
-    And the ID is "1"
-    And the password is "abdullah"
+    And the ID is "1234"
+    And the password is "wrong"
     Then the admin will not login
     And the message appear to tell the admin what's wrong
 
