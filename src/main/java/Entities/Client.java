@@ -1,34 +1,41 @@
 package Entities;
 
-import database.Client_DB;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
-    private String id;
+    private String id ;
+    private String name;
     private String password;
 
-
-    public Client(String id, String password) {
-        this.password = password;
+    public Client(){}
+    public Client(String id, String name, String password) {
         this.id = id;
-
-    }
-
-    public void setID(String idd) {
-        this.id = idd;
-    }
-
-    public void setPassword(String pass) {
-        this.password = pass;
+        this.name = name;
+        this.password = password;
     }
 
     public String getId() {
-
         return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

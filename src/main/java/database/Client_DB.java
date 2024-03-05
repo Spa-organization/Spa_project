@@ -7,67 +7,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client_DB {
-	public static boolean flag=true;
-
 	static List<Client> clients= new ArrayList<Client>();
 	private Client_DB() {
 		throw new IllegalStateException("Utility class");
 	}
 	static{
-		clients.add(new Client("1111","passing"));
-		clients.add(new Client("2222","omg"));
-		clients.add(new Client("6666","momo"));
-		clients.add(new Client("7777","shosho"));
+		clients.add(new Client("11","clint1","123"));
+		clients.add(new Client("12","clint2","123"));
+		clients.add(new Client("13","clint2","123"));
+		clients.add(new Client("14","clint2","123"));
 	}
-	public static void addClient(String id,String password) {
-
-		clients.add(new Client(id, password));
-	}
-	public static void call()
-	{
-		new Client_DB();
+	public static boolean addClient(String id,String Name,String password) {
+		boolean flage = true;
+		for(Client client:clients){
+			if(client.getId().equals(id)){
+				flage=false;
+				break;
+			}
+		}
+		if(flage)
+			clients.add(new Client(id, Name,password));
+		return flage;
 	}
 
 	public static List<Client> getClients() {
 		return clients;
 	}
-	public static boolean check_validate_ID(String idd)
-	{
-		for( Client client:Client_DB.getClients() )
-		{
-            if (idd.equals(client.getId())) {
-                flag = false;
-                break;
-            }
-
-		}
-		return flag;
-
-	}
-
-	public static boolean check_digit_validate (String idd)
-	{
-		int length=idd.length();
-        return length == 4;
-    }
-	public static boolean check_idFormat_validate (String idd)
-	{
-		boolean is_digit=false;
-		char []check= idd.toCharArray();
-        for (char c : check) {
-            if (Character.isDigit(c)) {
-                is_digit = true;
-            }
-        }
-		return   is_digit;
-	}
-	public  static boolean checkPassword_Strong(String pass)
-	{
-
-        return (pass.length()>2);
-    }
-
-
 
 
 

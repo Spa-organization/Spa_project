@@ -10,16 +10,23 @@ public class Admin_DB {
 		throw new IllegalStateException("Utility class");
 	}
 	static{
-		admins.add(new Admin("1234","abdullah"));
-		admins.add(new Admin("4321","younis"));
-		admins.add(new Admin("4444","qusay"));
-		admins.add(new Admin("5555","yanal"));
+		admins.add(new Admin("21","admin1","123"));
+		admins.add(new Admin("22","admin2","123"));
+		admins.add(new Admin("23","admin3","123"));
+		admins.add(new Admin("24","admin4","123"));
 	}
 
-
-	public static void addAdmin(String id,String password) {
-
-		admins.add(new Admin(id, password));
+	public static boolean addAdmin(String id,String name,String password) {
+		boolean flage = true;
+		for(Admin admin:admins){
+			if(admin.getId().equals(id)){
+				flage=false;
+				break;
+			}
+		}
+		if(flage)
+			admins.add(new Admin(id,name, password));
+		return flage;
 	}
 
 	public static List<Admin> getAdmins() {
