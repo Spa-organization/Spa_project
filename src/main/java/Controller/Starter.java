@@ -1,6 +1,5 @@
 package Controller;
 
-import Entities.Employee;
 import database.Employee_DB;
 
 import java.util.Scanner;
