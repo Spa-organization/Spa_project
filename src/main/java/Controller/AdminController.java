@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AdminController {
-    private boolean isLoggedIn;
+    private boolean isLoggedIn; // younis comment
     Admin admin = new Admin();
     private Scanner scanner = new Scanner(System.in);
 
@@ -202,7 +202,7 @@ public class AdminController {
     public void showAllEmployees(){
         System.out.println("------------------------------");
         System.out.println("------------------------------");
-        List<Employee> employees= new ArrayList<>();
+        List<Employee> employees= new ArrayList<Employee>();
         employees=Employee_DB.getServiceProviders();
         for(Employee employee :employees){
             System.out.println("----");
@@ -238,7 +238,7 @@ public class AdminController {
         System.out.println("------------------------------");
         System.out.println("------------------------------");
         System.out.println("=== All Appointments ===");
-        List<Appointment> appointments= new ArrayList<>();
+        List<Appointment> appointments= new ArrayList<Appointment>();
         appointments = Appointment_DB.getAllAppointments();
         for(Appointment appointment:appointments){
             System.out.println("---------");
