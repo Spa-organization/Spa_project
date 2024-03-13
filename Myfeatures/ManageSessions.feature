@@ -14,7 +14,7 @@ But the chosen spa session "time" slot is already booked for the selected "date"
 When the client attempts to schedule a new spa session for this time slot
 Then the system should prevent the booking and alert about the time and date slots unavailability
 
- Scenario: Schedule a New sawna Session with Available Time and date Slots             //ready
+ Scenario: Schedule a New sawna Session with Available Time and date Slots            //ready
    Given the client is logged into their account
   And the chosen sawna session "time" slot is available for the selected available "date" and available employee "id"
   When the client schedules a new sawna session specifying the date and time and employee
