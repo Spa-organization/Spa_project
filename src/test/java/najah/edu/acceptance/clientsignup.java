@@ -16,9 +16,9 @@ public class clientsignup {
         app = new ClientController();
     }
 
-    String clientId = "2222";
-    String clientName = "ali";
-    String password = "omg";
+    String clientId = "112";
+    String clientName = "clint1";
+    String password = "123";
 
     @Given("the client does not have an account")
     @Test
@@ -67,7 +67,7 @@ public class clientsignup {
     @Then("they should be shown an error message indicating the ID is already in use")
     @Test
     public void theyShouldBeShownAnErrorMessageIndicatingTheIDIsAlreadyInUse() {
-        if (!Client_DB.addClient(clientId, clientName, password)) {
+        if (Client_DB.addClient(clientId, clientName, password)) {
             assertFalse(app.isLogged_up());
             System.out.println("----------------------------");
             System.out.println("This ID is Already Exists");
