@@ -1,30 +1,29 @@
 Feature: Admin Management
 
-Scenario: Add  Room
+Scenario: Add  Room                      // ready
 Given I am logged in as an admin
 When I choose to add a massage room or sawna room
 And I enter the a unique room "ID" and Employee "id" that not add yet any room
 Then the massage room should be added to the system
 
 
-Scenario: Add Employee
+Scenario: Add Employee                //ready
 Given I am logged in as an admin
 When I choose to add an employee
 And I enter the employee "ID" and it should be unique , name, and password
 Then the employee should be added to the system
 
-Scenario: Add Admin
+Scenario: Add Admin                //ready
 Given I am logged in as an admin
 When I choose to add an admin
 And I enter the admin "ID" and it should be unique , name, and password
 Then the admin should be added to the system
 
 
-Scenario: view appointments
+Scenario: view appointments               //ready
 Given I am logged in as an admin
 When I choose to view the appointments
-And I enter a specific "date"
-Then the appointments should show up according to the given date 
+Then the all appointments should show up
 
 
 
