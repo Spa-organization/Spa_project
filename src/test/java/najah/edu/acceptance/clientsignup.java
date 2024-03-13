@@ -1,6 +1,6 @@
 package najah.edu.acceptance;
 
-import LogUp.LogUpAsClient;
+import Controller.ClientController;
 import database.Client_DB;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,10 +10,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class clientsignup {
-    LogUpAsClient app;
+    ClientController app;
     public clientsignup()
     {
-        app=new LogUpAsClient();
+        app=new ClientController();
     }
     String id="2222";
     String password="omg";
@@ -21,7 +21,7 @@ public class clientsignup {
     @Given("the client does not have an account")
     @Test
     public void theClientDoesNotHaveAnAccount() {
-     assertFalse(app.isLoggedUp());
+     assertFalse(app.is_Logged_up());
     }
     @When("the client provides a valid ID {string}")
     public void theClientProvidesAValidID(String id) {
@@ -42,14 +42,14 @@ public class clientsignup {
        {
            Client_DB.addClient(id, password);
            app.logUp();
-           assertTrue(app.isLoggedUp());
+           assertTrue(app.is_Logged_up());
            System.out.println("_______________________________________");
            System.out.print("\t\t\t");
            System.out.println("SignUp success");
            System.out.print("________________________________________");
 
        }
-        assertFalse(app.isLoggedUp());
+        assertFalse(app.is_Logged_up());
         System.out.println("_______________________________________");
         System.out.print("\t\t\t");
         System.out.println("SignUp fail");
@@ -66,13 +66,13 @@ public class clientsignup {
         {
             Client_DB.addClient(id, password);
             app.logUp();
-            assertTrue(app.isLoggedUp());
+            assertTrue(app.is_Logged_up());
             System.out.println("_______________________________________");
             System.out.print("\t\t\t");
             System.out.println("SignUp Success");
             System.out.print("________________________________________");
         }
-        assertFalse(app.isLoggedUp());
+        assertFalse(app.is_Logged_up());
         System.out.println("_______________________________________");
         System.out.print("\t\t\t");
         System.out.println("SignUp IDIsAlreadyAssociatedWithAnotherAccount");
@@ -98,14 +98,14 @@ public class clientsignup {
         {
             Client_DB.addClient(id, password);
             app.logUp();
-            assertTrue(app.isLoggedUp());
+            assertTrue(app.is_Logged_up());
             System.out.println("_______________________________________");
             System.out.print("\t\t\t");
             System.out.println("id format is acceptable");
             System.out.print("________________________________________");
         }
         else {
-            assertFalse(app.isLoggedUp());
+            assertFalse(app.is_Logged_up());
             System.out.println("_______________________________________");
             System.out.print("\t\t\t");
             System.out.println("error foramt  id not acceptable");
@@ -123,14 +123,14 @@ public class clientsignup {
        {
            Client_DB.addClient(id, password);
            app.logUp();
-           assertTrue(app.isLoggedUp());
+           assertTrue(app.is_Logged_up());
            System.out.println("_______________________________________");
            System.out.print("\t\t\t");
            System.out.println("Strong password");
            System.out.print("________________________________________");
        }
        else {
-           assertFalse(app.isLoggedUp());
+           assertFalse(app.is_Logged_up());
            System.out.println("_______________________________________");
            System.out.print("\t\t\t");
            System.out.println("ThePasswordIsWeak");

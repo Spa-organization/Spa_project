@@ -13,11 +13,25 @@ But the chosen spa session "time" slot is already booked for the selected "date"
 When the client attempts to schedule a new spa session for this time slot
 Then the system should prevent the booking and alert about the time and date slots unavailability
 
+        Scenario: Schedule a New sawna Session with Available Time and date Slots
+            Given the client is logged into their account
+            And the chosen sawna session "time" slot is available for the selected available "date"
+            When the client schedules a new sawna session specifying the date and time
+            Then the session should be successfully booked, ensuring the time and date slots are reserved
+
+        Scenario: Attempt to Schedule a New sawna Session with Unavailable Time or date
+            Given the client is logged into their account
+            But the chosen sawna session "time" slot is already booked for the selected "date"
+            When the client attempts to schedule a new sawna session for this time slot
+            Then the system should prevent the booking and alert about the time and date slots unavailability
+
 Scenario: Reschedule an Existing Spa Session to a New Time Slot
 Given the client wants to change the time of an existing spa session
 And the new chosen time slot is available
 When the client reschedules the session with the new "date" and "time"
 Then the session should be successfully updated, and the new time slot reserved
+
+
 
 Scenario: Attempt to Reschedule an Existing Spa Session to an Unavailable Time Slot
 Given the client wants to change the time of an existing spa session

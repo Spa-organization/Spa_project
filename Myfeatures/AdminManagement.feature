@@ -1,9 +1,9 @@
 Feature: Admin Management
 
-Scenario: Add Massage Room
+Scenario: Add  Room
 Given I am logged in as an admin
-When I choose to add a massage room
-And I enter the a unique room "ID"
+When I choose to add a massage room or sawna room
+And I enter the a unique room "ID" and Employee "id" that not add yet any room
 Then the massage room should be added to the system
 
 

@@ -118,7 +118,7 @@ public class AdminController {
 
         do {
             System.out.println("Add Rooms");
-            System.out.println("1. Spa Room");
+            System.out.println("1. sawna Room");
             System.out.println("2. Massage Room");
             System.out.println("3. Show All Employees with ID");
             System.out.println("4. Exit");
