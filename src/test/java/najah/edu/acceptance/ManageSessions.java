@@ -1,5 +1,6 @@
 package najah.edu.acceptance;
 
+import Controller.AdminController;
 import Controller.ClientController;
 import Entities.Employee;
 import database.Appointment_DB;
@@ -16,43 +17,59 @@ import static org.junit.Assert.assertTrue;
 
 public class ManageSessions {
     ClientController clientController;
+    private String id;
+    private String time;
+    private String date;
+    private String type;
+
     public ManageSessions() {
         clientController = new ClientController();
     }
 
     @Given("the client is logged into their account")
+    @Test
     public void theClientIsLoggedIntoTheirAccount() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        clientController.login();
+        assertTrue(clientController.isLoggedIn());
+
+
+
     }
     @Given("the chosen massage session {string} slot is available for the selected available {string} and available employee {string}")
     public void theChosenMassageSessionSlotIsAvailableForTheSelectedAvailableAndAvailableEmployee(String string, String string2, String string3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       this.time = string;
+       this.date = string2;
+       this.id = string3;
+
     }
     @When("the client schedules a new massage session specifying the date and time")
     public void theClientSchedulesANewMassageSessionSpecifyingTheDateAndTime() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+
+        assertTrue(Appointment_DB.isValidDate(date));
+        assertTrue(Appointment_DB.isValidTime(time));
+
+
     }
 
 
 
     @Given("the chosen massage session {string} slot is already booked for the selected {string} and available employee {string}")
     public void theChosenMassageSessionSlotIsAlreadyBookedForTheSelectedAndAvailableEmployee(String string, String string2, String string3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        this.time = string;
+        this.date = string2;
+        this.id = string3;
     }
     @When("the client attempts to schedule a new massage session for this time slot")
     public void theClientAttemptsToScheduleANewMassageSessionForThisTimeSlot() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
     @Given("the chosen sawna session {string} slot is available for the selected available {string} and available employee {string}")
     public void theChosenSawnaSessionSlotIsAvailableForTheSelectedAvailableAndAvailableEmployee(String string, String string2, String string3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        this.time = string;
+        this.date = string2;
+        this.id = string3;
     }
     @When("the client schedules a new sawna session specifying the date and time and employee")
     public void theClientSchedulesANewSawnaSessionSpecifyingTheDateAndTimeAndEmployee() {
@@ -68,8 +85,9 @@ public class ManageSessions {
 
     @Given("the chosen sawna session {string} slot is already booked for the selected {string} and available employee {string}")
     public void theChosenSawnaSessionSlotIsAlreadyBookedForTheSelectedAndAvailableEmployee(String string, String string2, String string3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        this.time = string;
+        this.date = string2;
+        this.id = string3;
     }
     @When("the client attempts to schedule a new sawna session for this time slot")
     public void theClientAttemptsToScheduleANewSawnaSessionForThisTimeSlot() {
@@ -88,13 +106,13 @@ public class ManageSessions {
 
     @When("I choose to view the appointments")
     public void iChooseToViewTheAppointments() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+
     }
     @Then("the appointments should show up according to the client who log in")
     public void theAppointmentsShouldShowUpAccordingToTheClientWhoLogIn() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        clientController.showClientAppointments();
+
     }
 
     @Given("the new chosen time slot is available")
@@ -104,8 +122,9 @@ public class ManageSessions {
     }
     @When("the client reschedules the session with the new {string} and {string}")
     public void theClientReschedulesTheSessionWithTheNewAnd(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        this.date = string;
+        this.time = string2;
+
     }
     @Then("the session should be successfully updated, and the new time slot reserved")
     public void theSessionShouldBeSuccessfullyUpdatedAndTheNewTimeSlotReserved() {
@@ -122,8 +141,8 @@ public class ManageSessions {
     }
     @Given("the new chosen {string} and {string} slots are unavailable")
     public void theNewChosenAndSlotsAreUnavailable(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        this.date = string;
+        this.time = string2;
     }
     @When("the client attempts to reschedule the session to this time slot")
     public void theClientAttemptsToRescheduleTheSessionToThisTimeSlot() {
@@ -148,7 +167,7 @@ public class ManageSessions {
     }
     @Then("the session should be removed from their list of scheduled sessions, freeing up the time slot")
     public void theSessionShouldBeRemovedFromTheirListOfScheduledSessionsFreeingUpTheTimeSlot() {
-        // Write code here that turns the phrase above into concrete actions
+
         throw new io.cucumber.java.PendingException();
     }
 
