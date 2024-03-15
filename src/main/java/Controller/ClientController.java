@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClientController {
-    private boolean isLoggedUp=false;
+    private static boolean isLoggedUp=false;
 
-    private boolean isLoggedIn = false;
+    private static boolean isLoggedIn = false;
     private Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
 
@@ -146,7 +146,7 @@ public class ClientController {
                     bookMassage("Massage");
                     break;
                 case 2:
-                    bookSauna("sawna");
+                    bookSauna("Spa");
                     break;
                 case 3:
                     break;
