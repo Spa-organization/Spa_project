@@ -23,6 +23,7 @@ static int roomType=1;
     public static boolean add_room=true;
 
     public static boolean flag=false;
+    //dfgfd
 String admin_id="21";
 Room room;
 String admin_pass="123";
