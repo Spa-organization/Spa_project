@@ -9,16 +9,16 @@ import java.util.List;
 public class Room_DB {
     public static List<Room> rooms= new ArrayList<>();
     public   static boolean addRoom(Employee employee, int id){
-        boolean flage = true;
+        boolean not_duplicate = true;
         for (Room room: rooms){
             if(id==room.getRoomNumber()){
-                flage=false;
+                not_duplicate=false;
                 break;
             }
         }
-        if(flage==true)
+        if(not_duplicate==true)
             rooms.add(new Room(employee,id));
-        return flage;
+        return !not_duplicate;
     }
     public  static Room getRoomById( int id){
         for (Room room: rooms){
