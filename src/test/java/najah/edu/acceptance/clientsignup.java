@@ -23,7 +23,7 @@ public class clientsignup {
     @Given("the client does not have an account")
     @Test
     public void theClientDoesNotHaveAnAccount() {
-        assertFalse(false);
+        assertFalse(app.isLogged_up());
     }
 
     @When("the client provides a valid ID {string}")

@@ -12,8 +12,8 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminLoginFeatureSteps {
 
-	String pass="abdullah";
-	String id="12345";
+	String pass="123";
+	String id="21";
 	AdminController app;
 	public AdminLoginFeatureSteps()
 	{

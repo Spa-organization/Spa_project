@@ -33,15 +33,6 @@ Scenario: view appointments                                                     
 
 
 
-
-
-
-
-
-
-
-
-
 Scenario: Reschedule an Existing Spa Session to a New Time Slot
 Given the client wants to change the time of an existing spa session
 And the new chosen time slot is available

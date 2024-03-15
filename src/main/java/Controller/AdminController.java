@@ -18,24 +18,24 @@ public class AdminController {
     private Scanner scanner = new Scanner(System.in);
 
     public AdminController() {
-        this.isLoggedIn = false;
+        isLoggedIn = false;
 
     }
 
-    public static boolean isLoggedIn() {
+    public  boolean isLoggedIn() {
 
         return isLoggedIn;
     }
-    public void logout() {
+    public  void logout() {
 
         isLoggedIn=false;
     }
-    public void login() {
+    public  void login() {
 
         isLoggedIn = true;
     }
 
-    public void loggIn_Check(String id, String password)
+    public  void loggIn_Check(String id, String password)
     {
         for( Admin admin:Admin_DB.getAdmins() )
         {
@@ -320,7 +320,7 @@ public class AdminController {
             System.out.println("=== Admin added ===");
     }
 
-    public boolean loggIn_IDCheck(String id) {
+    public static boolean loggIn_IDCheck(String id) {
         for( Admin admin:Admin_DB.getAdmins() )
         {
             if( id.equals(admin.getId())  ) {

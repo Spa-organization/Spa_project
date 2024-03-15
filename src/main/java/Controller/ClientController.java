@@ -18,7 +18,8 @@ public class ClientController {
 
 
     public ClientController() {
-        this.isLoggedIn = false;
+        isLoggedIn = false;
+        isLoggedUp = false;
 
     }
 
