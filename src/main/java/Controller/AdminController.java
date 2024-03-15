@@ -8,13 +8,12 @@ import database.Admin_DB;
 import database.Appointment_DB;
 import database.Employee_DB;
 import database.Room_DB;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class AdminController {
-    private boolean isLoggedIn; // younis comment
+    private static boolean isLoggedIn;
     Admin admin = new Admin();
     private Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +22,7 @@ public class AdminController {
 
     }
 
-    public boolean isLoggedIn() {
+    public static boolean isLoggedIn() {
 
         return isLoggedIn;
     }
@@ -127,7 +126,7 @@ public class AdminController {
 
             switch (roomType) {
                 case 1:
-                    addSpaRoom();
+                    addSawnaRoom();
                     break;
                 case 2:
                     addMassageRoom();
@@ -143,7 +142,7 @@ public class AdminController {
             }
         } while (roomType != 4);
     }
-    public void addSpaRoom(){
+    public void addSawnaRoom(){
         System.out.println("------------------------------");
         System.out.println("------------------------------");
         System.out.print("Enter Room ID: ");
@@ -153,39 +152,16 @@ public class AdminController {
         String employeeId = scanner.next();
         Employee employee= Employee_DB.getEmployeeById(employeeId);
         if(employee!=null){
-            if(!employee.getRooms().isEmpty())
-            {
-               if(employee.getRooms().get(0).getRoomNumber() == id)
-               {
-                   System.out.println("----------------------------");
-                   System.out.println("The employee is already assigned to this room");
-                   System.out.println("----------------------------");
-               }
-               else
-               {
-                   System.out.println("----------------------------");
-                   System.out.println("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber());
-                   System.out.println("----------------------------");
-               }
-            }
-            if(employee.getWorkerType().equals("Spa"))
-            {
-                if(!Room_DB.addRoom(employee,id)){
+            if(employee.getWorkerType().equalsIgnoreCase("Sawna")){
+                if(Room_DB.addRoom(employee, id)){
                     System.out.println("----------------------------");
                     System.out.println("This ID is Already Exists");
                     System.out.println("----------------------------");
                 }
-                else
-                {
-                    System.out.println("----------------------------");
-                    System.out.println("sawna Room Added");
-                    System.out.println("----------------------------");
-                }
             }
-            else
-            {
+            else{
                 System.out.println("----------------------");
-                System.out.println("not spa employee!!");
+                System.out.println("not Sawna employee!!");
                 System.out.println("-----------------------");
             }
         }else{
@@ -193,7 +169,6 @@ public class AdminController {
             System.out.println("employee not found!!");
             System.out.println("-----------------------");
         }
-
     }
     public void addMassageRoom(){
         System.out.println("------------------------------");
@@ -205,39 +180,14 @@ public class AdminController {
         String employeeId = scanner.next();
         Employee employee= Employee_DB.getEmployeeById(employeeId);
         if(employee!=null){
-
-            if(!employee.getRooms().isEmpty())
-            {
-                if(employee.getRooms().get(0).getRoomNumber() == id)
-                {
+            if(employee.getWorkerType().equalsIgnoreCase("Massage")){
+                if(Room_DB.addRoom(employee, id)){
                     System.out.println("----------------------------");
-                    System.out.println("The employee is already assigned to this room");
-                    System.out.println("----------------------------");
-                }
-                else
-                {
-                    System.out.println("----------------------------");
-                    System.out.println("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber());
+                    System.out.println("This ID_room is Already Exists");
                     System.out.println("----------------------------");
                 }
             }
-            if(employee.getWorkerType().equals("Massage"))
-            {
-                if(!Room_DB.addRoom(employee,id))
-                {
-                    System.out.println("----------------------------");
-                    System.out.println("This ID is Already Exists");
-                    System.out.println("----------------------------");
-                }
-                else {
-                    System.out.println("----------------------------");
-                    System.out.println("Massage Room Added");
-                    System.out.println("----------------------------");
-                }
-
-            }
-            else
-            {
+            else{
                 System.out.println("----------------------");
                 System.out.println("not Massage employee!!");
                 System.out.println("-----------------------");

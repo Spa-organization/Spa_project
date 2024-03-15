@@ -2,9 +2,15 @@ Feature: Admin Management
 
 Scenario: Add  Room                      // ready
 Given I am logged in as an admin
-When I choose to add a massage room or sawna room
-And I enter the a unique room "ID" and Employee "id" that not add yet any room
+When I choose to add a massage room
+And I enter the a unique room "1" and Employee "31" that not add yet any room
 Then the massage room should be added to the system
+
+  Scenario: Add  Room                      // ready
+    Given I am logged in as an admin
+    When I choose to add a  sawna room
+    And I enter the a unique room "3" and Employee "33" that not add yet any room
+    Then the sawna room should be added to the system
 
 
 Scenario: Add Employee                //ready

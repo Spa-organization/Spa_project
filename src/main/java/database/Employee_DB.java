@@ -14,8 +14,8 @@ public class Employee_DB {
 
     }
     static{
-        employees.add(new Employee("31","SerPro1","123","Spa", new Room(1)));
-        employees.add(new Employee("32","SerPro2","123","Spa",new Room(2)));
+        employees.add(new Employee("31","SerPro1","123","Sawna", new Room(1)));
+        employees.add(new Employee("32","SerPro2","123","Sawna",new Room(2)));
         employees.add(new Employee("33","SerPro3","123","Massage",new Room(3)));
         employees.add(new Employee("34","SerPro4","123","Massage",new Room(4)));
         employees.get(0).getRoom().setEmployee(employees.get(0));

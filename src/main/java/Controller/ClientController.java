@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClientController {
+    private boolean isLoggedUp=false;
 
     private boolean isLoggedIn = false;
     private Scanner scanner = new Scanner(System.in);
@@ -145,7 +146,7 @@ public class ClientController {
                     bookMassage("Massage");
                     break;
                 case 2:
-                    bookSauna("Spa");
+                    bookSauna("sawna");
                     break;
                 case 3:
                     break;
@@ -267,27 +268,16 @@ public class ClientController {
 
     }
 
-   // public boolean loggIn_IDCheck(String id) {
-     //   for( Client client: Client_DB.getClients() )
-       // {
-         //   if( id.equals(client.getId())  ) {
-           //     return true;
+    public boolean isLogged_up() {
 
-            //}
-        //}
-        //return false;
-    //}
+        return isLoggedUp;
+    }
 
-  //  public boolean loggIn_PassCheck(String pass) {
-    //    for( Client client: Client_DB.getClients() )
-      //  {
-        //    if( pass.equals(client.getPassword())  ) {
-          //      return true;
+    public void logUp() {
 
-            //}
-        //}
-        //return false;
-   // }
+        isLoggedUp = true;
+    }
+
 
 
 }

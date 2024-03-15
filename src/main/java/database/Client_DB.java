@@ -14,8 +14,8 @@ public class Client_DB {
 	static{
 		clients.add(new Client("11","clint1","123"));
 		clients.add(new Client("12","clint2","123"));
-		clients.add(new Client("13","clint2","123"));
-		clients.add(new Client("14","clint2","123"));
+		clients.add(new Client("13","clint3","123"));
+		clients.add(new Client("14","clint4","123"));
 	}
 	public static boolean addClient(String id,String Name,String password) {
 		boolean flage = true;
