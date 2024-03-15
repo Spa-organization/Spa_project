@@ -153,14 +153,37 @@ public class AdminController {
         String employeeId = scanner.next();
         Employee employee= Employee_DB.getEmployeeById(employeeId);
         if(employee!=null){
-            if(employee.getWorkerType().equals("Spa")){
+            if(!employee.getRooms().isEmpty())
+            {
+               if(employee.getRooms().get(0).getRoomNumber() == id)
+               {
+                   System.out.println("----------------------------");
+                   System.out.println("The employee is already assigned to this room");
+                   System.out.println("----------------------------");
+               }
+               else
+               {
+                   System.out.println("----------------------------");
+                   System.out.println("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber());
+                   System.out.println("----------------------------");
+               }
+            }
+            if(employee.getWorkerType().equals("Spa"))
+            {
                 if(!Room_DB.addRoom(employee,id)){
                     System.out.println("----------------------------");
                     System.out.println("This ID is Already Exists");
                     System.out.println("----------------------------");
                 }
+                else
+                {
+                    System.out.println("----------------------------");
+                    System.out.println("sawna Room Added");
+                    System.out.println("----------------------------");
+                }
             }
-            else{
+            else
+            {
                 System.out.println("----------------------");
                 System.out.println("not spa employee!!");
                 System.out.println("-----------------------");
@@ -170,6 +193,7 @@ public class AdminController {
             System.out.println("employee not found!!");
             System.out.println("-----------------------");
         }
+
     }
     public void addMassageRoom(){
         System.out.println("------------------------------");
@@ -181,14 +205,39 @@ public class AdminController {
         String employeeId = scanner.next();
         Employee employee= Employee_DB.getEmployeeById(employeeId);
         if(employee!=null){
-            if(employee.getWorkerType().equals("Massage")){
-                if(!Room_DB.addRoom(employee,id)){
+
+            if(!employee.getRooms().isEmpty())
+            {
+                if(employee.getRooms().get(0).getRoomNumber() == id)
+                {
+                    System.out.println("----------------------------");
+                    System.out.println("The employee is already assigned to this room");
+                    System.out.println("----------------------------");
+                }
+                else
+                {
+                    System.out.println("----------------------------");
+                    System.out.println("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber());
+                    System.out.println("----------------------------");
+                }
+            }
+            if(employee.getWorkerType().equals("Massage"))
+            {
+                if(!Room_DB.addRoom(employee,id))
+                {
                     System.out.println("----------------------------");
                     System.out.println("This ID is Already Exists");
                     System.out.println("----------------------------");
                 }
+                else {
+                    System.out.println("----------------------------");
+                    System.out.println("Massage Room Added");
+                    System.out.println("----------------------------");
+                }
+
             }
-            else{
+            else
+            {
                 System.out.println("----------------------");
                 System.out.println("not Massage employee!!");
                 System.out.println("-----------------------");
