@@ -19,7 +19,7 @@ public class ManageSessions {
 
     String employee_id;
     String dateInput="1/9/2002";
-    String timeInput="9:00";
+    String timeInput="9:0 0";
     int appointmentType=1;
     static String type = "true";
 
