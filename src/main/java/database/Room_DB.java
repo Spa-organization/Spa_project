@@ -18,7 +18,7 @@ public class Room_DB {
         }
         if(not_duplicate==true)
             rooms.add(new Room(employee,id));
-        return !not_duplicate;
+        return not_duplicate;
     }
     public  static Room getRoomById( int id){
         for (Room room: rooms){
