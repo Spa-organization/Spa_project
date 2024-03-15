@@ -144,7 +144,6 @@ public class AdminController {
     }
     public void addSawnaRoom(){
         System.out.println("------------------------------");
-        //ndkjjkbjkbk
         System.out.println("------------------------------");
         System.out.print("Enter Room ID: ");
         int id = scanner.nextInt();
@@ -222,7 +221,7 @@ public class AdminController {
         System.out.print("Enter Employee Password: ");
         String employeePassword = scanner.next();
 
-        System.out.print("Enter Employee Type (Spa or Massage): ");
+        System.out.print("Enter Employee Type (Sawna or Massage): ");
         String employeeType = scanner.next();
         if(!Employee_DB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType)){
             System.out.println("----------------------------");
