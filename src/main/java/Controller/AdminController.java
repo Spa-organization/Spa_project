@@ -44,6 +44,11 @@ public class AdminController {
                 login();
             }
         }
+        if(!(isLoggedIn)){
+            System.out.println("-----------------------------------");
+            System.out.println("LOGIN FAILD");
+            System.out.println("-----------------------------------");
+        }
     }
     public void errorInLogin()
     {
@@ -274,7 +279,7 @@ public class AdminController {
         System.out.println("================");
     }
 
-    public void showAppointments(){
+    public static void showAppointments(){
         System.out.println("------------------------------");
         System.out.println("------------------------------");
         System.out.println("=== All Appointments ===");
@@ -318,27 +323,5 @@ public class AdminController {
             System.out.println("----------------------------");
         }else
             System.out.println("=== Admin added ===");
-    }
-
-    public static boolean loggIn_IDCheck(String id) {
-        for( Admin admin:Admin_DB.getAdmins() )
-        {
-            if( id.equals(admin.getId())  ) {
-                return true;
-
-            }
-        }
-        return false;
-    }
-
-    public boolean loggIn_PassCheck(String pass) {
-        for( Admin admin:Admin_DB.getAdmins() )
-        {
-            if( pass.equals(admin.getPassword())  ) {
-                return true;
-
-            }
-        }
-        return false;
     }
 }

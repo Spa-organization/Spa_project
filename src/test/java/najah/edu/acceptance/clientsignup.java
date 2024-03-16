@@ -16,9 +16,9 @@ public class clientsignup {
         app = new ClientController();
     }
 
-    String clientId = "112";
-    String clientName = "clint1";
-    String password = "123";
+    String clientId ;
+    String clientName ;
+    String password ;
 
     @Given("the client does not have an account")
     @Test
@@ -42,15 +42,8 @@ public class clientsignup {
     }
 
     @Then("their account should be created and they should be logged in automatically")
-    @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
-        if (Client_DB.addClient(clientId, clientName, password)) {
-            app.logUp();
-            assertTrue(app.isLogged_up());
-            System.out.println("-------------------------------------");
-            System.out.println("Signup done successfully");
-            System.out.println("-------------------------------------");
-        }
+            assertTrue(Client_DB.addClient(clientId, clientName, password));
     }
 
     @Given("the client provides an ID that is already associated with another account {string}")
@@ -59,22 +52,13 @@ public class clientsignup {
     }
 
     @When("the client attempts to sign up")
-    @Test
     public void theClientAttemptsToSignUp() {
         assertFalse(app.isLogged_up());
     }
 
     @Then("they should be shown an error message indicating the ID is already in use")
-    @Test
     public void theyShouldBeShownAnErrorMessageIndicatingTheIDIsAlreadyInUse() {
-        if (Client_DB.addClient(clientId, clientName, password)) {
-            assertFalse(app.isLogged_up());
-            System.out.println("----------------------------");
-            System.out.println("This ID is Already Exists");
-            System.out.println("----------------------------");
-        }
-
-    }
+        assertFalse(Client_DB.addClient(clientId, clientName, password));}
 }
 
 

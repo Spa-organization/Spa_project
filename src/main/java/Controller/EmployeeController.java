@@ -40,6 +40,11 @@ public class EmployeeController {
                 login();
             }
         }
+        if(!(isLoggedIn)){
+            System.out.println("-----------------------------------");
+            System.out.println("LOGIN FAILD");
+            System.out.println("-----------------------------------");
+        }
     }
 
     public void errorInLogin() {}

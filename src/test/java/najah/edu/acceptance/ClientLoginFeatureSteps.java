@@ -11,7 +11,7 @@ import org.junit.Test;
 
 
 public class ClientLoginFeatureSteps {
- String pass="123";
+ String pass="1423";
  String id="11";
 	ClientController app;
 	public ClientLoginFeatureSteps()
@@ -33,17 +33,13 @@ public class ClientLoginFeatureSteps {
 	}
 	
 	@Then("the client is logged in the app successfully")
-	@Test
 	public void theClientIsLoggedInTheAppSuccessfully() {
 		app.loggIn_Check(id,pass);
 		assertTrue(app.isLoggedIn());
-		System.out.println("----------------------------");
-		System.out.println("logIn the app successfully");
-		System.out.println("----------------------------");
 	}
 
 	@Then("the client will not login")
-	@Test
+
 	public void theClientWillNotLogin() {
 		app.loggIn_Check(id,pass);
 		app.logout();
@@ -51,6 +47,5 @@ public class ClientLoginFeatureSteps {
 	}
 
 	@And("the message appear to tell the client what's wrong")
-	public void theMessageAppearToTellTheClientWhatSWrong() {
-	}
+	public void theMessageAppearToTellTheClientWhatSWrong() {assertFalse(app.isLoggedIn());}
 }

@@ -7,6 +7,7 @@ import Controller.AdminController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Test;
 
 
 public class AdminLogoutFeatureSteps {
@@ -18,20 +19,16 @@ public class AdminLogoutFeatureSteps {
 		app.login();
 	}
 @Given("the admin chose to sign out")
+@Test
 public void theAdminChoseToSignOut() {
    assertTrue(app.isLoggedIn());
 }
 @Then("the system signs the admin out")
+@Test
 public void theSystemSignsTheAdminOut() {
 app.logout();
 assertFalse(app.isLoggedIn());
-	System.out.println("___________________________________");
-	System.out.print("\t\t");
-	System.out.println("logout");
-	System.out.println("___________________________________");
-    
 }
-
 }
 
 

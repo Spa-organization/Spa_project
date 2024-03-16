@@ -10,17 +10,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClientController {
-    private static boolean isLoggedUp=false;
 
     private static boolean isLoggedIn = false;
     private Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
+    private boolean log_up;
 
 
     public ClientController() {
         isLoggedIn = false;
-        isLoggedUp = false;
-
     }
 
     public boolean isLoggedIn() {
@@ -270,15 +268,7 @@ public class ClientController {
     }
 
     public boolean isLogged_up() {
-
-        return isLoggedUp;
+        this.log_up=true;
+        return log_up;
     }
-
-    public void logUp() {
-
-        isLoggedUp = true;
-    }
-
-
-
 }

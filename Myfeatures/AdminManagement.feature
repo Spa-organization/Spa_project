@@ -1,32 +1,30 @@
 Feature: Admin Management
 
-Scenario: Add  Room                      // ready
-Given I am logged in as an admin
+  Scenario: Add Employee
+    Given I am logged in as an admin
+    When I choose to add an employee
+    And I enter the employee "35" and it should be unique , name, and password
+    Then the employee should be added to the system
+
+  Scenario: Add Admin
+    Given I am logged in as an admin
+    When I choose to add an admin
+    And I enter the admin "25" and it should be unique , name, and password
+    Then the admin should be added to the system
+
+Scenario: Add  Massage_Room                      // ready
+  Given I am logged in as an admin
 When I choose to add a massage room
 And I enter the a unique room "1" and Employee "31" that not add yet any room
 Then the massage room should be added to the system
 
-  Scenario: Add  Room                      // ready
+  Scenario: Add  Sawna_Room                      // ready
     Given I am logged in as an admin
     When I choose to add a  sawna room
     And I enter the a unique room "3" and Employee "33" that not add yet any room
     Then the sawna room should be added to the system
 
-
-Scenario: Add Employee                //ready
-Given I am logged in as an admin
-When I choose to add an employee
-And I enter the employee "ID" and it should be unique , name, and password
-Then the employee should be added to the system
-
-Scenario: Add Admin                //ready
-Given I am logged in as an admin
-When I choose to add an admin
-And I enter the admin "ID" and it should be unique , name, and password
-Then the admin should be added to the system
-
-
-Scenario: view appointments               //ready
+Scenario: view appointments
 Given I am logged in as an admin
 When I choose to view the appointments
 Then the all appointments should show up
