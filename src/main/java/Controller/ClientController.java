@@ -287,16 +287,16 @@ public class ClientController {
         List<Appointment> clientAppointments =new ArrayList<>();
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
-            if(appointment.getRoom().getRoomNumber()==id)
-                flag=true;
+            if (appointment.getRoom().getRoomNumber() == id) {
+                flag = true;
+                break;
+            }
 
         }
-
         Appointment_DB.deleteAppointment(id);
         if(flag)
             System.out.println("Successfully deleted");
         else System.out.println("You don't have this room");
-        //test
 
 
 

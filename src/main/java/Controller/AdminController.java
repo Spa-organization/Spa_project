@@ -332,9 +332,9 @@ public class AdminController {
         List<FeedBack>feedBacks;
         feedBacks= Feedback_DB.getFeedback();
 
-        for (FeedBack feedbackk: feedBacks) {
+        for (FeedBack feedback: feedBacks) {
             System.out.println("----------------------");
-            System.out.println(feedbackk.getFeed());
+            System.out.println(feedback.getFeed());
 
         }
 

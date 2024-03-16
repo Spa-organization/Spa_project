@@ -75,13 +75,6 @@ public class Appointment_DB {
     }
 
     public static void deleteAppointment(int id){
-
-        appointments.removeIf(h -> h.getRoom().getRoomNumber() == id);
-
-
-
-
-
-    }
+        appointments.removeIf(h -> h.getRoom().getRoomNumber() == id);}
 
 }
