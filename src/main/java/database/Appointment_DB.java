@@ -74,4 +74,14 @@ public class Appointment_DB {
         return matcher.matches();
     }
 
+    public static void deleteAppointment(int id){
+
+        appointments.removeIf(h -> h.getRoom().getRoomNumber() == id);
+
+
+
+
+
+    }
+
 }

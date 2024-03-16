@@ -278,42 +278,27 @@ public class ClientController {
 
 
     public void cancelSession(){
-
-
+        boolean flag = false;
         showClientAppointments();
         Scanner input = new Scanner(System.in);
         System.out.println("--------------------");
-        System.out.println("Please enter the type of the session");
-
-        String type = input.nextLine();
-        System.out.println("Please enter the time of the session");
-        String time = input.nextLine();
-        System.out.println("Please enter the date of the session");
-        String date = input.nextLine();
-        System.out.println("Please enter the Room ID of the session");
-        int roomId = input.nextInt();
-
-
-        ;
-
+        System.out.println("Please enter the id of the your room from the above");
+        int id = input.nextInt();
         List<Appointment> clientAppointments =new ArrayList<>();
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
-        Iterator<Appointment> iterator = clientAppointments.iterator();
-        boolean found = false;
+        for (Appointment appointment:clientAppointments) {
+            if(appointment.getRoom().getRoomNumber()==id)
+                flag=true;
 
-        while (iterator.hasNext()) {
-            Appointment appointment = iterator.next();
-            if (appointment.getEmployee().getWorkerType().equals(type) && appointment.getDate().equals(date) && appointment.getTime().equals(time) && appointment.getRoom().getRoomNumber() == roomId ) {
-                iterator.remove(); // Safe removal using iterator
-                System.out.println("The session has been canceled");
-                found = true;
-                break; // Exit the loop once the appointment is canceled
-            }
         }
 
-        if (!found) {
-            System.out.println("You don't have this session");
-        }
+        Appointment_DB.deleteAppointment(id);
+        if(flag)
+            System.out.println("Successfully deleted");
+        else System.out.println("You don't have this room");
+
+
+
 
 
 
