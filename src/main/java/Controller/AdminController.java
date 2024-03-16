@@ -1,13 +1,8 @@
 package Controller;
 
-import Entities.Admin;
-import Entities.Appointment;
-import Entities.Employee;
-import Entities.Room;
-import database.Admin_DB;
-import database.Appointment_DB;
-import database.Employee_DB;
-import database.Room_DB;
+import Entities.*;
+import database.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -83,7 +78,8 @@ public class AdminController {
             System.out.println("4. View Finance");
             System.out.println("5. Add Admin");
             System.out.println("6. Show All Rooms");
-            System.out.println("7. Logout");
+            System.out.println("7. View Feedbacks");
+            System.out.println("8. Logout");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
@@ -106,12 +102,15 @@ public class AdminController {
                 case 6:
                     ShowALlRooms();
                     break;
-                case 7:System.out.println("Logging out. Goodbye!");
+                case 7 :
+                    viewFeedbacks();
+                    break;
+                case 8:System.out.println("Logging out. Goodbye!");
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
 
-        } while (choice != 7);
+        } while (choice != 8);
 
     }
 
@@ -323,5 +322,26 @@ public class AdminController {
             System.out.println("----------------------------");
         }else
             System.out.println("=== Admin added ===");
+    }
+
+
+
+
+    public void viewFeedbacks(){
+        System.out.println("----------------------------");
+        List<FeedBack>feedBacks;
+        feedBacks= Feedback_DB.getFeedback();
+
+        for (FeedBack feedbackk: feedBacks) {
+            System.out.println("----------------------");
+            System.out.println(feedbackk.getFeed());
+
+        }
+
+
+
+
+
+
     }
 }
