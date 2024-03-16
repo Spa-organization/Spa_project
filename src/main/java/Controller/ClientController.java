@@ -3,9 +3,11 @@ package Controller;
 import Entities.*;
 import database.Appointment_DB;
 import database.Client_DB;
+import database.Feedback_DB;
 import database.Room_DB;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -102,8 +104,9 @@ public class ClientController {
             System.out.println("1. Book Appointment");
             System.out.println("2. Show My Appointments");
             System.out.println("3. Edit My Appointments");
-            System.out.println("4. Feedback");
-            System.out.println("5. Logout");
+            System.out.println("4. Cancel My Appointments");
+            System.out.println("5. Feedback");
+            System.out.println("6. Logout");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
@@ -117,17 +120,23 @@ public class ClientController {
                 case 3:
 
                     break;
-                case 4:
+                case 4: cancelSession();
 
                     break;
                 case 5:
+                    System.out.println("Type your feedback here : ");
+                    scanner.nextLine();
+                    String feedback = scanner.nextLine();
+                    Feedback_DB.addFeedback(feedback);
+                    break;
+                case 6:
                     System.out.println("Logging out. Goodbye!");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
     }
 
@@ -177,7 +186,7 @@ public class ClientController {
         }
     }
     public void printEmployees(List<Employee> employees){
-        System.out.println("--------Ptint employees :)--------");
+        System.out.println("--------Print employees :)--------");
         for(Employee employee:employees){
             System.out.println(employee.getName()+" "+employee.getWorkerType());
         }
@@ -263,6 +272,51 @@ public class ClientController {
             System.out.println("invalid input!!");
             System.out.println("----------------------");
         }
+
+
+    }
+
+
+    public void cancelSession(){
+
+
+        showClientAppointments();
+        Scanner input = new Scanner(System.in);
+        System.out.println("--------------------");
+        System.out.println("Please enter the type of the session");
+
+        String type = input.nextLine();
+        System.out.println("Please enter the time of the session");
+        String time = input.nextLine();
+        System.out.println("Please enter the date of the session");
+        String date = input.nextLine();
+        System.out.println("Please enter the Room ID of the session");
+        int roomId = input.nextInt();
+
+
+        ;
+
+        List<Appointment> clientAppointments =new ArrayList<>();
+        clientAppointments = Appointment_DB.getUserAppointments(this.client);
+        Iterator<Appointment> iterator = clientAppointments.iterator();
+        boolean found = false;
+
+        while (iterator.hasNext()) {
+            Appointment appointment = iterator.next();
+            if (appointment.getEmployee().getWorkerType().equals(type) && appointment.getDate().equals(date) && appointment.getTime().equals(time) && appointment.getRoom().getRoomNumber() == roomId ) {
+                iterator.remove(); // Safe removal using iterator
+                System.out.println("The session has been canceled");
+                found = true;
+                break; // Exit the loop once the appointment is canceled
+            }
+        }
+
+        if (!found) {
+            System.out.println("You don't have this session");
+        }
+
+
+
 
 
     }

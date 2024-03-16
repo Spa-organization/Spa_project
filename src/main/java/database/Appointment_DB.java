@@ -15,10 +15,10 @@ public class Appointment_DB {
         throw new IllegalStateException("Utility class");
     }
     static {
-        appointments.add(new Appointment(Client_DB.clients.get(0),Employee_DB.employees.get(0), Employee_DB.employees.get(0).getRoom(),"1/9/2012","9:00",true));
-        appointments.add(new Appointment(Client_DB.clients.get(1),Employee_DB.employees.get(1), Employee_DB.employees.get(1).getRoom(),"1/9/2012","9:00",true));
-        appointments.add(new Appointment(Client_DB.clients.get(2),Employee_DB.employees.get(2), Employee_DB.employees.get(2).getRoom(),"1/9/2012","9:00",true));
-        appointments.add(new Appointment(Client_DB.clients.get(3),Employee_DB.employees.get(3), Employee_DB.employees.get(3).getRoom(),"1/9/2012","9:00",true));
+        appointments.add(new Appointment(Client_DB.clients.get(0),Employee_DB.employees.get(0), Employee_DB.employees.get(0).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(Client_DB.clients.get(1),Employee_DB.employees.get(1), Employee_DB.employees.get(1).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(Client_DB.clients.get(2),Employee_DB.employees.get(2), Employee_DB.employees.get(2).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(Client_DB.clients.get(3),Employee_DB.employees.get(3), Employee_DB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
         Employee_DB.employees.get(0).setAppointment(appointments.get(0));
         Employee_DB.employees.get(1).setAppointment(appointments.get(1));
         Employee_DB.employees.get(2).setAppointment(appointments.get(2));

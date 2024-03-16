@@ -20,6 +20,7 @@ public class Feedback_DB {
     public static void addFeedback(String feed) {
 
         feedBacks.add(new FeedBack(feed));
+        System.out.println("Your feedback has been submitted successfully");
     }
     public static void call()
     {

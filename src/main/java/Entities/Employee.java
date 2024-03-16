@@ -9,8 +9,8 @@ public class Employee {
     private String Name;
     private String password;
     private String WorkerType ;
-    private List<Room> rooms = new ArrayList<>();
-    private List<Appointment> appointments =new ArrayList<>();
+    private List<Room> rooms = new ArrayList<Room>();
+    private List<Appointment> appointments =new ArrayList<Appointment>();
 
     public List<Appointment> getAppointments() {
         return appointments;
