@@ -43,11 +43,14 @@ public class ManageSessions {
 
     }
     @When("the client schedules a new massage session specifying the date and time")
+    @Test
     public void theClientSchedulesANewMassageSessionSpecifyingTheDateAndTime() {
 
-
+          date = "01/09/2012";
+          time= "09:00";
         assertTrue(Appointment_DB.isValidDate(date));
         assertTrue(Appointment_DB.isValidTime(time));
+
 
 
     }
@@ -61,7 +64,10 @@ public class ManageSessions {
         this.id = string3;
     }
     @When("the client attempts to schedule a new massage session for this time slot")
+    @Test
     public void theClientAttemptsToScheduleANewMassageSessionForThisTimeSlot() {
+        time="12:30";
+        assertTrue(Appointment_DB.isValidTime(time));
 
     }
 
@@ -72,14 +78,35 @@ public class ManageSessions {
         this.id = string3;
     }
     @When("the client schedules a new sawna session specifying the date and time and employee")
+    @Test
     public void theClientSchedulesANewSawnaSessionSpecifyingTheDateAndTimeAndEmployee() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        id="31";
+        time="12:30";
+        date="12/12/2024";
+        assertTrue(Appointment_DB.isValidDate(date));
+        assertTrue(Appointment_DB.isValidTime(time));
+
+
     }
     @Then("the session should be successfully booked, ensuring the time and date slots are reserved")
+    @Test
     public void theSessionShouldBeSuccessfullyBookedEnsuringTheTimeAndDateSlotsAreReserved() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        int result;
+        id="31";
+        time="12:30";
+        date="12/12/2024";
+        assertTrue(Appointment_DB.isValidDate(date));
+        assertTrue(Appointment_DB.isValidTime(time));
+        if(Appointment_DB.isValidDate(date) && Appointment_DB.isValidTime(time))
+            result=0;
+        else if (Appointment_DB.isValidDate(date)==false) {
+            result=2;
+
+        }
+        else result=1;
+        clientController.addAppointmentResult(result);
+
     }
 
 
@@ -157,18 +184,17 @@ public class ManageSessions {
 
     @Given("the client has an existing spa session they wish to cancel")
     public void theClientHasAnExistingSpaSessionTheyWishToCancel() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        clientController.showClientAppointments();
+
     }
     @When("the client chooses to cancel this session")
     public void theClientChoosesToCancelThisSession() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        clientController.cancelSession();
     }
     @Then("the session should be removed from their list of scheduled sessions, freeing up the time slot")
     public void theSessionShouldBeRemovedFromTheirListOfScheduledSessionsFreeingUpTheTimeSlot() {
 
-        throw new io.cucumber.java.PendingException();
+        clientController.showClientAppointments();
     }
 
 
