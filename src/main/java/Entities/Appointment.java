@@ -1,7 +1,7 @@
 package Entities;
 
 public class Appointment {
-    static int AppointmentID=0;
+     int AppointmentID;
     private  Client client = new Client();
     private  Employee employee = new Employee();
     private Room room;
@@ -10,8 +10,8 @@ public class Appointment {
     private String ServiceType = employee.getWorkerType();
     private boolean Booked= false;
 
-    public Appointment( Client client, Employee employee, Room room, String date, String time, boolean booked) {
-        AppointmentID ++;
+    public Appointment( int id,Client client, Employee employee, Room room, String date, String time, boolean booked) {
+        AppointmentID=id;
         this.client = client;
         this.employee = employee;
         this.room = room;

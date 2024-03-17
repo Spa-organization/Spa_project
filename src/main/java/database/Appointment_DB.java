@@ -10,24 +10,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Appointment_DB {
+
     static List<Appointment> appointments= new ArrayList<>();
     private Appointment_DB() {
         throw new IllegalStateException("Utility class");
     }
     static {
-        appointments.add(new Appointment(Client_DB.clients.get(0),Employee_DB.employees.get(0), Employee_DB.employees.get(0).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(Client_DB.clients.get(1),Employee_DB.employees.get(1), Employee_DB.employees.get(1).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(Client_DB.clients.get(2),Employee_DB.employees.get(2), Employee_DB.employees.get(2).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(Client_DB.clients.get(3),Employee_DB.employees.get(3), Employee_DB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(1,Client_DB.clients.get(0),Employee_DB.employees.get(0), Employee_DB.employees.get(0).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(2,Client_DB.clients.get(1),Employee_DB.employees.get(1), Employee_DB.employees.get(1).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(3,Client_DB.clients.get(2),Employee_DB.employees.get(2), Employee_DB.employees.get(2).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(4,Client_DB.clients.get(3),Employee_DB.employees.get(3), Employee_DB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
         Employee_DB.employees.get(0).setAppointment(appointments.get(0));
         Employee_DB.employees.get(1).setAppointment(appointments.get(1));
         Employee_DB.employees.get(2).setAppointment(appointments.get(2));
         Employee_DB.employees.get(3).setAppointment(appointments.get(3));
     }
-    public static int addAppointment(Client client,String date, String time,Employee employee){
+    public static int addAppointment(int id,Client client, String date, String time, Employee employee){
+        id = appointments.getLast().getAppointmentID() + 1;
         if(!isValidDate(date)) return 2;
         if(!isValidTime(time)) return 1;
-        appointments.add(new Appointment(client,employee,employee.getRoom(),date,time,true));
+        appointments.add(new Appointment(id,client,employee,employee.getRoom(),date,time,true));
         employee.setAppointment(appointments.get(appointments.size()-1));
         return 0;
     }
@@ -75,6 +77,7 @@ public class Appointment_DB {
     }
 
     public static void deleteAppointment(int id){
-        appointments.removeIf(h -> h.getRoom().getRoomNumber() == id);}
+        appointments.removeIf(h -> h.getAppointmentID() == id);}
+
 
 }

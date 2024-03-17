@@ -7,7 +7,6 @@ import database.Feedback_DB;
 import database.Room_DB;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,6 +15,7 @@ public class ClientController {
     private static boolean isLoggedIn = false;
     private Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
+    static int id;
     private boolean log_up;
 
 
@@ -223,6 +223,7 @@ public class ClientController {
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
         for( Appointment appointment: clientAppointments){
             System.out.println("--------------------");
+            System.out.println("Appointment_id: "+ appointment.getAppointmentID());
             System.out.println("Type: "+appointment.getEmployee().getWorkerType());
             System.out.println("Date: "+appointment.getDate());
             System.out.println("Time: "+appointment.getTime());
@@ -260,12 +261,12 @@ public class ClientController {
 
             }
         }
-        System.out.println("Enter room number to book");;
+        System.out.println("Enter room number to book");
         int roomNumber= scanner.nextInt();
         if(roomNumber!=0){
             Room room= Room_DB.getRoomById(roomNumber);
             if(room!=null){
-                addAppointmentResult( Appointment_DB.addAppointment(this.client,dateInput,timeInput,room.getEmployee()));
+                addAppointmentResult( Appointment_DB.addAppointment(id,this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
         else{
@@ -282,12 +283,12 @@ public class ClientController {
         showClientAppointments();
         Scanner input = new Scanner(System.in);
         System.out.println("--------------------");
-        System.out.println("Please enter the id of the your room from the above");
+        System.out.println("Please enter the id of the your appointment from the above");
         int id = input.nextInt();
         List<Appointment> clientAppointments =new ArrayList<>();
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getRoom().getRoomNumber() == id) {
+            if (appointment.getAppointmentID() == id) {
                 flag = true;
                 break;
             }
@@ -297,18 +298,7 @@ public class ClientController {
         if(flag)
             System.out.println("Successfully deleted");
         else System.out.println("You don't have this room");
-
-
-
-
-
-
-
-
     }
 
-    public boolean isLogged_up() {
-        this.log_up=true;
-        return log_up;
-    }
+    public boolean isLogged_up() {return this.log_up=true;}
 }
