@@ -1,9 +1,7 @@
 
 Feature: Sending An Email To Confirm Booking
-  
-  
   Scenario: Booking is confirmed and confirmation email is sent
-    Given The customer has completed the booking process 
+    Given The customer has completed the booking process
     When the booking is confirmed   
     Then a confirmation email is sent to the customer's email address
 

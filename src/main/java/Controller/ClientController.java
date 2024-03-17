@@ -200,15 +200,17 @@ public class ClientController {
 
         System.out.print("Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
-
+        if(!Appointment_DB.isValidDate(dateInput))
+        {
+            addAppointmentResult(2);
+            return ;
+        }
+        else if(!Appointment_DB.isValidTime(timeInput))
+        {addAppointmentResult(2); return ; }
         List<Employee> employees=Appointment_DB.checkAvailability(dateInput,timeInput,type);
         if(employees.size()!= 0){
-            if(!Appointment_DB.isValidDate(dateInput))
-                addAppointmentResult(2);
-            else if(!Appointment_DB.isValidTime(timeInput))
-                addAppointmentResult(1);
-            else
-                showAvailableRooms(employees,dateInput,timeInput);
+
+            showAvailableRooms(employees,dateInput,timeInput);
         }
         else{
             System.out.println("----------------------------------");
