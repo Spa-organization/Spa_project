@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class Appointment_DB {
 
-    static List<Appointment> appointments= new ArrayList<>();
+   public static List<Appointment> appointments= new ArrayList<>();
     private Appointment_DB() {
         throw new IllegalStateException("Utility class");
     }

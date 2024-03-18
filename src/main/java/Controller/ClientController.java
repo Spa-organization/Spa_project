@@ -6,6 +6,7 @@ import database.Client_DB;
 import database.Feedback_DB;
 import database.Room_DB;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -278,32 +279,6 @@ public class ClientController {
 
     }
 
-
-    public  boolean checkValidity(List<Employee> employees, String dateInput,String timeInput){
-        System.out.println("-----Available Rooms------");
-        List<Room> rooms;
-        for(Employee employee:employees){
-            rooms =employee.getRooms();
-            for(Room room:rooms){
-                System.out.println("--------------");
-                System.out.println("Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType());
-
-            }
-        }
-        System.out.println("Enter room number to book");
-        int roomNumber= scanner.nextInt();
-        if(roomNumber!=0){
-            Room room= Room_DB.getRoomById(roomNumber);
-            if(room!=null){
-                addAppointmentResult( Appointment_DB.addAppointment(id,this.client,dateInput,timeInput,room.getEmployee()));
-            }
-        }
-        else{
-            System.out.println("invalid input!!");
-            System.out.println("----------------------");
-        }
-
-    }
     public void cancelSession(){
         boolean flag = false;
         showClientAppointments();
@@ -327,7 +302,7 @@ public class ClientController {
     }
 
     public void updateSession(){
-
+        String type="";
         showClientAppointments();
         Scanner input = new Scanner(System.in);
         System.out.println("--------------------");
@@ -342,11 +317,17 @@ public class ClientController {
         String time = input.nextLine();
         if(!Appointment_DB.isValidDate(date)) {addAppointmentResult(2); return;}
         else if(!Appointment_DB.isValidTime(time)) {addAppointmentResult(1); return;}
+        if(typeId==1)
+            type="Sawna";
+        else type="Massage";
+        boolean flag =check(date,time,type);
+
 
 
         List<Appointment> clientAppointments =new ArrayList<>();
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
-
+        if(flag)
+        {
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentID() == id) {
                 appointment.setDate(date);
@@ -355,20 +336,24 @@ public class ClientController {
                 break;
             }
         }
-        List<Employee> employees=Appointment_DB.checkAvailability(date,time,type);
-        List<Room> rooms = new ArrayList<>();
-        for(Employee employee:employees) {
-            rooms = employee.getRooms();
         }
-        if(rooms.isEmpty())
-            System.out.println("not available");
-        else System.out.println("available");
 
+    }
+    public boolean check(String date_check,String time_check,String type)
+    {
+        boolean flag=true;
+        for (int i=0;i<Appointment_DB.appointments.size();i++)
+        {
+         String date= Appointment_DB.appointments.get(i).getDate();
+         String time= Appointment_DB.appointments.get(i).getTime();
+         String s=Appointment_DB.appointments.get(i).getEmployee().getWorkerType();
+        if(date_check.equals(date)&&time_check.equals(time)&&s.equals(type))
+        {
+          flag=false;System.out.println("not available");return flag;}
+        }
 
-
-
-
-
+            System.out.println("available");
+            return flag;
     }
 
     public boolean isLogged_up() {return this.log_up=true;}
