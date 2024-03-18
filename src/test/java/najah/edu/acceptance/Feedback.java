@@ -23,7 +23,8 @@ public class Feedback {
     }
     @When("I choose to submit feedback {string}")
     public void iChooseToSubmitFeedback(String string) {
-        Feedback_DB.addFeedback(string);
+        int id = 11;
+        Feedback_DB.addFeedback(string,11);
     }
 
     @Then("my feedback should be submitted to the system")

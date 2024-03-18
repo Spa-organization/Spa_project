@@ -2,9 +2,11 @@ package Entities;
 
 public class FeedBack {
     private String feed;
+    private int clientId;
 
 
-    public FeedBack(String feed){
+    public FeedBack(String feed,int clientId){
+        this.clientId=clientId;
         this.feed=feed;
 
     }
@@ -15,5 +17,9 @@ public class FeedBack {
 
     public String getFeed() {
         return feed;
+    }
+
+    public int getClientId() {
+        return clientId;
     }
 }

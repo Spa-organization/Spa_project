@@ -124,10 +124,12 @@ public class ClientController {
                 case 4: cancelSession();
                     break;
                 case 5:
+                    System.out.println("Enter your Id : ");
+                    int id = scanner.nextInt();
                     System.out.println("Type your feedback here : ");
                     scanner.nextLine();
                     String feedback = scanner.nextLine();
-                    Feedback_DB.addFeedback(feedback);
+                    Feedback_DB.addFeedback(feedback,id);
                     break;
                 case 6:
                     System.out.println("Logging out. Goodbye!");
@@ -314,7 +316,7 @@ public class ClientController {
         String time = input.nextLine();
         if(!Appointment_DB.isValidDate(date)) {addAppointmentResult(2); return;}
         else if(!Appointment_DB.isValidTime(time)) {addAppointmentResult(1); return;}
-       // boolean flag =check(date,time,);
+
 
 
         List<Appointment> clientAppointments =new ArrayList<>();

@@ -330,6 +330,7 @@ public class AdminController {
 
         for (FeedBack feedback: feedBacks) {
             System.out.println("----------------------");
+            System.out.println("Client id: "+feedback.getClientId());
             System.out.println(feedback.getFeed());
 
         }
