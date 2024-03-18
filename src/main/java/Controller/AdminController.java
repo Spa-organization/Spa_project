@@ -344,4 +344,44 @@ public class AdminController {
 
 
     }
+
+    public void viewEmployeeEarningsForDay() {
+        if (!isLoggedIn) {
+            System.out.println("You must log in first.");
+            return;
+        }
+
+        System.out.print("Enter Employee ID: ");
+        String employeeId = scanner.nextLine();
+
+        System.out.print("Enter Date (format: dd/MM/yyyy): ");
+        String date = scanner.nextLine();
+
+        Appointment_DB.FinanceCalculator.calculateDailyEarningsForEmployee(employeeId, date);
+    }
+
+
+
+
+    public void viewEmployeeEarningsFormonth() {
+        if (!isLoggedIn) {
+            System.out.println("You must log in first.");
+            return;
+        }
+
+        System.out.print("Enter Employee ID: ");
+        String employeeId = scanner.nextLine();
+
+        System.out.print("Enter Date (format: dd/MM/yyyy): ");
+        String date = scanner.nextLine();
+        System.out.print("Enter Date (format: dd/MM/yyyy): ");
+        String date2 = scanner.nextLine();
+
+        Appointment_DB.calculateEarningsForEmployeeInRange(employeeId, date,date2);
+    }
+
+
+
+
+
 }
