@@ -302,14 +302,11 @@ public class ClientController {
     }
 
     public void updateSession(){
-        String type="";
         showClientAppointments();
         Scanner input = new Scanner(System.in);
         System.out.println("--------------------");
         System.out.println("Please enter the id of your appointment: ");
         int id = input.nextInt();
-        System.out.println("Please enter the id type of your session (1 for sawna , 2 for massage): ");
-        int typeId = input.nextInt();
         System.out.println("Please enter the new date (format: dd/MM/yyyy): ");
         input.nextLine();
         String date = input.nextLine();
@@ -317,37 +314,35 @@ public class ClientController {
         String time = input.nextLine();
         if(!Appointment_DB.isValidDate(date)) {addAppointmentResult(2); return;}
         else if(!Appointment_DB.isValidTime(time)) {addAppointmentResult(1); return;}
-        if(typeId==1)
-            type="Sawna";
-        else type="Massage";
-        boolean flag =check(date,time,type);
-
+       // boolean flag =check(date,time,);
 
 
         List<Appointment> clientAppointments =new ArrayList<>();
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
-        if(flag)
-        {
+
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentID() == id) {
-                appointment.setDate(date);
-                appointment.setTime(time);
-                appointment.getEmployee().setWorkerType(typeId);
-                break;
+               int room_id=appointment.getRoom().getRoomNumber();
+               if(check(date,time,room_id))
+               {
+                   appointment.setDate(date);
+                   appointment.setTime(time);
+               }
+               else return;
+
             }
-        }
         }
 
     }
-    public boolean check(String date_check,String time_check,String type)
+    public boolean check(String date_check,String time_check,int room_id)
     {
         boolean flag=true;
         for (int i=0;i<Appointment_DB.appointments.size();i++)
         {
+            int id=Appointment_DB.appointments.get(i).getRoom().getRoomNumber();
          String date= Appointment_DB.appointments.get(i).getDate();
          String time= Appointment_DB.appointments.get(i).getTime();
-         String s=Appointment_DB.appointments.get(i).getEmployee().getWorkerType();
-        if(date_check.equals(date)&&time_check.equals(time)&&s.equals(type))
+        if(date_check.equals(date)&&time_check.equals(time)&&id==room_id)
         {
           flag=false;System.out.println("not available");return flag;}
         }
