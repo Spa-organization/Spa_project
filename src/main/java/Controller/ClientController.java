@@ -279,6 +279,31 @@ public class ClientController {
     }
 
 
+    public  boolean checkValidity(List<Employee> employees, String dateInput,String timeInput){
+        System.out.println("-----Available Rooms------");
+        List<Room> rooms;
+        for(Employee employee:employees){
+            rooms =employee.getRooms();
+            for(Room room:rooms){
+                System.out.println("--------------");
+                System.out.println("Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType());
+
+            }
+        }
+        System.out.println("Enter room number to book");
+        int roomNumber= scanner.nextInt();
+        if(roomNumber!=0){
+            Room room= Room_DB.getRoomById(roomNumber);
+            if(room!=null){
+                addAppointmentResult( Appointment_DB.addAppointment(id,this.client,dateInput,timeInput,room.getEmployee()));
+            }
+        }
+        else{
+            System.out.println("invalid input!!");
+            System.out.println("----------------------");
+        }
+
+    }
     public void cancelSession(){
         boolean flag = false;
         showClientAppointments();
@@ -308,8 +333,8 @@ public class ClientController {
         System.out.println("--------------------");
         System.out.println("Please enter the id of your appointment: ");
         int id = input.nextInt();
-        System.out.println("Please enter the type of your session: ");
-        String type = input.next();
+        System.out.println("Please enter the id type of your session (1 for sawna , 2 for massage): ");
+        int typeId = input.nextInt();
         System.out.println("Please enter the new date (format: dd/MM/yyyy): ");
         input.nextLine();
         String date = input.nextLine();
@@ -326,6 +351,7 @@ public class ClientController {
             if (appointment.getAppointmentID() == id) {
                 appointment.setDate(date);
                 appointment.setTime(time);
+                appointment.getEmployee().setWorkerType(typeId);
                 break;
             }
         }

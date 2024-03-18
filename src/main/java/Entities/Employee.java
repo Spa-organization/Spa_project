@@ -75,7 +75,7 @@ public class Employee {
 
     public void setWorkerType(int workerType_id) {
         if(workerType_id == 1){
-            WorkerType ="Spa";
+            WorkerType ="Sawna";
         }
         else if( workerType_id ==2){
             WorkerType ="Massage";
