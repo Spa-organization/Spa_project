@@ -27,10 +27,6 @@ public class ServiceProviderLogoutFeatureSteps {
     public void theSystemSignsTheServiceProviderOut() {
        app.logout();
         assertFalse(app.isLoggedIn());
-        System.out.println("___________________________________");
-        System.out.print("\t\t");
-        System.out.println("logout");
-        System.out.println("___________________________________");
     }
 
 

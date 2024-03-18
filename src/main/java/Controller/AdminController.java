@@ -45,10 +45,6 @@ public class AdminController {
             System.out.println("-----------------------------------");
         }
     }
-    public void errorInLogin()
-    {
-
-    }
 
     public void LoginPage(){
         System.out.println("-------------------------------------");
