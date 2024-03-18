@@ -1,32 +1,32 @@
 Feature: Manage Spa Sessions with Availability and Time Check
 
 
-Scenario: Schedule a New massage Session with Available Time and date Slots            //ready
+Scenario: Schedule a New massage Session with Available Time and date Slots
   Given the client is logged into their account
 And the chosen massage session "time" slot is available for the selected available "date" and available employee "id"
 When the client schedules a new massage session specifying the date and time
 Then the session should be successfully booked, ensuring the time and date slots are reserved
 
 
-  Scenario: Attempt to Schedule a massage Spa Session with Unavailable Time or date     //ready
+  Scenario: Attempt to Schedule a massage Spa Session with Unavailable Time or date
 Given the client is logged into their account
 But the chosen massage session "time" slot is already booked for the selected "date" and available employee "id"
 When the client attempts to schedule a new massage session for this time slot
 Then the system should prevent the booking and alert about the time and date slots unavailability
 
- Scenario: Schedule a New sawna Session with Available Time and date Slots            //ready
+ Scenario: Schedule a New sawna Session with Available Time and date Slots
    Given the client is logged into their account
   And the chosen sawna session "time" slot is available for the selected available "date" and available employee "id"
   When the client schedules a new sawna session specifying the date and time and employee
     Then the session should be successfully booked, ensuring the time and date slots are reserved
 
-Scenario: Attempt to Schedule a New sawna Session with Unavailable Time or date        //ready
+Scenario: Attempt to Schedule a New sawna Session with Unavailable Time or date
 Given the client is logged into their account
  But the chosen sawna session "time" slot is already booked for the selected "date" and available employee "id"
  When the client attempts to schedule a new sawna session for this time slot
  Then the system should prevent the booking and alert about the time and date slots unavailability
 
-Scenario: view appointments                                                      //ready
+Scenario: view appointments
  Given the client is logged into their account
  When I choose to view the appointments
   Then the appointments should show up according to the client who log in

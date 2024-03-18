@@ -153,7 +153,7 @@ public class ClientController {
                     bookMassage("Massage");
                     break;
                 case 2:
-                    bookSauna("Spa");
+                    bookSauna("sawna");
                     break;
                 case 3:
                     break;
