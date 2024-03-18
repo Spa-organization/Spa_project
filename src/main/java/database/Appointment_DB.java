@@ -15,7 +15,7 @@ public class Appointment_DB {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
-    static List<Appointment> appointments= new ArrayList<>();
+   public static List<Appointment> appointments= new ArrayList<>();
     private Appointment_DB() {
         throw new IllegalStateException("Utility class");
     }

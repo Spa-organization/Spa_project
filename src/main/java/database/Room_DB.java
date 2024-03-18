@@ -16,7 +16,7 @@ public class Room_DB {
                 break;
             }
         }
-        if(not_duplicate==true)
+        if(not_duplicate)
             rooms.add(new Room(employee,id));
         return not_duplicate;
     }

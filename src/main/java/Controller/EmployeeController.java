@@ -46,9 +46,6 @@ public class EmployeeController {
             System.out.println("-----------------------------------");
         }
     }
-
-    public void errorInLogin() {}
-
     public void LoginPage(){
         System.out.println("--------------------------------------");
         System.out.println("-------------------------------------");
