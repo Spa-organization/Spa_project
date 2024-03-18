@@ -75,8 +75,9 @@ String admin_pass="123";
     public void iChooseToAddASawnaRoom() {assertEquals(1, roomType);}
     @Then("the sawna room should be added to the system")
     public void theSawnaRoomShouldBeAddedToTheSystem() {
+        Employee employee = Employee_DB.getEmployeeById(new_employeeId);
+        assertNotNull(employee);
     assertTrue(Employee_DB.addServiceProviders(new_employeeId,new_employeeName,new_employeePassword,employeeType));
-    Employee employee = Employee_DB.getEmployeeById(new_employeeId);
     assertTrue(Room_DB.addRoom(employee, Integer.parseInt(id_room)));}
 
     @Then("the all appointments should show up")

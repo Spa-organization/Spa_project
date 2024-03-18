@@ -13,7 +13,10 @@ import java.util.regex.Pattern;
 
 public class Appointment_DB {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+    public static final double SAWNA_SESSION_COST = 200.0; // Example cost
+    public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
+    public static final double EMPLOYEE_PERCENTAGE = 0.30;
+    public static final double CENTER_PERCENTAGE = 0.70;
 
    public static List<Appointment> appointments= new ArrayList<>();
     private Appointment_DB() {
@@ -85,43 +88,26 @@ public class Appointment_DB {
 
 
 
-
-
-
-    public class ServiceCosts {
-        public static final double SAWNA_SESSION_COST = 200.0; // Example cost
-        public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
-        public static final double EMPLOYEE_PERCENTAGE = 0.30;
-        public static final double CENTER_PERCENTAGE = 0.70;
-    }
-    public class FinanceCalculator {
-
         public static void calculateDailyEarningsForEmployee(String employeeId, String date) {
             double totalEarnings = 0;
 
             for (Appointment appointment : Appointment_DB.getAllAppointments()) {
                 if (appointment.getEmployee().getId().equals(employeeId) && appointment.getDate().equals(date)) {
-                    if ("Sawna".equalsIgnoreCase(appointment.getServiceType())) {
-                        totalEarnings += ServiceCosts.SAWNA_SESSION_COST;
-                    } else if ("Massage".equalsIgnoreCase(appointment.getServiceType())) {
-                        totalEarnings += ServiceCosts.MASSAGE_SESSION_COST;
+                    if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                        totalEarnings += SAWNA_SESSION_COST;
+                    } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                        totalEarnings += MASSAGE_SESSION_COST;
                     }
                 }
             }
 
-            double employeeEarnings = totalEarnings * ServiceCosts.EMPLOYEE_PERCENTAGE;
-            double centerEarnings = totalEarnings * ServiceCosts.CENTER_PERCENTAGE;
+            double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
+            double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
 
             System.out.println("Total Earnings for Employee " + employeeId + " on " + date + ": $" + totalEarnings);
             System.out.println("Employee's Share (30%): $" + employeeEarnings);
             System.out.println("Center's Share (70%): $" + centerEarnings);
         }
-    }
-
-
-
-
-
 
         public static void calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
@@ -131,16 +117,16 @@ public class Appointment_DB {
             for (Appointment appointment : Appointment_DB.getAllAppointments()) {
                 LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
-                    if ("Sawna".equalsIgnoreCase(appointment.getServiceType())) {
-                        totalEarnings += ServiceCosts.SAWNA_SESSION_COST;
-                    } else if ("Massage".equalsIgnoreCase(appointment.getServiceType())) {
-                        totalEarnings += ServiceCosts.MASSAGE_SESSION_COST;
+                    if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                        totalEarnings +=SAWNA_SESSION_COST;
+                    } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                        totalEarnings += MASSAGE_SESSION_COST;
                     }
                 }
             }
 
-            double employeeEarnings = totalEarnings * ServiceCosts.EMPLOYEE_PERCENTAGE;
-            double centerEarnings = totalEarnings * ServiceCosts.CENTER_PERCENTAGE;
+            double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
+            double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
 
             System.out.println("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings);
             System.out.println("Employee's Share (30%): $" + employeeEarnings);
