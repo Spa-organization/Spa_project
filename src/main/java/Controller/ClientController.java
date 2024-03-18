@@ -118,10 +118,9 @@ public class ClientController {
                     showClientAppointments();
                     break;
                 case 3:
-
+                    updateSession();
                     break;
                 case 4: cancelSession();
-
                     break;
                 case 5:
                     System.out.println("Type your feedback here : ");
@@ -300,6 +299,50 @@ public class ClientController {
         if(flag)
             System.out.println("Successfully deleted");
         else System.out.println("You don't have this room");
+    }
+
+    public void updateSession(){
+
+        showClientAppointments();
+        Scanner input = new Scanner(System.in);
+        System.out.println("--------------------");
+        System.out.println("Please enter the id of your appointment: ");
+        int id = input.nextInt();
+        System.out.println("Please enter the type of your session: ");
+        String type = input.next();
+        System.out.println("Please enter the new date (format: dd/MM/yyyy): ");
+        input.nextLine();
+        String date = input.nextLine();
+        System.out.println("Please enter the new time (format: HH:mm): ");
+        String time = input.nextLine();
+        if(!Appointment_DB.isValidDate(date)) {addAppointmentResult(2); return;}
+        else if(!Appointment_DB.isValidTime(time)) {addAppointmentResult(1); return;}
+
+
+        List<Appointment> clientAppointments =new ArrayList<>();
+        clientAppointments = Appointment_DB.getUserAppointments(this.client);
+
+        for (Appointment appointment:clientAppointments) {
+            if (appointment.getAppointmentID() == id) {
+                appointment.setDate(date);
+                appointment.setTime(time);
+                break;
+            }
+        }
+        List<Employee> employees=Appointment_DB.checkAvailability(date,time,type);
+        List<Room> rooms = new ArrayList<>();
+        for(Employee employee:employees) {
+            rooms = employee.getRooms();
+        }
+        if(rooms.isEmpty())
+            System.out.println("not available");
+        else System.out.println("available");
+
+
+
+
+
+
     }
 
     public boolean isLogged_up() {return this.log_up=true;}
