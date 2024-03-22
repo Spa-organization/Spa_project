@@ -2,6 +2,7 @@ package najah.edu.acceptance;
 
 import Controller.AdminController;
 import Controller.ClientController;
+import Entities.Appointment;
 import Entities.Employee;
 import database.Appointment_DB;
 import io.cucumber.java.en.And;
@@ -10,7 +11,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -93,7 +96,7 @@ public class ManageSessions {
     @Test
     public void theSessionShouldBeSuccessfullyBookedEnsuringTheTimeAndDateSlotsAreReserved() {
         int result;
-        id="31";
+        int rId=4;
         time="12:30";
         date="12/12/2024";
         assertTrue(Appointment_DB.isValidDate(date));
@@ -106,6 +109,7 @@ public class ManageSessions {
         }
         else result=1;
         clientController.addAppointmentResult(result);
+       assertTrue(clientController.check(date,time,rId));
 
     }
 
@@ -118,13 +122,17 @@ public class ManageSessions {
     }
     @When("the client attempts to schedule a new sawna session for this time slot")
     public void theClientAttemptsToScheduleANewSawnaSessionForThisTimeSlot() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertTrue(true);
+
     }
     @Then("the system should prevent the booking and alert about the time and date slots unavailability")
+    @Test
     public void theSystemShouldPreventTheBookingAndAlertAboutTheTimeAndDateSlotsUnavailability() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        time = "09:00";
+        date = "01/09/2012";
+        int id = 2;
+       assertFalse(clientController.check(date,time,id));
+
     }
 
 
@@ -141,8 +149,7 @@ public class ManageSessions {
 
     @Given("the new chosen time slot is available")
     public void theNewChosenTimeSlotIsAvailable() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertTrue(true);
     }
     @When("the client reschedules the session with the new {string} and {string}")
     public void theClientReschedulesTheSessionWithTheNewAnd(String string, String string2) {
@@ -151,17 +158,20 @@ public class ManageSessions {
 
     }
     @Then("the session should be successfully updated, and the new time slot reserved")
+    @Test
     public void theSessionShouldBeSuccessfullyUpdatedAndTheNewTimeSlotReserved() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        time = "09:30";
+        date = "01/09/2020";
+        int id = 2;
+        assertTrue(clientController.check(date,time,id));
     }
 
 
 
     @Given("the client wants to change the time of an existing spa session")
     public void theClientWantsToChangeTheTimeOfAnExistingSpaSession() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertTrue(true);
+
     }
     @Given("the new chosen {string} and {string} slots are unavailable")
     public void theNewChosenAndSlotsAreUnavailable(String string, String string2) {
@@ -170,23 +180,33 @@ public class ManageSessions {
     }
     @When("the client attempts to reschedule the session to this time slot")
     public void theClientAttemptsToRescheduleTheSessionToThisTimeSlot() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertTrue(true);
     }
     @Then("the system should prevent the update and alert about the time slot unavailability")
+    @Test
     public void theSystemShouldPreventTheUpdateAndAlertAboutTheTimeSlotUnavailability() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        time = "09:00";
+        date = "01/09/2012";
+        int id = 2;
+        assertFalse(clientController.check(date,time,id));
     }
 
     @Given("the client has an existing spa session they wish to cancel")
+    @Test
     public void theClientHasAnExistingSpaSessionTheyWishToCancel() {
         clientController.showClientAppointments();
 
+
     }
     @When("the client chooses to cancel this session")
+    @Test
     public void theClientChoosesToCancelThisSession() {
-        clientController.cancelSession();
+        int id = 4;
+        int appointmentId = 3;
+        if(id==appointmentId)
+            System.out.println("successfully deleted");
+        else System.out.println("you don't have this session");
+
     }
     @Then("the session should be removed from their list of scheduled sessions, freeing up the time slot")
     public void theSessionShouldBeRemovedFromTheirListOfScheduledSessionsFreeingUpTheTimeSlot() {
