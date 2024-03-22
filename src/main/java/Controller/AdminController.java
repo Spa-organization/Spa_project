@@ -110,7 +110,7 @@ public class AdminController {
                     System.out.println("Invalid choice. Please try again.");
             }
 
-        } while (choice != 8);
+        } while (choice != 9);
 
     }
 
