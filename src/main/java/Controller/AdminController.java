@@ -75,7 +75,9 @@ public class AdminController {
             System.out.println("5. Add Admin");
             System.out.println("6. Show All Rooms");
             System.out.println("7. View Feedbacks");
-            System.out.println("8. Logout");
+            System.out.println("8. view CenterEarningsForRange");
+            System.out.println("9. logout");
+
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
@@ -101,7 +103,9 @@ public class AdminController {
                 case 7 :
                     viewFeedbacks();
                     break;
-                case 8:System.out.println("Logging out. Goodbye!");
+                case 8:viewCenterEarningsForRange();
+                    break;
+                case 9:System.out.println("Logging out. Goodbye!");
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -359,6 +363,16 @@ public class AdminController {
         System.out.print("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
         Appointment_DB.calculateEarningsForEmployeeInRange(employeeId, date,date2);
+    }
+
+    public void viewCenterEarningsForRange() {
+        System.out.print("Enter Start_Date (format: dd/MM/yyyy): ");
+        scanner.nextLine();
+        String date = scanner.nextLine();
+        System.out.println();
+        System.out.print("Enter End_Date (format: dd/MM/yyyy): ");
+        String date2 = scanner.nextLine();
+        Appointment_DB.calculateTotalCenterEarningsInRange(date,date2);
     }
 
 
