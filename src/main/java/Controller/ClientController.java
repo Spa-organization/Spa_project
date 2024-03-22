@@ -353,5 +353,7 @@ public class ClientController {
             return flag;
     }
 
-    public boolean isLogged_up() {return this.log_up=true;}
+    public boolean isLogged_up() {return this.log_up;}
+    public void Logged_up() {this.log_up=true;}
+
 }

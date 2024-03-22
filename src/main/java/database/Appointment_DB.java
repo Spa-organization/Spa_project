@@ -119,15 +119,16 @@ public class Appointment_DB {
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
                     if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                         totalEarnings +=SAWNA_SESSION_COST;
+
                     } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                         totalEarnings += MASSAGE_SESSION_COST;
+
                     }
                 }
-            }
 
+            }
             double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
             double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-
             System.out.println("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings);
             System.out.println("Employee's Share (30%): $" + employeeEarnings);
             System.out.println("Center's Share (70%): $" + centerEarnings);
@@ -142,8 +143,10 @@ public class Appointment_DB {
             if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate)) {
                 if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                     totalEarnings += SAWNA_SESSION_COST;
+
                 } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                     totalEarnings += MASSAGE_SESSION_COST;
+
                 }
             }
         }

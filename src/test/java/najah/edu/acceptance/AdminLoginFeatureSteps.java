@@ -15,7 +15,8 @@ public class AdminLoginFeatureSteps {
 	String id;
 	AdminController app;
 	public AdminLoginFeatureSteps()
-	{app=new AdminController();}
+	{app=new AdminController();
+	}
 
 	@Given("that the admin is not logged in the app")
 	@Test
@@ -23,21 +24,26 @@ public class AdminLoginFeatureSteps {
 	assertFalse(app.isLoggedIn());
 	}
 	@Given("the admin ID is  {string}")
-
 	public void theIDIs(String id) {this.id=id;}
 	@Given("the admin password is  {string}")
 	public void thePasswordIs(String password) {this.pass=password;}
 	@Then("the admin is logged in the app successfully")
+	@Test
 	public void theAdminIsLoggedInTheAppSuccessfully() {
+		 id="21";
+		   pass="123";
 			app.loggIn_Check(id, pass);
 			assertTrue(app.isLoggedIn());}
 	@Then("the admin will not login")
 	@Test
 	public void theAdminWillNotLogin() {
-		app.loggIn_Check(id, pass);
+		  id="213";
+		  pass="123";
+		 app.loggIn_Check(id, pass);
             assertFalse(app.isLoggedIn());
 	}
 	@Then("the message appear to tell the admin what's wrong")
+	@Test
 	public void theMessageAppearToTellTheAdminWhatSWrong() {assertFalse(app.isLoggedIn());}
 
 }

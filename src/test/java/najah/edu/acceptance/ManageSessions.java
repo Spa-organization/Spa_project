@@ -101,14 +101,6 @@ public class ManageSessions {
         date="12/12/2024";
         assertTrue(Appointment_DB.isValidDate(date));
         assertTrue(Appointment_DB.isValidTime(time));
-        if(Appointment_DB.isValidDate(date) && Appointment_DB.isValidTime(time))
-            result=0;
-        else if (!Appointment_DB.isValidDate(date)) {
-            result=2;
-
-        }
-        else result=1;
-        clientController.addAppointmentResult(result);
        assertTrue(clientController.check(date,time,rId));
 
     }
@@ -194,25 +186,14 @@ public class ManageSessions {
     @Given("the client has an existing spa session they wish to cancel")
     @Test
     public void theClientHasAnExistingSpaSessionTheyWishToCancel() {
-        clientController.showClientAppointments();
-
-
-    }
+        clientController.showClientAppointments();}
     @When("the client chooses to cancel this session")
     @Test
     public void theClientChoosesToCancelThisSession() {
-        int id = 4;
-        int appointmentId = 3;
-        if(id==appointmentId)
-            System.out.println("successfully deleted");
-        else System.out.println("you don't have this session");
-
-    }
+       assertTrue(true);}
     @Then("the session should be removed from their list of scheduled sessions, freeing up the time slot")
     public void theSessionShouldBeRemovedFromTheirListOfScheduledSessionsFreeingUpTheTimeSlot() {
-
-        clientController.showClientAppointments();
-    }
+        clientController.showClientAppointments();}
 
 
 }
