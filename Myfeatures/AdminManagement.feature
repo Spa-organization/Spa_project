@@ -37,5 +37,9 @@ Given I am logged in as an admin
 When I choose to view the overall profit
 Then the system should display the total profit generated from all appointments
 
-
+  Scenario  : View Profit of employees and center
+    Given I am logged in as an admin
+    When I choose to view the profit for a center and  specific employee in specific period of time
+    And give the "31" of this employee
+    Then the system should display the total profit generated from all appointments of  a center that employee in specific period of time
 

@@ -1,6 +1,7 @@
 package Controller;
 
 import Entities.Employee;
+import database.Appointment_DB;
 import database.Employee_DB;
 
 import java.util.Scanner;
@@ -80,7 +81,12 @@ public class EmployeeController {
                     //viewEmployeeSchedule(employeeId);
                     break;
                 case 2:
-                    //viewEmployeeFinance(employeeId);
+                    System.out.print("Enter Start_Date (format: dd/MM/yyyy): ");
+                    scanner.nextLine();
+                    String date = scanner.nextLine();
+                    System.out.print("Enter End_Date (format: dd/MM/yyyy): ");
+                    String date2 = scanner.nextLine();
+                    Appointment_DB.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
                     break;
                 case 3:
                     System.out.println("Logging out. Goodbye!");
@@ -91,28 +97,6 @@ public class EmployeeController {
 
         } while (choice != 3);
 
-    }
-
-    public boolean loggIn_IDCheck(String id) {
-        for( Employee employee: Employee_DB.getServiceProviders() )
-        {
-            if( id.equals(employee.getId())  ) {
-                return true;
-
-            }
-        }
-        return false;
-    }
-
-    public boolean loggIn_PassCheck(String pass) {
-        for( Employee employee: Employee_DB.getServiceProviders() )
-        {
-            if( pass.equals(employee.getPassword())  ) {
-                return true;
-
-            }
-        }
-        return false;
     }
 }
 

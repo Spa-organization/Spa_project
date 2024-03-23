@@ -35,7 +35,7 @@ public class Employee_DB {
                 break;
             }
         }
-        if(flage==true)
+        if(flage)
             employees.add(new Employee(id, name,password,WorkerType));
 
         return flage;

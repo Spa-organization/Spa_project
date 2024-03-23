@@ -2,6 +2,7 @@ package najah.edu.acceptance;
 import Controller.AdminController;
 import Entities.Employee;
 import database.Admin_DB;
+import database.Appointment_DB;
 import database.Employee_DB;
 import database.Room_DB;
 import io.cucumber.java.en.And;
@@ -126,7 +127,27 @@ public class AdminManagement {
     public void theAllAppointmentsShouldShowUp() {AdminController.showAppointments();}
 
 
-  //  @When("I choose to view the profit for a center and  specific employee in specific period of time")
+
+    @When("I choose to view the profit for a center and  specific employee in specific period of time")
+    public void iChooseToViewTheProfitForACenterAndSpecificEmployeeInSpecificPeriodOfTime() {
+        choice=5;
+             assertEquals(5,choice);
+    }
+
+    @And("give the {string} of this employee")
+    public void giveTheOfThisEmployee(String id) {
+        this.emp_id=id;
+    }
+
+    @Then("the system should display the total profit generated from all appointments of  a center that employee in specific period of time")
+    public void theSystemShouldDisplayTheTotalProfitGeneratedFromAllAppointmentsOfACenterThatEmployeeInSpecificPeriodOfTime() {
+
+        Appointment_DB.calculateTotalCenterEarningsInRange(start_date,end_date);
+             Appointment_DB.calculateEarningsForEmployeeInRange(emp_id,start_date,end_date);
+    }
+
+
+    //  @When("I choose to view the profit for a center and  specific employee in specific period of time")
   //  public void iChooseToViewTheProfitForACenterAndSpecificEmployeeInSpecificPeriodOfTime() {
    //     choice=5;
   //      assertEquals(5,choice);
