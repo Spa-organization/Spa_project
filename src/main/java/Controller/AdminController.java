@@ -342,14 +342,6 @@ public class AdminController {
 
     }
 
-    public void viewEmployeeEarningsForDay() {
-        System.out.print("Enter Employee ID: ");
-        String employeeId = scanner.nextLine();
-        System.out.print("Enter Date (format: dd/MM/yyyy): ");
-        String date = scanner.nextLine();
-        Appointment_DB.calculateDailyEarningsForEmployee(employeeId, date);
-    }
-
     public void viewEmployeeEarningsForRange() {
         System.out.print("Enter Employee ID: ");
         scanner.nextLine();

@@ -85,7 +85,12 @@ public class EmployeeController {
                     showEmployeeAppointments();
                     break;
                 case 2:
-                    //viewEmployeeFinance(employeeId);
+                    System.out.print("Enter Start_Date (format: dd/MM/yyyy): ");
+                    scanner.nextLine();
+                    String date = scanner.nextLine();
+                    System.out.print("Enter End_Date (format: dd/MM/yyyy): ");
+                    String date2 = scanner.nextLine();
+                    Appointment_DB.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
                     break;
                 case 3:
                     System.out.println("Logging out. Goodbye!");

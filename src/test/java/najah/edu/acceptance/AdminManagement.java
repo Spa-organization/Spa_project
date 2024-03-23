@@ -129,11 +129,18 @@ public class AdminManagement {
         assertEquals(6,choice);
     }
 
+
+    @When("the start date {string}, and the end date {string} for the period I wish to analyze,")
+
+    public void theStartDateAndTheEndDateForThePeriodIWishToAnalyze(String start_date, String end_date) {
+        this.start_date=start_date;this.end_date=end_date;
+    }
     @Then("the system should display the total profit generated from all appointments")
     @Test
     public void theSystemShouldDisplayTheTotalProfitGeneratedFromAllAppointments() {
-       assertTrue(Appointment_DB.calculateTotalCenterEarningsInRange(start_date,end_date));
+        assertTrue(Appointment_DB.calculateTotalCenterEarningsInRange(start_date,end_date));
     }
+
 }
 
 

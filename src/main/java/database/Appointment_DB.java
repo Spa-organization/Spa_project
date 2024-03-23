@@ -97,28 +97,6 @@ public class Appointment_DB {
         appointments.removeIf(h -> h.getAppointmentID() == id);}
 
 
-
-        public static void calculateDailyEarningsForEmployee(String employeeId, String date) {
-            double totalEarnings = 0;
-
-            for (Appointment appointment : Appointment_DB.getAllAppointments()) {
-                if (appointment.getEmployee().getId().equals(employeeId) && appointment.getDate().equals(date)) {
-                    if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                        totalEarnings += SAWNA_SESSION_COST;
-                    } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                        totalEarnings += MASSAGE_SESSION_COST;
-                    }
-                }
-            }
-
-            double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
-            double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-
-            System.out.println("Total Earnings for Employee " + employeeId + " on " + date + ": $" + totalEarnings);
-            System.out.println("Employee's Share (30%): $" + employeeEarnings);
-            System.out.println("Center's Share (70%): $" + centerEarnings);
-        }
-
         public static boolean calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {
         boolean flag=false;
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
@@ -161,7 +139,7 @@ public class Appointment_DB {
                     totalEarnings += SAWNA_SESSION_COST;
 
                 } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                    flag=false;
+                    flag=true;
                     totalEarnings += MASSAGE_SESSION_COST;
                 }
             }

@@ -39,6 +39,6 @@ Then the all appointments should show up
 
   Scenario: View Overall Profit
 Given I am logged in as an admin
-When I choose to view the overall profit
+When the start date "01/09/2012", and the end date "01/10/2012" for the period I wish to analyze,
 Then the system should display the total profit generated from all appointments
 
