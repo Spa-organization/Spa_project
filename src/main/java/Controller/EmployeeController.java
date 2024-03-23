@@ -114,27 +114,5 @@ public class EmployeeController {
         }
 
     }
-
-    public boolean loggIn_IDCheck(String id) {
-        for( Employee employee: Employee_DB.getServiceProviders() )
-        {
-            if( id.equals(employee.getId())  ) {
-                return true;
-
-            }
-        }
-        return false;
-    }
-
-    public boolean loggIn_PassCheck(String pass) {
-        for( Employee employee: Employee_DB.getServiceProviders() )
-        {
-            if( pass.equals(employee.getPassword())  ) {
-                return true;
-
-            }
-        }
-        return false;
-    }
 }
 
