@@ -3,13 +3,13 @@ Feature: Admin Management
   Scenario: Add Employee
     Given I am logged in as an admin
     When I choose to add an employee
-    And I enter the employee "35" and it should be unique , name, and password
+    And I enter the employee "35" and it should be unique and name "ali" and pass "123" and choice "massage"
     Then the employee should be added to the system
 
   Scenario: Add Admin
     Given I am logged in as an admin
     When I choose to add an admin
-    And I enter the admin "25" and it should be unique , name, and password
+    And I enter the admin "25" and it should be unique and name "qusay" and pass "123"
     Then the admin should be added to the system
 
 Scenario: Add  Massage_Room
@@ -37,10 +37,9 @@ Given I am logged in as an admin
 When I choose to view the overall profit
 Then the system should display the total profit generated from all appointments
 
+  Scenario  : View Profit of employees and center
+    Given I am logged in as an admin
+    When I choose to view the profit for a center and  specific employee in specific period of time
+    And give the "31" of this employee
+    Then the system should display the total profit generated from all appointments of  a center that employee in specific period of time
 
-
-Scenario: View Profit of employees 
-Given I am logged in as an admin
-When I choose to view the profit for a specific employee 
-And give the "ID" of this employee
-Then the system should display the total profit generated from all appointments of that employee

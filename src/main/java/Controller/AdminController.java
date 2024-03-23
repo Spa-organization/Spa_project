@@ -340,11 +340,6 @@ public class AdminController {
 
         }
 
-
-
-
-
-
     }
 
     public void viewEmployeeEarningsForDay() {
@@ -373,7 +368,8 @@ public class AdminController {
         System.out.println();
         System.out.print("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
-        Appointment_DB.calculateTotalCenterEarningsInRange(date,date2);
+        System.out.println();
+         Appointment_DB.calculateTotalCenterEarningsInRange(date,date2);
     }
 
 

@@ -11,7 +11,7 @@ import org.junit.Test;
 
 
 public class ClientLoginFeatureSteps {
- String pass="1423";
+ String pass="123";
  String id="11";
 	ClientController app;
 	public ClientLoginFeatureSteps()

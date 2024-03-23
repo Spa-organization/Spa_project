@@ -119,7 +119,8 @@ public class Appointment_DB {
             System.out.println("Center's Share (70%): $" + centerEarnings);
         }
 
-        public static void calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {
+        public static boolean calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {
+        boolean flag=false;
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
             LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
             double totalEarnings = 0;
@@ -128,19 +129,23 @@ public class Appointment_DB {
                 LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
                     if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                        flag=true;
                         totalEarnings +=SAWNA_SESSION_COST;
+
                     } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                        flag=true;
                         totalEarnings += MASSAGE_SESSION_COST;
+
                     }
                 }
-            }
 
+            }
             double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
             double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-
             System.out.println("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings);
             System.out.println("Employee's Share (30%): $" + employeeEarnings);
             System.out.println("Center's Share (70%): $" + centerEarnings);
+            return  flag;
         }
     public static void calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
@@ -152,8 +157,10 @@ public class Appointment_DB {
             if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate)) {
                 if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                     totalEarnings += SAWNA_SESSION_COST;
+
                 } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                     totalEarnings += MASSAGE_SESSION_COST;
+
                 }
             }
         }
