@@ -30,7 +30,7 @@ public class AdminLoginFeatureSteps {
 	@Then("the admin is logged in the app successfully")
 	@Test
 	public void theAdminIsLoggedInTheAppSuccessfully() {
-		 id="21";
+		// id="21";
 		   pass="123";
 			app.loggIn_Check(id, pass);
 			assertTrue(app.isLoggedIn());}
