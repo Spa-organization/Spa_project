@@ -56,6 +56,16 @@ public class Appointment_DB {
         }
         return clientAppointments;
     }
+
+    public static List<Appointment> getEmployeeAppointments(Employee employee){
+        List<Appointment> employeeAppointments= new ArrayList<>();
+        for(Appointment appointment:appointments){
+            if(appointment.getEmployee().equals(employee)){
+                employeeAppointments.add(appointment);
+            }
+        }
+        return employeeAppointments;
+    }
     public static boolean isValidDate(String date) {
 
         String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";

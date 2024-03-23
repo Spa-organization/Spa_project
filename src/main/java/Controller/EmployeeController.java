@@ -1,8 +1,13 @@
 package Controller;
 
+import Entities.Appointment;
+import Entities.Client;
 import Entities.Employee;
+import database.Appointment_DB;
 import database.Employee_DB;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeController {
@@ -49,7 +54,7 @@ public class EmployeeController {
     public void LoginPage(){
         System.out.println("--------------------------------------");
         System.out.println("-------------------------------------");
-        System.out.println("=== Admin Login ===");
+        System.out.println("=== Employee Login ===");
 
         System.out.print("Enter your ID: ");
         String clientId = scanner.nextLine();
@@ -58,11 +63,11 @@ public class EmployeeController {
         String password = scanner.nextLine();
         loggIn_Check(clientId,password);
         if(isLoggedIn){
-            AdminHomePage();
+            employeeHomePage();
         }
     }
 
-    public void AdminHomePage(){
+    public void employeeHomePage(){
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");
         int choice;
@@ -77,7 +82,7 @@ public class EmployeeController {
 
             switch (choice) {
                 case 1:
-                    //viewEmployeeSchedule(employeeId);
+                    showEmployeeAppointments();
                     break;
                 case 2:
                     //viewEmployeeFinance(employeeId);
@@ -90,6 +95,23 @@ public class EmployeeController {
             }
 
         } while (choice != 3);
+
+    }
+
+    public void showEmployeeAppointments(){
+        System.out.println("------------------------------");
+        System.out.println("------------------------------");
+        List<Appointment> employeeAppointments =new ArrayList<>();
+        employeeAppointments = Appointment_DB.getEmployeeAppointments(this.employee);
+        for( Appointment appointment: employeeAppointments){
+            System.out.println("--------------------");
+            System.out.println("Appointment_id: "+ appointment.getAppointmentID());
+            System.out.println("Type: "+appointment.getEmployee().getWorkerType());
+            System.out.println("Date: "+appointment.getDate());
+            System.out.println("Time: "+appointment.getTime());
+            System.out.println("Room Number: "+appointment.getRoom().getRoomNumber());
+            System.out.println("--------------------");
+        }
 
     }
 
