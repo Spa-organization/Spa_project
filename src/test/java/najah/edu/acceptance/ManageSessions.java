@@ -1,19 +1,12 @@
 package najah.edu.acceptance;
 
-import Controller.AdminController;
 import Controller.ClientController;
-import Entities.Appointment;
-import Entities.Employee;
 import database.Appointment_DB;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

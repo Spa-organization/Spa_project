@@ -345,11 +345,11 @@ public class ClientController {
          String time= Appointment_DB.appointments.get(i).getTime();
         if(date_check.equals(date)&&time_check.equals(time)&&id==room_id)
         {
-          flag=false;System.out.println("not available");return flag;}
+          flag=false;System.out.println("not available");return false;}
         }
 
             System.out.println("available");
-            return flag;
+            return true;
     }
 
     public boolean isLogged_up() {return this.log_up;}

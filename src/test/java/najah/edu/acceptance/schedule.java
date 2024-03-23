@@ -41,4 +41,14 @@ public class schedule {
         assertTrue(Appointment_DB.calculateEarningsForEmployeeInRange(id,start_date,end_date));
 
     }
+
+    @When("give the {string} of this employee")
+    public void giveTheOfThisEmployee(String id) {
+        this.id=id;
+    }
+
+    @Then("the appointment of this employee will shown")
+    public void theAppointmentOfThisEmployeeWillShown() {
+        employeeController.showEmployeeAppointments();
+    }
 }

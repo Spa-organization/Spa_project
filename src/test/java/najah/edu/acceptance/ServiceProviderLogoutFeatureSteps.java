@@ -3,9 +3,6 @@ package najah.edu.acceptance;
 import Controller.EmployeeController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-
-import org.junit.Before;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

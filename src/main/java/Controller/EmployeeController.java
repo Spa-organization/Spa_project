@@ -1,7 +1,6 @@
 package Controller;
 
 import Entities.Appointment;
-import Entities.Client;
 import Entities.Employee;
 import database.Appointment_DB;
 import database.Employee_DB;
@@ -103,7 +102,7 @@ public class EmployeeController {
 
     }
 
-    public void showEmployeeAppointments(){
+    public  void  showEmployeeAppointments(){
         System.out.println("------------------------------");
         System.out.println("------------------------------");
         List<Appointment> employeeAppointments =new ArrayList<>();
