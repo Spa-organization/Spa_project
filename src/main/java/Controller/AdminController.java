@@ -13,8 +13,6 @@ public class AdminController {
     private Scanner scanner = new Scanner(System.in);
 
     public AdminController() {
-        isLoggedIn = false;
-
     }
 
     public  boolean isLoggedIn() {
