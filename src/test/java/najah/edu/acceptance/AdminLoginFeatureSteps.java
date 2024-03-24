@@ -32,14 +32,14 @@ public class AdminLoginFeatureSteps {
 	public void theAdminIsLoggedInTheAppSuccessfully() {
 		// id="21";
 		   pass="123";
-			app.loggIn_Check(id, pass);
+			app.loggin_check(id, pass);
 			assertTrue(app.isLoggedIn());}
 	@Then("the admin will not login")
 	@Test
 	public void theAdminWillNotLogin() {
 		  id="213";
 		  pass="123";
-		 app.loggIn_Check(id, pass);
+		 app.loggin_check(id, pass);
             assertFalse(app.isLoggedIn());
 	}
 	@Then("the message appear to tell the admin what's wrong")

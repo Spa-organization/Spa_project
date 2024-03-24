@@ -24,7 +24,7 @@ public class AdminManagement {
 
     @Given("I am logged in as an admin")
     public void iAmLoggedInAsAnAdmin() {
-        Admin_controller.loggIn_Check("21", "123");
+        Admin_controller.loggin_check("21", "123");
         assertTrue(Admin_controller.isLoggedIn());}
 
     @When("I choose to add an employee")

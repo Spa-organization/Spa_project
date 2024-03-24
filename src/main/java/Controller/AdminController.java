@@ -30,10 +30,10 @@ public class AdminController {
 
     public  void loggin_check(String id, String password)
     {
-        for( Admin admin1:Admin_DB.getAdmins() )
+        for( Admin admin:Admin_DB.getAdmins() )
         {
-            if( id.equals(admin1.getId()) && password.equals(admin1.getPassword()) ) {
-                this.admin1=admin1;
+            if( id.equals(admin.getId()) && password.equals(admin.getPassword()) ) {
+                this.admin=admin;
                 login();
             }
         }
@@ -54,7 +54,7 @@ public class AdminController {
 
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
-        loggIn_Check(clientId,password);
+        loggin_check(clientId,password);
         if(isLoggedIn){
             AdminHomePage();
         }

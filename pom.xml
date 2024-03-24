@@ -6,9 +6,9 @@
 
 
     <properties>
-            <sonar.organization>spaorganization</sonar.organization>
+        <sonar.organization>spaorganization</sonar.organization>
             <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.21</maven.compiler.source>
         <maven.compiler.target>1.21</maven.compiler.target>
     </properties>
@@ -17,7 +17,7 @@
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-picocontainer</artifactId>
-    <version>7.15.0</version>
+    <version>7.16.0</version>
 </dependency>
 
 
@@ -25,19 +25,52 @@
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-java</artifactId>
-    <version>7.15.0</version>
+    <version>7.16.1</version>
 </dependency>
 
 
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-junit</artifactId>
-    <version>7.15.0</version>
+    <version>7.16.0</version>
      <scope>test</scope>
 </dependency>
 
 
   </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <configuration>
+
+                    <excludes>
+                        <exclude>**car_accessories/MainClass.class</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>generate-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
