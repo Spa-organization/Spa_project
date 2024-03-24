@@ -30,10 +30,10 @@ public class AdminController {
 
     public  void loggIn_Check(String id, String password)
     {
-        for( Admin admin:Admin_DB.getAdmins() )
+        for( Admin admin1:Admin_DB.getAdmins() )
         {
-            if( id.equals(admin.getId()) && password.equals(admin.getPassword()) ) {
-                this.admin=admin;
+            if( id.equals(admin1.getId()) && password.equals(admin1.getPassword()) ) {
+                this.admin1=admin1;
                 login();
             }
         }
