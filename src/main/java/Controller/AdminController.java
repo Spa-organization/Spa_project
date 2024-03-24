@@ -28,7 +28,7 @@ public class AdminController {
         isLoggedIn = true;
     }
 
-    public  void loggIn_Check(String id, String password)
+    public  void loggin_check(String id, String password)
     {
         for( Admin admin1:Admin_DB.getAdmins() )
         {
