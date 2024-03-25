@@ -20,7 +20,7 @@ public class ClientController {
     static int id;
     private  boolean logUp;
 
-
+//
     public ClientController() {
         isLoggedIn = false;
     }
