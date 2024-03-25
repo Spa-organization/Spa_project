@@ -83,3 +83,5 @@ w
 G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482
 n
 >.idea/libraries/Maven__io_cucumber_cucumber_plugin_7_15_02.xml,1\a\1a992eb758508fc3052d8c3ff39b7d7edc9cfc87
+P
+ Myfeatures/Client_SignIn.feature,d\a\daa1d36caae87c77e456ec3efb2c25b8926af310

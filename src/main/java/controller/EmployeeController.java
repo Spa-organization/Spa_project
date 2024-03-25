@@ -73,9 +73,8 @@ public class EmployeeController {
                === Employee Menu ===
               1. View my schedule with my customers' reservations
               2. View my Finance for the month
-              3. Logout
-              Enter your choice:
-               """);
+              3. Logout""");
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
 
             switch (choice) {

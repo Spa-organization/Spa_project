@@ -22,9 +22,9 @@ public class Starter {
                     Welcome to the Spa Event Planner
                     1. Sign up for a client account
                     2. Log in
-                    0. Exit
-                    Enter your choice:
-                    """);
+                    0. Exit""");
+            LOGGER.info("Enter your choice:");
+
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -56,13 +56,12 @@ public class Starter {
                     1. Login as Admin
                     2. Login as Customer
                     3. Login as Employee
-                    4. Exit
-                    Enter your choice:
-                    """);
+                    4. Exit""");
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    AdminController adminController = AdminController.createAdminController();
+                    AdminController adminController =new AdminController() ;
                     adminController.loginPage();
                     break;
                 case 2:

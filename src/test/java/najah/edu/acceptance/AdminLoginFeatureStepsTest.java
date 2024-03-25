@@ -15,7 +15,7 @@ public class AdminLoginFeatureStepsTest {
 	String id;
 	AdminController app;
 	public AdminLoginFeatureStepsTest()
-	{app= AdminController.createAdminController();
+	{app= new AdminController ();
 	}
 
 	@Given("that the admin is not logged in the app")

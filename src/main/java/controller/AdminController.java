@@ -15,11 +15,8 @@ public class AdminController {
     Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
 
-    private AdminController() {
-    }
-//
-    public static AdminController createAdminController() {
-        return new AdminController();
+    public AdminController() {
+        isLoggedIn = false;
     }
 
     public  boolean isLoggedIn() {

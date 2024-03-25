@@ -33,19 +33,24 @@ public class ClientLoginFeatureStepsTest {
 	}
 	
 	@Then("the client is logged in the app successfully")
+	@Test
 	public void theClientIsLoggedInTheAppSuccessfully() {
+	id="11";
+		pass="123";
 		app.loggInCheck(id,pass);
 		assertTrue(app.isLoggedIn());
 	}
 
 	@Then("the client will not login")
-
+@Test
 	public void theClientWillNotLogin() {
+		id="213";
+		pass="123";
 		app.loggInCheck(id,pass);
-		app.logout();
 		assertFalse(app.isLoggedIn());
 	}
 
 	@And("the message appear to tell the client what's wrong")
+	@Test
 	public void theMessageAppearToTellTheClientWhatSWrong() {assertFalse(app.isLoggedIn());}
 }

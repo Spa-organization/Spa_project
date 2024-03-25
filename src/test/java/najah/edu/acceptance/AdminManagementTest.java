@@ -19,7 +19,7 @@ public class AdminManagementTest {
     String emp_id, emp_name, emp_password, worker_type, admin_id, admin_name, admin_pass, room_id,start_date,end_date;
 
     public AdminManagementTest() {
-        Admin_controller = AdminController.createAdminController();
+        Admin_controller = new AdminController();
     }
 
     @Given("I am logged in as an admin")

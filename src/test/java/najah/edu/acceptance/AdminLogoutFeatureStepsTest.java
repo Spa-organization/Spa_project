@@ -15,7 +15,7 @@ public class AdminLogoutFeatureStepsTest {
 	AdminController app;
 	public AdminLogoutFeatureStepsTest()
 	{
-		app= AdminController.createAdminController();
+		app= new AdminController();
 		app.login();
 	}
 @Given("the admin chose to sign out")

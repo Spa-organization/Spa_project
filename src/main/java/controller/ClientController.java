@@ -14,12 +14,11 @@ public class ClientController {
     private static final String COPY="-----------------------------------";
     private static final String SHORT_LINE ="--------------------";
     private static final Logger LOGGER = Logger.getLogger(ClientController.class.getName());
-
-    private static boolean isLoggedIn = false;
+    private  boolean isLoggedIn ;
      Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
     static int id;
-    private boolean logUp;
+    private  boolean logUp;
 
 
     public ClientController() {
@@ -43,11 +42,11 @@ public class ClientController {
 
     public void loggInCheck(String id, String password)
     {
-        for( Client client: ClientDB.getClients() )
+        for( Client clientC: ClientDB.getClients() )
         {
-            if( id.equals(client.getId()) && password.equals(client.getPassword()) ) {
+            if( id.equals(clientC.getId()) && password.equals(clientC.getPassword()) ) {
                 login();
-                this.client=client;
+                this.client=clientC;
                 break;
             }
         }
@@ -109,9 +108,8 @@ public class ClientController {
                 3. Edit My Appointments
                 4. Cancel My Appointments
                 5. Feedback
-                6. Logout
-                Enter your choice:
-                """);
+                6. Logout""");
+        LOGGER.info("Enter your choice:");
         do {
             choice = scanner.nextInt();
 
@@ -295,21 +293,19 @@ public class ClientController {
         boolean flag = false;
         showClientAppointments();
         Scanner input = new Scanner(System.in);
-                    LOGGER.info(SHORT_LINE);
-
-                    LOGGER.info
-("Please enter the id of the your appointment from the above");
-        int id = input.nextInt();
+        LOGGER.info(SHORT_LINE);
+        LOGGER.info("Please enter the id of the your appointment from the above");
+        int idC = input.nextInt();
         List<Appointment> clientAppointments;
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentID() == id) {
+            if (appointment.getAppointmentID() == idC) {
                 flag = true;
                 break;
             }
 
         }
-        Appointment_DB.deleteAppointment(id);
+        Appointment_DB.deleteAppointment(idC);
         if(flag) LOGGER.info("Successfully deleted");
 
         else     LOGGER.info("You don't have this room");
@@ -352,10 +348,10 @@ public class ClientController {
     {
         for (int i=0;i<Appointment_DB.appointments.size();i++)
         {
-            int id=Appointment_DB.appointments.get(i).getRoom().getRoomNumber();
+            int idC=Appointment_DB.appointments.get(i).getRoom().getRoomNumber();
          String date= Appointment_DB.appointments.get(i).getDate();
          String time= Appointment_DB.appointments.get(i).getTime();
-        if(dateCheck.equals(date)&&timeCheck.equals(time)&&id==roomId)
+        if(dateCheck.equals(date)&&timeCheck.equals(time)&&idC==roomId)
         {
           LOGGER.info("not available");
           return false;}
