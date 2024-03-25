@@ -8,12 +8,11 @@ import Entities.Room;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee_DB {
-    static List<Employee> employees = new ArrayList<Employee>();
-    public Employee_DB() {
+public class EmployeeDB {
+    static List<Employee> employees = new ArrayList<>();
+    public EmployeeDB() {
 
     }
-    //
     static{
         employees.add(new Employee("31","SerPro1","123","Sawna", new Room(1)));
         employees.add(new Employee("32","SerPro2","123","Sawna",new Room(2)));
@@ -23,12 +22,12 @@ public class Employee_DB {
         employees.get(1).getRoom().setEmployee(employees.get(1));
         employees.get(2).getRoom().setEmployee(employees.get(2));
         employees.get(3).getRoom().setEmployee(employees.get(3));
-        Room_DB.rooms.add(employees.get(0).getRoom());
-        Room_DB.rooms.add(employees.get(1).getRoom());
-        Room_DB.rooms.add(employees.get(2).getRoom());
-        Room_DB.rooms.add(employees.get(3).getRoom());
+        RoomDb.rooms.add(employees.get(0).getRoom());
+        RoomDb.rooms.add(employees.get(1).getRoom());
+        RoomDb.rooms.add(employees.get(2).getRoom());
+        RoomDb.rooms.add(employees.get(3).getRoom());
     }
-    public static boolean addServiceProviders(String id,String name,String password,String WorkerType) {
+    public static boolean addServiceProviders(String id,String name,String password,String workerType) {
         boolean flage = true;
         for (Employee employee: employees){
             if(employee.getId().equals(id)){
@@ -37,20 +36,20 @@ public class Employee_DB {
             }
         }
         if(flage)
-            employees.add(new Employee(id, name,password,WorkerType));
+            employees.add(new Employee(id, name,password,workerType));
 
         return flage;
     }
     public static List<Employee> getServiceProviders() {
         return employees;
     }
-    public static List<Employee> getEmployeeAtTime(String Date, String Time,String type){
+    public static List<Employee> getEmployeeAtTime(String date, String time,String type){
         List<Employee> employeeList = new ArrayList<>();
         for(Employee employee1:employees){
             if(employee1.getWorkerType().equals(type)) {
                 boolean flage = true;
                 for (Appointment appointment : employee1.getAppointments()) {
-                    if (appointment.getDate().equals(Date) && appointment.getTime().equals(Time)){
+                    if (appointment.getDate().equals(date) && appointment.getTime().equals(time)){
                         flage=false;
                         break;
                     }

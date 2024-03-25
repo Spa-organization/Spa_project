@@ -4,9 +4,9 @@ import Entities.Admin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Admin_DB {
-	static List <Admin> admins= new ArrayList<Admin>();
-	private Admin_DB() {
+public class AdminDB {
+	static List <Admin> admins= new ArrayList<>();
+	private AdminDB() {
 		throw new IllegalStateException("Utility class");
 	}
 	static{

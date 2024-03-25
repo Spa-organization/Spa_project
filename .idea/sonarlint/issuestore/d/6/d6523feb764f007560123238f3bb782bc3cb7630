@@ -1,0 +1,56 @@
+
+
+java:S2293ü"YReplace the type specification in this constructor call with the diamond operator ("<>").(·Óú8Ö´¹˜ç1J$235684fd-dc18-4d64-abd1-5e855e877535
+
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(¡ûÕ8Ö´¹˜ç1J$7cfc4436-7131-492f-987d-ce2ed9148336
+©
+java:S11924"fDefine a constant instead of duplicating this literal "-------------------------------------" 4 times.(õèïæ8×´¹˜ç1J$3947a33f-2405-4306-968d-55af33c51979
+ 
+java:S1192¿"WDefine a constant instead of duplicating this literal "----------------------" 5 times.(ÑÏ®ÿÿÿÿÿ8×´¹˜ç1J$23b0b722-daaa-4f6f-b8c3-5b1f6888a264
+¢
+java:S1192¦"^Define a constant instead of duplicating this literal "----------------------------" 25 times.(£ûø8Ø´¹˜ç1J$9f818744-62c8-439f-aaf7-e41b67de8053
+¨
+java:S1192y"`Define a constant instead of duplicating this literal "------------------------------" 12 times.(––û—üÿÿÿÿ8Ø´¹˜ç1J$58555902-784e-40b6-aa7e-d20032bc52c6
+¡
+java:S1192Á"XDefine a constant instead of duplicating this literal "-----------------------" 4 times.(¢Ôˆóûÿÿÿÿ8Ø´¹˜ç1J$4c8e97e1-479c-4245-868a-a10f49a53b0b
+ 
+java:S2629¯"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(ø·8Ú´¹˜ç1J$38be2aa2-52e7-4505-96ac-223350ff6235
+Ş
+java:S1598"•This file "AdminController.java" should be located in "controller" directory, not in "C:\Users\USER-Q\OneDrive\Desktop\Spa\src\main\java\Controller".( êö§ıÿÿÿÿ8ñ¶½˜ç1J$3db4352b-003d-416d-9c22-a157b596cd7f
+Ä
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‘ˆ¢ù8æÒ¶˜ç1J$aabf0ed2-949f-4073-b957-94901411bbf3
+~
+java:S2696"6Make the enclosing method "static" or remove this set.(«ùà‘úÿÿÿÿ8îÒ¶˜ç1J$182a712a-ae0a-496f-8c5f-a0de31a686b1
+~
+java:S2696 "6Make the enclosing method "static" or remove this set.(Å¿òˆÿÿÿÿÿ8ïÒ¶˜ç1J$43297a96-2f90-4ef4-9642-c8fe545af0d3
+•	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€´„Áşÿÿÿÿ8ïÒ¶˜ç1J$08630c40-686b-422e-a966-810a80cce376
+|
+java:S1117%"9Rename "admin" which hides the field declared at line 16.(øßµä8ñÒ¶˜ç1J$c1e2e314-40a1-4210-b0e6-d0b26e4f16d6
+•	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó†àâüÿÿÿÿ8©¶¹˜ç1J$0ec71606-179b-465d-9ae4-374c6fd10a16
+r	java:S1068"+Replace this use of System.out by a logger.(›¢ı¶øÿÿÿÿ8«¶¹˜ç1J$2fdb26d0-6fa4-4061-8393-a373f7e40e20
+m	java:S106;"+Replace this use of System.out by a logger.(¤Õš¬8«¶¹˜ç1J$6c514282-b1dd-4ad7-ac99-e1d2b7288255
+•	java:S100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õµöüÿÿÿÿ8¬¶¹˜ç1J$7d864549-c9b7-45e2-a088-ad5bf2e4db0b
+m	java:S106S"+Replace this use of System.out by a logger.(•éõ«8®¶¹˜ç1J$fa0c5fb1-f99c-48d4-8f10-18ca2dd23a43
+	java:S128n"LEnd this switch case with an unconditional break, return or throw statement.(ÅË¨Æ8¯¶¹˜ç1J$a2dd9d60-eaf7-4e4c-8aa2-5fca1edbec1b
+n	java:S106ƒ"+Replace this use of System.out by a logger.(•éõ«8²¶¹˜ç1J$a3a03798-8189-4487-8b51-3b7fab7a3d2d
+s	java:S106›"+Replace this use of System.out by a logger.(ÁÅñ¹øÿÿÿÿ8´¶¹˜ç1J$25dff48f-a11f-4b41-893e-4cb1d18ac242
+n	java:S106"+Replace this use of System.out by a logger.(Â‰¤‰8´¶¹˜ç1J$3a2acb0a-708f-4bfb-97c4-3574930e6e40
+s	java:S106Ì"+Replace this use of System.out by a logger.(ÁÅñ¹øÿÿÿÿ8·¶¹˜ç1J$a5f69446-74b0-42f3-ae71-f8ad82e7332a
+n	java:S106Ï"+Replace this use of System.out by a logger.(Â‰¤‰8·¶¹˜ç1J$08d075db-07d8-4013-8089-a1017ac78c1e
+
+java:S1854ü"=Remove this useless assignment to local variable "employees".(·Óú8»¶¹˜ç1J$0fcb8759-5e43-44d5-ae38-49a8bdcb8672
+s	java:S106‡"+Replace this use of System.out by a logger.(©Íû÷şÿÿÿÿ8½¶¹˜ç1J$2f547409-9b3b-414d-b116-0d9458e56c54
+n	java:S106Š"+Replace this use of System.out by a logger.(¬¶ªÕ8½¶¹˜ç1J$e0805ba3-20b0-4b9a-8fd7-ebea9f57cbae
+n	java:S106"+Replace this use of System.out by a logger.(‚¤¤²8½¶¹˜ç1J$75a97368-bf94-462f-a359-66a87500b51a
+s	java:S106"+Replace this use of System.out by a logger.(ÍÒûÿÿÿÿ8½¶¹˜ç1J$ea24fb76-1f0c-40ee-9cca-3ebf5ae85e4d
+„
+java:S1854 "@Remove this useless assignment to local variable "appointments".(¡ûÕ8¾¶¹˜ç1J$9b1ffd66-1bed-4091-a68f-cfdbb79cdebb
+‘	java:S100ª"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©îò8¿¶¹˜ç1J$b98edcf8-8ab0-43d9-a3cd-70106530b933
+s	java:S106º"+Replace this use of System.out by a logger.(î‡º±şÿÿÿÿ8Á¶¹˜ç1J$a36a2fb5-59ab-458e-851b-fb7dc91f57f5
+s	java:S106½"+Replace this use of System.out by a logger.(îäı‹ùÿÿÿÿ8Á¶¹˜ç1J$c1f542be-66bb-43af-8ad6-a56a93358566
+n	java:S106À"+Replace this use of System.out by a logger.(ªŒŒ«8Â¶¹˜ç1J$e51af9cc-cfe0-46cf-a589-8e83c208fa59
+s	java:S106Ü"+Replace this use of System.out by a logger.(©Íû÷şÿÿÿÿ8Ã¶¹˜ç1J$04046404-8592-499b-823c-a3577c7f7b5d
+s	java:S106ß"+Replace this use of System.out by a logger.(Ä÷İ…øÿÿÿÿ8Ä¶¹˜ç1J$6406afc6-218d-43ad-a358-f955b02218e9
+s	java:S106á"+Replace this use of System.out by a logger.(éÃâÅşÿÿÿÿ8Ä¶¹˜ç1J$dd0f2ee2-8a0d-46f9-9023-76d9dc2c569a
+s	java:S106ç"+Replace this use of System.out by a logger.(Ä÷İ…øÿÿÿÿ8Ä¶¹˜ç1J$14526220-0e0b-4e00-900c-bac80ffcb726
+s	java:S106ë"+Replace this use of System.out by a logger.(éÃâÅşÿÿÿÿ8Å¶¹˜ç1J$f3e850df-7027-4ba1-8bb4-09a3bcb068c9

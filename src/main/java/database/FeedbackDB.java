@@ -1,14 +1,15 @@
 package database;
 
 import Entities.FeedBack;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
-public class Feedback_DB {
+public class FeedbackDB {
+    private static final Logger LOGGER = Logger.getLogger(FeedbackDB.class.getName());
 
-    static List<FeedBack> feedBacks= new ArrayList<FeedBack>();
-    private Feedback_DB() {
+    static List<FeedBack> feedBacks= new ArrayList<>();
+    private FeedbackDB() {
         throw new IllegalStateException("Utility class");
     }
     static{
@@ -18,9 +19,8 @@ public class Feedback_DB {
         feedBacks.add(new FeedBack("Perfect staff",14));
     }
     public static void addFeedback(String feed , int clientId) {
-
         feedBacks.add(new FeedBack(feed,clientId));
-        System.out.println("Your feedback has been submitted successfully");
+        LOGGER.info("Your feedback has been submitted successfully");
     }
 
 

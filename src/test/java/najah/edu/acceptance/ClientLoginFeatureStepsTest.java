@@ -3,18 +3,18 @@ package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import Controller.ClientController;
+import controller.ClientController;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Test;
 
 
-public class ClientLoginFeatureSteps {
- String pass="123";
- String id="11";
+public class ClientLoginFeatureStepsTest {
+ String pass;
+ String id;
 	ClientController app;
-	public ClientLoginFeatureSteps()
+	public ClientLoginFeatureStepsTest()
 	{
 	app=new ClientController();
 	}
@@ -33,19 +33,24 @@ public class ClientLoginFeatureSteps {
 	}
 	
 	@Then("the client is logged in the app successfully")
+	@Test
 	public void theClientIsLoggedInTheAppSuccessfully() {
-		app.loggIn_Check(id,pass);
+	id="11";
+		pass="123";
+		app.loggInCheck(id,pass);
 		assertTrue(app.isLoggedIn());
 	}
 
 	@Then("the client will not login")
-
+@Test
 	public void theClientWillNotLogin() {
-		app.loggIn_Check(id,pass);
-		app.logout();
+		id="213";
+		pass="123";
+		app.loggInCheck(id,pass);
 		assertFalse(app.isLoggedIn());
 	}
 
 	@And("the message appear to tell the client what's wrong")
+	@Test
 	public void theMessageAppearToTellTheClientWhatSWrong() {assertFalse(app.isLoggedIn());}
 }

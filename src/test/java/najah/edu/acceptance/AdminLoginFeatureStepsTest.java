@@ -1,7 +1,7 @@
 package najah.edu.acceptance;
 
 
-import Controller.AdminController;
+import controller.AdminController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
@@ -10,12 +10,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AdminLoginFeatureSteps {
+public class AdminLoginFeatureStepsTest {
 	String pass;
 	String id;
 	AdminController app;
-	public AdminLoginFeatureSteps()
-	{app=new AdminController();
+	public AdminLoginFeatureStepsTest()
+	{app= new AdminController ();
 	}
 
 	@Given("that the admin is not logged in the app")
@@ -32,14 +32,14 @@ public class AdminLoginFeatureSteps {
 	public void theAdminIsLoggedInTheAppSuccessfully() {
 		 id="21";
 		   pass="123";
-			app.loggIn_Check(id, pass);
+			app.loginCheck(id, pass);
 			assertTrue(app.isLoggedIn());}
 	@Then("the admin will not login")
 	@Test
 	public void theAdminWillNotLogin() {
 		  id="213";
 		  pass="123";
-		 app.loggIn_Check(id, pass);
+		 app.loginCheck(id, pass);
             assertFalse(app.isLoggedIn());
 	}
 	@Then("the message appear to tell the admin what's wrong")

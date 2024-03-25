@@ -1,6 +1,6 @@
 package najah.edu.acceptance;
 
-import Controller.ClientController;
+import controller.ClientController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Test;
@@ -9,11 +9,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ClientLogoutFeatureSteps {
+public class ClientLogoutFeatureStepsTest {
 
 
     ClientController app;
-    public ClientLogoutFeatureSteps()
+    public ClientLogoutFeatureStepsTest()
     {
         app=new ClientController();
         app.login();

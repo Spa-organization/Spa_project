@@ -6,19 +6,20 @@ import Entities.Room;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room_DB {
-    public static List<Room> rooms= new ArrayList<>();
+public class RoomDb {
+private RoomDb(){}
+     public static List<Room> rooms= new ArrayList<>();
     public   static boolean addRoom(Employee employee, int id){
-        boolean not_duplicate = true;
+        boolean notDuplicate = true;
         for (Room room: rooms){
             if(id==room.getRoomNumber()){
-                not_duplicate=false;
+                notDuplicate=false;
                 break;
             }
         }
-        if(not_duplicate)
+        if(notDuplicate)
             rooms.add(new Room(employee,id));
-        return not_duplicate;
+        return notDuplicate;
     }
     public  static Room getRoomById( int id){
         for (Room room: rooms){

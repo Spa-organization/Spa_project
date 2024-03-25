@@ -23,14 +23,14 @@ public class Appointment_DB {
         throw new IllegalStateException("Utility class");
     }
     static {
-        appointments.add(new Appointment(1,Client_DB.clients.get(0),Employee_DB.employees.get(0), Employee_DB.employees.get(0).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(2,Client_DB.clients.get(1),Employee_DB.employees.get(1), Employee_DB.employees.get(1).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(3,Client_DB.clients.get(2),Employee_DB.employees.get(2), Employee_DB.employees.get(2).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(4,Client_DB.clients.get(3),Employee_DB.employees.get(3), Employee_DB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
-        Employee_DB.employees.get(0).setAppointment(appointments.get(0));
-        Employee_DB.employees.get(1).setAppointment(appointments.get(1));
-        Employee_DB.employees.get(2).setAppointment(appointments.get(2));
-        Employee_DB.employees.get(3).setAppointment(appointments.get(3));
+        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(2,ClientDB.clients.get(1),EmployeeDB.employees.get(1), EmployeeDB.employees.get(1).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(3,ClientDB.clients.get(2),EmployeeDB.employees.get(2), EmployeeDB.employees.get(2).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(4,ClientDB.clients.get(3),EmployeeDB.employees.get(3), EmployeeDB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
+        EmployeeDB.employees.get(0).setAppointment(appointments.get(0));
+        EmployeeDB.employees.get(1).setAppointment(appointments.get(1));
+        EmployeeDB.employees.get(2).setAppointment(appointments.get(2));
+        EmployeeDB.employees.get(3).setAppointment(appointments.get(3));
     }
     public static int addAppointment(int id,Client client, String date, String time, Employee employee){
         id = appointments.getLast().getAppointmentID() + 1;
@@ -45,7 +45,7 @@ public class Appointment_DB {
     }
     public static List<Employee> checkAvailability(String Date, String Time,String type){
 
-        return Employee_DB.getEmployeeAtTime(Date,Time,type);
+        return EmployeeDB.getEmployeeAtTime(Date,Time,type);
     }
     public static  List<Appointment> getUserAppointments(Client client){
         List<Appointment> clientAppointments= new ArrayList<>();
@@ -97,28 +97,6 @@ public class Appointment_DB {
         appointments.removeIf(h -> h.getAppointmentID() == id);}
 
 
-
-        public static void calculateDailyEarningsForEmployee(String employeeId, String date) {
-            double totalEarnings = 0;
-
-            for (Appointment appointment : Appointment_DB.getAllAppointments()) {
-                if (appointment.getEmployee().getId().equals(employeeId) && appointment.getDate().equals(date)) {
-                    if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                        totalEarnings += SAWNA_SESSION_COST;
-                    } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                        totalEarnings += MASSAGE_SESSION_COST;
-                    }
-                }
-            }
-
-            double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
-            double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-
-            System.out.println("Total Earnings for Employee " + employeeId + " on " + date + ": $" + totalEarnings);
-            System.out.println("Employee's Share (30%): $" + employeeEarnings);
-            System.out.println("Center's Share (70%): $" + centerEarnings);
-        }
-
         public static boolean calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {
         boolean flag=false;
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
@@ -147,7 +125,8 @@ public class Appointment_DB {
             System.out.println("Center's Share (70%): $" + centerEarnings);
             return  flag;
         }
-    public static void calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
+    public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
+        boolean flag=false;
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
         double totalEarnings = 0;
@@ -156,18 +135,18 @@ public class Appointment_DB {
             LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
             if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate)) {
                 if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    flag=true;
                     totalEarnings += SAWNA_SESSION_COST;
 
                 } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    flag=true;
                     totalEarnings += MASSAGE_SESSION_COST;
-
                 }
             }
         }
-
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-
         System.out.println("Total Center Earnings from " + startDateStr + " to " + endDateStr + ": $" + centerEarnings);
+        return  flag;
     }
 
 
