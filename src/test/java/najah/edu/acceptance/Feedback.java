@@ -1,7 +1,7 @@
 package najah.edu.acceptance;
 
-import Controller.ClientController;
-import database.Feedback_DB;
+import controller.ClientController;
+import database.FeedbackDB;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,7 +24,7 @@ public class Feedback {
     @When("I choose to submit feedback {string}")
     public void iChooseToSubmitFeedback(String string) {
         int id = 11;
-        Feedback_DB.addFeedback(string,11);
+        FeedbackDB.addFeedback(string,11);
     }
 
     @Then("my feedback should be submitted to the system")

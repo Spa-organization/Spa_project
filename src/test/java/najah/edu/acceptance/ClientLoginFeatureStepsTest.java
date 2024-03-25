@@ -3,18 +3,18 @@ package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import Controller.ClientController;
+import controller.ClientController;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Test;
 
 
-public class ClientLoginFeatureSteps {
- String pass="123";
- String id="11";
+public class ClientLoginFeatureStepsTest {
+ String pass;
+ String id;
 	ClientController app;
-	public ClientLoginFeatureSteps()
+	public ClientLoginFeatureStepsTest()
 	{
 	app=new ClientController();
 	}
@@ -34,14 +34,14 @@ public class ClientLoginFeatureSteps {
 	
 	@Then("the client is logged in the app successfully")
 	public void theClientIsLoggedInTheAppSuccessfully() {
-		app.loggIn_Check(id,pass);
+		app.loggInCheck(id,pass);
 		assertTrue(app.isLoggedIn());
 	}
 
 	@Then("the client will not login")
 
 	public void theClientWillNotLogin() {
-		app.loggIn_Check(id,pass);
+		app.loggInCheck(id,pass);
 		app.logout();
 		assertFalse(app.isLoggedIn());
 	}

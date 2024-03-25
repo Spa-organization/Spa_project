@@ -1,6 +1,6 @@
 package najah.edu.acceptance;
 
-import Controller.EmployeeController;
+import controller.EmployeeController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import static org.junit.Assert.assertFalse;

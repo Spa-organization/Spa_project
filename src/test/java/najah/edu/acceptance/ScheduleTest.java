@@ -1,6 +1,6 @@
 package najah.edu.acceptance;
 
-import Controller.EmployeeController;
+import controller.EmployeeController;
 import database.Appointment_DB;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,17 +11,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class schedule {
+public class ScheduleTest {
     EmployeeController employeeController;
     int choice;
     String start_date,end_date,id;
 
-    public schedule () {employeeController=new EmployeeController();}
+    public ScheduleTest () {employeeController=new EmployeeController();}
 
     @Given("I am logged in as an Employee")
     @Test
     public void iAmLoggedInAsAnEmployee() {
-        employeeController.loggIn_Check("31","123");
+        employeeController.loggInCheck("31","123");
+        assertTrue(employeeController.isLoggedIn());
     }
     @When("I choose to view my profit in specific month")
     @Test

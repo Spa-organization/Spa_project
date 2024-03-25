@@ -1,6 +1,6 @@
 package najah.edu.acceptance;
 
-import Controller.EmployeeController;
+import controller.EmployeeController;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,12 +10,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ServiceProviderLoginFeatureSteps {
+public class ServiceProviderLoginFeatureStepsTest {
     String pass;
     String id;
     EmployeeController app;
 
-    public ServiceProviderLoginFeatureSteps()
+    public ServiceProviderLoginFeatureStepsTest()
     {
         app= new EmployeeController();
 
@@ -36,14 +36,14 @@ public class ServiceProviderLoginFeatureSteps {
     }
     @Then("the service provider is logged in the app successfully")
     public void theServiceProviderIsLoggedInTheAppSuccessfully() {
-            app.loggIn_Check(id, pass);
+            app.loggInCheck(id, pass);
             assertTrue(app.isLoggedIn());
     }
 
         @Then("the service provider will not login")
         @Test
         public void theServiceProviderWillNotLogin() {
-            app.loggIn_Check(id, pass);
+            app.loggInCheck(id, pass);
                 assertFalse(app.isLoggedIn());
             }
         @Then("the message appear to tell the service provider what's wrong")

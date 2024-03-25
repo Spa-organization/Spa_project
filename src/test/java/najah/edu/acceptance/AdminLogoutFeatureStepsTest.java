@@ -3,19 +3,19 @@ package najah.edu.acceptance;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import Controller.AdminController;
+import controller.AdminController;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Test;
 
 
-public class AdminLogoutFeatureSteps {
+public class AdminLogoutFeatureStepsTest {
 
 	AdminController app;
-	public AdminLogoutFeatureSteps()
+	public AdminLogoutFeatureStepsTest()
 	{
-		app=new AdminController ();
+		app= AdminController.createAdminController();
 		app.login();
 	}
 @Given("the admin chose to sign out")

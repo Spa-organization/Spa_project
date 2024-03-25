@@ -6,9 +6,9 @@ import Entities.Client;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client_DB {
-	static List<Client> clients= new ArrayList<Client>();
-	private Client_DB() {
+public class ClientDB {
+	static List<Client> clients= new ArrayList<>();
+	private ClientDB() {
 		throw new IllegalStateException("Utility class");
 	}
 	static{
@@ -17,7 +17,7 @@ public class Client_DB {
 		clients.add(new Client("13","clint3","123"));
 		clients.add(new Client("14","clint4","123"));
 	}
-	public static boolean addClient(String id,String Name,String password) {
+	public static boolean addClient(String id,String name,String password) {
 		boolean flage = true;
 		for(Client client:clients){
 			if(client.getId().equals(id)){
@@ -26,7 +26,7 @@ public class Client_DB {
 			}
 		}
 		if(flage)
-			clients.add(new Client(id, Name,password));
+			clients.add(new Client(id, name,password));
 		return flage;
 	}
 
