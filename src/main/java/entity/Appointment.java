@@ -7,7 +7,7 @@ public class Appointment {
     private Room room;
     private String date;
     private String time;
-    private String type = employee.getWorkerType();
+
     private boolean booked = false;
 
     public Appointment( int id,Client client, Employee employee, Room room, String date, String time, boolean booked) {

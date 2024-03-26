@@ -1,6 +1,6 @@
 package controller;
 
-import database.EmployeeDB;
+
 
 import javax.mail.MessagingException;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ public class Starter {
     public void homePage() throws MessagingException {
         LOGGER.info("------------------------------");
         LOGGER.info("------------------------------");
-        EmployeeDB employee_db = EmployeeDB.createEmployeeDB();
+
         int choice;
 
         do {
