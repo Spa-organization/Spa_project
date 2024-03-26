@@ -43,6 +43,7 @@ public class ServiceProviderLoginFeatureStepsTest {
         @Then("the service provider will not login")
         @Test
         public void theServiceProviderWillNotLogin() {
+        id="31";
             app.loggInCheck(id, pass);
                 assertFalse(app.isLoggedIn());
             }

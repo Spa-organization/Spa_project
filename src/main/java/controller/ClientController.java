@@ -101,7 +101,9 @@ public class ClientController {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         int choice;
-        LOGGER.info("""
+
+        do {
+            LOGGER.info("""
                 ==== Customer Menu ====
                 1. Book Appointment
                 2. Show My Appointments
@@ -109,8 +111,7 @@ public class ClientController {
                 4. Cancel My Appointments
                 5. Feedback
                 6. Logout""");
-        LOGGER.info("Enter your choice:");
-        do {
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
 
             switch (choice) {
