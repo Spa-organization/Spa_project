@@ -203,7 +203,7 @@ public class AdminController {
     }
     public void print(int id,Employee employee ){
 
-        if(employee.getRooms().getFirst().getRoomNumber() == id)
+        if(employee.getRooms().get(0).getRoomNumber() == id)
         {
             LOGGER.info(COPY);
             LOGGER.info("The employee is already assigned to this room");
@@ -212,7 +212,7 @@ public class AdminController {
         else
         {
             LOGGER.info(COPY);
-            LOGGER.info("The employee is already assigned to a different room: " + employee.getRooms().getFirst().getRoomNumber());
+            LOGGER.info("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber());
             LOGGER.info(COPY);
         }
 

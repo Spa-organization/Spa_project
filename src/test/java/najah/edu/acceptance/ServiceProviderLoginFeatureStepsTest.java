@@ -44,6 +44,7 @@ public class ServiceProviderLoginFeatureStepsTest {
         @Test
         public void theServiceProviderWillNotLogin() {
         id="31";
+        pass="321";
             app.loggInCheck(id, pass);
                 assertFalse(app.isLoggedIn());
             }

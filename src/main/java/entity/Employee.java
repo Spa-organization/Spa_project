@@ -38,7 +38,7 @@ public class Employee {
         this.workerType = workerType;
     }
     public Room getRoom(){
-        return rooms.getFirst();
+        return rooms.get(0);
     }
     public void addRoomToEmployee(Room room){
         this.rooms.add(room);

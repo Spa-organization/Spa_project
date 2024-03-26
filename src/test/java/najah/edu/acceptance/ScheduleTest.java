@@ -39,6 +39,9 @@ public class ScheduleTest {
     @Then("the profit of employee will calculated")
     @Test
     public void theProfitOfEmployeeWillCalculated() {
+        id="31";
+        start_date="01/03/2012";
+        end_date="01/04/2012";
         assertTrue(AppointmentDb.calculateEarningsForEmployeeInRange(id,start_date,end_date));
 
     }
@@ -49,6 +52,7 @@ public class ScheduleTest {
     }
 
     @Then("the appointment of this employee will shown")
+    @Test
     public void theAppointmentOfThisEmployeeWillShown() {
         employeeController.showEmployeeAppointments();
     }

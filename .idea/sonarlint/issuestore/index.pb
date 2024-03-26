@@ -65,3 +65,5 @@ h
 0src/test/java/najah/edu/acceptance/Feedback.java,b\b\bb652f93f596627bbd25fc89e0220ac301def77a
 |
 Lsrc/test/java/najah/edu/acceptance/ServiceProviderLoginFeatureStepsTest.java,f\4\f4afb841168efe84e7daefdf9a00eaf15ceadde7
+R
+"Myfeatures/AdminManagement.feature,a\0\a00c099bc864a0652789e5d6e96b1c9a2ded4904
