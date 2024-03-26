@@ -3,16 +3,20 @@ package database;
 import Entities.Appointment;
 import Entities.Client;
 import Entities.Employee;
+import controller.AdminController;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Appointment_DB {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final Logger LOGGER = Logger.getLogger(Appointment_DB.class.getName());
+
     public static final double SAWNA_SESSION_COST = 200.0; // Example cost
     public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
     public static final double EMPLOYEE_PERCENTAGE = 0.30;
@@ -120,9 +124,9 @@ public class Appointment_DB {
             }
             double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
             double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-            System.out.println("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings);
-            System.out.println("Employee's Share (30%): $" + employeeEarnings);
-            System.out.println("Center's Share (70%): $" + centerEarnings);
+            LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings);
+            LOGGER.info("Employee's Share (30%): $" + employeeEarnings);
+            LOGGER.info("Center's Share (70%): $" + centerEarnings);
             return  flag;
         }
     public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
@@ -145,7 +149,7 @@ public class Appointment_DB {
             }
         }
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-        System.out.println("Total Center Earnings from " + startDateStr + " to " + endDateStr + ": $" + centerEarnings);
+        LOGGER.info("Total Center Earnings from " + startDateStr + " to " + endDateStr + ": $" + centerEarnings);
         return  flag;
     }
 

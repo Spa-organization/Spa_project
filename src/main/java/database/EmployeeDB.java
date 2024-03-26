@@ -10,7 +10,7 @@ import java.util.List;
 
 public class EmployeeDB {
     static List<Employee> employees = new ArrayList<>();
-    public EmployeeDB() {
+    private EmployeeDB() {
 
     }
     static{
@@ -70,5 +70,7 @@ public class EmployeeDB {
         return null;
     }
 
-
+    public static EmployeeDB createEmployeeDB() {
+        return new EmployeeDB();
+    }
 }

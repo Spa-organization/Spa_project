@@ -1,7 +1,10 @@
 package controller;
 
 import Entities.*;
+import basic.EmailSender;
 import database.*;
+
+import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -10,7 +13,7 @@ public class AdminController {
 
     private static final String COPY="-----------------------------------";
     private static final Logger LOGGER = Logger.getLogger(AdminController.class.getName());
-    
+    EmailSender email;
     private  boolean isLoggedIn;
     Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
@@ -48,7 +51,7 @@ public class AdminController {
         }
     }
 
-    public void loginPage(){
+    public void loginPage() throws MessagingException {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         LOGGER.info("=== Admin Login ===");
@@ -62,7 +65,7 @@ public class AdminController {
         }
     }
 
-    public void adminHomePage(){
+    public void adminHomePage() throws MessagingException {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         int choice;
@@ -116,7 +119,7 @@ public class AdminController {
     }
 
 
-    public void addRoom(){
+    public void addRoom() throws MessagingException {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         int roomType;
@@ -149,35 +152,20 @@ public class AdminController {
             }
         } while (roomType != 4);
     }
-    public void addSawnaRoom(){
+    public void addSawnaRoom() throws MessagingException {
         LOGGER.info("""
                 -----------------------------------
-                -----------------------------------
-                Enter Room ID:
-                """);
+                -----------------------------------""");
+        LOGGER.info("Enter Room ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
         LOGGER.info("Enter Employee ID to manage the new: ");
         String employeeId = scanner.next();
         Employee employee= EmployeeDB.getEmployeeById(employeeId);
-            int ref=employee.getRooms().getFirst().getRoomNumber();
-
-
         if(employee!=null){
             if(!employee.getRooms().isEmpty())
             {
-                if(ref == id)
-                {
-                    LOGGER.info(COPY);
-                    LOGGER.info("The employee is already assigned to this room");
-                    LOGGER.info(COPY);
-                }
-                else
-                {
-                    LOGGER.info(COPY);
-                    LOGGER.info("The employee is already assigned to a different room: " + employee.getRooms().getFirst().getRoomNumber());
-                    LOGGER.info(COPY);
-                }
+               print(id,employee);
             }
 
             else if(employee.getWorkerType().equalsIgnoreCase("Sawna")){
@@ -187,6 +175,8 @@ public class AdminController {
                     LOGGER.info(COPY);
                 }
                 else {
+                    email=new EmailSender();
+                    email.spaOrganizer("qsay.3w@gmail.com");
                     LOGGER.info(COPY);
                     LOGGER.info("Sawna Room Added");
                     LOGGER.info(COPY);
@@ -198,11 +188,26 @@ public class AdminController {
                 LOGGER.info(COPY);
             }
         }else{
-                        LOGGER.info(COPY);
+         LOGGER.info(COPY);
+         LOGGER.info("employee not found!!");
+         LOGGER.info(COPY);
+        }
+    }
+    public void print(int id,Employee employee ){
 
-            LOGGER.info("employee not found!!");
+        if(employee.getRooms().getFirst().getRoomNumber() == id)
+        {
+            LOGGER.info(COPY);
+            LOGGER.info("The employee is already assigned to this room");
             LOGGER.info(COPY);
         }
+        else
+        {
+            LOGGER.info(COPY);
+            LOGGER.info("The employee is already assigned to a different room: " + employee.getRooms().getFirst().getRoomNumber());
+            LOGGER.info(COPY);
+        }
+
     }
     public void addMassageRoom(){
         LOGGER.info(COPY);
@@ -216,18 +221,7 @@ public class AdminController {
         if(employee!=null){
             if(!employee.getRooms().isEmpty())
             {
-                if(employee.getRooms().getFirst().getRoomNumber() == id)
-                {
-                    LOGGER.info(COPY);
-                    LOGGER.info("The employee is already assigned to this room");
-                    LOGGER.info(COPY);
-                }
-                else
-                {
-                    LOGGER.info(COPY);
-                    LOGGER.info("The employee is already assigned to a different room: " + employee.getRooms().getFirst().getRoomNumber());
-                    LOGGER.info(COPY);
-                }
+                print(id,employee);
             }
             if(employee.getWorkerType().equalsIgnoreCase("Massage")){//
                 if(!RoomDb.addRoom(employee, id)){
