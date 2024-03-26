@@ -43,3 +43,9 @@ k
 ;src/test/java/najah/edu/acceptance/AdminManagementTest.java,a\f\af339469897ebd2219921c49f854793a829c0e2e
 N
 src/main/java/entity/Room.java,3\4\342b0de06a40284ba08aaae9adffd7fa8986eab0
+O
+Myfeatures/Admin_SignIn.feature,4\4\446dcf8f25cc9677206e025523d576986e9da358
+O
+Myfeatures/SendingEmail.feature,1\a\1abf261a37f2137582b4bcfb0b730de070e1ab4e
+f
+6src/test/java/najah/edu/acceptance/AcceptanceTest.java,4\6\46167c098e7c7e82c6b212aedea229b0821f9ac5
