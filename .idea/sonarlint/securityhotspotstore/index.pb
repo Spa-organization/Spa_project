@@ -55,3 +55,5 @@ r
 Bsrc/test/java/najah/edu/acceptance/AdminLoginFeatureStepsTest.java,1\3\1340fc559a1d68879a2ea12a8ab35ee15ae929f1
 s
 Csrc/test/java/najah/edu/acceptance/AdminLogoutFeatureStepsTest.java,c\8\c882e7c31106ebc3cf427566be43812d6c37acf3
+s
+Csrc/test/java/najah/edu/acceptance/ClientLoginFeatureStepsTest.java,2\d\2d116fe77d3190c9d2ecab1fd750444805bf1711
