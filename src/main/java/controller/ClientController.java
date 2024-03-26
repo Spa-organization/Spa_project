@@ -113,7 +113,7 @@ public class ClientController {
                 6. Logout""");
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
-
+//
             switch (choice) {
                 case 1:
                     bookAppointment();

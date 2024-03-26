@@ -25,14 +25,6 @@ T
 $src/main/java/database/ClientDB.java,d\c\dc9c84c65aeecb6fbae3376515e5c90396b62a4c
 V
 &src/main/java/database/EmployeeDB.java,4\c\4c873686a52bc3d62f6c89778831aad12d037027
-Q
-!src/main/java/Entities/Admin.java,4\8\488b8b1fabbbc375d9e98ac27c838081b05ab6d4
-W
-'src/main/java/Entities/Appointment.java,9\8\989066f5205d7d59fcb74c7009bb8b991a94e240
-X
-(src/main/java/Entities1/Appointment.java,0\1\01101bab32e9e57bca9b6b5918ef65e6a7ecf0cc
-R
-"src/main/java/Entities1/Admin.java,3\7\378d12ac43a3d775e94e4a594c41255275a72e63
 U
 %src/main/java/entity/Appointment.java,4\c\4c98a7aa585455ad2af6efe210a843c9d4ddb6c0
 O
