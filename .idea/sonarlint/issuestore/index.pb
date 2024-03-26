@@ -49,3 +49,9 @@ O
 Myfeatures/SendingEmail.feature,1\a\1abf261a37f2137582b4bcfb0b730de070e1ab4e
 f
 6src/test/java/najah/edu/acceptance/AcceptanceTest.java,4\6\46167c098e7c7e82c6b212aedea229b0821f9ac5
+|
+Lsrc/test/java/najah/edu/acceptance/ServiceProviderLoginFeatureStepsTest.java,f\4\f4afb841168efe84e7daefdf9a00eaf15ceadde7
+r
+Bsrc/test/java/najah/edu/acceptance/AdminLoginFeatureStepsTest.java,1\3\1340fc559a1d68879a2ea12a8ab35ee15ae929f1
+s
+Csrc/test/java/najah/edu/acceptance/AdminLogoutFeatureStepsTest.java,c\8\c882e7c31106ebc3cf427566be43812d6c37acf3
