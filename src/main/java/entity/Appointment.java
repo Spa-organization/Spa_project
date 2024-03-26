@@ -7,7 +7,7 @@ public class Appointment {
     private Room room;
     private String date;
     private String time;
-    private String type = employee.getWorkerType();
+
     private boolean booked = false;
 
     public Appointment( int id,Client client, Employee employee, Room room, String date, String time, boolean booked) {
@@ -68,13 +68,7 @@ public class Appointment {
         this.time = time;
     }
 
-   // public String getServiceType() {
-    //    return ServiceType;
-    //}
 
-//    public void setServiceType(String serviceType) {
-  //      ServiceType = serviceType;
-   // }
 
     public boolean isBooked() {
         return booked;
