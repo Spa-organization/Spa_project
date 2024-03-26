@@ -78,6 +78,7 @@ public class AdminManagementTest {
     @Then("the massage room should be added to the system")
     @Test
     public void theMassageRoomShouldBeAddedToTheSystem() {
+        assertNotNull(emp_id);
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
         Employee employee = EmployeeDB.getEmployeeById(emp_id);
         assertNotNull(employee);
