@@ -4,15 +4,19 @@
   <artifactId>WeddingPlanner</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-
     <properties>
-        <sonar.organization>spaorganization</sonar.organization>
+
+            <sonar.organization>spa-organization</sonar.organization>
             <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.21</maven.compiler.source>
         <maven.compiler.target>1.21</maven.compiler.target>
+
     </properties>
+
   <dependencies>
+
 
 <dependency>
     <groupId>io.cucumber</groupId>
@@ -27,7 +31,11 @@
     <artifactId>cucumber-java</artifactId>
     <version>7.16.1</version>
 </dependency>
-
+      <dependency>
+          <groupId>com.sun.mail</groupId>
+          <artifactId>javax.mail</artifactId>
+          <version>1.6.2</version>
+      </dependency>
 
 <dependency>
     <groupId>io.cucumber</groupId>
@@ -40,6 +48,7 @@
   </dependencies>
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>

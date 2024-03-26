@@ -2,6 +2,7 @@ package controller;
 
 import database.EmployeeDB;
 
+import javax.mail.MessagingException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -11,10 +12,10 @@ public class Starter {
     private static final Logger LOGGER = Logger.getLogger(Starter.class.getName());
     Scanner scanner= new Scanner(System.in);
 
-    public void homePage(){
+    public void homePage() throws MessagingException {
         LOGGER.info("------------------------------");
         LOGGER.info("------------------------------");
-        EmployeeDB employee_db =new EmployeeDB();
+        EmployeeDB employee_db = EmployeeDB.createEmployeeDB();
         int choice;
 
         do {
@@ -45,7 +46,7 @@ public class Starter {
 
     }
 
-    public void choseEntity(){
+    public void choseEntity() throws MessagingException {
         int choice;
 
         do {
@@ -57,6 +58,7 @@ public class Starter {
                     2. Login as Customer
                     3. Login as Employee
                     4. Exit""");
+
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {

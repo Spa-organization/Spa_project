@@ -1,31 +1,31 @@
-package Entities;
+package entity;
 
 public class Appointment {
-     int AppointmentID;
+     int appointmentId;
     private  Client client = new Client();
     private  Employee employee = new Employee();
     private Room room;
-    private String Date;
+    private String date;
     private String time;
-    private String ServiceType = employee.getWorkerType();
-    private boolean Booked= false;
+    private String type = employee.getWorkerType();
+    private boolean booked = false;
 
     public Appointment( int id,Client client, Employee employee, Room room, String date, String time, boolean booked) {
-        AppointmentID=id;
+        appointmentId =id;
         this.client = client;
         this.employee = employee;
         this.room = room;
-        Date = date;
+        this.date = date;
         this.time = time;
-        Booked = booked;
+        this.booked = booked;
     }
 
     public int getAppointmentID() {
-        return AppointmentID;
+        return appointmentId;
     }
 
     public void setAppointmentID(int appointmentID) {
-        AppointmentID = appointmentID;
+        appointmentId = appointmentID;
     }
 
     public Client getClient() {
@@ -53,11 +53,11 @@ public class Appointment {
     }
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.date = date;
     }
 
     public String getTime() {
@@ -77,11 +77,11 @@ public class Appointment {
    // }
 
     public boolean isBooked() {
-        return Booked;
+        return booked;
     }
 
     public void setBooked(boolean booked) {
-        Booked = booked;
+        this.booked = booked;
     }
 
 }

@@ -1,6 +1,6 @@
 package controller;
 
-import Entities.*;
+import entity.*;
 import database.Appointment_DB;
 import database.ClientDB;
 import database.FeedbackDB;
@@ -18,11 +18,11 @@ public class ClientController {
      Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
     static int id;
-    private  boolean logUp;
-
+    private boolean logUp;
 
     public ClientController() {
         isLoggedIn = false;
+        logUp=false;
     }
 
     public boolean isLoggedIn() {
@@ -101,10 +101,7 @@ public class ClientController {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         int choice;
-
-
-        do {
-            LOGGER.info("""
+        LOGGER.info("""
                 ==== Customer Menu ====
                 1. Book Appointment
                 2. Show My Appointments
@@ -112,7 +109,8 @@ public class ClientController {
                 4. Cancel My Appointments
                 5. Feedback
                 6. Logout""");
-            LOGGER.info("Enter your choice:");
+        LOGGER.info("Enter your choice:");
+        do {
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -172,9 +170,8 @@ public class ClientController {
         } while (appointmentType!=3);
     }
     public void bookMassage(String type){
-                    LOGGER.info(COPY);
-
-                    LOGGER.info(COPY);
+        LOGGER.info(COPY);
+        LOGGER.info(COPY);
 
         LOGGER.info("Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
@@ -215,7 +212,11 @@ public class ClientController {
             return ;
         }
         else if(!Appointment_DB.isValidTime(timeInput))
-        {addAppointmentResult(2); return ; }
+        {
+            addAppointmentResult(1);
+            return ;}
+
+
         List<Employee> employees=Appointment_DB.checkAvailability(dateInput,timeInput,type);
         if(!employees.isEmpty()){
 
@@ -230,18 +231,18 @@ public class ClientController {
         }
     }
     public void showClientAppointments(){
-                    LOGGER.info(COPY);
-                    LOGGER.info(COPY);
+        LOGGER.info(COPY);
+        LOGGER.info(COPY);
         List<Appointment> clientAppointments;
         clientAppointments = Appointment_DB.getUserAppointments(this.client);
         for( Appointment appointment: clientAppointments){
-                        LOGGER.info(SHORT_LINE);
-                        LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
-                        LOGGER.info("Type: "+appointment.getEmployee().getWorkerType());
-                        LOGGER.info("Date: "+appointment.getDate());
-                        LOGGER.info("Time: "+appointment.getTime());
-                        LOGGER.info("Room Number: "+appointment.getRoom().getRoomNumber());
-                        LOGGER.info(SHORT_LINE);
+            LOGGER.info(SHORT_LINE);
+            LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
+            LOGGER.info("Type: "+appointment.getEmployee().getWorkerType());
+            LOGGER.info("Date: "+appointment.getDate());
+            LOGGER.info("Time: "+appointment.getTime());
+            LOGGER.info("Room Number: "+appointment.getRoom().getRoomNumber());
+            LOGGER.info(SHORT_LINE);
 
         }
 

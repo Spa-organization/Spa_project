@@ -1,7 +1,7 @@
 package database;
 
-import Entities.Employee;
-import Entities.Room;
+import entity.Employee;
+import entity.Room;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package controller;
 
-import Entities.Appointment;
-import Entities.Employee;
+import entity.Appointment;
+import entity.Employee;
 import database.Appointment_DB;
 import database.EmployeeDB;
 import java.util.List;
