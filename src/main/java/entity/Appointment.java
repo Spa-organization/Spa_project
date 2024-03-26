@@ -68,13 +68,7 @@ public class Appointment {
         this.time = time;
     }
 
-   // public String getServiceType() {
-    //    return ServiceType;
-    //}
 
-//    public void setServiceType(String serviceType) {
-  //      ServiceType = serviceType;
-   // }
 
     public boolean isBooked() {
         return booked;
