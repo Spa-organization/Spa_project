@@ -1,7 +1,7 @@
 package najah.edu.acceptance;
 
 import controller.EmployeeController;
-import database.Appointment_DB;
+import database.AppointmentDb;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,7 +39,7 @@ public class ScheduleTest {
     @Then("the profit of employee will calculated")
     @Test
     public void theProfitOfEmployeeWillCalculated() {
-        assertTrue(Appointment_DB.calculateEarningsForEmployeeInRange(id,start_date,end_date));
+        assertTrue(AppointmentDb.calculateEarningsForEmployeeInRange(id,start_date,end_date));
 
     }
 

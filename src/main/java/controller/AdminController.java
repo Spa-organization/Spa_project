@@ -3,16 +3,18 @@ package controller;
 import entity.*;
 import basic.EmailSender;
 import database.*;
-
-import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class AdminController {
+    Employee employee=new Employee();
+    private static final String SHORT_LINE ="--------------------";
 
     private static final String COPY="-----------------------------------";
     private static final Logger LOGGER = Logger.getLogger(AdminController.class.getName());
+    String subject;
+    String text;
     EmailSender email;
     private  boolean isLoggedIn;
     Admin admin = new Admin();
@@ -51,7 +53,7 @@ public class AdminController {
         }
     }
 
-    public void loginPage() throws MessagingException {
+    public void loginPage()  {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         LOGGER.info("=== Admin Login ===");
@@ -65,7 +67,7 @@ public class AdminController {
         }
     }
 
-    public void adminHomePage() throws MessagingException {
+    public void adminHomePage()  {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         int choice;
@@ -77,11 +79,11 @@ public class AdminController {
                     3. View Appointments
                     4. View Finance
                     5. Add Admin
-                    6. Show All Rooms
-                    7. View Feedbacks
-                    8. view CenterEarningsForRange
-                    9. logout
-                    """);
+                    6.delete Employee
+                    7. Show All Rooms
+                    8. View Feedbacks
+                    9. view CenterEarningsForRange
+                    10. logout""");
             LOGGER.info("Enter your choice: ");
             choice = scanner.nextInt();
 
@@ -102,14 +104,17 @@ public class AdminController {
                     addAdmin();
                     break;
                 case 6:
+                    //delete employee
+                    break;
+                case 7:
                     showALlRooms();
                     break;
-                case 7 :
+                case 8 :
                     viewFeedbacks();
                     break;
-                case 8:viewCenterEarningsForRange();
+                case 9:viewCenterEarningsForRange();
                     break;
-                case 9:LOGGER.info("Logging out. Goodbye!");break;
+                case 10:LOGGER.info("Logging out. Goodbye!");break;
                 default:
                     LOGGER.info("Invalid choice. Please try again.");
             }
@@ -119,7 +124,7 @@ public class AdminController {
     }
 
 
-    public void addRoom() throws MessagingException {
+    public void addRoom()  {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         int roomType;
@@ -152,7 +157,7 @@ public class AdminController {
             }
         } while (roomType != 4);
     }
-    public void addSawnaRoom() throws MessagingException {
+    public void addSawnaRoom() {
         LOGGER.info("""
                 -----------------------------------
                 -----------------------------------""");
@@ -175,8 +180,11 @@ public class AdminController {
                     LOGGER.info(COPY);
                 }
                 else {
-                    email=new EmailSender();
-                    email.spaOrganizer("qsay.3w@gmail.com");
+                    email=new EmailSender("qsay.3w@gmail.com");
+                    subject="Sawna Room Added";
+                    text="confirm";
+                    email.sendEmail(subject,text);
+
                     LOGGER.info(COPY);
                     LOGGER.info("Sawna Room Added");
                     LOGGER.info(COPY);
@@ -248,7 +256,7 @@ public class AdminController {
             LOGGER.info("-----------------------");
         }
     }
-    public void showAllEmployees(){
+    public static void showAllEmployees(){
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         List<Employee> employees;
@@ -288,7 +296,7 @@ public class AdminController {
         LOGGER.info(COPY);
         LOGGER.info("=== All Appointments ===");
         List<Appointment> appointments;
-        appointments = Appointment_DB.getAllAppointments();
+        appointments = AppointmentDb.getAllAppointments();
         for(Appointment appointment:appointments){
             LOGGER.info("---------");
             LOGGER.info(" type: "+appointment.getEmployee().getWorkerType());
@@ -355,7 +363,7 @@ public class AdminController {
         String date = scanner.nextLine();
         LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
-        Appointment_DB.calculateEarningsForEmployeeInRange(employeeId, date,date2);
+        AppointmentDb.calculateEarningsForEmployeeInRange(employeeId, date,date2);
     }
 
     public void viewCenterEarningsForRange() {
@@ -366,11 +374,8 @@ public class AdminController {
         LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
         LOGGER.info("\n");
-         Appointment_DB.calculateTotalCenterEarningsInRange(date,date2);
+        AppointmentDb.calculateTotalCenterEarningsInRange(date,date2);
     }
-
-
-
 
 
 }

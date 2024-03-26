@@ -2,13 +2,15 @@ package controller;
 
 import entity.Appointment;
 import entity.Employee;
-import database.Appointment_DB;
+import database.AppointmentDb;
 import database.EmployeeDB;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class EmployeeController {
+    private static final String SHORT_LINE ="--------------------";
     private static final Logger LOGGER = Logger.getLogger(EmployeeController.class.getName());
     private static final String COPY="------------------------------";
     private boolean isLoggedIn;
@@ -87,7 +89,7 @@ public class EmployeeController {
                     String date = scanner.nextLine();
                     LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
                     String date2 = scanner.nextLine();
-                    Appointment_DB.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
+                    AppointmentDb.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
                     break;
                 case 3:
                     LOGGER.info("Logging out. Goodbye!");
@@ -104,17 +106,19 @@ public class EmployeeController {
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         List<Appointment> employeeAppointments;
-        employeeAppointments = Appointment_DB.getEmployeeAppointments(this.employee);
+        employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
         for( Appointment appointment: employeeAppointments){
-            LOGGER.info("--------------------");
+            LOGGER.info(SHORT_LINE);
             LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
             LOGGER.info("Type: "+appointment.getEmployee().getWorkerType());
             LOGGER.info("Date: "+appointment.getDate());
             LOGGER.info("Time: "+appointment.getTime());
             LOGGER.info("Room Number: "+appointment.getRoom().getRoomNumber());
-            LOGGER.info("--------------------");
+            LOGGER.info(SHORT_LINE);
         }
 
     }
-}
+
+
+    }
 

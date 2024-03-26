@@ -15,8 +15,6 @@ M
 .src/main/java/controller/ClientController.java,f\4\f41d4dd69474daa57ed89294aa03d2e043516511
 U
 %src/main/java/controller/Starter.java,a\9\a94c876d6d72287c96c2404e33b50e70bfe25b89
-Z
-*src/main/java/database/Appointment_DB.java,6\8\68ba6946deafd4250724e17ee48b0fa6fb8ea22b
 `
 0src/main/java/controller/EmployeeController.java,3\7\37b0cfd5c036d0c80be65dfaf00a6ebb1cd21535
 S
@@ -25,14 +23,6 @@ T
 $src/main/java/database/ClientDB.java,d\c\dc9c84c65aeecb6fbae3376515e5c90396b62a4c
 V
 &src/main/java/database/EmployeeDB.java,4\c\4c873686a52bc3d62f6c89778831aad12d037027
-Q
-!src/main/java/Entities/Admin.java,4\8\488b8b1fabbbc375d9e98ac27c838081b05ab6d4
-W
-'src/main/java/Entities/Appointment.java,9\8\989066f5205d7d59fcb74c7009bb8b991a94e240
-X
-(src/main/java/Entities1/Appointment.java,0\1\01101bab32e9e57bca9b6b5918ef65e6a7ecf0cc
-R
-"src/main/java/Entities1/Admin.java,3\7\378d12ac43a3d775e94e4a594c41255275a72e63
 U
 %src/main/java/entity/Appointment.java,4\c\4c98a7aa585455ad2af6efe210a843c9d4ddb6c0
 O
@@ -51,3 +41,27 @@ k
 ;src/test/java/najah/edu/acceptance/AdminManagementTest.java,a\f\af339469897ebd2219921c49f854793a829c0e2e
 N
 src/main/java/entity/Room.java,3\4\342b0de06a40284ba08aaae9adffd7fa8986eab0
+j
+:src/test/java/najah/edu/acceptance/ManageSessionsTest.java,6\e\6eefd5c90b6c2a6b8837bd29ebb33c1012861841
+d
+4src/test/java/najah/edu/acceptance/ScheduleTest.java,9\1\91c0dafd9f4bfa2a784dd78660531b37cce37ba3
+Y
+)src/main/java/database/AppointmentDb.java,3\d\3d2269640eb275e0b964d38d9c9c8b6ba0d4ee06
+f
+6src/test/java/najah/edu/acceptance/AcceptanceTest.java,4\6\46167c098e7c7e82c6b212aedea229b0821f9ac5
+O
+Myfeatures/Admin_SignIn.feature,4\4\446dcf8f25cc9677206e025523d576986e9da358
+K
+Myfeatures/schedule.feature,e\d\edb8657eec91e6f09302f9ddeafd4f50bc89a63f
+r
+Bsrc/test/java/najah/edu/acceptance/AdminLoginFeatureStepsTest.java,1\3\1340fc559a1d68879a2ea12a8ab35ee15ae929f1
+s
+Csrc/test/java/najah/edu/acceptance/AdminLogoutFeatureStepsTest.java,c\8\c882e7c31106ebc3cf427566be43812d6c37acf3
+s
+Csrc/test/java/najah/edu/acceptance/ClientLoginFeatureStepsTest.java,2\d\2d116fe77d3190c9d2ecab1fd750444805bf1711
+h
+8src/test/java/najah/edu/acceptance/ClientsignupTest.java,9\d\9d61f76daf44f7b3b820eeb6b341d9d0c3e1a806
+`
+0src/test/java/najah/edu/acceptance/Feedback.java,b\b\bb652f93f596627bbd25fc89e0220ac301def77a
+|
+Lsrc/test/java/najah/edu/acceptance/ServiceProviderLoginFeatureStepsTest.java,f\4\f4afb841168efe84e7daefdf9a00eaf15ceadde7

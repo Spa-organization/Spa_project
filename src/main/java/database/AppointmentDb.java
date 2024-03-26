@@ -3,7 +3,6 @@ package database;
 import entity.Appointment;
 import entity.Client;
 import entity.Employee;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,9 +11,9 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Appointment_DB {
+public class AppointmentDb {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final Logger LOGGER = Logger.getLogger(Appointment_DB.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(AppointmentDb.class.getName());
 
     public static final double SAWNA_SESSION_COST = 200.0; // Example cost
     public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
@@ -22,13 +21,13 @@ public class Appointment_DB {
     public static final double CENTER_PERCENTAGE = 0.70;
 
    public static List<Appointment> appointments= new ArrayList<>();
-    private Appointment_DB() {
+    private AppointmentDb() {
         throw new IllegalStateException("Utility class");
     }
     static {
-        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(2,ClientDB.clients.get(1),EmployeeDB.employees.get(1), EmployeeDB.employees.get(1).getRoom(),"01/09/2012","09:00",true));
-        appointments.add(new Appointment(3,ClientDB.clients.get(2),EmployeeDB.employees.get(2), EmployeeDB.employees.get(2).getRoom(),"01/09/2012","09:00",true));
+        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/03/2012","10:00",true));
+        appointments.add(new Appointment(2,ClientDB.clients.get(1),EmployeeDB.employees.get(1), EmployeeDB.employees.get(1).getRoom(),"01/09/2012","10:00",true));
+        appointments.add(new Appointment(3,ClientDB.clients.get(2),EmployeeDB.employees.get(2), EmployeeDB.employees.get(2).getRoom(),"02/09/2012","09:00",true));
         appointments.add(new Appointment(4,ClientDB.clients.get(3),EmployeeDB.employees.get(3), EmployeeDB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
         EmployeeDB.employees.get(0).setAppointment(appointments.get(0));
         EmployeeDB.employees.get(1).setAppointment(appointments.get(1));
@@ -40,15 +39,15 @@ public class Appointment_DB {
         if(!isValidDate(date)) return 2;
         if(!isValidTime(time)) return 1;
         appointments.add(new Appointment(id,client,employee,employee.getRoom(),date,time,true));
-        employee.setAppointment(appointments.get(appointments.size()-1));
+        employee.setAppointment(appointments.getLast());
         return 0;
     }
     public static List<Appointment> getAllAppointments(){
         return appointments;
     }
-    public static List<Employee> checkAvailability(String Date, String Time,String type){
+    public static List<Employee> checkAvailability(String date, String time,String type){
 
-        return EmployeeDB.getEmployeeAtTime(Date,Time,type);
+        return EmployeeDB.getEmployeeAtTime(date,time,type);
     }
     public static  List<Appointment> getUserAppointments(Client client){
         List<Appointment> clientAppointments= new ArrayList<>();
@@ -106,7 +105,7 @@ public class Appointment_DB {
             LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
             double totalEarnings = 0;
 
-            for (Appointment appointment : Appointment_DB.getAllAppointments()) {
+            for (Appointment appointment : AppointmentDb.getAllAppointments()) {
                 LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
                     if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
@@ -134,7 +133,7 @@ public class Appointment_DB {
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
         double totalEarnings = 0;
 
-        for (Appointment appointment : Appointment_DB.getAllAppointments()) {
+        for (Appointment appointment : AppointmentDb.getAllAppointments()) {
             LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
             if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate)) {
                 if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {

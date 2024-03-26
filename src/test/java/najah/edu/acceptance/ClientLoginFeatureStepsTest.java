@@ -36,9 +36,9 @@ public class ClientLoginFeatureStepsTest {
 	@Test
 	public void theClientIsLoggedInTheAppSuccessfully() {
 	id="11";
-		pass="123";
-		app.loggInCheck(id,pass);
-		assertTrue(app.isLoggedIn());
+	pass="123";
+	app.loggInCheck(id,pass);
+	assertTrue(app.isLoggedIn());
 	}
 
 	@Then("the client will not login")

@@ -1,7 +1,7 @@
 package controller;
 
 import entity.*;
-import database.Appointment_DB;
+import database.AppointmentDb;
 import database.ClientDB;
 import database.FeedbackDB;
 import database.RoomDb;
@@ -179,10 +179,10 @@ public class ClientController {
 
         LOGGER.info("Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
-        if(!Appointment_DB.isValidDate(dateInput)) {addAppointmentResult(2); return;}
-        else if(!Appointment_DB.isValidTime(timeInput)) {addAppointmentResult(1); return;}
+        if(!AppointmentDb.isValidDate(dateInput)) {addAppointmentResult(2); return;}
+        else if(!AppointmentDb.isValidTime(timeInput)) {addAppointmentResult(1); return;}
 
-        List<Employee> employees=Appointment_DB.checkAvailability(dateInput,timeInput,type);
+        List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
         if(!employees.isEmpty()){
             showAvailableRooms(employees,dateInput,timeInput);
         }
@@ -206,35 +206,25 @@ public class ClientController {
         String dateInput = scanner.nextLine();
        LOGGER.info("Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
-        if(!Appointment_DB.isValidDate(dateInput))
-        {
-            addAppointmentResult(2);
-            return ;
-        }
-        else if(!Appointment_DB.isValidTime(timeInput))
-        {
-            addAppointmentResult(1);
-            return ;}
+        if(!AppointmentDb.isValidDate(dateInput))
+        {addAppointmentResult(2);return ;}
+        else if(!AppointmentDb.isValidTime(timeInput))
+        {addAppointmentResult(1);return ;}
 
+        List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
+        if(!employees.isEmpty()){showAvailableRooms(employees,dateInput,timeInput);}
 
-        List<Employee> employees=Appointment_DB.checkAvailability(dateInput,timeInput,type);
-        if(!employees.isEmpty()){
-
-            showAvailableRooms(employees,dateInput,timeInput);
-        }
         else{
-                       LOGGER.info(COPY);
 
+            LOGGER.info(COPY);
             LOGGER.info("NO Available Rooms In This Time");
-                       LOGGER.info(COPY);
-
-        }
+            LOGGER.info(COPY);}
     }
     public void showClientAppointments(){
         LOGGER.info(COPY);
         LOGGER.info(COPY);
         List<Appointment> clientAppointments;
-        clientAppointments = Appointment_DB.getUserAppointments(this.client);
+        clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for( Appointment appointment: clientAppointments){
             LOGGER.info(SHORT_LINE);
             LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
@@ -281,7 +271,7 @@ public class ClientController {
         if(roomNumber!=0){
             Room room= RoomDb.getRoomById(roomNumber);
             if(room!=null){
-                addAppointmentResult( Appointment_DB.addAppointment(id,this.client,dateInput,timeInput,room.getEmployee()));
+                addAppointmentResult( AppointmentDb.addAppointment(id,this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
         else{
@@ -292,6 +282,7 @@ public class ClientController {
 
     }
 
+
     public void cancelSession(){
         boolean flag = false;
         showClientAppointments();
@@ -300,7 +291,7 @@ public class ClientController {
         LOGGER.info("Please enter the id of the your appointment from the above");
         int idC = input.nextInt();
         List<Appointment> clientAppointments;
-        clientAppointments = Appointment_DB.getUserAppointments(this.client);
+        clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentID() == idC) {
                 flag = true;
@@ -308,8 +299,10 @@ public class ClientController {
             }
 
         }
-        Appointment_DB.deleteAppointment(idC);
-        if(flag) LOGGER.info("Successfully deleted");
+        if(flag){
+            AppointmentDb.deleteAppointment(idC);
+            LOGGER.info("Successfully deleted");
+        }
 
         else     LOGGER.info("You don't have this room");
     }
@@ -326,12 +319,12 @@ public class ClientController {
         String date = input.nextLine();
         LOGGER.info("Please enter the new time (format: HH:mm): ");
         String time = input.nextLine();
-        if(!Appointment_DB.isValidDate(date)) {addAppointmentResult(2); return;}
-        else if(!Appointment_DB.isValidTime(time)) {addAppointmentResult(1); return;}
+        if(!AppointmentDb.isValidDate(date)) {addAppointmentResult(2); return;}
+        else if(!AppointmentDb.isValidTime(time)) {addAppointmentResult(1); return;}
 
 
         List<Appointment> clientAppointments;
-        clientAppointments = Appointment_DB.getUserAppointments(this.client);
+        clientAppointments = AppointmentDb.getUserAppointments(this.client);
 
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentID() == nextInt) {
@@ -349,11 +342,11 @@ public class ClientController {
     }
     public boolean check(String dateCheck,String timeCheck,int roomId)
     {
-        for (int i=0;i<Appointment_DB.appointments.size();i++)
+        for (int i=0;i<AppointmentDb.appointments.size();i++)
         {
-            int idC=Appointment_DB.appointments.get(i).getRoom().getRoomNumber();
-         String date= Appointment_DB.appointments.get(i).getDate();
-         String time= Appointment_DB.appointments.get(i).getTime();
+            int idC=AppointmentDb.appointments.get(i).getRoom().getRoomNumber();
+         String date= AppointmentDb.appointments.get(i).getDate();
+         String time= AppointmentDb.appointments.get(i).getTime();
         if(dateCheck.equals(date)&&timeCheck.equals(time)&&idC==roomId)
         {
           LOGGER.info("not available");

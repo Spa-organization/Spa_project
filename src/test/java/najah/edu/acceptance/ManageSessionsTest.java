@@ -1,7 +1,7 @@
 package najah.edu.acceptance;
 
 import controller.ClientController;
-import database.Appointment_DB;
+import database.AppointmentDb;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -44,8 +44,8 @@ public class ManageSessionsTest {
 
           date = "01/09/2012";
           time= "09:00";
-        assertTrue(Appointment_DB.isValidDate(date));
-        assertTrue(Appointment_DB.isValidTime(time));
+        assertTrue(AppointmentDb.isValidDate(date));
+        assertTrue(AppointmentDb.isValidTime(time));
 
 
 
@@ -63,7 +63,7 @@ public class ManageSessionsTest {
     @Test
     public void theClientAttemptsToScheduleANewMassageSessionForThisTimeSlot() {
         time="12:30";
-        assertTrue(Appointment_DB.isValidTime(time));
+        assertTrue(AppointmentDb.isValidTime(time));
 
     }
 
@@ -80,8 +80,8 @@ public class ManageSessionsTest {
         id="31";
         time="12:30";
         date="12/12/2024";
-        assertTrue(Appointment_DB.isValidDate(date));
-        assertTrue(Appointment_DB.isValidTime(time));
+        assertTrue(AppointmentDb.isValidDate(date));
+        assertTrue(AppointmentDb.isValidTime(time));
 
 
     }
@@ -92,8 +92,8 @@ public class ManageSessionsTest {
         int rId=4;
         time="12:30";
         date="12/12/2024";
-        assertTrue(Appointment_DB.isValidDate(date));
-        assertTrue(Appointment_DB.isValidTime(time));
+        assertTrue(AppointmentDb.isValidDate(date));
+        assertTrue(AppointmentDb.isValidTime(time));
        assertTrue(clientController.check(date,time,rId));
 
     }
