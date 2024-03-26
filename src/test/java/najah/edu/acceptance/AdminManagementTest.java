@@ -61,6 +61,7 @@ public class AdminManagementTest {
     @Test
     public void theAdminShouldBeAddedToTheSystem() {
         assertTrue(true);
+    }
 
     @When("I choose to add a massage room")
     @Test
