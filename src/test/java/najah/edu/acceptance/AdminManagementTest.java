@@ -56,7 +56,7 @@ public class AdminManagementTest {
         this.admin_pass = pass;
 
     }
-
+//
     @Then("the admin should be added to the system")
     @Test
     public void theAdminShouldBeAddedToTheSystem() {
