@@ -25,3 +25,29 @@ T
 $src/main/java/database/ClientDB.java,d\c\dc9c84c65aeecb6fbae3376515e5c90396b62a4c
 V
 &src/main/java/database/EmployeeDB.java,4\c\4c873686a52bc3d62f6c89778831aad12d037027
+Q
+!src/main/java/Entities/Admin.java,4\8\488b8b1fabbbc375d9e98ac27c838081b05ab6d4
+W
+'src/main/java/Entities/Appointment.java,9\8\989066f5205d7d59fcb74c7009bb8b991a94e240
+X
+(src/main/java/Entities1/Appointment.java,0\1\01101bab32e9e57bca9b6b5918ef65e6a7ecf0cc
+R
+"src/main/java/Entities1/Admin.java,3\7\378d12ac43a3d775e94e4a594c41255275a72e63
+U
+%src/main/java/entity/Appointment.java,4\c\4c98a7aa585455ad2af6efe210a843c9d4ddb6c0
+O
+src/main/java/entity/Admin.java,f\d\fd7d53e096e991bc5a5e12814fd0cc2ef0cecd43
+P
+ src/main/java/entity/Client.java,7\7\77e5c0344c49dac7054e6460276858e3641861e4
+R
+"src/main/java/entity/FeedBack.java,2\8\280411719623f38635a6dada4b41c5b8478863e8
+R
+"src/main/java/entity/Employee.java,9\7\97eb662df3be91d8a9f580f028745ff68bf391ae
+R
+"src/main/java/database/RoomDb.java,c\a\ca0bbae6dff9f72af0479e40dcb90e95d863290a
+V
+&src/main/java/database/FeedbackDB.java,b\a\baf1a85a3d3a1cda1059fa8a5d47e77e152cf292
+k
+;src/test/java/najah/edu/acceptance/AdminManagementTest.java,a\f\af339469897ebd2219921c49f854793a829c0e2e
+N
+src/main/java/entity/Room.java,3\4\342b0de06a40284ba08aaae9adffd7fa8986eab0

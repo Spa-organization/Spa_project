@@ -1,9 +1,8 @@
 package database;
 
-import Entities.Appointment;
-import Entities.Client;
-import Entities.Employee;
-import controller.AdminController;
+import entity.Appointment;
+import entity.Client;
+import entity.Employee;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

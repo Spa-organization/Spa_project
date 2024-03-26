@@ -1,6 +1,6 @@
 package database;
 
-import Entities.Client;
+import entity.Client;
 
 
 import java.util.ArrayList;

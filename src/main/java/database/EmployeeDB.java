@@ -1,9 +1,9 @@
 package database;
 
 
-import Entities.Appointment;
-import Entities.Employee;
-import Entities.Room;
+import entity.Appointment;
+import entity.Employee;
+import entity.Room;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package database;
 
-import Entities.FeedBack;
+import entity.FeedBack;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;

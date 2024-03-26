@@ -1,6 +1,6 @@
 package controller;
 
-import Entities.*;
+import entity.*;
 import database.Appointment_DB;
 import database.ClientDB;
 import database.FeedbackDB;

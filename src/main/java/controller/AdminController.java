@@ -1,6 +1,6 @@
 package controller;
 
-import Entities.*;
+import entity.*;
 import basic.EmailSender;
 import database.*;
 

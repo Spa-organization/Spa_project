@@ -1,6 +1,6 @@
 package database;
 
-import Entities.Admin;
+import entity.Admin;
 import java.util.ArrayList;
 import java.util.List;
 

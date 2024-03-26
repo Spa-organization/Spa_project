@@ -1,15 +1,15 @@
-package Entities;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
     private String id ;
-    private String Name;
+    private String name;
     private String password;
-    private String WorkerType ;
-    private List<Room> rooms = new ArrayList<Room>();
-    private List<Appointment> appointments =new ArrayList<Appointment>();
+    private String workerType;
+    private final List<Room> rooms = new ArrayList<>();
+    private final List<Appointment> appointments =new ArrayList<>();
 
     public List<Appointment> getAppointments() {
         return appointments;
@@ -24,21 +24,21 @@ public class Employee {
     }
 
     public Employee(){ }
-    public Employee(String id, String name, String password,String WorkerType,Room room) {
+    public Employee(String id, String name, String password,String workerType,Room room) {
         this.id = id;
-        Name = name;
+        this.name = name;
         this.password = password;
-        this.WorkerType = WorkerType;
+        this.workerType = workerType;
         this.rooms.add(room);
     }
-    public Employee(String id, String name, String password,String WorkerType) {
+    public Employee(String id, String name, String password,String workerType) {
         this.id = id;
-        Name = name;
+        this.name = name;
         this.password = password;
-        this.WorkerType = WorkerType;
+        this.workerType = workerType;
     }
     public Room getRoom(){
-        return rooms.get(0);
+        return rooms.getFirst();
     }
     public void addRoomToEmployee(Room room){
         this.rooms.add(room);
@@ -53,11 +53,11 @@ public class Employee {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getPassword() {
@@ -69,15 +69,15 @@ public class Employee {
     }
 
     public String getWorkerType() {
-        return WorkerType;
+        return workerType;
     }
 
-    public void setWorkerType(int workerType_id) {
-        if(workerType_id == 1){
-            WorkerType ="Sawna";
+    public void setWorkerType(int workerTypeId) {
+        if(workerTypeId == 1){
+            workerType ="Sawna";
         }
-        else if( workerType_id ==2){
-            WorkerType ="Massage";
+        else if( workerTypeId ==2){
+            workerType ="Massage";
         }
     }
 

@@ -1,6 +1,6 @@
 package najah.edu.acceptance;
 import controller.AdminController;
-import Entities.Employee;
+import entity.Employee;
 import database.AdminDB;
 import database.Appointment_DB;
 import database.EmployeeDB;
