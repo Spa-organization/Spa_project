@@ -85,3 +85,11 @@ n
 >.idea/libraries/Maven__io_cucumber_cucumber_plugin_7_15_02.xml,1\a\1a992eb758508fc3052d8c3ff39b7d7edc9cfc87
 P
  Myfeatures/Client_SignIn.feature,d\a\daa1d36caae87c77e456ec3efb2c25b8926af310
+O
+Myfeatures/SendingEmail.feature,1\a\1abf261a37f2137582b4bcfb0b730de070e1ab4e
+T
+$src/main/java/Entities/Employee.java,e\6\e6206afa7a886c4a29ff6c7e01bb61eb4ba09f0a
+T
+$src/main/java/Entities/FeedBack.java,9\c\9c1b90079d00119e59591510f15845aa867dd866
+R
+"src/main/java/Entities/Client.java,4\2\4229f78cb2469f0f4885ddf2221f7b975c4c1f3f
