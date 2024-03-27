@@ -1,5 +1,6 @@
 package controller;
 
+import basic.LoggerUtility;
 import entity.*;
 import database.AppointmentDb;
 import database.ClientDB;
@@ -11,9 +12,12 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ClientController {
-    private static final String COPY="-----------------------------------";
+    private static final String COPY="-----------------------------------\n";
+    private static final String COPY1="-----------------------------------\n+-----------------------------------";
+
+
     private static final String SHORT_LINE ="--------------------";
-    private static final Logger LOGGER = Logger.getLogger(ClientController.class.getName());
+    private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
      Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
@@ -72,9 +76,8 @@ public class ClientController {
 
     }
     public void clientSignUp(){
-        LOGGER.info("=== Sign Up ===");
-
-        LOGGER.info("Enter client ID: ");
+        LOGGER.info("=== Sign Up ==="+"\n"+
+                "Enter client ID: ");
         String clientId = scanner.nextLine();
 
         LOGGER.info("Enter client Name: ");
@@ -83,20 +86,12 @@ public class ClientController {
         LOGGER.info("Enter client Password: ");
         String password = scanner.nextLine();
         if(!ClientDB.addClient(clientId,clientName,password)){
-                        LOGGER.info(COPY);
-
-            LOGGER.info("This ID is Already Exists");
-                        LOGGER.info(COPY);
-
+            LOGGER.info(COPY+"This ID is Already Exists\n"+COPY);
         }else {
-            LOGGER.info(COPY);
-            LOGGER.info("Signup done successfully");
-                        LOGGER.info(COPY);
-
+            LOGGER.info(COPY+"Signup done successfully"+"\n"+"\n");
         }
     }
 
-    //-----------Client Home Page---------------
     public void clientHomePage(){
         LOGGER.info(COPY);
         LOGGER.info(COPY);
@@ -213,16 +208,7 @@ public class ClientController {
         LOGGER.info(COPY);
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
-        for( Appointment appointment: clientAppointments){
-            LOGGER.info(SHORT_LINE);
-            LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
-            LOGGER.info("Type: "+appointment.getEmployee().getWorkerType());
-            LOGGER.info("Date: "+appointment.getDate());
-            LOGGER.info("Time: "+appointment.getTime());
-            LOGGER.info("Room Number: "+appointment.getRoom().getRoomNumber());
-            LOGGER.info(SHORT_LINE);
-
-        }
+        EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
 
     }
     public void addAppointmentResult(int result){

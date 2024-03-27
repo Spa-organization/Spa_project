@@ -1,18 +1,19 @@
 package controller;
 
+import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
 import database.AppointmentDb;
 import database.EmployeeDB;
 import java.util.List;
-
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class EmployeeController {
+    private static final String COPY="-----------------------------------\n";
+    private static final String COPY1="-----------------------------------\n+-----------------------------------";
     private static final String SHORT_LINE ="--------------------";
-    private static final Logger LOGGER = Logger.getLogger(EmployeeController.class.getName());
-    private static final String COPY="------------------------------";
+    private static final Logger LOGGER = LoggerUtility.getLogger();
     private boolean isLoggedIn;
     private final Scanner scanner = new Scanner(System.in);
     private Employee employee = new Employee();
@@ -107,18 +108,21 @@ public class EmployeeController {
         LOGGER.info(COPY);
         List<Appointment> employeeAppointments;
         employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
+        printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
+    }
+
+    public static void printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
-            LOGGER.info(SHORT_LINE);
-            LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
-            LOGGER.info("Type: "+appointment.getEmployee().getWorkerType());
-            LOGGER.info("Date: "+appointment.getDate());
-            LOGGER.info("Time: "+appointment.getTime());
-            LOGGER.info("Room Number: "+appointment.getRoom().getRoomNumber());
-            LOGGER.info(SHORT_LINE);
+            logger.info(shortLine);
+            logger.info("Appointment_id: "+ appointment.getAppointmentID());
+            logger.info("Type: "+appointment.getEmployee().getWorkerType());
+            logger.info("Date: "+appointment.getDate());
+            logger.info("Time: "+appointment.getTime());
+            logger.info("Room Number: "+appointment.getRoom().getRoomNumber());
+            logger.info(shortLine);
         }
-
     }
 
 
-    }
+}
 

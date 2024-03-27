@@ -1,5 +1,6 @@
 package database;
 
+import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Client;
 import entity.Employee;
@@ -13,8 +14,7 @@ import java.util.regex.Pattern;
 
 public class AppointmentDb {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final Logger LOGGER = Logger.getLogger(AppointmentDb.class.getName());
-
+    private static final Logger LOGGER = LoggerUtility.getLogger();
     public static final double SAWNA_SESSION_COST = 200.0; // Example cost
     public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
     public static final double EMPLOYEE_PERCENTAGE = 0.30;
@@ -35,7 +35,6 @@ public class AppointmentDb {
         EmployeeDB.employees.get(3).setAppointment(appointments.get(3));
     }
     public static int addAppointment(Client client, String date, String time, Employee employee){
-
         if(!isValidDate(date)) return 2;
         if(!isValidTime(time)) return 1;
         appointments.add(new Appointment(appointments.get(appointments.size()-1).getAppointmentID() + 1,client,employee,employee.getRoom(),date,time,true));
@@ -73,6 +72,7 @@ public class AppointmentDb {
         String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";
 
 
+
         Pattern pattern = Pattern.compile(regex);
 
 
@@ -85,12 +85,9 @@ public class AppointmentDb {
 
         String regex = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
 
-
         Pattern pattern = Pattern.compile(regex);
 
-
         Matcher matcher = pattern.matcher(time);
-
 
         return matcher.matches();
     }
