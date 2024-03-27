@@ -26,7 +26,6 @@ public class AppointmentDb {
     }
     static {
         appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/04/2012","8:00",true));
-        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/03/2012","10:00",true));
         appointments.add(new Appointment(2,ClientDB.clients.get(1),EmployeeDB.employees.get(1), EmployeeDB.employees.get(1).getRoom(),"01/09/2012","10:00",true));
         appointments.add(new Appointment(3,ClientDB.clients.get(2),EmployeeDB.employees.get(2), EmployeeDB.employees.get(2).getRoom(),"02/09/2012","09:00",true));
         appointments.add(new Appointment(4,ClientDB.clients.get(3),EmployeeDB.employees.get(3), EmployeeDB.employees.get(3).getRoom(),"01/09/2012","09:00",true));

@@ -170,42 +170,13 @@ public class ClientController {
             }
         } while (appointmentType!=3);
     }
-    public void bookMassage(String type){
+    public void booking(String type){
         LOGGER.info(COPY);
         LOGGER.info(COPY);
-
         LOGGER.info("Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
-
         LOGGER.info("Enter Time (format: HH:mm): ");
-        String timeInput = scanner.nextLine();
-        if(!AppointmentDb.isValidDate(dateInput)) {addAppointmentResult(2); return;}
-        else if(!AppointmentDb.isValidTime(timeInput)) {addAppointmentResult(1); return;}
-
-        List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
-        if(!employees.isEmpty()){
-            showAvailableRooms(employees,dateInput,timeInput);
-        }
-        else{
-                       LOGGER.info(COPY);
-            LOGGER.info("NO Available Rooms In This Time");
-                       LOGGER.info(COPY);
-        }
-    }
-    public void printEmployees(List<Employee> employees){
-       LOGGER.info("--------Print employees :)--------");
-        for(Employee employee:employees){
-            LOGGER.info(employee.getName()+" "+employee.getWorkerType());
-        }
-    }
-    public void bookSauna(String type){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
-        LOGGER.info("Enter Date (format: dd/MM/yyyy): ");
-        scanner.nextLine();
-        String dateInput = scanner.nextLine();
-       LOGGER.info("Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
         if(!AppointmentDb.isValidDate(dateInput))
         {addAppointmentResult(2);return ;}
@@ -220,6 +191,22 @@ public class ClientController {
             LOGGER.info(COPY);
             LOGGER.info("NO Available Rooms In This Time");
             LOGGER.info(COPY);}
+
+    }
+    public void bookMassage(String type){
+        booking(type);
+    }
+    public void printEmployees(List<Employee> employees){
+       LOGGER.info("--------Print employees :)--------");
+        for(Employee employee:employees){
+            LOGGER.info(employee.getName()+" "+employee.getWorkerType());
+        }
+    }
+
+
+    public void bookSauna(String type){
+        booking(type);
+
     }
     public void showClientAppointments(){
         LOGGER.info(COPY);

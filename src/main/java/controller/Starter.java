@@ -14,7 +14,7 @@ public class Starter {
 
     public void homePage() throws MessagingException {
         LOGGER.info("------------------------------");
-        LOGGER.info("------------------------------");
+
 
         int choice;
 
