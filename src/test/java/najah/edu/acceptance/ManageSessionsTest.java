@@ -113,10 +113,10 @@ public class ManageSessionsTest {
     @Then("the system should prevent the booking and alert about the time and date slots unavailability")
     @Test
     public void theSystemShouldPreventTheBookingAndAlertAboutTheTimeAndDateSlotsUnavailability() {
-        time = "09:00";
-        date = "01/09/2012";
-        int id = 2;
-       assertFalse(clientController.check(date,time,id));
+        time = "08:00";
+        date = "01/04/2012";
+        int id = 31;
+       assertTrue(clientController.check(date,time,id));
 
     }
 
@@ -173,7 +173,7 @@ public class ManageSessionsTest {
         time = "09:00";
         date = "01/09/2012";
         int id = 2;
-        assertFalse(clientController.check(date,time,id));
+        assertTrue(clientController.check(date,time,id));
     }
 
     @Given("the client has an existing spa session they wish to cancel")

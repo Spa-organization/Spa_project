@@ -67,3 +67,7 @@ h
 Lsrc/test/java/najah/edu/acceptance/ServiceProviderLoginFeatureStepsTest.java,f\4\f4afb841168efe84e7daefdf9a00eaf15ceadde7
 R
 "Myfeatures/AdminManagement.feature,a\0\a00c099bc864a0652789e5d6e96b1c9a2ded4904
+P
+ Myfeatures/Client_SignIn.feature,d\a\daa1d36caae87c77e456ec3efb2c25b8926af310
+I
+Myfeatures/SignUp.feature,1\d\1de0db626e300e389549718e7cf2fffd29293618

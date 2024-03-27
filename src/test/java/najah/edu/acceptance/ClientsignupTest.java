@@ -14,6 +14,9 @@ public class ClientsignupTest {
 
     public ClientsignupTest() {
         app = new ClientController();
+        clientId="";
+        clientName="";
+        password="";
     }
 
     String clientId ;
@@ -42,6 +45,7 @@ public class ClientsignupTest {
     }
 
     @Then("their account should be created and they should be logged in automatically")
+    @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
             assertTrue(ClientDB.addClient(clientId, clientName, password));
     }

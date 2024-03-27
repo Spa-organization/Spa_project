@@ -14,6 +14,7 @@ public class ClientLoginFeatureStepsTest {
  String pass;
  String id;
 	ClientController app;
+
 	public ClientLoginFeatureStepsTest()
 	{
 	app=new ClientController();
@@ -44,8 +45,8 @@ public class ClientLoginFeatureStepsTest {
 	@Then("the client will not login")
 @Test
 	public void theClientWillNotLogin() {
-		id="213";
-		pass="123";
+		id="11";
+		pass="1223";
 		app.loggInCheck(id,pass);
 		assertFalse(app.isLoggedIn());
 	}

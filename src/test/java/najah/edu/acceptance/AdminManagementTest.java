@@ -85,11 +85,11 @@ public class AdminManagementTest {
     @Then("the massage room should be added to the system")
     @Test
     public void theMassageRoomShouldBeAddedToTheSystem() {
-        emp_id="35";
+        emp_id="47";
         emp_name="ali";
         emp_password="123";
         worker_type="massage";
-                room_id="5";
+                room_id="10";
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
         Employee employee = EmployeeDB.getEmployeeById(emp_id);
         assertNotNull(employee);
@@ -106,11 +106,11 @@ public class AdminManagementTest {
     @Then("the sawna room should be added to the system")
     @Test
     public void theSawnaRoomShouldBeAddedToTheSystem() {
-        emp_id="35";
+        emp_id="410";
         emp_name="ali";
         emp_password="123";
         worker_type="massage";
-        room_id="5";
+        room_id="9";
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
         Employee employee = EmployeeDB.getEmployeeById(emp_id);
         assertNotNull(employee);

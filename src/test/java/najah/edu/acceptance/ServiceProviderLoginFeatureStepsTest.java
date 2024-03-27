@@ -36,6 +36,8 @@ public class ServiceProviderLoginFeatureStepsTest {
     }
     @Then("the service provider is logged in the app successfully")
     public void theServiceProviderIsLoggedInTheAppSuccessfully() {
+        id="31";
+        pass="123";
             app.loggInCheck(id, pass);
             assertTrue(app.isLoggedIn());
     }
