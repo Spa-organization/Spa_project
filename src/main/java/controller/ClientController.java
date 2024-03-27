@@ -17,7 +17,7 @@ public class ClientController {
     private  boolean isLoggedIn ;
      Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
-    static int id;
+
     private boolean logUp;
 
     public ClientController() {
@@ -259,7 +259,7 @@ public class ClientController {
         if(roomNumber!=0){
             Room room= RoomDb.getRoomById(roomNumber);
             if(room!=null){
-                addAppointmentResult( AppointmentDb.addAppointment(id,this.client,dateInput,timeInput,room.getEmployee()));
+                addAppointmentResult( AppointmentDb.addAppointment(this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
         else{
