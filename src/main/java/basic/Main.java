@@ -8,5 +8,5 @@ public class Main {
     public static void main(String[] args) throws MessagingException {
         Starter starter= new Starter();
         starter.homePage();
-    }
+    }//
 }
