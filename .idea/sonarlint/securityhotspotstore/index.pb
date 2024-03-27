@@ -75,3 +75,13 @@ t
 Dsrc/test/java/najah/edu/acceptance/ClientLogoutFeatureStepsTest.java,d\d\dd69fce8e9bef5747159d7eb38ee7186ceeb526b
 y
 Isrc/test/java/najah/edu/acceptance/ServiceProviderLogoutFeatureSteps.java,3\7\371629ac78ea44c8245d322eab8c55612b5c4e34
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+h
+8src/test/java/najah/edu/acceptance/EmailConfirmTest.java,3\e\3e8f2efd2ea5161fecfbb5bbbf51e163c795441b
+G
+Myfeatures/EmailConfirm,3\b\3becba442603d16b682ef924e2336de5e75e76d9
+O
+Myfeatures/EmailConfirm.feature,c\e\ced8d8bc31a4446f3228ae7bb8188475f921b46b
+B
+WeddingPlanner.iml,1\4\1430846d3581da65eb033c5ad324d6a14929239f
