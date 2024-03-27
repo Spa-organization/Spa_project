@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class AdminController {
     Employee employee=new Employee();
-    private static final String SHORT_LINE ="--------------------";
+
 
     private static final String COPY="-----------------------------------";
     private static final Logger LOGGER = Logger.getLogger(AdminController.class.getName());
@@ -166,15 +166,15 @@ public class AdminController {
         scanner.nextLine();
         LOGGER.info("Enter Employee ID to manage the new: ");
         String employeeId = scanner.next();
-        Employee employee= EmployeeDB.getEmployeeById(employeeId);
-        if(employee!=null){
-            if(!employee.getRooms().isEmpty())
+        Employee employees= EmployeeDB.getEmployeeById(employeeId);
+        if(employees!=null){
+            if(!employees.getRooms().isEmpty())
             {
-               print(id,employee);
+               print(id,employees);
             }
 
-            else if(employee.getWorkerType().equalsIgnoreCase("Sawna")){
-                if(!RoomDb.addRoom(employee, id)){
+            else if(employees.getWorkerType().equalsIgnoreCase("Sawna")){
+                if(!RoomDb.addRoom(employees, id)){
                     LOGGER.info(COPY);
                     LOGGER.info("This ID_room is Already Exists");
                     LOGGER.info(COPY);
@@ -225,14 +225,14 @@ public class AdminController {
         scanner.nextLine();
         LOGGER.info("Enter Employee ID to manage the new: ");
         String employeeId = scanner.next();
-        Employee employee= EmployeeDB.getEmployeeById(employeeId);
-        if(employee!=null){
-            if(!employee.getRooms().isEmpty())
+        Employee employees= EmployeeDB.getEmployeeById(employeeId);
+        if(employees!=null){
+            if(!employees.getRooms().isEmpty())
             {
-                print(id,employee);
+                print(id,employees);
             }
-            if(employee.getWorkerType().equalsIgnoreCase("Massage")){//
-                if(!RoomDb.addRoom(employee, id)){
+            if(employees.getWorkerType().equalsIgnoreCase("Massage")){//
+                if(!RoomDb.addRoom(employees, id)){
                     LOGGER.info(COPY);
                     LOGGER.info("This ID_room is Already Exists");
                     LOGGER.info(COPY);
