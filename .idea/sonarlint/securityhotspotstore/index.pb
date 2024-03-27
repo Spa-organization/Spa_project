@@ -71,3 +71,7 @@ P
  Myfeatures/Client_SignIn.feature,d\a\daa1d36caae87c77e456ec3efb2c25b8926af310
 I
 Myfeatures/SignUp.feature,1\d\1de0db626e300e389549718e7cf2fffd29293618
+t
+Dsrc/test/java/najah/edu/acceptance/ClientLogoutFeatureStepsTest.java,d\d\dd69fce8e9bef5747159d7eb38ee7186ceeb526b
+y
+Isrc/test/java/najah/edu/acceptance/ServiceProviderLogoutFeatureSteps.java,3\7\371629ac78ea44c8245d322eab8c55612b5c4e34
