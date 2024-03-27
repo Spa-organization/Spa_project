@@ -34,11 +34,11 @@ public class AppointmentDb {
         EmployeeDB.employees.get(2).setAppointment(appointments.get(2));
         EmployeeDB.employees.get(3).setAppointment(appointments.get(3));
     }
-    public static int addAppointment(int id,Client client, String date, String time, Employee employee){
-        id = appointments.get(appointments.size()-1).getAppointmentID() + 1;
+    public static int addAppointment(Client client, String date, String time, Employee employee){
+
         if(!isValidDate(date)) return 2;
         if(!isValidTime(time)) return 1;
-        appointments.add(new Appointment(id,client,employee,employee.getRoom(),date,time,true));
+        appointments.add(new Appointment(appointments.get(appointments.size()-1).getAppointmentID() + 1,client,employee,employee.getRoom(),date,time,true));
         employee.setAppointment(appointments.get(appointments.size()-1));
         return 0;
     }
