@@ -16,7 +16,7 @@ public class ClientController {
     private static final String COPY1="-----------------------------------\n+-----------------------------------";
 
 
-    private static final String SHORT_LINE ="--------------------";
+    private static final String SHORT_LINE ="--------------------\n";
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
      Scanner scanner = new Scanner(System.in);
@@ -62,9 +62,11 @@ public class ClientController {
         }
     }
     public void loginPage(){
-        LOGGER.info("=== Client Login ===");
 
-        LOGGER.info("Enter your ID: ");
+        LOGGER.info("""
+                === Client Login ===
+                Enter your ID:"""+"\n");
+
         String clientId = scanner.nextLine();
 
         LOGGER.info("Enter your password: ");
@@ -93,8 +95,7 @@ public class ClientController {
     }
 
     public void clientHomePage(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.info(COPY1);
         int choice;
 
         do {
@@ -105,7 +106,8 @@ public class ClientController {
                 3. Edit My Appointments
                 4. Cancel My Appointments
                 5. Feedback
-                6. Logout""");
+                6. Logout
+                """);
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
 
@@ -144,12 +146,12 @@ public class ClientController {
         int appointmentType;
         do {
             LOGGER.info("""
+                    
                     Book Appointment
                     1. Massage
                     2. Sauna
                     3. Exit
-                    Enter your choice:
-                    """);
+                    Enter your choice:""");
             appointmentType = scanner.nextInt();
             switch (appointmentType) {
                 case 1:
@@ -168,10 +170,10 @@ public class ClientController {
     public void booking(String type){
         LOGGER.info(COPY);
         LOGGER.info(COPY);
-        LOGGER.info("Enter Date (format: dd/MM/yyyy): ");
+        LOGGER.info("Enter Date (format: dd/MM/yyyy): "+"\n");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
-        LOGGER.info("Enter Time (format: HH:mm): ");
+        LOGGER.info("Enter Time (format: HH:mm): "+"\n");
         String timeInput = scanner.nextLine();
         if(!AppointmentDb.isValidDate(dateInput))
         {addAppointmentResult(2);return ;}
@@ -204,8 +206,7 @@ public class ClientController {
 
     }
     public void showClientAppointments(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.info(COPY1);
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
@@ -214,33 +215,26 @@ public class ClientController {
     public void addAppointmentResult(int result){
         switch (result){
             case 1:
-         LOGGER.info(COPY);
-         LOGGER.info("invalid Time! check your Time form");
-         LOGGER.info(COPY);
+         LOGGER.info(COPY+"invalid Time! check your Time form"+"\n"+"invalid Time! check your Time form"+"\n"+COPY);
          break;
-
             case 2:
-                LOGGER.info("----------------------------------");
-                LOGGER.info("invalid date! check your date form");
-                LOGGER.info(COPY);
+                LOGGER.info(COPY+"invalid date! check your date form"+"\n"+COPY);
                 break;
-
             default:
-                LOGGER.info("----------------------------------");
-                LOGGER.info("Appointment Booked :)");
-                LOGGER.info(COPY);
+                LOGGER.info(COPY+"Appointment was Booked :)"+"\n"+COPY);
         }
     }
     public void showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
         LOGGER.info("-----Available Rooms------");
         List<Room> rooms;
-        for(Employee employee:employees){
+        for(Employee employee:employees)
+        {
             rooms =employee.getRooms();
             for(Room room:rooms){
-                LOGGER.info("--------------");
-                LOGGER.info("Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType());
+                LOGGER.info(SHORT_LINE+"Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType()+"\n");
             }
-        }LOGGER.info("Enter room number to book");
+        }
+        LOGGER.info("Enter room number to book:");
         int roomNumber= scanner.nextInt();
         if(roomNumber!=0){
             Room room= RoomDb.getRoomById(roomNumber);
@@ -248,12 +242,7 @@ public class ClientController {
                 addAppointmentResult( AppointmentDb.addAppointment(this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
-        else{
-            LOGGER.info("invalid input!!");
-            LOGGER.info("----------------------");
-        }
-
-
+        else{LOGGER.info("invalid input!!"+"\n"+SHORT_LINE);}
     }
 
 
@@ -261,8 +250,7 @@ public class ClientController {
         boolean flag = false;
         showClientAppointments();
         Scanner input = new Scanner(System.in);
-        LOGGER.info(SHORT_LINE);
-        LOGGER.info("Please enter the id of the your appointment from the above");
+        LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above");
         int idC = input.nextInt();
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
@@ -278,7 +266,7 @@ public class ClientController {
             LOGGER.info("Successfully deleted");
         }
 
-        else     LOGGER.info("You don't have this room");
+        else LOGGER.info("You don't have this room");
     }
 
     public void updateSession(){
@@ -288,10 +276,10 @@ public class ClientController {
 
         LOGGER.info("Please enter the id of your appointment: ");
         int nextInt = input.nextInt();
-        LOGGER.info("Please enter the new date (format: dd/MM/yyyy): ");
+        LOGGER.info("\n"+"Please enter the new date (format: dd/MM/yyyy): ");
         input.nextLine();
         String date = input.nextLine();
-        LOGGER.info("Please enter the new time (format: HH:mm): ");
+        LOGGER.info("\n"+"Please enter the new time (format: HH:mm): ");
         String time = input.nextLine();
         if(!AppointmentDb.isValidDate(date)) {addAppointmentResult(2); return;}
         else if(!AppointmentDb.isValidTime(time)) {addAppointmentResult(1); return;}

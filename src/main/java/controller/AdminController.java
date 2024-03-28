@@ -2,7 +2,6 @@ package controller;
 
 import basic.LoggerUtility;
 import entity.*;
-import basic.EmailSender;
 import database.*;
 import java.util.List;
 import java.util.Scanner;
@@ -10,33 +9,18 @@ import java.util.logging.Logger;
 
 public class AdminController {
     private static final Logger LOGGER = LoggerUtility.getLogger();
-   EmailSender email=new EmailSender("qsay.3w@gmail.com");
-    private static final String SHORT_LINE ="--------------------";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
     Employee employee=new Employee();
-    String subject;
-    String text;
     private  boolean isLoggedIn;
     Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
-
     public AdminController() {
         isLoggedIn = false;
     }
-
-    public  boolean isLoggedIn() {
-
-        return isLoggedIn;
-    }
-    public  void logout() {
-
-        isLoggedIn=false;
-    }
-    public  void login() {
-
-        isLoggedIn = true;
-    }
+    public  boolean isLoggedIn() {return isLoggedIn;}
+    public  void logout() {isLoggedIn=false;}
+    public  void login() {isLoggedIn = true;}
 
     public  void loginCheck(String id, String password)
     {
@@ -138,8 +122,7 @@ public class AdminController {
                     2. Massage Room
                     3. Show All Employees with ID
                     4. Exit
-                    Enter your choice:
-                    """);
+                    Enter your choice:""");
             roomType = scanner.nextInt();
 
             switch (roomType) {
@@ -161,10 +144,10 @@ public class AdminController {
         } while (roomType != 4);
     }
     public void addSawnaRoom() {
-        LOGGER.info(COPY1+"Enter Room ID:"+"\n");
+        LOGGER.info("\n"+"Enter Room ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
-        LOGGER.info("Enter Employee ID to manage the new: ");
+        LOGGER.info("Enter Employee ID to manage the new Room: ");
         String employeeId = scanner.next();
         Employee employees= EmployeeDB.getEmployeeById(employeeId);
         if(employees!=null){
@@ -178,12 +161,8 @@ public class AdminController {
                     LOGGER.info(COPY+"This ID_room is Already Exists"+COPY);
                 }
                 else {
-                    subject="about your Appointment you Reserve";
-                    text="Your Appointment Successfully reserved";
-                    email.sendEmail(subject,text);
-
                     LOGGER.info(COPY+
-                            "Sawna Room Added and a Confirm email will send to you"+"\n+" +
+                            "Sawna Room Added"+"\n+" +
                             COPY);
                 }
             }
@@ -215,11 +194,10 @@ public class AdminController {
 
     }
     public void addMassageRoom(){
-
-        LOGGER.info(COPY+COPY+"Enter Room ID: ");
+        LOGGER.info("\n"+"Enter Room ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
-        LOGGER.info("Enter Employee ID to manage the new: ");
+        LOGGER.info("Enter Employee ID to manage the new Room: ");
         String employeeId = scanner.next();
         Employee employees= EmployeeDB.getEmployeeById(employeeId);
         if(employees!=null){
@@ -229,21 +207,24 @@ public class AdminController {
             }
             if(employees.getWorkerType().equalsIgnoreCase("Massage")){
                 if(!RoomDb.addRoom(employees, id)){
-                    LOGGER.info(COPY+"This ID_room is Already Exists"+"\n"+COPY);
+                    LOGGER.info(COPY+"This ID_room is Already Exists"+COPY);
                 }
                 else {
-                    LOGGER.info(COPY+"Massage Room Added"+"\n"+COPY);
+                    LOGGER.info(COPY+
+                            "massage Room Added"+"\n+" +
+                            COPY);
                 }
             }
             else{
                 LOGGER.info(COPY+
                         "not Massage employee!!"+"\n"+
-                        SHORT_LINE);
+                        COPY);
+
             }
         }else{
             LOGGER.info(COPY+
                     "employee not found!!"+"\n"+
-                    SHORT_LINE);
+                    COPY);
         }
     }
     public static void showAllEmployees(){
@@ -328,7 +309,7 @@ public class AdminController {
 
     public void viewEmployeeEarningsForRange() {
         LOGGER.info("Enter Employee ID: ");
-       // scanner.nextLine();
+        scanner.nextLine();
         String employeeId = scanner.nextLine();
         LOGGER.info("\nEnter Start_Date (format: dd/MM/yyyy): ");
         String date = scanner.nextLine();
@@ -339,7 +320,7 @@ public class AdminController {
 
     public void viewCenterEarningsForRange() {
         LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
-        //scanner.nextLine();
+        scanner.nextLine();
         String date = scanner.nextLine();
         LOGGER.info("\n");
         LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");

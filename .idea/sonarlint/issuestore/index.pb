@@ -75,11 +75,7 @@ t
 Dsrc/test/java/najah/edu/acceptance/ClientLogoutFeatureStepsTest.java,d\d\dd69fce8e9bef5747159d7eb38ee7186ceeb526b
 y
 Isrc/test/java/najah/edu/acceptance/ServiceProviderLogoutFeatureSteps.java,3\7\371629ac78ea44c8245d322eab8c55612b5c4e34
-G
-Myfeatures/adas.feature,d\3\d3b0fa560454c62ffb5a440eb506bf3e1e44416d
 R
 "src/main/java/basic/AppLogger.java,6\a\6a8e78a6559dfc9c44e6b33c6a97591d9e316b2b
 V
 &src/main/java/basic/LoggerUtility.java,1\3\130212a6194a4e0f25b67f3bc068bc7a9961f38e
-L
-src/main/java/basic/qsa.java,6\b\6baa4a0174ca0667c3150339023420588e18e583

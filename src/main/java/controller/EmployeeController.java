@@ -47,19 +47,13 @@ public class EmployeeController {
                 login();
             }
         }
-        if(!(isLoggedIn)){
-            LOGGER.info(COPY);
-            LOGGER.info("LOGIN FAILD");
-            LOGGER.info(COPY);
-        }
+        if(!(isLoggedIn)){LOGGER.info(COPY+"LOGIN FAILD"+"\n"+COPY);}
     }
     public void loginPage(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
-        LOGGER.info("=== Employee Login ===");
-       LOGGER.info("Enter your ID: ");
+        LOGGER.info(COPY1);
+        LOGGER.info("=== Employee Login ==="+"Enter your ID: ");
         String clientId = scanner.nextLine();
-        LOGGER.info("Enter your password: ");
+        LOGGER.info("\n"+"Enter your password: ");
         String password = scanner.nextLine();
         loggInCheck(clientId,password);
         if(isLoggedIn){
@@ -68,15 +62,15 @@ public class EmployeeController {
     }
 
     public void employeeHomePage(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.info(COPY1);
         int choice;
         do {
             LOGGER.info("""
                === Employee Menu ===
               1. View my schedule with my customers' reservations
               2. View my Finance for the month
-              3. Logout""");
+              3. Logout
+              """);
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
 
@@ -85,10 +79,10 @@ public class EmployeeController {
                     showEmployeeAppointments();
                     break;
                 case 2:
-                    LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
+                    LOGGER.info("\n"+"Enter Start_Date (format: dd/MM/yyyy): ");
                     scanner.nextLine();
                     String date = scanner.nextLine();
-                    LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
+                    LOGGER.info("\n"+"Enter End_Date (format: dd/MM/yyyy): ");
                     String date2 = scanner.nextLine();
                     AppointmentDb.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
                     break;
@@ -104,8 +98,7 @@ public class EmployeeController {
     }
 
     public  void  showEmployeeAppointments(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.info(COPY1);
         List<Appointment> employeeAppointments;
         employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
         printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
@@ -113,13 +106,13 @@ public class EmployeeController {
 
     public static void printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
-            logger.info(shortLine);
-            logger.info("Appointment_id: "+ appointment.getAppointmentID());
-            logger.info("Type: "+appointment.getEmployee().getWorkerType());
-            logger.info("Date: "+appointment.getDate());
-            logger.info("Time: "+appointment.getTime());
-            logger.info("Room Number: "+appointment.getRoom().getRoomNumber());
-            logger.info(shortLine);
+            LOGGER.info(shortLine);
+            logger.info("\n"+"Appointment_id: "+appointment.getAppointmentID()+"\n"+
+            "Type: "+appointment.getEmployee().getWorkerType()+"\n"+
+            "Date: "+appointment.getDate()+"\n"+
+            "Time: "+appointment.getTime()+"\n"+
+            "Room Number: "+appointment.getRoom().getRoomNumber()+"\n");
+            LOGGER.info(shortLine);
         }
     }
 
