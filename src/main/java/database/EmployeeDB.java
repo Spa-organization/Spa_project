@@ -1,15 +1,19 @@
 package database;
 
 
+import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
 import entity.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class EmployeeDB {
     static List<Employee> employees = new ArrayList<>();
+    private static final Logger LOGGER = LoggerUtility.getLogger();
+
     private EmployeeDB() {
 
     }
@@ -28,17 +32,17 @@ public class EmployeeDB {
         RoomDb.rooms.add(employees.get(3).getRoom());
     }
     public static boolean addServiceProviders(String id,String name,String password,String workerType) {
-        boolean flage = true;
+        boolean flag = true;
         for (Employee employee: employees){
             if(employee.getId().equals(id)){
-                flage=false;
+                flag=false;
                 break;
             }
         }
-        if(flage)
+        if(flag)
             employees.add(new Employee(id, name,password,workerType));
 
-        return flage;
+        return flag;
     }
     public static List<Employee> getServiceProviders() {
         return employees;
@@ -47,14 +51,14 @@ public class EmployeeDB {
         List<Employee> employeeList = new ArrayList<>();
         for(Employee employee1:employees){
             if(employee1.getWorkerType().equals(type)) {
-                boolean flage = true;
+                boolean flag = true;
                 for (Appointment appointment : employee1.getAppointments()) {
                     if (appointment.getDate().equals(date) && appointment.getTime().equals(time)){
-                        flage=false;
+                        flag=false;
                         break;
                     }
                 }
-                if(flage) {
+                if(flag) {
                     employeeList.add(employee1);
                 }
             }
@@ -70,7 +74,26 @@ public class EmployeeDB {
         return null;
     }
 
-    public static EmployeeDB createEmployeeDB() {
-        return new EmployeeDB();
+    public static boolean deleteEmployee(String employeeId) {
+        boolean found = false;
+        Employee toRemove = null;
+        for (Employee employee : employees)
+        {
+            if (employee.getId().equals(employeeId)) {
+                toRemove = employee;
+                found = true;
+                break;}
+        }
+
+        if (found) {
+            AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
+            employees.remove(toRemove);
+            LOGGER.info("employee deleted successful");
+            if (toRemove.getRoom() != null) {
+                toRemove.getRoom().setEmployee(null);
+            }
+        }
+        return found;
     }
+
 }

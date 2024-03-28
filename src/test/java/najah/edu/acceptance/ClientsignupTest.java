@@ -2,6 +2,7 @@ package najah.edu.acceptance;
 
 import controller.ClientController;
 import database.ClientDB;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,14 +15,12 @@ public class ClientsignupTest {
 
     public ClientsignupTest() {
         app = new ClientController();
-        clientId="";
-        clientName="";
-        password="";
     }
 
     String clientId ;
     String clientName ;
     String password ;
+    String email;
 
     @Given("the client does not have an account")
     @Test
@@ -33,6 +32,9 @@ public class ClientsignupTest {
     public void theClientProvidesAValidID(String id) {
         this.clientId = id;
     }
+
+    @And("a valid email {string}")
+    public void aValidEmail(String email) {this.email=email;}
 
     @When("the client provides a valid name {string}")
     public void theClientProvidesAValidName(String name) {
@@ -47,7 +49,7 @@ public class ClientsignupTest {
     @Then("their account should be created and they should be logged in automatically")
     @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
-            assertTrue(ClientDB.addClient(clientId, clientName, password));
+            assertTrue(ClientDB.addClient(clientId, clientName, password,email));
     }
 
     @Given("the client provides an ID that is already associated with another account {string}")
@@ -62,7 +64,7 @@ public class ClientsignupTest {
 
     @Then("they should be shown an error message indicating the ID is already in use")
     public void theyShouldBeShownAnErrorMessageIndicatingTheIDIsAlreadyInUse() {
-        assertFalse(ClientDB.addClient(clientId, clientName, password));}
+        assertFalse(ClientDB.addClient(clientId, clientName, password ,email));}
 }
 
 

@@ -1,14 +1,8 @@
 package controller;
-
-
-
 import basic.LoggerUtility;
 import java.util.Scanner;
 import java.util.logging.Logger;
-
 public class Starter {
-    private static final String COPY="-----------------------------------";
-
     private static final Logger LOGGER = LoggerUtility.getLogger();
     Scanner scanner= new Scanner(System.in);
 
@@ -49,7 +43,7 @@ public class Starter {
 
     }
 
-    public void choseEntity()  {
+    public  void choseEntity()  {
         int choice;
 
         do {

@@ -119,13 +119,13 @@ public class AppointmentDb {
             }
             double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
             double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-            LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings);
-            LOGGER.info("Employee's Share (30%): $" + employeeEarnings);
-            LOGGER.info("Center's Share (70%): $" + centerEarnings);
+            LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings+"\n"+
+                            "Employee's Share (30%): $" + employeeEarnings+"\n"+
+                            "Center's Share (70%): $" + centerEarnings
+                    );
             return  flag;
         }
-    public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
-        boolean flag=false;
+    public static void calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
         double totalEarnings = 0;
@@ -134,18 +134,16 @@ public class AppointmentDb {
             LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
             if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate)) {
                 if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                    flag=true;
                     totalEarnings += SAWNA_SESSION_COST;
 
                 } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                    flag=true;
                     totalEarnings += MASSAGE_SESSION_COST;
                 }
             }
         }
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
         LOGGER.info("Total Center Earnings from " + startDateStr + " to " + endDateStr + ": $" + centerEarnings);
-        return  flag;
+
     }
 
 

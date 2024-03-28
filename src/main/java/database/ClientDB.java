@@ -12,22 +12,22 @@ public class ClientDB {
 		throw new IllegalStateException("Utility class");
 	}
 	static{
-		clients.add(new Client("11","clint1","123"));
-		clients.add(new Client("12","clint2","123"));
-		clients.add(new Client("13","clint3","123"));
-		clients.add(new Client("14","clint4","123"));
+		clients.add(new Client("11","clint1","123","qsay.3w@gmail.com"));
+		clients.add(new Client("12","clint2","123","younism381@gmail.com"));
+		clients.add(new Client("13","clint3","123","abdullahshabib33@gmail.com"));
+		clients.add(new Client("14","clint4","123","qsay.3w@gmail.com"));
 	}
-	public static boolean addClient(String id,String name,String password) {
-		boolean flage = true;
+	public static boolean addClient(String id,String name,String password,String email) {
+		boolean flag = true;
 		for(Client client:clients){
 			if(client.getId().equals(id)){
-				flage=false;
+				flag=false;
 				break;
 			}
 		}
-		if(flage)
-			clients.add(new Client(id, name,password));
-		return flage;
+		if(flag)
+			clients.add(new Client(id, name,password,email));
+		return flag;
 	}
 
 	public static List<Client> getClients() {

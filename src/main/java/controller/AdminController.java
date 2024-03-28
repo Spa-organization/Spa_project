@@ -6,12 +6,11 @@ import database.*;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
-
 public class AdminController {
+    Starter starter=new Starter();
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
-    Employee employee=new Employee();
     private  boolean isLoggedIn;
     Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
@@ -85,8 +84,11 @@ public class AdminController {
                     addAdmin();
                     break;
                 case 6:
-                    //delete employee
-                    break;
+                    showAllEmployees();
+                    LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
+                    String employeeId = scanner.nextLine();
+                    scanner.nextLine();
+                    EmployeeDB.deleteEmployee(employeeId); break;
                 case 7:
                     showALlRooms();
                     break;
@@ -98,7 +100,9 @@ public class AdminController {
                 case 10:LOGGER.info("\n"+"""
                             Logging out. Goodbye!
                             
-                            """);break;
+                            """);
+                starter.choseEntity();
+                break;
                 default:
                     LOGGER.info("\n"+"""
                             Invalid choice. Please try again.
@@ -161,6 +165,7 @@ public class AdminController {
                     LOGGER.info(COPY+"This ID_room is Already Exists"+COPY);
                 }
                 else {
+
                     LOGGER.info(COPY+
                             "Sawna Room Added"+"\n+" +
                             COPY);
@@ -232,8 +237,7 @@ public class AdminController {
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
         for(Employee employee :employees){
-            LOGGER.info("----"+"\n"+
-                    "Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType());
+            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType());
         }
     }
     public void addEmployee(){
@@ -328,6 +332,8 @@ public class AdminController {
         LOGGER.info("\n");
         AppointmentDb.calculateTotalCenterEarningsInRange(date,date2);
     }
+
+
 
 
 }

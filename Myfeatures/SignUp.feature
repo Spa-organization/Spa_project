@@ -5,6 +5,7 @@ Feature: Sign Up
     When the client provides a valid ID "15"
     When the client provides a valid name "ali"
     And a valid password "1234"
+    And a valid email "qsay.3w@gmail.com"
     Then their account should be created and they should be logged in automatically
 
   Scenario: Sign up with an already registered ID
