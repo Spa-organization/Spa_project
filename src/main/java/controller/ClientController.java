@@ -22,7 +22,7 @@ public class ClientController {
      Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
 
-    private boolean logUp;
+    private    boolean logUp;
 
     public ClientController() {
         isLoggedIn = false;
@@ -54,12 +54,7 @@ public class ClientController {
                 break;
             }
         }
-        if(!(isLoggedIn)){
-            LOGGER.info(COPY);
-            LOGGER.info("LOGIN FAILD");
-            LOGGER.info(COPY);
-
-        }
+        if(!(isLoggedIn)){LOGGER.info(COPY+"LOGIN FAILD"+"\n"+COPY);}
     }
     public void loginPage(){
 

@@ -25,7 +25,8 @@ public class AdminManagementTest {
     @Given("I am logged in as an admin")
     @Test
     public void iAmLoggedInAsAnAdmin() {
-        assertTrue(true);
+        Admin_controller.loginCheck("21", "123");
+        assertTrue(Admin_controller.isLoggedIn());
     }
     @When("I choose to add an employee")
     @Test
@@ -43,8 +44,12 @@ public class AdminManagementTest {
     @Then("the employee should be added to the system")
     @Test
     public void theEmployeeShouldBeAddedToTheSystem() {
-        assertTrue(true);
-    }
+        emp_id="35";
+        emp_name="ali";
+        emp_password="123";
+        worker_type="massage";
+        assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
+}
     @When("I choose to add an admin")
     @Test
     public void iChooseToAddAnAdmin() {
