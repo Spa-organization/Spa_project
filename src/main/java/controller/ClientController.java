@@ -52,7 +52,7 @@ public class ClientController {
                 break;
             }
         }
-        if(!(isLoggedIn)){LOGGER.info(COPY+"LOGIN FAILD"+"\n");}
+        if(!(isLoggedIn)){LOGGER.info("\n"+COPY+"LOGIN FAILD"+"\n");}
     }
     public void loginPage(){
         LOGGER.info(COPY1);
@@ -164,7 +164,7 @@ public class ClientController {
         } while (appointmentType!=3);
     }
     public void booking(String type){
-        LOGGER.info("\n"+COPY1+"Enter Date (format: dd/MM/yyyy): ");
+        LOGGER.info("\n"+"Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
         LOGGER.info("Enter Time (format: HH:mm): ");
@@ -219,22 +219,22 @@ public class ClientController {
                     if(    "massage".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() )      )
                     {
-                        text ="your massage room was successfully reserved at"+"\n"+
+                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
                               "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
-                                "your room is::" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
-                                "Status is::" +AppointmentDb.appointments.get(i).isBooked();
+                                "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
+                                "Status is:" +AppointmentDb.appointments.get(i).isBooked();
                                 emailSender.sendEmail(subject, text);
                     }
                     else if("sawna".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() ))
                     {
-                        text ="your sawna room was successfully reserved at"+"\n"+
+                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your sawna room was successfully reserved at"+"\n"+
                                 "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
-                                "your room is::" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
-                                "Status is::" +AppointmentDb.appointments.get(i).isBooked();
-                        emailSender.sendEmail(subject, text);
+                                "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
+                                "Status is:" +AppointmentDb.appointments.get(i).isBooked();
+                                emailSender.sendEmail(subject, text);
                     }
                 }
                 LOGGER.info("""
@@ -250,7 +250,7 @@ public class ClientController {
         {
             rooms =employee.getRooms();
             for(Room room:rooms){
-                LOGGER.info("\n"+SHORT_LINE+"Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType()+"\n");
+                LOGGER.info("\n"+"Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType()+"\n");
             }
         }
         LOGGER.info("Enter room number to book:");
@@ -277,7 +277,8 @@ public class ClientController {
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentID() == idC) {
                 emailSender=new EmailSender(this.client.getEmail());
-                text="\n"+"your"+AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
+                text="\n"+"Dear Ms "+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
+                        AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
                         AppointmentDb.appointments.get(idC).getTime()+"and Date:"+
                         AppointmentDb.appointments.get(idC).getDate()+"was cancelled";
                 emailSender.sendEmail(subject,text);
