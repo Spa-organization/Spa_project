@@ -269,10 +269,10 @@ public class ClientController {
 
         LOGGER.info("Please enter the id of your appointment: ");
         int nextInt = input.nextInt();
-        LOGGER.info("\n"+"Please enter the new date (format: dd/MM/yyyy): ");
+        LOGGER.info("Please enter the new date (format: dd/MM/yyyy): ");
         input.nextLine();
         String date = input.nextLine();
-        LOGGER.info("\n"+"Please enter the new time (format: HH:mm): ");
+        LOGGER.info("Please enter the new time (format: HH:mm): ");
         String time = input.nextLine();
         if(!AppointmentDb.isValidDate(date)) {addAppointmentResult(2); return;}
         else if(!AppointmentDb.isValidTime(time)) {addAppointmentResult(1); return;}
