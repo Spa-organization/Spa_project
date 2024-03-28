@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class ClientController {
     private static final String COPY="-----------------------------------\n";
-    private static final String COPY1="-----------------------------------\n+-----------------------------------";
+    private static final String COPY1="-----------------------------------\n+-----------------------------------\n";
 
 
     private static final String SHORT_LINE ="--------------------\n";
@@ -163,12 +163,11 @@ public class ClientController {
         } while (appointmentType!=3);
     }
     public void booking(String type){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
-        LOGGER.info("Enter Date (format: dd/MM/yyyy): "+"\n");
+        LOGGER.info(COPY1);
+        LOGGER.info("Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
-        LOGGER.info("Enter Time (format: HH:mm): "+"\n");
+        LOGGER.info("Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
         if(!AppointmentDb.isValidDate(dateInput))
         {addAppointmentResult(2);return ;}
@@ -178,11 +177,10 @@ public class ClientController {
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
         if(!employees.isEmpty()){showAvailableRooms(employees,dateInput,timeInput);}
 
-        else{
+        else {
 
-            LOGGER.info(COPY);
-            LOGGER.info("NO Available Rooms In This Time");
-            LOGGER.info(COPY);}
+            LOGGER.info(COPY + "NO Available Rooms In This Time" + "\n" + COPY);
+        }
 
     }
     public void bookMassage(String type){
