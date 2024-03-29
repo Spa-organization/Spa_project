@@ -110,7 +110,7 @@ public class AdminController {
                             """);
             }
 
-        } while (choice != 9);
+        } while (choice != 10);
 
     }
 
@@ -141,6 +141,7 @@ public class AdminController {
                     break;
                 case 4:
                     LOGGER.info("Exiting Room Management. Goodbye!");
+                    adminHomePage();
                     break;
                 default:
                     LOGGER.info("Invalid choice. Please try again.");
