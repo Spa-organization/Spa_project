@@ -74,28 +74,5 @@ public class EmployeeDB {
         return null;
     }
 
-    public static boolean deleteEmployee(String employeeId) {
-        boolean found = false;
-        Employee toRemove = null;
-        for (Employee employee : employees)
-        {
-            if (employee.getId().equals(employeeId)) {
-                toRemove = employee;
-                found = true;
-                break;}
-        }
-
-        if (found) {
-            AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
-            employees.remove(toRemove);
-            LOGGER.info("employee deleted successful");
-            if (toRemove.getRoom() != null) {
-                toRemove.getRoom().setEmployee(null);
-            }
-        }
-        return found;
-    }
-    public static void deleteEmoloyee(int id){
-        employees.removeIf(h -> h.getId().equals(id)  );}
 
 }

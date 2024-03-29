@@ -1,5 +1,4 @@
 package controller;
-
 import basic.LoggerUtility;
 import entity.*;
 import database.*;
@@ -88,7 +87,7 @@ public class AdminController {
                     LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
                     String employeeId = scanner.nextLine();
                     scanner.nextLine();
-                    EmployeeDB.deleteEmployee(employeeId); break;
+                    deleteEmployee(employeeId); break;
                 case 7:
                     showALlRooms();
                     break;
@@ -330,7 +329,27 @@ public class AdminController {
         String date2 = scanner.nextLine();
         AppointmentDb.calculateTotalCenterEarningsInRange(date,date2);
     }
-
+    public static void deleteEmployee(String employeeId) {
+        boolean found = false;
+        List<Employee> employeeList;
+        employeeList = EmployeeDB.getServiceProviders();
+        Employee toRemove = null;
+        for (Employee emp : employeeList) {
+            if (emp.equals(employeeId)) {
+                toRemove = emp;
+                found = true;
+                LOGGER.info(" delete pending ");
+            }
+        }
+        if (found) {
+             AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
+            employeeList.remove(toRemove);
+            LOGGER.info("employee deleted successful");
+            if (toRemove.getRoom() != null) {
+                toRemove.getRoom().setEmployee(null);
+            }
+        }
+    }
 
 
 

@@ -219,7 +219,7 @@ public class ClientController {
                     if(    "massage".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() )      )
                     {
-                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
+                        text ="Dear Ms "+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
                               "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
                                 "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
@@ -269,9 +269,8 @@ public class ClientController {
         String text;
         boolean flag = false;
         showClientAppointments();
-        Scanner input = new Scanner(System.in);
-        LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above");
-        int idC = input.nextInt();
+        LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above:");
+        int idC = scanner.nextInt();
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
