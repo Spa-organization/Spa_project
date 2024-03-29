@@ -12,6 +12,12 @@ Feature: Admin Management
     And I enter the employee "35"
     Then the employee should be deleted form the system
 
+  Scenario: edit Employee
+    Given I am logged in as an admin
+    When I choose to edit an employee
+    And I enter the employee "35"
+    Then the employee should be edit form the system
+
   Scenario: Add Admin
     Given I am logged in as an admin
     When I choose to add an admin

@@ -242,17 +242,17 @@ public class AdminController {
     }
     public void addEmployee(){
         LOGGER.info(COPY1+
-                "=== Add Employee ==="+"\n"+
-                        "Enter Employee ID: ");
+                "=== Add Employee ==="+"\n");
+       LOGGER.info("Enter Employee ID: ");
         String employeeId = scanner.next();
 
-        LOGGER.info("\n"+"Enter Employee Name: ");
+        LOGGER.info("Enter Employee Name: ");
         String employeeName = scanner.next();
 
-        LOGGER.info("\n"+"Enter Employee Password: ");
+        LOGGER.info("Enter Employee Password: ");
         String employeePassword = scanner.next();
 
-        LOGGER.info("\n"+"Enter Employee Type (Sawna or Massage): ");
+        LOGGER.info("Enter Employee Type (Sawna or Massage): ");
         String employeeType = scanner.next();
         if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType)){
 
@@ -265,7 +265,7 @@ public class AdminController {
 
     public static void showAppointments(){
 
-        LOGGER.info(COPY1+"=== All Appointments ==="+"\n");
+        LOGGER.info("=== All Appointments ==="+"\n");
         List<Appointment> appointments;
         appointments = AppointmentDb.getAllAppointments();
         for(Appointment appointment:appointments){
@@ -273,7 +273,7 @@ public class AdminController {
                     " type: "+appointment.getEmployee().getWorkerType()+"\n"+
                             "Room: "+appointment.getRoom().getRoomNumber()+"\n"+
                             "Employee: "+appointment.getEmployee().getName()+"\n"+
-                            "Date: "+appointment.getDate()+" Time"+appointment.getTime()
+                            "Date: "+appointment.getDate()+" Time"+appointment.getTime()+"\n"
                     );
         }
     }
@@ -286,28 +286,28 @@ public class AdminController {
         for(Room room:rooms){
             LOGGER.info("-----------" +"\n"+
                     "Room Id: "+room.getRoomNumber()+
-                    "Employee: "+room.getEmployee().getName());}
+                    "Employee: "+room.getEmployee().getName()+"\n");}
     }
     public void addAdmin(){
         LOGGER.info(COPY1+"=== Add Admin ===\n"+"Enter Admin ID:");
         String adminId = scanner.next();
 
-        LOGGER.info("\nEnter Admin Name: ");
+        LOGGER.info("Enter Admin Name: ");
         String adminName = scanner.next();
 
-        LOGGER.info("\nEnter Admin Password: ");
+        LOGGER.info("Enter Admin Password: ");
         String adminPassword = scanner.next();
         if(!AdminDB.addAdmin(adminId,adminName,adminPassword)){
-            LOGGER.info(COPY+"This ID is Already Exists\n"+COPY);
+            LOGGER.info(COPY+"This ID is Already Exists"+"\n"+COPY);
         }else
-            LOGGER.info("=== Admin added ===");
+            LOGGER.info("=== Admin added ==="+"\n");
     }
     public void viewFeedbacks(){
-        LOGGER.info(COPY);
+        LOGGER.info("\n");
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();
         for (FeedBack feedback: feedBacks) {
-            LOGGER.info(COPY+"Client id: "+feedback.getClientId()+"\n"+feedback.getFeed());
+            LOGGER.info(COPY+"Client id: "+feedback.getClientId()+"   "+feedback.getFeed()+"\n");
         }
     }
 
@@ -324,12 +324,10 @@ public class AdminController {
 
     public void viewCenterEarningsForRange() {
         LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
-        scanner.nextLine();
+        //scanner.nextLine();
         String date = scanner.nextLine();
-        LOGGER.info("\n");
-        LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
+        LOGGER.info("\n"+"Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
-        LOGGER.info("\n");
         AppointmentDb.calculateTotalCenterEarningsInRange(date,date2);
     }
 

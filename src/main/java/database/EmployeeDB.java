@@ -95,5 +95,7 @@ public class EmployeeDB {
         }
         return found;
     }
+    public static void deleteEmoloyee(int id){
+        employees.removeIf(h -> h.getId().equals(id)  );}
 
 }
