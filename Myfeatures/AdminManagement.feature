@@ -6,6 +6,12 @@ Feature: Admin Management
     And I enter the employee "35" and it should be unique and name "ali" and pass "123" and choice "massage"
     Then the employee should be added to the system
 
+  Scenario: delete Employee
+    Given I am logged in as an admin
+    When I choose to delete an employee
+    And I enter the employee "35"
+    Then the employee should be deleted form the system
+
   Scenario: Add Admin
     Given I am logged in as an admin
     When I choose to add an admin

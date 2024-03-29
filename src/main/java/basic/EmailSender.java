@@ -7,8 +7,6 @@ import javax.mail.internet.MimeMessage;
 public class EmailSender {
     String receiveEmail;
     String from;
-
-
     public EmailSender(String receiveEmail){
         this.receiveEmail = receiveEmail;
         this.from="qsaydwekat994@gmail.com";}
@@ -34,17 +32,21 @@ public class EmailSender {
             message.setSubject(subject);
             message.setText(text);
             Transport.send(message);
-
         }
+
         catch (MessagingException ex) {
             ex.fillInStackTrace();
 
         }
-
     }
 
-    public void sendEmail(String subject,String text) {
-        sending(subject,text);
+    public boolean sendEmail(String subject, String text) {
+        if(subject.isEmpty() && text.isEmpty())
+           return false;
+        else {
+            sending(subject, text);
+            return true;
+        }
     }
 
 

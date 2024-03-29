@@ -1,12 +1,13 @@
 package database;
 
+import basic.LoggerUtility;
 import entity.FeedBack;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class FeedbackDB {
-    private static final Logger LOGGER = Logger.getLogger(FeedbackDB.class.getName());
+    private static final Logger LOGGER = LoggerUtility.getLogger();
 
     static List<FeedBack> feedBacks= new ArrayList<>();
     private FeedbackDB() {

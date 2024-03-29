@@ -1,28 +1,30 @@
 package controller;
 
+import basic.EmailSender;
+import basic.LoggerUtility;
+import database.*;
 import entity.*;
-import database.AppointmentDb;
-import database.ClientDB;
-import database.FeedbackDB;
-import database.RoomDb;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ClientController {
-    private static final String COPY="-----------------------------------";
-    private static final String SHORT_LINE ="--------------------";
-    private static final Logger LOGGER = Logger.getLogger(ClientController.class.getName());
+    Starter starter=new Starter();
+    private static final String COPY="-----------------------------------\n";
+    private static final String COPY1="-----------------------------------\n-----------------------------------\n";
+    private static final String SHORT_LINE ="--------------------\n";
+    private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
      Scanner scanner = new Scanner(System.in);
     private  Client client = new Client();
+    EmailSender emailSender;
+   String subject ="Spa_Organization";
 
-    private boolean logUp;
+    private   boolean logUp;
 
     public ClientController() {
         isLoggedIn = false;
-        logUp=false;
     }
 
     public boolean isLoggedIn() {
@@ -50,20 +52,15 @@ public class ClientController {
                 break;
             }
         }
-        if(!(isLoggedIn)){
-            LOGGER.info(COPY);
-            LOGGER.info("LOGIN FAILD");
-            LOGGER.info(COPY);
-
-        }
+        if(!(isLoggedIn)){LOGGER.info("\n"+COPY+"LOGIN FAILD"+"\n");}
     }
     public void loginPage(){
-        LOGGER.info("=== Client Login ===");
-
-        LOGGER.info("Enter your ID: ");
+        LOGGER.info(COPY1);
+        LOGGER.info("""
+                === Customer Login ===
+                Enter your ID:""");
         String clientId = scanner.nextLine();
-
-        LOGGER.info("Enter your password: ");
+        LOGGER.info("Enter your password:");
         String password = scanner.nextLine();
         loggInCheck(clientId,password);
         if(isLoggedIn){
@@ -72,9 +69,8 @@ public class ClientController {
 
     }
     public void clientSignUp(){
-        LOGGER.info("=== Sign Up ===");
-
-        LOGGER.info("Enter client ID: ");
+        LOGGER.info("=== Sign Up ==="+"\n"+
+                "Enter client ID: ");
         String clientId = scanner.nextLine();
 
         LOGGER.info("Enter client Name: ");
@@ -82,24 +78,18 @@ public class ClientController {
 
         LOGGER.info("Enter client Password: ");
         String password = scanner.nextLine();
-        if(!ClientDB.addClient(clientId,clientName,password)){
-                        LOGGER.info(COPY);
 
-            LOGGER.info("This ID is Already Exists");
-                        LOGGER.info(COPY);
-
+        LOGGER.info("Enter client email: ");
+        String email = scanner.nextLine();
+        if(!ClientDB.addClient(clientId,clientName,password,email)){
+            LOGGER.info(COPY+"This ID is Already Exists\n"+COPY);
         }else {
-            LOGGER.info(COPY);
-            LOGGER.info("Signup done successfully");
-                        LOGGER.info(COPY);
-
+            LOGGER.info(COPY+"Signup done successfully"+"\n"+"\n");
         }
     }
 
-    //-----------Client Home Page---------------
     public void clientHomePage(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.info(COPY1);
         int choice;
 
         do {
@@ -110,7 +100,8 @@ public class ClientController {
                 3. Edit My Appointments
                 4. Cancel My Appointments
                 5. Feedback
-                6. Logout""");
+                6. Logout
+                """);
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
 
@@ -135,6 +126,7 @@ public class ClientController {
                     FeedbackDB.addFeedback(feedback,nextId);
                     break;
                 case 6:
+                     starter.choseEntity();
                     LOGGER.info("Logging out. Goodbye!");
                     break;
                 default:
@@ -149,12 +141,12 @@ public class ClientController {
         int appointmentType;
         do {
             LOGGER.info("""
+                    
                     Book Appointment
                     1. Massage
                     2. Sauna
                     3. Exit
-                    Enter your choice:
-                    """);
+                    Enter your choice:""");
             appointmentType = scanner.nextInt();
             switch (appointmentType) {
                 case 1:
@@ -164,6 +156,7 @@ public class ClientController {
                     bookSauna("Sawna");
                     break;
                 case 3:
+                    clientHomePage();
                     break;
                 default:
                    LOGGER.info("Invalid choice. Please try again.");
@@ -171,9 +164,7 @@ public class ClientController {
         } while (appointmentType!=3);
     }
     public void booking(String type){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
-        LOGGER.info("Enter Date (format: dd/MM/yyyy): ");
+        LOGGER.info("\n"+"Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
         LOGGER.info("Enter Time (format: HH:mm): ");
@@ -186,16 +177,16 @@ public class ClientController {
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
         if(!employees.isEmpty()){showAvailableRooms(employees,dateInput,timeInput);}
 
-        else{
+        else {
 
-            LOGGER.info(COPY);
-            LOGGER.info("NO Available Rooms In This Time");
-            LOGGER.info(COPY);}
+            LOGGER.info(COPY + "NO Available Rooms In This Time" + "\n" + COPY);
+        }
 
     }
     public void bookMassage(String type){
         booking(type);
     }
+
     public void printEmployees(List<Employee> employees){
        LOGGER.info("--------Print employees :)--------");
         for(Employee employee:employees){
@@ -203,58 +194,66 @@ public class ClientController {
         }
     }
 
+    public void bookSauna(String type){booking(type);}
 
-    public void bookSauna(String type){
-        booking(type);
-
-    }
     public void showClientAppointments(){
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.info(COPY1);
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
-        for( Appointment appointment: clientAppointments){
-            LOGGER.info(SHORT_LINE);
-            LOGGER.info("Appointment_id: "+ appointment.getAppointmentID());
-            LOGGER.info("Type: "+appointment.getEmployee().getWorkerType());
-            LOGGER.info("Date: "+appointment.getDate());
-            LOGGER.info("Time: "+appointment.getTime());
-            LOGGER.info("Room Number: "+appointment.getRoom().getRoomNumber());
-            LOGGER.info(SHORT_LINE);
-
-        }
+        EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
 
     }
     public void addAppointmentResult(int result){
         switch (result){
             case 1:
-         LOGGER.info(COPY);
-         LOGGER.info("invalid Time! check your Time form");
-         LOGGER.info(COPY);
+         LOGGER.info(COPY+"invalid Time! check your Time form"+"\n"+"invalid Time! check your Time form"+"\n"+COPY);
          break;
-
             case 2:
-                LOGGER.info("----------------------------------");
-                LOGGER.info("invalid date! check your date form");
-                LOGGER.info(COPY);
+                LOGGER.info(COPY+"invalid date! check your date form"+"\n"+COPY);
                 break;
-
             default:
-                LOGGER.info("----------------------------------");
-                LOGGER.info("Appointment Booked :)");
-                LOGGER.info(COPY);
+                String text;
+                emailSender=new EmailSender(this.client.getEmail());
+                for(int i=0;i<AppointmentDb.appointments.size();i++)
+                {
+                    if(    "massage".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
+                            this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() )      )
+                    {
+                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
+                              "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
+                                "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
+                                "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
+                                "Status is:" +AppointmentDb.appointments.get(i).isBooked();
+                                emailSender.sendEmail(subject, text);
+                    }
+                    else if("sawna".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
+                            this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() ))
+                    {
+                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your sawna room was successfully reserved at"+"\n"+
+                                "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
+                                "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
+                                "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
+                                "Status is:" +AppointmentDb.appointments.get(i).isBooked();
+                                emailSender.sendEmail(subject, text);
+                    }
+                }
+                LOGGER.info("""
+
+                        Appointment was Booked :)---
+                        """);
         }
     }
     public void showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
         LOGGER.info("-----Available Rooms------");
         List<Room> rooms;
-        for(Employee employee:employees){
+        for(Employee employee:employees)
+        {
             rooms =employee.getRooms();
             for(Room room:rooms){
-                LOGGER.info("--------------");
-                LOGGER.info("Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType());
+                LOGGER.info("\n"+"Room Number: "+ room.getRoomNumber()+" employee: "+room.getEmployee().getName()+" type: "+room.getEmployee().getWorkerType()+"\n");
             }
-        }LOGGER.info("Enter room number to book");
+        }
+        LOGGER.info("Enter room number to book:");
         int roomNumber= scanner.nextInt();
         if(roomNumber!=0){
             Room room= RoomDb.getRoomById(roomNumber);
@@ -262,37 +261,37 @@ public class ClientController {
                 addAppointmentResult( AppointmentDb.addAppointment(this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
-        else{
-            LOGGER.info("invalid input!!");
-            LOGGER.info("----------------------");
-        }
-
-
+        else{LOGGER.info("\n"+"invalid input!!"+"\n"+SHORT_LINE);}
     }
 
 
     public void cancelSession(){
+        String text;
         boolean flag = false;
         showClientAppointments();
         Scanner input = new Scanner(System.in);
-        LOGGER.info(SHORT_LINE);
-        LOGGER.info("Please enter the id of the your appointment from the above");
+        LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above");
         int idC = input.nextInt();
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentID() == idC) {
+                emailSender=new EmailSender(this.client.getEmail());
+                text="\n"+"Dear Ms "+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
+                        AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
+                        AppointmentDb.appointments.get(idC).getTime()+"and Date:"+
+                        AppointmentDb.appointments.get(idC).getDate()+"was cancelled";
+                emailSender.sendEmail(subject,text);
                 flag = true;
                 break;
             }
-
         }
-        if(flag){
+        if(flag)
+        {
             AppointmentDb.deleteAppointment(idC);
-            LOGGER.info("Successfully deleted");
+            LOGGER.info("\n"+"Successfully deleted and the email will send to you");
         }
-
-        else     LOGGER.info("You don't have this room");
+        else LOGGER.info("You don't have this room");
     }
 
     public void updateSession(){

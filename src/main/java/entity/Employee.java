@@ -9,6 +9,7 @@ public class Employee {
     private String password;
     private String workerType;
     private final List<Room> rooms = new ArrayList<>();
+
     private final List<Appointment> appointments =new ArrayList<>();
 
     public List<Appointment> getAppointments() {
