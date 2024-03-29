@@ -64,7 +64,9 @@ public class AdminController {
                     7. Show All Rooms
                     8. View Feedbacks
                     9. view CenterEarningsForRange
-                    10. logout
+                    10.edit employee
+                    11.show all employee
+                    12. logout
                     """+"Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
@@ -97,7 +99,24 @@ public class AdminController {
                     break;
                 case 9:viewCenterEarningsForRange();
                     break;
-                case 10:LOGGER.info("\n"+"""
+                case 10:
+                    LOGGER.info(COPY1+"=== edit Employee ===\nEnter Employee ID: ");
+                    String empId = scanner.next();
+
+                    LOGGER.info("\n"+"Enter Employee Name: ");
+                    String employeeName = scanner.next();
+
+                    LOGGER.info("Enter Employee Password: ");
+                    String employeePassword = scanner.next();
+
+                    LOGGER.info("Enter Employee Type (1.Sawna or 2.Massage): ");
+                    String employeeType = scanner.next();
+                   EmployeeDB.editEmployee(empId,employeeName,employeePassword,employeeType);
+                    break;
+                case 11:
+                    showAllEmployees();
+                    break;
+                case 12:LOGGER.info("\n"+"""
                             Logging out. Goodbye!
                             
                             """);
@@ -110,7 +129,7 @@ public class AdminController {
                             """);
             }
 
-        } while (choice != 10);
+        } while (choice != 11);
 
     }
 
@@ -238,7 +257,7 @@ public class AdminController {
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
         for(Employee employee :employees){
-            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType());
+            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
         }
     }
     public void addEmployee(){

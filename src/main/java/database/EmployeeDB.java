@@ -95,5 +95,21 @@ public class EmployeeDB {
         }
         return found;
     }
+    public static boolean editEmployee(String id, String newName, String newPassword, String newWorkerType) {
+        for (Employee employee : employees) {
+            if (employee.getId().equals(id)) {
+                employee.setName(newName);
+                employee.setPassword(newPassword);
+                employee.setWorkerType(Integer.parseInt(newWorkerType));
+
+                // Log the update for auditing purposes
+                LOGGER.info("Employee%s has been updated. ".formatted(id)+"\n");
+
+                return true; // Indicate the employee was found and updated.
+            }
+        }
+        // Employee with the provided ID was not found.
+        return false;
+    }
 
 }
