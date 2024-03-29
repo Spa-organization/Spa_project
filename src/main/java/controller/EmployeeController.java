@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 
 public class EmployeeController {
     private static final String COPY="-----------------------------------\n";
-    private static final String COPY1="-----------------------------------\n+-----------------------------------";
-    private static final String SHORT_LINE ="--------------------";
+    private static final String COPY1="-----------------------------------\n-----------------------------------\n";
+    private static final String SHORT_LINE ="--------------------\n";
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private boolean isLoggedIn;
     private final Scanner scanner = new Scanner(System.in);
@@ -51,9 +51,9 @@ public class EmployeeController {
     }
     public void loginPage(){
         LOGGER.info(COPY1);
-        LOGGER.info("=== Employee Login ==="+"Enter your ID: ");
+        LOGGER.info("=== Employee Login ==="+"\n"+"Enter your ID: ");
         String clientId = scanner.nextLine();
-        LOGGER.info("\n"+"Enter your password: ");
+        LOGGER.info("Enter your password: ");
         String password = scanner.nextLine();
         loggInCheck(clientId,password);
         if(isLoggedIn){

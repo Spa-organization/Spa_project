@@ -103,7 +103,7 @@ public class AdminController {
                     LOGGER.info(COPY1+"=== edit Employee ===\nEnter Employee ID: ");
                     String empId = scanner.next();
 
-                    LOGGER.info("\n"+"Enter Employee Name: ");
+                    LOGGER.info("Enter Employee Name: ");
                     String employeeName = scanner.next();
 
                     LOGGER.info("Enter Employee Password: ");
