@@ -37,7 +37,7 @@ public class AppointmentDb {
     public static int addAppointment(Client client, String date, String time, Employee employee){
         if(!isValidDate(date)) return 2;
         if(!isValidTime(time)) return 1;
-        appointments.add(new Appointment(appointments.get(appointments.size()-1).getAppointmentID() + 1,client,employee,employee.getRoom(),date,time,true));
+        appointments.add(new Appointment(appointments.get(appointments.size()-1).getAppointmentId() + 1,client,employee,employee.getRoom(),date,time,true));
         employee.setAppointment(appointments.get(appointments.size()-1));
         return 0;
     }
@@ -93,7 +93,7 @@ public class AppointmentDb {
     }
 
     public static void deleteAppointment(int id){
-        appointments.removeIf(h -> h.getAppointmentID() == id);}
+        appointments.removeIf(h -> h.getAppointmentId() == id);}
 
 
         public static boolean calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {

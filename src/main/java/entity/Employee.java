@@ -1,8 +1,13 @@
 package entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Data
+@NoArgsConstructor
 public class Employee {
     private String id ;
     private String name;
@@ -12,19 +17,9 @@ public class Employee {
 
     private final List<Appointment> appointments =new ArrayList<>();
 
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public List<Room> getRooms() {
-        return rooms;
-    }
-
     public void setAppointment(Appointment appointment) {
         this.appointments.add(appointment);
     }
-
-    public Employee(){ }
     public Employee(String id, String name, String password,String workerType,Room room) {
         this.id = id;
         this.name = name;
@@ -43,34 +38,6 @@ public class Employee {
     }
     public void addRoomToEmployee(Room room){
         this.rooms.add(room);
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getWorkerType() {
-        return workerType;
     }
 
     public void setWorkerType(int workerTypeId) {

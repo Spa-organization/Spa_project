@@ -107,7 +107,7 @@ public class EmployeeController {
     public static void printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
             LOGGER.info(shortLine);
-            logger.info("\n"+"Appointment_id: "+appointment.getAppointmentID()+"\n"+
+            logger.info("\n"+"Appointment_id: "+appointment.getAppointmentId()+"\n"+
             "Type: "+appointment.getEmployee().getWorkerType()+"\n"+
             "Date: "+appointment.getDate()+"\n"+
             "Time: "+appointment.getTime()+"\n"+
