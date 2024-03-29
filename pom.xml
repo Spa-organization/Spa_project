@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>EventPlanner</groupId>
-  <artifactId>WeddingPlanner</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>EventPlanner</groupId>
+    <artifactId>WeddingPlanner</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
 
-            <sonar.organization>spa-organization</sonar.organization>
-            <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>spa-organization</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>19</maven.compiler.source>
@@ -15,37 +16,43 @@
 
     </properties>
 
-  <dependencies>
+    <dependencies>
 
 
-<dependency>
-    <groupId>io.cucumber</groupId>
-    <artifactId>cucumber-picocontainer</artifactId>
-    <version>7.16.0</version>
-</dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>7.16.0</version>
+        </dependency>
 
 
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.16.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
 
-<dependency>
-    <groupId>io.cucumber</groupId>
-    <artifactId>cucumber-java</artifactId>
-    <version>7.16.1</version>
-</dependency>
-      <dependency>
-          <groupId>com.sun.mail</groupId>
-          <artifactId>javax.mail</artifactId>
-          <version>1.6.2</version>
-      </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
 
-<dependency>
-    <groupId>io.cucumber</groupId>
-    <artifactId>cucumber-junit</artifactId>
-    <version>7.16.0</version>
-     <scope>test</scope>
-</dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.16.0</version>
+            <scope>test</scope>
+        </dependency>
 
 
-  </dependencies>
+    </dependencies>
     <build>
         <plugins>
 

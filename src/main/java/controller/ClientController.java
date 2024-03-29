@@ -275,7 +275,7 @@ public class ClientController {
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentID() == idC) {
+            if (appointment.getAppointmentId() == idC) {
                 emailSender=new EmailSender(this.client.getEmail());
                 text="\n"+"Dear Ms "+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
                         AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
@@ -314,7 +314,7 @@ public class ClientController {
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
 
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentID() == nextInt) {
+            if (appointment.getAppointmentId() == nextInt) {
                int roomId=appointment.getRoom().getRoomNumber();
                if(check(date,time,roomId))
                {
