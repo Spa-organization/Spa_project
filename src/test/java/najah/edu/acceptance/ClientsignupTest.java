@@ -49,6 +49,11 @@ public class ClientsignupTest {
     @Then("their account should be created and they should be logged in automatically")
     @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
+        clientName="ali";
+        clientId="15";
+        password="123";
+        email="dasdasda";
+
             assertTrue(ClientDB.addClient(clientId, clientName, password,email));
     }
 

@@ -79,3 +79,5 @@ R
 "src/main/java/basic/AppLogger.java,6\a\6a8e78a6559dfc9c44e6b33c6a97591d9e316b2b
 V
 &src/main/java/basic/LoggerUtility.java,1\3\130212a6194a4e0f25b67f3bc068bc7a9961f38e
+I
+java/lang/annotations.xml,3\b\3b381e523977e54069f8273e10481defd3adb140
