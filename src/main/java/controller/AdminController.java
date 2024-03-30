@@ -249,7 +249,7 @@ public class AdminController {
                     COPY);
         }
     }
-    public static void showAllEmployees(){
+    public static boolean showAllEmployees(){
         LOGGER.info(COPY1);
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
@@ -257,6 +257,7 @@ public class AdminController {
             LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
         }
         LOGGER.info(COPY1);
+        return true;
     }
     public void addEmployee(){
         LOGGER.info(COPY1+
@@ -295,7 +296,7 @@ public class AdminController {
                     );
         }return true;
     }
-    public void showALlRooms(){
+    public static boolean showALlRooms(){
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
@@ -304,6 +305,7 @@ public class AdminController {
             LOGGER.info("-----------" +"\n"+
                     "Room Id: "+room.getRoomNumber()+
                     "Employee: "+room.getEmployee().getName());}
+        return true;
     }
     public void addAdmin(){
         LOGGER.info(COPY1+"=== Add Admin ===\n"+"Enter Admin ID:");
@@ -319,13 +321,14 @@ public class AdminController {
         }else
             LOGGER.info("=== Admin added ===");
     }
-    public void viewFeedbacks(){
+    public static boolean viewFeedbacks(){
         LOGGER.info(COPY);
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();
         for (FeedBack feedback: feedBacks) {
             LOGGER.info(COPY+"Client id: "+feedback.getClientId()+"\n"+feedback.getFeed());
         }
+        return true;
     }
 
     public void viewEmployeeEarningsForRange() {

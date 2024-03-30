@@ -104,7 +104,7 @@ public class EmployeeController {
         printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
     return true;}
 
-    public static void printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
+    public static boolean printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
             LOGGER.info(shortLine);
             logger.info("\n"+"Appointment_id: "+appointment.getAppointmentId()+"\n"+
@@ -114,6 +114,7 @@ public class EmployeeController {
             "Room Number: "+appointment.getRoom().getRoomNumber()+"\n");
             LOGGER.info(shortLine);
         }
+        return true;
     }
 
 

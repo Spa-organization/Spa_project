@@ -189,12 +189,7 @@ public class ClientController {
         booking(type);
     }
 
-    public void printEmployees(List<Employee> employees){
-       LOGGER.info("--------Print employees :)--------");
-        for(Employee employee:employees){
-            LOGGER.info(employee.getName()+" "+employee.getWorkerType());
-        }
-    }
+
 
     public void bookSauna(String type){booking(type);}
 

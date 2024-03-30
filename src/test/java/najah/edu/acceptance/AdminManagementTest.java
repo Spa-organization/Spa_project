@@ -29,6 +29,7 @@ public class AdminManagementTest {
 
     @When("I choose to add an employee")
     public void iChooseToAddAnEmployee() {
+
     }
     @And("I enter the employee {string} and it should be unique and name {string} and pass {string} and choice {string}")
     public void iEnterTheEmployeeAndItShouldBeUniqueAndNameAndPassAndChoice(String id, String name, String pass, String type) {
@@ -47,7 +48,9 @@ public class AdminManagementTest {
 
     @When("I choose to add an admin")
     public void iChooseToAddAnAdmin() {
+
         }
+
 
     @When("I enter the admin {string} and it should be unique and name {string} and pass {string}")
     public void iEnterTheAdminAndItShouldBeUniqueAndNameAndPass(String id, String name, String pass) {
@@ -64,6 +67,7 @@ public class AdminManagementTest {
     @When("I choose to add a massage room")
     public void iChooseToAddAMassageRoom() {
 
+
     }
 
     @When("I enter the a unique room {string} and Employee {string} that not add yet any room")
@@ -73,6 +77,7 @@ public class AdminManagementTest {
     }
 
     @Then("the massage room should be added to the system")
+
     public void theMassageRoomShouldBeAddedToTheSystem() {
         emp_id="47";
         emp_name="ali";
@@ -80,6 +85,7 @@ public class AdminManagementTest {
         worker_type="massage";
         room_id="10";
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
+
         Employee employee = EmployeeDB.getEmployeeById(emp_id);
         assertNotNull(employee);
         assertTrue(RoomDb.checkValidateID(10));
@@ -89,6 +95,7 @@ public class AdminManagementTest {
 
     @When("I choose to add a  sawna room")
     public void iChooseToAddASawnaRoom() {
+
 
     }
 
@@ -112,6 +119,7 @@ public class AdminManagementTest {
 
     @When("I select the option to view financial profits for a specific period,")
     public void i_select_the_option_to_view_financial_profits_for_a_specific_period() {
+
 
     }
     @When("I enter a valid employee {string}, the start date {string}, and the end date {string} for the period I wish to analyze,")
@@ -148,8 +156,8 @@ public class AdminManagementTest {
 
     @When("I select the option to edit a specific employee,")
     public void i_select_the_option_to_edit_a_specific_employee() {
-        assertTrue(true);
-    }//
+
+    }
     @When("I give the id and new name {string} new password {string} new type {string} and new room {string}")
     public void i_give_the_id_and_new_name_new_password_new_type_and_new_room(String string, String string2, String string3, String string4) {
         this.emp_name=string;
@@ -167,5 +175,37 @@ public class AdminManagementTest {
         room_id="7";
         assertTrue(EmployeeDB.editEmployee(emp_id,emp_name,emp_password,worker_type, Integer.parseInt(room_id)));
     }
+
+
+
+    @When("I choose to view the feedbacks")
+    public void i_choose_to_view_the_feedbacks() {
+        assertTrue(true);
+    }
+    @Then("the feedbacks should show up")
+    public void the_feedbacks_should_show_up() {
+         assertTrue(AdminController.viewFeedbacks());
+    }
+
+
+    @When("I choose to view the employees")
+    public void i_choose_to_view_the_employees() {
+        assertTrue(true);
+    }
+    @Then("the list of employees should show up")
+    public void the_list_of_employees_should_show_up() {
+        assertTrue(AdminController.showAllEmployees());
+    }
+
+
+    @When("I choose to view the rooms")
+    public void i_choose_to_view_the_rooms() {
+        assertTrue(true);
+    }
+    @Then("the list of rooms should show up")
+    public void the_list_of_rooms_should_show_up() {
+        assertTrue(AdminController.showALlRooms());
+    }
+
 
 }

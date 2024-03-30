@@ -31,6 +31,33 @@ Given I am logged in as an admin
 When I choose to view the appointments
 Then the all appointments should show up
 
+
+  Scenario: View Feedback
+    Given I am logged in as an admin
+    When I choose to view the feedbacks
+    Then the feedbacks should show up
+
+  Scenario: View Employees
+    Given I am logged in as an admin
+    When I choose to view the employees
+    Then the list of employees should show up
+
+
+  Scenario: View Rooms
+    Given I am logged in as an admin
+    When I choose to view the rooms
+    Then the list of rooms should show up
+
+
+
+  Scenario: Add  Massage_Room
+    Given I am logged in as an admin
+    When I choose to add a massage room
+    And I enter the a unique room "5" and Employee "35" that not add yet any room
+    Then the massage room should be added to the system
+
+
+
   Scenario: Viewing Profits for a Specific Employee and the Center
     Given I am logged in as an admin
     When I select the option to view financial profits for a specific period,
