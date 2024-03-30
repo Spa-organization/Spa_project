@@ -66,12 +66,13 @@ public class ClientController {
         if(isLoggedIn){
             clientHomePage();
         }
-        //
 
     }
     public void clientSignUp(){
-        LOGGER.info("=== Sign Up ==="+"\n"+
-                "Enter client ID: ");
+        LOGGER.severe(COPY);
+        LOGGER.fine("=== Sign Up ==="+"\n");
+        LOGGER.severe(COPY);
+        LOGGER.info( "Enter client ID: ");
         String clientId = scanner.nextLine();
 
         LOGGER.info("Enter client Name: ");
@@ -84,11 +85,16 @@ public class ClientController {
         String email = scanner.nextLine();
         if(!ClientDB.addClient(clientId,clientName,password,email)){
             LOGGER.severe(COPY);
-            LOGGER.info("This ID is Already Exists\n");
-            LOGGER.severe(COPY);
+            LOGGER.info("""
+                        This ID is Already Exists
+                        
+                    """);
         }else {
             LOGGER.severe(COPY);
-            LOGGER.info("Signup done successfully"+"\n");
+            LOGGER.info("""
+                    Signup done successfully
+
+                    """);
         }
     }
 
