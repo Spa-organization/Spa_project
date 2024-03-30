@@ -47,11 +47,16 @@ public class EmployeeController {
                 login();
             }
         }
-        if(!(isLoggedIn)){LOGGER.info(COPY+"LOGIN FAILD"+"\n"+COPY);}
+        if(!(isLoggedIn)){
+            LOGGER.severe(COPY);
+            LOGGER.warning("LOGIN FAILD"+"\n");
+            LOGGER.severe(COPY);
+        }
     }
     public void loginPage(){
-        LOGGER.info(COPY1);
-        LOGGER.info("=== Employee Login ==="+"\n"+"Enter your ID: ");
+        LOGGER.warning(COPY1);
+        LOGGER.fine("=== Employee Login ==="+"\n");
+        LOGGER.info("Enter your ID: ");
         String clientId = scanner.nextLine();
         LOGGER.info("Enter your password: ");
         String password = scanner.nextLine();
@@ -62,11 +67,11 @@ public class EmployeeController {
     }
 
     public void employeeHomePage(){
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         int choice;
         do {
+            LOGGER.fine("=== Employee Menu ===");
             LOGGER.info("""
-               === Employee Menu ===
               1. View my schedule with my customers' reservations
               2. View my Finance for the month
               3. Logout
@@ -79,10 +84,10 @@ public class EmployeeController {
                     showEmployeeAppointments();
                     break;
                 case 2:
-                    LOGGER.info("\n"+"Enter Start_Date (format: dd/MM/yyyy): ");
+                    LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
                     scanner.nextLine();
                     String date = scanner.nextLine();
-                    LOGGER.info("\n"+"Enter End_Date (format: dd/MM/yyyy): ");
+                    LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
                     String date2 = scanner.nextLine();
                     AppointmentDb.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
                     break;
@@ -90,7 +95,7 @@ public class EmployeeController {
                     LOGGER.info("Logging out. Goodbye!");
                     break;
                 default:
-                    LOGGER.info("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again.");
             }
 
         } while (choice != 3);
@@ -98,7 +103,7 @@ public class EmployeeController {
     }
 
     public  boolean  showEmployeeAppointments(){
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         List<Appointment> employeeAppointments;
         employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
         printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
@@ -106,13 +111,13 @@ public class EmployeeController {
 
     public static boolean printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
-            LOGGER.info(shortLine);
+            LOGGER.severe(shortLine);
             logger.info("\n"+"Appointment_id: "+appointment.getAppointmentId()+"\n"+
             "Type: "+appointment.getEmployee().getWorkerType()+"\n"+
             "Date: "+appointment.getDate()+"\n"+
             "Time: "+appointment.getTime()+"\n"+
             "Room Number: "+appointment.getRoom().getRoomNumber()+"\n");
-            LOGGER.info(shortLine);
+            LOGGER.severe(shortLine);
         }
         return true;
     }

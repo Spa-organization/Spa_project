@@ -4,15 +4,18 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 public class Starter {
     private static final Logger LOGGER = LoggerUtility.getLogger();
-    Scanner scanner= new Scanner(System.in);
+    public Scanner scanner= new Scanner(System.in);
+    private static final String COPY1="-----------------------------------\n-----------------------------------\n";
+    private static final String COPY="-----------------------------------\n";
+
 
     public void homePage()   {
         int choice;
         do {
-            LOGGER.info("""
-                    -----------------------------------
-                    Welcome to the Spa Event Planner
-                    -----------------------------------
+            LOGGER.severe(COPY);
+            LOGGER.fine("Welcome to the Spa Event Planner\n");
+            LOGGER.severe(COPY);
+            LOGGER.severe("""
                     1. Sign up for a client account
                     2. Log in
                     3. Exit
@@ -33,7 +36,7 @@ public class Starter {
                             """);
                     break;
                 default:
-                    LOGGER.info("""
+                    LOGGER.warning("""
                             Invalid choice. Please try again.
 
                             """);
@@ -47,14 +50,14 @@ public class Starter {
         int choice;
 
         do {
-            LOGGER.info("""
-                    -------------------------------------
-                    -------------------------------------
-                    === Spa Event Planner Main Menu ===
+            LOGGER.severe(COPY1);
+            LOGGER.fine("=== Spa Event Planner Main Menu ==="+"\n");
+            LOGGER.severe("""
                     1. Login as Admin
                     2. Login as Customer
                     3. Login as Employee
-                    4. Exit"""+"\n"+"Enter your choice:");
+                    4. Exit"""+"\n");
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -73,7 +76,7 @@ public class Starter {
                     LOGGER.info("Exiting Spa Event Planner. Goodbye!");
                     break;
                 default:
-                    LOGGER.info("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again.");
             }
 
         } while (choice != 4);

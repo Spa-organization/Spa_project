@@ -41,9 +41,16 @@ public class AdminControllerTest {
     }
     @Test
     public void adminHomePageaddmassage() {
-        Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn(1, 2, 60, 4, 100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
-        Mockito.doReturn("101","Abdullah","Massage" ).when(mockScanner).next();
+        Mockito.doReturn("100" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePageshoowemployee() {
+        Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+       // Mockito.doReturn("100" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
     @Test
@@ -51,6 +58,13 @@ public class AdminControllerTest {
         Mockito.doReturn(5 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePageaaddemployee() {
+        Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        Mockito.doReturn("101","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
     @Test
@@ -79,6 +93,43 @@ public class AdminControllerTest {
         //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
+    @Test
+    public void loginpage() {
+        ;
+        Mockito.doReturn("21","123" ).when(mockScanner).nextLine();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
+        adminController.loginPage();
+    }
+    @Test
+    public void adminHomePage_shoowfeed() {
+        Mockito.doReturn(8 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        adminController.adminHomePage();
+    }
+
+    @Test
+    public void adminHomePage_editemployee() {
+        Mockito.doReturn(10 ,1,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        Mockito.doReturn("31","SerPro1","123","1" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePage_case12() {
+        Mockito.doReturn(12 ,4,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        adminController.starter.scanner = mockScanner;
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePage_case100() {
+        Mockito.doReturn(100 ).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        adminController.adminHomePage();
+    }
+
+
 
 
 }

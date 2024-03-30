@@ -23,8 +23,7 @@ public class EmployeeDB {
         employees.add(new Employee("32","SerPro2","123","Sawna",new Room(2)));
         employees.add(new Employee("33","SerPro3","123","Massage",new Room(3)));
         employees.add(new Employee("34","SerPro4","123","Massage",new Room(4)));
-
-        employees.add(new Employee("100","SerPro4","123","Massage"));
+        employees.add(new Employee("100","SerPro4","123","Sawna"));
         employees.add(new Employee("101","SerPro4","123","Massage"));
         employees.get(0).getRoom().setEmployee(employees.get(0));
         employees.get(1).getRoom().setEmployee(employees.get(1));
@@ -80,22 +79,16 @@ public class EmployeeDB {
 
     public static boolean deleteEmployee(String employeeId) {
         boolean found = false;
-        Employee toRemove = null;
         for (Employee employee : employees)
         {
             if (employee.getId().equals(employeeId)) {
-                toRemove = employee;
-                found = true;
-                break;}
-        }
+                employees.removeIf(h -> h.getId().equals(employeeId) );
 
-        if (found) {
-            AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
-            employees.remove(toRemove);
-            LOGGER.info("employee deleted successful");
-            if (toRemove.getRoom() != null) {
-                toRemove.getRoom().setEmployee(null);
-            }
+            employees.remove(employee);
+                AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
+                found = true;
+                LOGGER.info("employee deleted successful");
+                break;}
         }
         return found;
     }
@@ -120,7 +113,7 @@ public class EmployeeDB {
                     return true;
             }
         }
-        LOGGER.info("NOT A SUCCESSFUL EDIT"+"\n");
+        LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
         return false;
     }
 

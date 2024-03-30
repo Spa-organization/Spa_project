@@ -16,8 +16,8 @@ public class AppointmentDb {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final Logger LOGGER = LoggerUtility.getLogger();
-    public static final double SAWNA_SESSION_COST = 200.0; // Example cost
-    public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
+    public static final double SAWNA_SESSION_COST = 200.0;
+    public static final double MASSAGE_SESSION_COST = 250.0;
     public static final double EMPLOYEE_PERCENTAGE = 0.30;
     public static final double CENTER_PERCENTAGE = 0.70;
 

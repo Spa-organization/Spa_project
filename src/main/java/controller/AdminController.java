@@ -9,11 +9,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class AdminController {
     Starter starter=new Starter();
+    private static final String SHORT_LINE ="--------------------\n";
 
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
     private  boolean isLoggedIn;
+
     public Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
     public AdminController() {
@@ -33,15 +35,16 @@ public class AdminController {
             }
         }
         if(!(isLoggedIn)){
-            LOGGER.info("LOGIN FAILD"+"\n");
+            LOGGER.warning("LOGIN FAILD"+"\n");
         }
     }
 
     public void loginPage()  {
-        LOGGER.info(COPY1);
-        LOGGER.info("""
+        LOGGER.severe(COPY1);
+        LOGGER.fine("""
                 === Admin Login ===
-                Enter your ID:""");
+                """);
+        LOGGER.info("Enter your ID:");
         String clientId = scanner.nextLine();
         LOGGER.info("Enter your password: ");
         String password = scanner.nextLine();
@@ -50,13 +53,12 @@ public class AdminController {
             adminHomePage();
         }
     }
-
     public void adminHomePage()  {
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         int choice;
         do {
-            LOGGER.info("=== Admin "+admin.getName()+
-                    " Menu ==="+"\n"+"""
+            LOGGER.fine("=== Admin "+admin.getName()+" Menu ==="+"\n");
+            LOGGER.severe("""
                     1. Add Rooms
                     2. Add Employee
                     3. View Appointments
@@ -69,7 +71,8 @@ public class AdminController {
                     10.edit employee
                     11.show all employee
                     12. logout
-                    """+"Enter your choice:");
+                    """);
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -102,7 +105,9 @@ public class AdminController {
                 case 9:viewCenterEarningsForRange();
                     break;
                 case 10:
-                    LOGGER.info(COPY1+"=== edit Employee ===\nEnter Employee ID: ");
+                    LOGGER.severe(COPY1);
+                    LOGGER.fine("=== edit Employee ===");
+                    LOGGER.info("\nEnter Employee ID: ");
                     String empId = scanner.next();
 
                     LOGGER.info("Enter Employee Name: ");
@@ -147,7 +152,7 @@ public class AdminController {
         LOGGER.info(COPY);
         int roomType;
         do {
-            LOGGER.info("""
+            LOGGER.severe("""
                     Add Rooms
                     1. sawna Room
                     2. Massage Room
@@ -193,30 +198,35 @@ public class AdminController {
                     LOGGER.info(COPY+"This ID_room is Already Exists"+COPY);
                 }
                 else {
-
-                    LOGGER.info(COPY+
-                            "Sawna Room Added"+"\n+" +
-                            COPY);
+                    LOGGER.severe(COPY);
+                    LOGGER.info("Sawna Room Added"+"\n");
+                    LOGGER.severe(COPY);
                 }
             }
             else{
-                LOGGER.info(COPY+
-                        "not Sawna employee!!"+"\n"+
-                        COPY);
+                LOGGER.severe(COPY);
+                LOGGER.warning("not Sawna employee!!"+"\n");
+                LOGGER.severe(COPY);
             }
         }else{
-            LOGGER.info(COPY+
-                    "employee not found!!"+"\n"+
-                    COPY);
+            LOGGER.severe(COPY);
+            LOGGER.warning("employee not found!!"+"\n");
+            LOGGER.severe(COPY);
         }
     }
     public void print(int id,Employee employee ){
 
         if(employee.getRooms().get(0).getRoomNumber() == id)
-        {LOGGER.info(COPY+ "The employee is already assigned to this room"+"\n"+ COPY);}
+        {
+            LOGGER.severe(COPY);
+            LOGGER.warning( "The employee is already assigned to this room"+"\n");
+            LOGGER.severe(COPY);
+        }
         else
-        {LOGGER.info(COPY+ "The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n"+ COPY);}
-
+        {
+            LOGGER.severe(COPY);
+            LOGGER.warning("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n");}
+            LOGGER.severe(COPY);
     }
     public void addMassageRoom(){
         LOGGER.info("\n"+"Enter Room ID:");
@@ -232,72 +242,75 @@ public class AdminController {
             }
             if(employees.getWorkerType().equalsIgnoreCase("Massage")){
                 if(!RoomDb.addRoom(employees, id)){
-                    LOGGER.info(COPY+"This ID_room is Already Exists"+COPY);
+                    LOGGER.severe(COPY);
+                    LOGGER.warning("This ID_room is Already Exists");
+                    LOGGER.severe(COPY);
                 }
                 else {
-                    LOGGER.info(COPY+
-                            "massage Room Added"+"\n+" +
-                            COPY);
+                    LOGGER.severe(COPY);
+                    LOGGER.info("massage Room Added"+"\n");
+                    LOGGER.severe(COPY);
                 }
             }
             else{
-                LOGGER.info(COPY+
-                        "not Massage employee!!"+"\n"+
-                        COPY);
-
+                LOGGER.severe(COPY);
+                LOGGER.warning( "not Massage employee!!"+"\n");
+                LOGGER.severe(COPY);
             }
         }else{
-            LOGGER.info(COPY+
-                    "employee not found!!"+"\n"+
-                    COPY);
+            LOGGER.severe(COPY);
+            LOGGER.warning("employee not found!!"+"\n");
+            LOGGER.severe(COPY);
         }
     }
     public static boolean showAllEmployees(){
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
         for(Employee employee :employees){
             LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
         }
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         return true;
     }
     public void addEmployee(){
-        LOGGER.info(COPY1+
-                "=== Add Employee ==="+"\n"+
-                "Enter Employee ID: ");
+        LOGGER.severe(COPY1);
+        LOGGER.fine("=== Add Employee ==="+"\n");
+        LOGGER.info("Enter Employee ID: ");
+
         String employeeId = scanner.next();
 
-        LOGGER.info("\n"+"Enter Employee Name: ");
+        LOGGER.info("Enter Employee Name: ");
         String employeeName = scanner.next();
 
-        LOGGER.info("\n"+"Enter Employee Password: ");
+        LOGGER.info("Enter Employee Password: ");
         String employeePassword = scanner.next();
 
-        LOGGER.info("\n"+"Enter Employee Type (Sawna or Massage): ");
+        LOGGER.info("Enter Employee Type (Sawna or Massage): ");
         String employeeType = scanner.next();
         LOGGER.info("Enter Employee Profit Percentage: ");
         String employeeProfitPercentage = scanner.next();
-        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
+        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType)){
+            LOGGER.severe(COPY);
+            LOGGER.warning("This ID is Already Exists"+"\n");
+            LOGGER.severe(COPY1);
 
-            LOGGER.info(COPY+
-                    "This ID is Already Exists"+"\n"+
-                    COPY);
         }else
-            LOGGER.info("Employee added successfully!"+"\n"+"================");
+            LOGGER.info("Employee added successfully!"+"\n");
     }
 
     public static boolean showAppointments(){
-
-        LOGGER.info(COPY1+"=== All Appointments ==="+"\n");
+        LOGGER.severe(SHORT_LINE);
+        LOGGER.fine("=== All Appointments ==="+"\n");
         List<Appointment> appointments;
         appointments = AppointmentDb.getAllAppointments();
         for(Appointment appointment:appointments){
-            LOGGER.info("---------"+"\n"+
+            LOGGER.severe(COPY);
+            LOGGER.info(
                     " type: "+appointment.getEmployee().getWorkerType()+"\n"+
                             "Room: "+appointment.getRoom().getRoomNumber()+"\n"+
                             "Employee: "+appointment.getEmployee().getName()+"\n"+
-                            "Date: "+appointment.getDate()+" Time"+appointment.getTime()
+                            "Date: "+appointment.getDate()+"\n"+" Time"+appointment.getTime()
                     );
         }return true;
     }
@@ -307,31 +320,37 @@ public class AdminController {
         rooms= RoomDb.rooms;
         LOGGER.log(Level.INFO, "we have {} rooms", rooms.size());
         for(Room room:rooms){
-            LOGGER.info("-----------" +"\n"+
-                    "Room Id: "+room.getRoomNumber()+
+            LOGGER.severe(SHORT_LINE);
+            LOGGER.info(
+                    "Room Id: "+room.getRoomNumber()+"\\t"+
                     "Employee: "+room.getEmployee().getName());}
         return true;
     }
     public void addAdmin(){
-        LOGGER.info(COPY1+"=== Add Admin ===\n"+"Enter Admin ID:");
+        LOGGER.severe(COPY1);
+        LOGGER.fine("=== Add Admin ===\n");
+        LOGGER.info("Enter Admin ID:");
         String adminId = scanner.next();
 
-        LOGGER.info("\nEnter Admin Name: ");
+        LOGGER.info("Enter Admin Name: ");
         String adminName = scanner.next();
 
-        LOGGER.info("\nEnter Admin Password: ");
+        LOGGER.info("Enter Admin Password: ");
         String adminPassword = scanner.next();
         if(!AdminDB.addAdmin(adminId,adminName,adminPassword)){
-            LOGGER.info(COPY+"This ID is Already Exists\n"+COPY);
+            LOGGER.severe(COPY);
+            LOGGER.warning("This ID is Already Exists"+"\n");
+            LOGGER.severe(COPY);
         }else
-            LOGGER.info("=== Admin added ===");
+            LOGGER.info("Admin added successfully");
     }
     public boolean viewFeedbacks(){
-        LOGGER.info(COPY);
+        LOGGER.severe(COPY);
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();
         for (FeedBack feedback: feedBacks) {
-            LOGGER.info(COPY+"Client id: "+feedback.getClientId()+"\n"+feedback.getFeed());
+            LOGGER.severe(COPY);
+            LOGGER.info("Client id: "+feedback.getClientId()+"\n"+feedback.getFeed());
         }
         return true;
     }
@@ -340,9 +359,9 @@ public class AdminController {
         LOGGER.info("Enter Employee ID: ");
         scanner.nextLine();
         String employeeId = scanner.nextLine();
-        LOGGER.info("\nEnter Start_Date (format: dd/MM/yyyy): ");
+        LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
         String date = scanner.nextLine();
-        LOGGER.info("\nEnter End_Date (format: dd/MM/yyyy): ");
+        LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
         AppointmentDb.calculateEarningsForEmployeeInRange(employeeId, date,date2);
     }
@@ -351,10 +370,8 @@ public class AdminController {
         LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String date = scanner.nextLine();
-        LOGGER.info("\n");
         LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
-        LOGGER.info("\n");
         AppointmentDb.calculateTotalCenterEarningsInRange(date,date2);
     }
 
