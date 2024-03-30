@@ -14,7 +14,7 @@ public class AdminController {
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
     private  boolean isLoggedIn;
-    Admin admin = new Admin();
+    public Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
     public AdminController() {
         isLoggedIn = false;
@@ -127,11 +127,14 @@ public class AdminController {
                             """);
                 starter.choseEntity();
                 break;
+                case 100:
+                    return;
                 default:
                     LOGGER.info("\n"+"""
                             Invalid choice. Please try again.
 
                             """);
+
             }
 
         } while (choice != 12);
@@ -298,7 +301,7 @@ public class AdminController {
                     );
         }return true;
     }
-    public static boolean showALlRooms(){
+    public boolean showALlRooms(){
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
@@ -323,7 +326,7 @@ public class AdminController {
         }else
             LOGGER.info("=== Admin added ===");
     }
-    public static boolean viewFeedbacks(){
+    public boolean viewFeedbacks(){
         LOGGER.info(COPY);
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();
