@@ -1,6 +1,6 @@
 Feature: admin sign in
 
-  Scenario: Successful sign in
+  Scenario: Successful sign IN
     Given that the admin is not logged in the app
     And the ID is "21"
     And the password is "123"
