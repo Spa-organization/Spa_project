@@ -80,22 +80,16 @@ public class EmployeeDB {
 
     public static boolean deleteEmployee(String employeeId) {
         boolean found = false;
-        Employee toRemove = null;
         for (Employee employee : employees)
         {
             if (employee.getId().equals(employeeId)) {
-                toRemove = employee;
-                found = true;
-                break;}
-        }
+                employees.removeIf(h -> h.getId().equals(employeeId) );
 
-        if (found) {
-            AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
-            employees.remove(toRemove);
-            LOGGER.info("employee deleted successful");
-            if (toRemove.getRoom() != null) {
-                toRemove.getRoom().setEmployee(null);
-            }
+            employees.remove(employee);
+                AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
+                found = true;
+                LOGGER.info("employee deleted successful");
+                break;}
         }
         return found;
     }

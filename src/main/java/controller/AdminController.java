@@ -33,15 +33,16 @@ public class AdminController {
             }
         }
         if(!(isLoggedIn)){
-            LOGGER.info("LOGIN FAILD"+"\n");
+            LOGGER.warning("LOGIN FAILD"+"\n");
         }
     }
 
     public void loginPage()  {
-        LOGGER.info(COPY1);
-        LOGGER.info("""
+        LOGGER.severe(COPY1);
+        LOGGER.fine("""
                 === Admin Login ===
-                Enter your ID:""");
+                """);
+        LOGGER.info("Enter your ID:");
         String clientId = scanner.nextLine();
         LOGGER.info("Enter your password: ");
         String password = scanner.nextLine();
@@ -50,13 +51,12 @@ public class AdminController {
             adminHomePage();
         }
     }
-
     public void adminHomePage()  {
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         int choice;
         do {
-            LOGGER.info("=== Admin "+admin.getName()+
-                    " Menu ==="+"\n"+"""
+            LOGGER.fine("=== Admin "+admin.getName()+" Menu ==="+"\n");
+            LOGGER.severe("""
                     1. Add Rooms
                     2. Add Employee
                     3. View Appointments
@@ -69,7 +69,8 @@ public class AdminController {
                     10.edit employee
                     11.show all employee
                     12. logout
-                    """+"Enter your choice:");
+                    """);
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -102,7 +103,9 @@ public class AdminController {
                 case 9:viewCenterEarningsForRange();
                     break;
                 case 10:
-                    LOGGER.info(COPY1+"=== edit Employee ===\nEnter Employee ID: ");
+                    LOGGER.severe(COPY1);
+                    LOGGER.fine("=== edit Employee ===");
+                    LOGGER.info("\nEnter Employee ID: ");
                     String empId = scanner.next();
 
                     LOGGER.info("Enter Employee Name: ");
@@ -147,7 +150,7 @@ public class AdminController {
         LOGGER.info(COPY);
         int roomType;
         do {
-            LOGGER.info("""
+            LOGGER.severe("""
                     Add Rooms
                     1. sawna Room
                     2. Massage Room
