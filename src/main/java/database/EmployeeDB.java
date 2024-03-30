@@ -23,7 +23,6 @@ public class EmployeeDB {
         employees.add(new Employee("32","SerPro2","123","Sawna",new Room(2)));
         employees.add(new Employee("33","SerPro3","123","Massage",new Room(3)));
         employees.add(new Employee("34","SerPro4","123","Massage",new Room(4)));
-
         employees.add(new Employee("100","SerPro4","123","Sawna"));
         employees.add(new Employee("101","SerPro4","123","Massage"));
         employees.get(0).getRoom().setEmployee(employees.get(0));
@@ -105,7 +104,7 @@ public class EmployeeDB {
                     return true;
             }
         }
-        LOGGER.info("NOT A SUCCESSFUL EDIT"+"\n");
+        LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
         return false;
     }
 
