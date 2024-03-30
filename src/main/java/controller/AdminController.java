@@ -296,7 +296,7 @@ public class AdminController {
                     );
         }return true;
     }
-    public static boolean showALlRooms(){
+    public boolean showALlRooms(){
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
@@ -321,7 +321,7 @@ public class AdminController {
         }else
             LOGGER.info("=== Admin added ===");
     }
-    public static boolean viewFeedbacks(){
+    public boolean viewFeedbacks(){
         LOGGER.info(COPY);
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();

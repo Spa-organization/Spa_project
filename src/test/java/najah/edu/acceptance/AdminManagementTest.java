@@ -104,7 +104,7 @@ public class AdminManagementTest {
         emp_id="410";
         emp_name="ali";
         emp_password="123";
-        worker_type="massage";
+        worker_type="sawna";
         room_id="9";
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
         Employee employee = EmployeeDB.getEmployeeById(emp_id);
@@ -184,7 +184,7 @@ public class AdminManagementTest {
     }
     @Then("the feedbacks should show up")
     public void the_feedbacks_should_show_up() {
-         assertTrue(AdminController.viewFeedbacks());
+         assertTrue(Admin_controller.viewFeedbacks());
     }
 
 
@@ -194,7 +194,7 @@ public class AdminManagementTest {
     }
     @Then("the list of employees should show up")
     public void the_list_of_employees_should_show_up() {
-        assertTrue(AdminController.showAllEmployees());
+        assertTrue(Admin_controller.showAllEmployees());
     }
 
 
@@ -204,7 +204,7 @@ public class AdminManagementTest {
     }
     @Then("the list of rooms should show up")
     public void the_list_of_rooms_should_show_up() {
-        assertTrue(AdminController.showALlRooms());
+        assertTrue(Admin_controller.showALlRooms());
     }
 
 
