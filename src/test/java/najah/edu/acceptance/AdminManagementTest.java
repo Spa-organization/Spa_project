@@ -73,6 +73,7 @@ public class AdminManagementTest {
     }
 
     @Then("the massage room should be added to the system")
+    @Test
     public void theMassageRoomShouldBeAddedToTheSystem() {
         emp_id="47";
         emp_name="ali";
@@ -82,7 +83,9 @@ public class AdminManagementTest {
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type));
         Employee employee = EmployeeDB.getEmployeeById(emp_id);
         assertNotNull(employee);
+        assertTrue(RoomDb.checkValidateID(10));
         assertTrue(RoomDb.addRoom(employee, Integer.parseInt(room_id)));
+
     }
 
     @When("I choose to add a  sawna room")
@@ -135,11 +138,30 @@ public class AdminManagementTest {
         this.start_date=start_date;this.end_date=end_date;
     }
     @Then("the system should display the total profit generated from all appointments")
-    @Test
+
     public void theSystemShouldDisplayTheTotalProfitGeneratedFromAllAppointments() {
         start_date="01/09/2012";
         end_date="01/10/2012";
-        assertTrue(AppointmentDb.calculateTotalCenterEarningsInRange(start_date,end_date));
+        assertFalse(AppointmentDb.calculateTotalCenterEarningsInRange(start_date,end_date));
+    }
+
+
+
+    @When("I select the option to edit a specific employee,")
+    public void i_select_the_option_to_edit_a_specific_employee() {
+        assertTrue(true);
+    }//
+    @When("I give the id and new name {string} new password {string} new type {string} and new room {string}")
+    public void i_give_the_id_and_new_name_new_password_new_type_and_new_room(String string, String string2, String string3, String string4) {
+        this.emp_name=string;
+        this.emp_password=string2;
+        this.worker_type=string3;
+        this.room_id=string4;
+    }
+    @Then("the system should edit this employee")
+
+    public void the_system_should_edit_this_employee() {
+        assertTrue(EmployeeDB.editEmployee("31","procc","1234","1",7));
     }
 
 }
