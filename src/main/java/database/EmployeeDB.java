@@ -1,15 +1,20 @@
 package database;
 
 
+import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
 import entity.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EmployeeDB {
     static List<Employee> employees = new ArrayList<>();
+    private static final Logger LOGGER = LoggerUtility.getLogger();
+
     private EmployeeDB() {
 
     }
@@ -27,18 +32,18 @@ public class EmployeeDB {
         RoomDb.rooms.add(employees.get(2).getRoom());
         RoomDb.rooms.add(employees.get(3).getRoom());
     }
-    public static boolean addServiceProviders(String id,String name,String password,String workerType, String profitpercentage) {
-        boolean flage = true;
+    public static boolean addServiceProviders(String id,String name,String password,String workerType) {
+        boolean flag = true;
         for (Employee employee: employees){
             if(employee.getId().equals(id)){
-                flage=false;
+                flag=false;
                 break;
             }
         }
-        if(flage)
-            employees.add(new Employee(id, name,password,workerType,profitpercentage));
+        if(flag)
+            employees.add(new Employee(id, name,password,workerType));
 
-        return flage;
+        return flag;
     }
     public static List<Employee> getServiceProviders() {
         return employees;
@@ -47,14 +52,14 @@ public class EmployeeDB {
         List<Employee> employeeList = new ArrayList<>();
         for(Employee employee1:employees){
             if(employee1.getWorkerType().equals(type)) {
-                boolean flage = true;
+                boolean flag = true;
                 for (Appointment appointment : employee1.getAppointments()) {
                     if (appointment.getDate().equals(date) && appointment.getTime().equals(time)){
-                        flage=false;
+                        flag=false;
                         break;
                     }
                 }
-                if(flage) {
+                if(flag) {
                     employeeList.add(employee1);
                 }
             }
@@ -69,16 +74,42 @@ public class EmployeeDB {
         }
         return null;
     }
-    public static String getEmployeeProfitPercentage(String employeeId) {
-        for (Employee employee : employees) { // Assuming 'employees' is an iterable collection of Employee objects
+
+    public static boolean deleteEmployee(String employeeId) {
+        boolean found = false;
+        Employee toRemove = null;
+        for (Employee employee : employees)
+        {
             if (employee.getId().equals(employeeId)) {
-                return employee.getProfitPercentage(); // Assuming Employee class has a getProfitPercentage method
+                toRemove = employee;
+                found = true;
+                break;}
+        }
+
+        if (found) {
+            AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
+            employees.remove(toRemove);
+            LOGGER.info("employee deleted successful");
+            if (toRemove.getRoom() != null) {
+                toRemove.getRoom().setEmployee(null);
             }
         }
-        return null; // Return a default value indicating not found
+        return found;
+    }
+    public static boolean editEmployee(String id, String newName, String newPassword, String newWorkerType,int roomId) {
+        for (Employee employee : employees) {
+            if (employee.getId().equals(id)&&RoomDb.checkValidateID(roomId))
+            {
+                employee.setName(newName);
+                employee.setPassword(newPassword);
+                employee.setWorkerType(Integer.parseInt(newWorkerType));
+                    employee.getRoom().setRoomNumber(roomId);
+                LOGGER.log(Level.INFO, "Employee {} has been updated"+"\n",id);
+                    return true;
+            }
+        }
+        LOGGER.info("NOT A SUCCESSFUL EDIT"+"\n");
+        return false;
     }
 
-    public static EmployeeDB createEmployeeDB() {
-        return new EmployeeDB();
-    }
 }

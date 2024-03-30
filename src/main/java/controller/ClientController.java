@@ -14,10 +14,12 @@ public class ClientController {
     private static final String COPY="-----------------------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String SHORT_LINE ="--------------------\n";
+    private static final String S ="Dear Ms ";
+
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
-     Scanner scanner = new Scanner(System.in);
-    private  Client client = new Client();
+    public Scanner scanner = new Scanner(System.in);
+    public   Client client = new Client();
     EmailSender emailSender;
    String subject ="Spa_Organization";
 
@@ -175,7 +177,9 @@ public class ClientController {
         {addAppointmentResult(1);return ;}
 
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
-        if(!employees.isEmpty()){showAvailableRooms(employees,dateInput,timeInput);}
+        if (!employees.isEmpty()) {
+            showAvailableRooms(employees, dateInput, timeInput);
+        }
 
         else {
 
@@ -187,21 +191,16 @@ public class ClientController {
         booking(type);
     }
 
-    public void printEmployees(List<Employee> employees){
-       LOGGER.info("--------Print employees :)--------");
-        for(Employee employee:employees){
-            LOGGER.info(employee.getName()+" "+employee.getWorkerType());
-        }
-    }
+
 
     public void bookSauna(String type){booking(type);}
 
-    public void showClientAppointments(){
+    public boolean showClientAppointments(){
         LOGGER.info(COPY1);
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
-
+    return true;
     }
     public void addAppointmentResult(int result){
         switch (result){
@@ -219,7 +218,7 @@ public class ClientController {
                     if(    "massage".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() )      )
                     {
-                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
+                        text =S+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
                               "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
                                 "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
@@ -229,7 +228,7 @@ public class ClientController {
                     else if("sawna".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() ))
                     {
-                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your sawna room was successfully reserved at"+"\n"+
+                        text =S+AppointmentDb.appointments.get(i).getClient().getName()+"your sawna room was successfully reserved at"+"\n"+
                                 "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
                                 "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
@@ -272,19 +271,21 @@ public class ClientController {
         Scanner input = new Scanner(System.in);
         LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above");
         int idC = input.nextInt();
+        int i=0;
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentID() == idC) {
+            if (appointment.getAppointmentId() == idC) {
+                AppointmentDb.appointments.get(i).setBooked(false);
                 emailSender=new EmailSender(this.client.getEmail());
-                text="\n"+"Dear Ms "+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
+                text="\n"+S+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
                         AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
                         AppointmentDb.appointments.get(idC).getTime()+"and Date:"+
                         AppointmentDb.appointments.get(idC).getDate()+"was cancelled";
                 emailSender.sendEmail(subject,text);
                 flag = true;
                 break;
-            }
+            }i++;
         }
         if(flag)
         {
@@ -296,7 +297,7 @@ public class ClientController {
 
     public void updateSession(){
         showClientAppointments();
-        Scanner input = new Scanner(System.in);
+        Scanner input =scanner;
         LOGGER.info(SHORT_LINE);
 
         LOGGER.info("Please enter the id of your appointment: ");
@@ -306,15 +307,20 @@ public class ClientController {
         String date = input.nextLine();
         LOGGER.info("Please enter the new time (format: HH:mm): ");
         String time = input.nextLine();
-        if(!AppointmentDb.isValidDate(date)) {addAppointmentResult(2); return;}
-        else if(!AppointmentDb.isValidTime(time)) {addAppointmentResult(1); return;}
+        if (!AppointmentDb.isValidDate(date)) {
+            addAppointmentResult(2);
+            return;
+        } else if (!AppointmentDb.isValidTime(time)) {
+            addAppointmentResult(1);
+            return;
+        }
 
 
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
 
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentID() == nextInt) {
+            if (appointment.getAppointmentId() == nextInt) {
                int roomId=appointment.getRoom().getRoomNumber();
                if(check(date,time,roomId))
                {

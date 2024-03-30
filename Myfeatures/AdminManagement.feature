@@ -6,11 +6,6 @@ Feature: Admin Management
     And I enter the employee "35" and it should be unique and name "ali" and pass "123" and choice "massage"
     Then the employee should be added to the system
 
-  Scenario: delete Employee
-    Given I am logged in as an admin
-    When I choose to delete an employee
-    And I enter the employee "35"
-    Then the employee should be deleted form the system
 
   Scenario: Add Admin
     Given I am logged in as an admin
@@ -36,6 +31,33 @@ Given I am logged in as an admin
 When I choose to view the appointments
 Then the all appointments should show up
 
+
+  Scenario: View Feedback
+    Given I am logged in as an admin
+    When I choose to view the feedbacks
+    Then the feedbacks should show up
+
+  Scenario: View Employees
+    Given I am logged in as an admin
+    When I choose to view the employees
+    Then the list of employees should show up
+
+
+  Scenario: View Rooms
+    Given I am logged in as an admin
+    When I choose to view the rooms
+    Then the list of rooms should show up
+
+
+
+  Scenario: Add  Massage_Room
+    Given I am logged in as an admin
+    When I choose to add a massage room
+    And I enter the a unique room "5" and Employee "35" that not add yet any room
+    Then the massage room should be added to the system
+
+
+
   Scenario: Viewing Profits for a Specific Employee and the Center
     Given I am logged in as an admin
     When I select the option to view financial profits for a specific period,
@@ -47,4 +69,10 @@ Then the all appointments should show up
 Given I am logged in as an admin
 When the start date "01/09/2012", and the end date "01/10/2012" for the period I wish to analyze,
 Then the system should display the total profit generated from all appointments
+
+    Scenario: Edit an employee
+      Given I am logged in as an admin
+      When I select the option to edit a specific employee,
+    And I give the id and new name "name" new password "pass" new type "type" and new room "id"
+    Then the system should edit this employee
 

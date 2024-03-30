@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 
 public class EmployeeController {
     private static final String COPY="-----------------------------------\n";
-    private static final String COPY1="-----------------------------------\n+-----------------------------------";
-    private static final String SHORT_LINE ="--------------------";
+    private static final String COPY1="-----------------------------------\n-----------------------------------\n";
+    private static final String SHORT_LINE ="--------------------\n";
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private boolean isLoggedIn;
     private final Scanner scanner = new Scanner(System.in);
@@ -51,9 +51,9 @@ public class EmployeeController {
     }
     public void loginPage(){
         LOGGER.info(COPY1);
-        LOGGER.info("=== Employee Login ==="+"Enter your ID: ");
+        LOGGER.info("=== Employee Login ==="+"\n"+"Enter your ID: ");
         String clientId = scanner.nextLine();
-        LOGGER.info("\n"+"Enter your password: ");
+        LOGGER.info("Enter your password: ");
         String password = scanner.nextLine();
         loggInCheck(clientId,password);
         if(isLoggedIn){
@@ -97,23 +97,24 @@ public class EmployeeController {
 
     }
 
-    public  void  showEmployeeAppointments(){
+    public  boolean  showEmployeeAppointments(){
         LOGGER.info(COPY1);
         List<Appointment> employeeAppointments;
         employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
         printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
-    }
+    return true;}
 
-    public static void printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
+    public static boolean printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
             LOGGER.info(shortLine);
-            logger.info("\n"+"Appointment_id: "+appointment.getAppointmentID()+"\n"+
+            logger.info("\n"+"Appointment_id: "+appointment.getAppointmentId()+"\n"+
             "Type: "+appointment.getEmployee().getWorkerType()+"\n"+
             "Date: "+appointment.getDate()+"\n"+
             "Time: "+appointment.getTime()+"\n"+
             "Room Number: "+appointment.getRoom().getRoomNumber()+"\n");
             LOGGER.info(shortLine);
         }
+        return true;
     }
 
 

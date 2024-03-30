@@ -1,14 +1,17 @@
 package database;
 
+import basic.LoggerUtility;
 import entity.Employee;
 import entity.Room;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class RoomDb {
 private RoomDb(){}
-     public static List<Room> rooms= new ArrayList<>();
+    private static final Logger LOGGER = LoggerUtility.getLogger();
+
+    public static List<Room> rooms= new ArrayList<>();
     public   static boolean addRoom(Employee employee, int id){
         boolean notDuplicate = true;
         for (Room room: rooms){
@@ -29,5 +32,15 @@ private RoomDb(){}
         }
         return null;
     }
-
+    public   static boolean checkValidateID(int id) {
+        boolean flag = true;
+        for (Room room : rooms) {
+            if (id == room.getRoomNumber()) {
+                flag = false;
+                LOGGER.info("ROOM ID is already EXIST"+"\n");
+                break;
+            }
+        }
+        return flag;
+    }
 }

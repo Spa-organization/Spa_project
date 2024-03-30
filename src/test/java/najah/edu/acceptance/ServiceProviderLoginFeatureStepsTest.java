@@ -15,13 +15,8 @@ public class ServiceProviderLoginFeatureStepsTest {
     String id;
     EmployeeController app;
 
-    public ServiceProviderLoginFeatureStepsTest()
-    {
-        app= new EmployeeController();
-
-    }
+    public ServiceProviderLoginFeatureStepsTest() {app= new EmployeeController();}
     @Given("that the service provider is not logged in the app")
-    @Test
     public void thatTheServiceProviderIsNotLoggedInTheApp() {
         assertFalse(app.isLoggedIn());
     }
@@ -38,20 +33,18 @@ public class ServiceProviderLoginFeatureStepsTest {
     public void theServiceProviderIsLoggedInTheAppSuccessfully() {
         id="31";
         pass="123";
-            app.loggInCheck(id, pass);
-            assertTrue(app.isLoggedIn());
+        app.loggInCheck(id, pass);
+        assertTrue(app.isLoggedIn());
     }
 
         @Then("the service provider will not login")
-        @Test
         public void theServiceProviderWillNotLogin() {
         id="31";
         pass="321";
-            app.loggInCheck(id, pass);
-                assertFalse(app.isLoggedIn());
+        app.loggInCheck(id, pass);
+        assertFalse(app.isLoggedIn());
             }
         @Then("the message appear to tell the service provider what's wrong")
-        @Test
         public void theMessageAppearToTellTheServiceProviderWhatSWrong() {
             assertFalse(app.isLoggedIn());
         }

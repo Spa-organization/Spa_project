@@ -1,6 +1,11 @@
 package entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
 public class FeedBack {
+    @Setter
     private String feed;
     private int clientId;
 
@@ -11,15 +16,4 @@ public class FeedBack {
 
     }
 
-    public void setFeed(String feed) {
-        this.feed = feed;
-    }
-
-    public String getFeed() {
-        return feed;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
 }

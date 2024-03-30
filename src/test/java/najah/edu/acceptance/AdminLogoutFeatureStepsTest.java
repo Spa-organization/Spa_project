@@ -19,12 +19,10 @@ public class AdminLogoutFeatureStepsTest {
 		app.login();
 	}
 @Given("the admin chose to sign out")
-@Test
 public void theAdminChoseToSignOut() {
    assertTrue(app.isLoggedIn());
 }
 @Then("the system signs the admin out")
-@Test
 public void theSystemSignsTheAdminOut() {
 app.logout();
 assertFalse(app.isLoggedIn());

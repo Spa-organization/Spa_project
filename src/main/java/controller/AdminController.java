@@ -5,9 +5,11 @@ import entity.*;
 import database.*;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 public class AdminController {
     Starter starter=new Starter();
+
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
@@ -64,7 +66,9 @@ public class AdminController {
                     7. Show All Rooms
                     8. View Feedbacks
                     9. view CenterEarningsForRange
-                    10. logout
+                    10.edit employee
+                    11.show all employee
+                    12. logout
                     """+"Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
@@ -97,7 +101,27 @@ public class AdminController {
                     break;
                 case 9:viewCenterEarningsForRange();
                     break;
-                case 10:LOGGER.info("\n"+"""
+                case 10:
+                    LOGGER.info(COPY1+"=== edit Employee ===\nEnter Employee ID: ");
+                    String empId = scanner.next();
+
+                    LOGGER.info("Enter Employee Name: ");
+                    String employeeName = scanner.next();
+
+                    LOGGER.info("Enter Employee Password: ");
+                    String employeePassword = scanner.next();
+
+                    LOGGER.info("Enter Employee Type (1.Sawna or 2.Massage): ");
+                    String employeeType = scanner.next();
+
+                    LOGGER.info("Enter NEW ROOM ID: ");
+                    int roomId = scanner.nextInt();
+                   EmployeeDB.editEmployee(empId,employeeName,employeePassword,employeeType, roomId);
+                    break;
+                case 11:
+                    showAllEmployees();
+                    break;
+                case 12:LOGGER.info("\n"+"""
                             Logging out. Goodbye!
                             
                             """);
@@ -110,7 +134,7 @@ public class AdminController {
                             """);
             }
 
-        } while (choice != 9);
+        } while (choice != 12);
 
     }
 
@@ -141,6 +165,7 @@ public class AdminController {
                     break;
                 case 4:
                     LOGGER.info("Exiting Room Management. Goodbye!");
+                    adminHomePage();
                     break;
                 default:
                     LOGGER.info("Invalid choice. Please try again.");
@@ -185,17 +210,9 @@ public class AdminController {
     public void print(int id,Employee employee ){
 
         if(employee.getRooms().get(0).getRoomNumber() == id)
-        {
-            LOGGER.info(COPY+
-                    "The employee is already assigned to this room"+"\n"+
-                    COPY);
-        }
+        {LOGGER.info(COPY+ "The employee is already assigned to this room"+"\n"+ COPY);}
         else
-        {
-            LOGGER.info(COPY+
-                    "The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n"+
-                    COPY);
-        }
+        {LOGGER.info(COPY+ "The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n"+ COPY);}
 
     }
     public void addMassageRoom(){
@@ -232,13 +249,15 @@ public class AdminController {
                     COPY);
         }
     }
-    public static void showAllEmployees(){
+    public static boolean showAllEmployees(){
         LOGGER.info(COPY1);
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
         for(Employee employee :employees){
-            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType());
+            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
         }
+        LOGGER.info(COPY1);
+        return true;
     }
     public void addEmployee(){
         LOGGER.info(COPY1+
@@ -265,7 +284,7 @@ public class AdminController {
             LOGGER.info("Employee added successfully!"+"\n"+"================");
     }
 
-    public static void showAppointments(){
+    public static boolean showAppointments(){
 
         LOGGER.info(COPY1+"=== All Appointments ==="+"\n");
         List<Appointment> appointments;
@@ -277,18 +296,18 @@ public class AdminController {
                             "Employee: "+appointment.getEmployee().getName()+"\n"+
                             "Date: "+appointment.getDate()+" Time"+appointment.getTime()
                     );
-        }
+        }return true;
     }
-    public void showALlRooms(){
+    public static boolean showALlRooms(){
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
-        LOGGER.info("we have " +rooms.size()+ " rooms");
-
+        LOGGER.log(Level.INFO, "we have {} rooms", rooms.size());
         for(Room room:rooms){
             LOGGER.info("-----------" +"\n"+
                     "Room Id: "+room.getRoomNumber()+
                     "Employee: "+room.getEmployee().getName());}
+        return true;
     }
     public void addAdmin(){
         LOGGER.info(COPY1+"=== Add Admin ===\n"+"Enter Admin ID:");
@@ -304,13 +323,14 @@ public class AdminController {
         }else
             LOGGER.info("=== Admin added ===");
     }
-    public void viewFeedbacks(){
+    public static boolean viewFeedbacks(){
         LOGGER.info(COPY);
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();
         for (FeedBack feedback: feedBacks) {
             LOGGER.info(COPY+"Client id: "+feedback.getClientId()+"\n"+feedback.getFeed());
         }
+        return true;
     }
 
     public void viewEmployeeEarningsForRange() {

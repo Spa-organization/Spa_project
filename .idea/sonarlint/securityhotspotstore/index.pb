@@ -75,7 +75,11 @@ t
 Dsrc/test/java/najah/edu/acceptance/ClientLogoutFeatureStepsTest.java,d\d\dd69fce8e9bef5747159d7eb38ee7186ceeb526b
 y
 Isrc/test/java/najah/edu/acceptance/ServiceProviderLogoutFeatureSteps.java,3\7\371629ac78ea44c8245d322eab8c55612b5c4e34
-R
-"src/main/java/basic/AppLogger.java,6\a\6a8e78a6559dfc9c44e6b33c6a97591d9e316b2b
 V
 &src/main/java/basic/LoggerUtility.java,1\3\130212a6194a4e0f25b67f3bc068bc7a9961f38e
+I
+java/lang/annotations.xml,3\b\3b381e523977e54069f8273e10481defd3adb140
+B
+WeddingPlanner.iml,1\4\1430846d3581da65eb033c5ad324d6a14929239f
+l
+<src/test/java/najah/edu/acceptance/ClientControllerTest.java,c\c\cc034052cb2c0b075b700349e47a9410a59c9365

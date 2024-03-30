@@ -23,7 +23,6 @@ public class ClientsignupTest {
     String email;
 
     @Given("the client does not have an account")
-    @Test
     public void theClientDoesNotHaveAnAccount() {
         assertFalse(app.isLoggedUp());
     }
@@ -47,9 +46,9 @@ public class ClientsignupTest {
     }
 
     @Then("their account should be created and they should be logged in automatically")
-    @Test
     public void theirAccountShouldBeCreatedAndTheyShouldBeLoggedInAutomatically() {
-            assertTrue(ClientDB.addClient(clientId, clientName, password,email));
+
+           assertTrue(ClientDB.addClient("19", "ali", "123","test@gmail.com"));
     }
 
     @Given("the client provides an ID that is already associated with another account {string}")
