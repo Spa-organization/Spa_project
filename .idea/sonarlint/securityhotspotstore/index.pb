@@ -79,13 +79,7 @@ V
 &src/main/java/basic/LoggerUtility.java,1\3\130212a6194a4e0f25b67f3bc068bc7a9961f38e
 I
 java/lang/annotations.xml,3\b\3b381e523977e54069f8273e10481defd3adb140
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 B
 WeddingPlanner.iml,1\4\1430846d3581da65eb033c5ad324d6a14929239f
-h
-8src/test/java/najah/edu/acceptance/EmailConfirmTest.java,3\e\3e8f2efd2ea5161fecfbb5bbbf51e163c795441b
-Q
-!Myfeatures/ManageSessions.feature,0\f\0f7ceb6586660b49773581bd002c2b4ea9e206ee
-K
-Myfeatures/FeedBack.feature,c\5\c5cf7c7a3b3bc8a2800af179b1570983221dbc57
+l
+<src/test/java/najah/edu/acceptance/ClientControllerTest.java,c\c\cc034052cb2c0b075b700349e47a9410a59c9365

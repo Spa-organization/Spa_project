@@ -18,8 +18,8 @@ public class ClientController {
 
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
-     Scanner scanner = new Scanner(System.in);
-    private  Client client = new Client();
+    public Scanner scanner = new Scanner(System.in);
+    public   Client client = new Client();
     EmailSender emailSender;
    String subject ="Spa_Organization";
 
@@ -177,7 +177,9 @@ public class ClientController {
         {addAppointmentResult(1);return ;}
 
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
-        if(!employees.isEmpty()){showAvailableRooms(employees,dateInput,timeInput);}
+        if (!employees.isEmpty()) {
+            showAvailableRooms(employees, dateInput, timeInput);
+        }
 
         else {
 
@@ -295,7 +297,7 @@ public class ClientController {
 
     public void updateSession(){
         showClientAppointments();
-        Scanner input = new Scanner(System.in);
+        Scanner input =scanner;
         LOGGER.info(SHORT_LINE);
 
         LOGGER.info("Please enter the id of your appointment: ");
@@ -305,8 +307,13 @@ public class ClientController {
         String date = input.nextLine();
         LOGGER.info("Please enter the new time (format: HH:mm): ");
         String time = input.nextLine();
-        if(!AppointmentDb.isValidDate(date)) {addAppointmentResult(2); return;}
-        else if(!AppointmentDb.isValidTime(time)) {addAppointmentResult(1); return;}
+        if (!AppointmentDb.isValidDate(date)) {
+            addAppointmentResult(2);
+            return;
+        } else if (!AppointmentDb.isValidTime(time)) {
+            addAppointmentResult(1);
+            return;
+        }
 
 
         List<Appointment> clientAppointments;
