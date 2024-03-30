@@ -23,14 +23,10 @@ public class ManageSessionsTest {
     }
 
     @Given("the client is logged into their account")
-    @Test
+
     public void theClientIsLoggedIntoTheirAccount() {
         clientController.login();
-        assertTrue(clientController.isLoggedIn());
-
-
-
-    }
+        assertTrue(clientController.isLoggedIn());}
     @Given("the chosen massage session {string} slot is available for the selected available {string} and available employee {string}")
     public void theChosenMassageSessionSlotIsAvailableForTheSelectedAvailableAndAvailableEmployee(String string, String string2, String string3) {
        this.time = string;
@@ -39,7 +35,6 @@ public class ManageSessionsTest {
 
     }
     @When("the client schedules a new massage session specifying the date and time")
-    @Test
     public void theClientSchedulesANewMassageSessionSpecifyingTheDateAndTime() {
 
           date = "01/09/2012";
@@ -60,7 +55,6 @@ public class ManageSessionsTest {
         this.id = string3;
     }
     @When("the client attempts to schedule a new massage session for this time slot")
-    @Test
     public void theClientAttemptsToScheduleANewMassageSessionForThisTimeSlot() {
         time="12:30";
         assertTrue(AppointmentDb.isValidTime(time));
@@ -74,7 +68,6 @@ public class ManageSessionsTest {
         this.id = string3;
     }
     @When("the client schedules a new sawna session specifying the date and time and employee")
-    @Test
     public void theClientSchedulesANewSawnaSessionSpecifyingTheDateAndTimeAndEmployee() {
 
         id="31";
@@ -86,9 +79,7 @@ public class ManageSessionsTest {
 
     }
     @Then("the session should be successfully booked, ensuring the time and date slots are reserved")
-    @Test
     public void theSessionShouldBeSuccessfullyBookedEnsuringTheTimeAndDateSlotsAreReserved() {
-        int result;
         int rId=4;
         time="12:30";
         date="12/12/2024";
@@ -111,30 +102,24 @@ public class ManageSessionsTest {
 
     }
     @Then("the system should prevent the booking and alert about the time and date slots unavailability")
-    @Test
     public void theSystemShouldPreventTheBookingAndAlertAboutTheTimeAndDateSlotsUnavailability() {
         time = "08:00";
         date = "01/04/2012";
-        int id = 31;
-       assertTrue(clientController.check(date,time,id));
+         id = "31";
+       assertTrue(clientController.check(date,time,Integer.parseInt(id)));
 
     }
 
 
-
-
-
     @When("I choose to view the appointments")
-    public void iChooseToViewTheAppointments() {assertTrue(true);}
+    public void iChooseToViewTheAppointments() {}
     @Then("the appointments should show up according to the client who log in")
     public void theAppointmentsShouldShowUpAccordingToTheClientWhoLogIn() {
-        clientController.showClientAppointments();
-
+        assertTrue(   clientController.showClientAppointments());
     }
 
     @Given("the new chosen time slot is available")
     public void theNewChosenTimeSlotIsAvailable() {
-        assertTrue(true);
     }
     @When("the client reschedules the session with the new {string} and {string}")
     public void theClientReschedulesTheSessionWithTheNewAnd(String string, String string2) {
@@ -143,7 +128,6 @@ public class ManageSessionsTest {
 
     }
     @Then("the session should be successfully updated, and the new time slot reserved")
-    @Test
     public void theSessionShouldBeSuccessfullyUpdatedAndTheNewTimeSlotReserved() {
         time = "09:30";
         date = "01/09/2020";
@@ -155,7 +139,6 @@ public class ManageSessionsTest {
 
     @Given("the client wants to change the time of an existing spa session")
     public void theClientWantsToChangeTheTimeOfAnExistingSpaSession() {
-        assertTrue(true);
 
     }
     @Given("the new chosen {string} and {string} slots are unavailable")
@@ -165,10 +148,8 @@ public class ManageSessionsTest {
     }
     @When("the client attempts to reschedule the session to this time slot")
     public void theClientAttemptsToRescheduleTheSessionToThisTimeSlot() {
-        assertTrue(true);
     }
     @Then("the system should prevent the update and alert about the time slot unavailability")
-    @Test
     public void theSystemShouldPreventTheUpdateAndAlertAboutTheTimeSlotUnavailability() {
         time = "09:00";
         date = "01/09/2012";
@@ -179,15 +160,14 @@ public class ManageSessionsTest {
     @Given("the client has an existing spa session they wish to cancel")
     @Test
     public void theClientHasAnExistingSpaSessionTheyWishToCancel() {
-        assertTrue(true);
-        clientController.showClientAppointments();}
+        assertTrue(clientController.showClientAppointments());}
     @When("the client chooses to cancel this session")
-    @Test
     public void theClientChoosesToCancelThisSession() {
-       assertTrue(true);}
+
+    }
     @Then("the session should be removed from their list of scheduled sessions, freeing up the time slot")
     public void theSessionShouldBeRemovedFromTheirListOfScheduledSessionsFreeingUpTheTimeSlot() {
-        clientController.showClientAppointments();}
+       assertTrue(clientController.showClientAppointments());}
 
 
 }

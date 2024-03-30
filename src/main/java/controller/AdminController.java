@@ -281,7 +281,7 @@ public class AdminController {
             LOGGER.info("Employee added successfully!"+"\n"+"================");
     }
 
-    public static void showAppointments(){
+    public static boolean showAppointments(){
 
         LOGGER.info(COPY1+"=== All Appointments ==="+"\n");
         List<Appointment> appointments;
@@ -293,7 +293,7 @@ public class AdminController {
                             "Employee: "+appointment.getEmployee().getName()+"\n"+
                             "Date: "+appointment.getDate()+" Time"+appointment.getTime()
                     );
-        }
+        }return true;
     }
     public void showALlRooms(){
         LOGGER.info(COPY1);

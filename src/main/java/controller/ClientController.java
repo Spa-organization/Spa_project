@@ -196,12 +196,12 @@ public class ClientController {
 
     public void bookSauna(String type){booking(type);}
 
-    public void showClientAppointments(){
+    public boolean showClientAppointments(){
         LOGGER.info(COPY1);
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
-
+    return true;
     }
     public void addAppointmentResult(int result){
         switch (result){

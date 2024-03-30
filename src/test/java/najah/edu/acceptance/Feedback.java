@@ -1,5 +1,6 @@
 package najah.edu.acceptance;
 
+import basic.LoggerUtility;
 import controller.ClientController;
 import database.FeedbackDB;
 import io.cucumber.java.en.Given;
@@ -7,9 +8,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
+import java.util.logging.Logger;
+
 import static org.junit.Assert.assertTrue;
 
 public class Feedback {
+    private static final Logger LOGGER = LoggerUtility.getLogger();
     ClientController app;
     public Feedback()
     {
@@ -23,13 +27,12 @@ public class Feedback {
     }
     @When("I choose to submit feedback {string}")
     public void iChooseToSubmitFeedback(String string) {
-        int id = 11;
         FeedbackDB.addFeedback(string,11);
     }
 
     @Then("my feedback should be submitted to the system")
     public void myFeedbackShouldBeSubmittedToTheSystem() {
-        System.out.println("Thanks, Your feedback has been submitted successfully");
+        LOGGER.info("Thanks, Your feedback has been submitted successfully");
 
     }
 }

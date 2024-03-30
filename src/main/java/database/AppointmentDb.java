@@ -126,7 +126,7 @@ public class AppointmentDb {
                     );
             return  flag;
         }
-    public static void calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
+    public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
         double totalEarnings = 0;
@@ -145,6 +145,7 @@ public class AppointmentDb {
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
 
 
+        return false;
     }
 
 

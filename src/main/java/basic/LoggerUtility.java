@@ -40,7 +40,6 @@ public class LoggerUtility {
         consoleHandler.setFormatter(new Formatter() {
             @Override
             public String format(LogRecord logRecord) {
-                // Apply color codes based on the log level
                 String color = RESET;
                 if (logRecord.getLevel().equals(Level.SEVERE)) {
                     color = RED;
@@ -52,7 +51,7 @@ public class LoggerUtility {
                     color = BLUE;
                 }
 
-                return color + formatMessage(logRecord) + RESET + "\n";
+                return color + formatMessage(logRecord) + RESET ;
             }
         });
 

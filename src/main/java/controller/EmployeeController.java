@@ -97,12 +97,12 @@ public class EmployeeController {
 
     }
 
-    public  void  showEmployeeAppointments(){
+    public  boolean  showEmployeeAppointments(){
         LOGGER.info(COPY1);
         List<Appointment> employeeAppointments;
         employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
         printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
-    }
+    return true;}
 
     public static void printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){

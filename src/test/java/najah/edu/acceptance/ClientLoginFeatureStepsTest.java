@@ -21,8 +21,7 @@ public class ClientLoginFeatureStepsTest {
 	}
 
 	@Given("that the client is not logged in the app")
-	@Test
-	public void thatTheClientIsNotLoggedInTheApp() 
+	public void thatTheClientIsNotLoggedInTheApp()
 	{
         assertFalse(app.isLoggedIn());
 	}
@@ -34,7 +33,6 @@ public class ClientLoginFeatureStepsTest {
 	}
 	
 	@Then("the client is logged in the app successfully")
-	@Test
 	public void theClientIsLoggedInTheAppSuccessfully() {
 	id="11";
 	pass="123";
@@ -43,7 +41,6 @@ public class ClientLoginFeatureStepsTest {
 	}
 
 	@Then("the client will not login")
-@Test
 	public void theClientWillNotLogin() {
 		id="11";
 		pass="1223";
@@ -52,6 +49,5 @@ public class ClientLoginFeatureStepsTest {
 	}
 
 	@And("the message appear to tell the client what's wrong")
-	@Test
 	public void theMessageAppearToTellTheClientWhatSWrong() {assertFalse(app.isLoggedIn());}
 }
