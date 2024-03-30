@@ -51,7 +51,7 @@ public class Starter {
 
         do {
             LOGGER.severe(COPY1);
-            LOGGER.fine("=== Spa Event Planner Main Menu ===");
+            LOGGER.fine("=== Spa Event Planner Main Menu ==="+"\n");
             LOGGER.severe("""
                     1. Login as Admin
                     2. Login as Customer

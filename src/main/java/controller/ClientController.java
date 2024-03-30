@@ -113,7 +113,7 @@ public class ClientController {
                 """);
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
-
+            LOGGER.severe(COPY1);
             switch (choice) {
                 case 1:
                     bookAppointment();
@@ -155,7 +155,8 @@ public class ClientController {
                     2. Sauna
                     3. Exit
                     """);
-            LOGGER.fine("Enter your choice:");
+            LOGGER.fine("Enter your choice:"+"\n");
+            LOGGER.severe(COPY1);
             appointmentType = scanner.nextInt();
             switch (appointmentType) {
                 case 1:
@@ -168,13 +169,13 @@ public class ClientController {
                     clientHomePage();
                     break;
                 default:
-                   LOGGER.info("Invalid choice. Please try again.");
+                   LOGGER.warning("Invalid choice. Please try again.");
             }
         } while (appointmentType!=3);
     }
     public void booking(String type){
         LOGGER.info("\n"+"Enter Date (format: dd/MM/yyyy): ");
-       // scanner.nextLine();
+        scanner.nextLine();
         String dateInput = scanner.nextLine();
         LOGGER.info("\n"+"Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
@@ -190,7 +191,7 @@ public class ClientController {
 
         else {
 
-            LOGGER.info(COPY + "NO Available Rooms In This Time" + "\n" + COPY);
+            LOGGER.warning(COPY + "NO Available Rooms In This Time" + "\n" + COPY);
         }
 
     }
@@ -250,7 +251,7 @@ public class ClientController {
         }
     }
     public void showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
-        LOGGER.fine("-----Available Rooms------");
+        LOGGER.fine("-----Available Rooms------"+"\n");
         List<Room> rooms;
         for(Employee employee:employees)
         {
