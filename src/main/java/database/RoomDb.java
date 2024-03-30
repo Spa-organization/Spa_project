@@ -37,7 +37,7 @@ private RoomDb(){}
         for (Room room : rooms) {
             if (id == room.getRoomNumber()) {
                 flag = false;
-                LOGGER.info("ROOM ID is already EXIST"+"\n");
+                LOGGER.warning("ROOM ID is already EXIST"+"\n");
                 break;
             }
         }
