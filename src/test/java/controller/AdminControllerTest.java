@@ -43,7 +43,7 @@ public class AdminControllerTest {
     public void adminHomePageaddmassage() {
         Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
-        Mockito.doReturn("100","Abdullah","Sawna" ).when(mockScanner).next();
+        Mockito.doReturn("101","Abdullah","Massage" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
     @Test
@@ -72,5 +72,13 @@ public class AdminControllerTest {
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.adminHomePage();
     }
+    @Test
+    public void adminHomeCenterEarningsForRange() {
+        Mockito.doReturn(9 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("10/10/2022","12/10/2022" ).when(mockScanner).nextLine();
+        //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+
 
 }

@@ -25,6 +25,7 @@ public class EmployeeDB {
         employees.add(new Employee("34","SerPro4","123","Massage",new Room(4)));
 
         employees.add(new Employee("100","SerPro4","123","Massage"));
+        employees.add(new Employee("101","SerPro4","123","Massage"));
         employees.get(0).getRoom().setEmployee(employees.get(0));
         employees.get(1).getRoom().setEmployee(employees.get(1));
         employees.get(2).getRoom().setEmployee(employees.get(2));
