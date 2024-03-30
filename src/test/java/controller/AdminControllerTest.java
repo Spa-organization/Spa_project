@@ -53,4 +53,24 @@ public class AdminControllerTest {
         Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
+    @Test
+    public void adminHomePageshowappointments() {
+        Mockito.doReturn(3 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePage_viewEmployeeEarningsForRange() {
+        Mockito.doReturn(4 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("31","10/10/2022","12/10/2022" ).when(mockScanner).nextLine();
+        //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePage_showrooms() {
+        Mockito.doReturn(7 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        adminController.adminHomePage();
+    }
+
 }
