@@ -137,7 +137,7 @@ public class AdminManagementTest {
         this.start_date=start_date;this.end_date=end_date;
     }
     @Then("the system should display the total profit generated from all appointments")
-    @Test
+
     public void theSystemShouldDisplayTheTotalProfitGeneratedFromAllAppointments() {
         start_date="01/09/2012";
         end_date="01/10/2012";
@@ -158,7 +158,7 @@ public class AdminManagementTest {
         this.room_id=string4;
     }
     @Then("the system should edit this employee")
-    @Test
+
     public void the_system_should_edit_this_employee() {
         assertTrue(EmployeeDB.editEmployee("31","procc","1234","1",7));
     }
