@@ -3,7 +3,13 @@ package basic;
 import java.util.logging.*;
 
 public class LoggerUtility {
+    public static final String RESET = "\033[0m";
+    public static final String RED = "\033[0;31m";
+    public static final String GREEN = "\033[0;32m";
+    public static final String YELLOW = "\033[0;33m";
+    public static final String BLUE = "\033[0;34m";
     private static Logger logger;
+
     private LoggerUtility() {}
 
     public static Logger getLogger() {
@@ -13,20 +19,32 @@ public class LoggerUtility {
         }
         return logger;
     }
+
     private static void setupLogger() {
         logger.setUseParentHandlers(false);
-        SimpleFormatter simpleFormatter = new SimpleFormatter() {
-            @Override
-            public synchronized String format(LogRecord logRecord) {
-                return logRecord.getMessage();
-            }
-        };
+        logger.setLevel(Level.ALL); // Set the desired default level
 
         ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(simpleFormatter);
+        consoleHandler.setLevel(Level.ALL);
+        consoleHandler.setFormatter(new Formatter() {
+            @Override
+            public String format(LogRecord logRecord) {
+                // Apply color codes based on the log level
+                String color = RESET;
+                if (logRecord.getLevel().equals(Level.SEVERE)) {
+                    color = RED;
+                } else if (logRecord.getLevel().equals(Level.WARNING)) {
+                    color = YELLOW;
+                } else if (logRecord.getLevel().equals(Level.INFO)) {
+                    color = GREEN;
+                } else if (logRecord.getLevel().equals(Level.FINE)) {
+                    color = BLUE;
+                }
+
+                return color + formatMessage(logRecord) + RESET + "\n";
+            }
+        });
+
         logger.addHandler(consoleHandler);
     }
-
-
-
 }
