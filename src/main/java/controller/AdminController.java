@@ -281,7 +281,7 @@ public class AdminController {
         String employeeType = scanner.next();
         LOGGER.info("Enter Employee Profit Percentage: ");
         String employeeProfitPercentage = scanner.next();
-        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
+        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType)){
 
             LOGGER.info(COPY+
                     "This ID is Already Exists"+"\n"+
