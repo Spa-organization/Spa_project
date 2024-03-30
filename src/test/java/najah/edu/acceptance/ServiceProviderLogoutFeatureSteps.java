@@ -13,7 +13,7 @@ public class ServiceProviderLogoutFeatureSteps {
         app=new EmployeeController();
         app.login();
     }
-
+//
     @Given("the service provider chose to sign out")
     public void theServiceProviderChoseToSignOut() {
         assertTrue(app.isLoggedIn());

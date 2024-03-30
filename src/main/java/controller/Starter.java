@@ -9,7 +9,7 @@ public class Starter {
     public void homePage()   {
         int choice;
         do {
-            LOGGER.info("""
+            LOGGER.severe("""
                     -----------------------------------
                     Welcome to the Spa Event Planner
                     -----------------------------------
@@ -47,14 +47,15 @@ public class Starter {
         int choice;
 
         do {
-            LOGGER.info("""
+            LOGGER.severe("""
                     -------------------------------------
                     -------------------------------------
                     === Spa Event Planner Main Menu ===
                     1. Login as Admin
                     2. Login as Customer
                     3. Login as Employee
-                    4. Exit"""+"\n"+"Enter your choice:");
+                    4. Exit"""+"\n");
+            LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:

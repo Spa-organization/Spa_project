@@ -4,7 +4,6 @@ import basic.EmailSender;
 import basic.LoggerUtility;
 import database.*;
 import entity.*;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -41,8 +40,6 @@ public class ClientController {
 
         isLoggedIn = true;
     }
-
-
 
     public void loggInCheck(String id, String password)
     {
