@@ -88,7 +88,7 @@ public class AdminController {
                     LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
                     String employeeId = scanner.nextLine();
                     scanner.nextLine();
-                    EmployeeDB.deleteEmployee(employeeId); break;
+                   // EmployeeDB.deleteEmployee(employeeId); break;
                 case 7:
                     showALlRooms();
                     break;
@@ -254,7 +254,9 @@ public class AdminController {
 
         LOGGER.info("\n"+"Enter Employee Type (Sawna or Massage): ");
         String employeeType = scanner.next();
-        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType)){
+        LOGGER.info("Enter Employee Profit Percentage: ");
+        String employeeProfitPercentage = scanner.next();
+        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
 
             LOGGER.info(COPY+
                     "This ID is Already Exists"+"\n"+

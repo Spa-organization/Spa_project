@@ -17,8 +17,6 @@ public class AppointmentDb {
     private static final Logger LOGGER = LoggerUtility.getLogger();
     public static final double SAWNA_SESSION_COST = 200.0; // Example cost
     public static final double MASSAGE_SESSION_COST = 250.0; // Example cost
-    public static final double EMPLOYEE_PERCENTAGE = 0.30;
-    public static final double CENTER_PERCENTAGE = 0.70;
 
    public static List<Appointment> appointments= new ArrayList<>();
     private AppointmentDb() {
@@ -117,8 +115,11 @@ public class AppointmentDb {
                 }
 
             }
-            double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
-            double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
+            String a = EmployeeDB.getEmployeeProfitPercentage(employeeId);
+            double employeeProfitPercentage = Double.valueOf(a);
+            double employeeEarnings = totalEarnings * employeeProfitPercentage;
+            double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
+
             LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings+"\n"+
                             "Employee's Share (30%): $" + employeeEarnings+"\n"+
                             "Center's Share (70%): $" + centerEarnings
@@ -141,11 +142,9 @@ public class AppointmentDb {
                 }
             }
         }
-        double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
+        double centerEarnings = totalEarnings ;
         LOGGER.info("Total Center Earnings from " + startDateStr + " to " + endDateStr + ": $" + centerEarnings);
 
     }
+    }
 
-
-
-}
