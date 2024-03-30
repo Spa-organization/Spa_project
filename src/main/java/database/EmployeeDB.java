@@ -108,7 +108,7 @@ public class EmployeeDB {
                     return true;
             }
         }
-        LOGGER.info("NOT SUCCESS EDIT"+"\n");
+        LOGGER.info("NOT A SUCCESSFUL EDIT"+"\n");
         return false;
     }
 

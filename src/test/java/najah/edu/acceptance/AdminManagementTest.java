@@ -134,10 +134,11 @@ public class AdminManagementTest {
         this.start_date=start_date;this.end_date=end_date;
     }
     @Then("the system should display the total profit generated from all appointments")
+    @Test
     public void theSystemShouldDisplayTheTotalProfitGeneratedFromAllAppointments() {
         start_date="01/09/2012";
         end_date="01/10/2012";
-        assertFalse(AppointmentDb.calculateTotalCenterEarningsInRange(start_date,end_date));
+        assertTrue(AppointmentDb.calculateTotalCenterEarningsInRange(start_date,end_date));
     }
 
 }

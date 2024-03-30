@@ -43,3 +43,9 @@ Given I am logged in as an admin
 When the start date "01/09/2012", and the end date "01/10/2012" for the period I wish to analyze,
 Then the system should display the total profit generated from all appointments
 
+    Scenario: Edit an employee
+      Given I am logged in as an admin
+      When I select the option to edit a specific employee,
+    And I give the id and new name "name" new password "pass" new type "type" and new room "id"
+    Then the system should edit this employee
+

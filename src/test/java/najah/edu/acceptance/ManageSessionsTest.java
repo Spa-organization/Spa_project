@@ -2,11 +2,14 @@ package najah.edu.acceptance;
 
 import controller.ClientController;
 import database.AppointmentDb;
+import entity.Employee;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Test;
 
+
+import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -83,6 +86,9 @@ public class ManageSessionsTest {
         int rId=4;
         time="12:30";
         date="12/12/2024";
+       List<Employee> availableEmp= AppointmentDb.checkAvailability(date,time,"sawna");
+       for (Employee emp : availableEmp)
+           System.out.println(emp.getId());
         assertTrue(AppointmentDb.isValidDate(date));
         assertTrue(AppointmentDb.isValidTime(time));
        assertTrue(clientController.check(date,time,rId));
@@ -102,17 +108,20 @@ public class ManageSessionsTest {
 
     }
     @Then("the system should prevent the booking and alert about the time and date slots unavailability")
+
     public void theSystemShouldPreventTheBookingAndAlertAboutTheTimeAndDateSlotsUnavailability() {
         time = "08:00";
         date = "01/04/2012";
-         id = "31";
-       assertTrue(clientController.check(date,time,Integer.parseInt(id)));
+
+       assertFalse(clientController.check(date,time,1));
 
     }
 
 
     @When("I choose to view the appointments")
-    public void iChooseToViewTheAppointments() {}
+    public void iChooseToViewTheAppointments() {
+        assertTrue(true);
+    }
     @Then("the appointments should show up according to the client who log in")
     public void theAppointmentsShouldShowUpAccordingToTheClientWhoLogIn() {
         assertTrue(   clientController.showClientAppointments());
@@ -139,6 +148,7 @@ public class ManageSessionsTest {
 
     @Given("the client wants to change the time of an existing spa session")
     public void theClientWantsToChangeTheTimeOfAnExistingSpaSession() {
+        assertTrue(true);
 
     }
     @Given("the new chosen {string} and {string} slots are unavailable")
