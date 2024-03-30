@@ -26,12 +26,30 @@ public class ClientControllerTest {
     }
 
     @Test
+    public void homepage_shoowapp() {
+        Mockito.doReturn(2,6,4 ).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        clientController.starter.scanner = mockScanner;
+        clientController.clientHomePage();
+    }
+    @Test
+    public void homepage_feedback() {
+        Mockito.doReturn(5,11,6,4 ).when(mockScanner).nextInt();
+        Mockito.doReturn("","adadad" ).when(mockScanner).nextLine();
+        clientController.starter.scanner = mockScanner;
+        clientController.clientHomePage();
+    }
+
+
+
+    @Test
     public void testBooking() {
         assertTrue(true);
         Mockito.doReturn("", "10/10/2022", "10:10").when(mockScanner).nextLine();
         Mockito.doReturn(2).when(mockScanner).nextInt();
         clientController.bookMassage("Sawna");
     }
+
 
     @Test
     public void test() {
@@ -58,4 +76,5 @@ public class ClientControllerTest {
         clientController.starter.scanner = mockScanner;
         clientController.clientSignUp();
     }
+
 }
