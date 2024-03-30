@@ -1,12 +1,14 @@
 package database;
 
 import entity.Client;
+import lombok.Getter;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDB {
+	@Getter
 	static List<Client> clients= new ArrayList<>();
 	private ClientDB() {
 		throw new IllegalStateException("Utility class");
@@ -29,11 +31,6 @@ public class ClientDB {
 			clients.add(new Client(id, name,password,email));
 		return flag;
 	}
-
-	public static List<Client> getClients() {
-		return clients;
-	}
-
 
 
 }

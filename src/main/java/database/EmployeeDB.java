@@ -8,6 +8,7 @@ import entity.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmployeeDB {
@@ -103,7 +104,7 @@ public class EmployeeDB {
                 employee.setPassword(newPassword);
                 employee.setWorkerType(Integer.parseInt(newWorkerType));
                     employee.getRoom().setRoomNumber(roomId);
-                    LOGGER.info("Employee %s has been updated. ".formatted(id)+"\n");
+                LOGGER.log(Level.INFO, "Employee {} has been updated"+"\n",id);
                     return true;
             }
         }

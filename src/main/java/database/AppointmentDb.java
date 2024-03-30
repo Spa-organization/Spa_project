@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -142,7 +143,7 @@ public class AppointmentDb {
             }
         }
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-        LOGGER.info("Total Center Earnings from " + startDateStr + " to " + endDateStr + ": $" + centerEarnings);
+
 
     }
 

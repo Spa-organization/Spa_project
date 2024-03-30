@@ -1,10 +1,13 @@
 package database;
 
 import entity.Admin;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDB {
+	@Getter
 	static List <Admin> admins= new ArrayList<>();
 	private AdminDB() {
 		throw new IllegalStateException("Utility class");
@@ -28,16 +31,6 @@ public class AdminDB {
 			admins.add(new Admin(id,name, password));
 		return flage;
 	}
-
-	public static List<Admin> getAdmins() {
-		return admins;
-	}
-
-
-
-
-
-
 
 
 }
