@@ -14,6 +14,8 @@ public class ClientController {
     private static final String COPY="-----------------------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String SHORT_LINE ="--------------------\n";
+    private static final String S ="Dear Ms ";
+
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
      Scanner scanner = new Scanner(System.in);
@@ -219,7 +221,7 @@ public class ClientController {
                     if(    "massage".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() )      )
                     {
-                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
+                        text =S+AppointmentDb.appointments.get(i).getClient().getName()+"your massage room was successfully reserved at"+"\n"+
                               "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
                                 "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
@@ -229,7 +231,7 @@ public class ClientController {
                     else if("sawna".equalsIgnoreCase( AppointmentDb.appointments.get(i).getEmployee().getWorkerType() )&&
                             this.client.getId().equals( AppointmentDb.appointments.get(i).getClient().getId() ))
                     {
-                        text ="Dear Ms"+AppointmentDb.appointments.get(i).getClient().getName()+"your sawna room was successfully reserved at"+"\n"+
+                        text =S+AppointmentDb.appointments.get(i).getClient().getName()+"your sawna room was successfully reserved at"+"\n"+
                                 "Appointment time:"+AppointmentDb.appointments.get(i).getTime()+"\n"+
                                 "Appointment date:" +AppointmentDb.appointments.get(i).getDate()+"\n"+
                                 "your room is:" +AppointmentDb.appointments.get(i).getEmployee().getRoom().getRoomNumber()+"\n"+
@@ -277,7 +279,7 @@ public class ClientController {
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentId() == idC) {
                 emailSender=new EmailSender(this.client.getEmail());
-                text="\n"+"Dear Ms "+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
+                text="\n"+S+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
                         AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
                         AppointmentDb.appointments.get(idC).getTime()+"and Date:"+
                         AppointmentDb.appointments.get(idC).getDate()+"was cancelled";
