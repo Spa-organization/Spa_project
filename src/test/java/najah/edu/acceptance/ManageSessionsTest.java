@@ -167,7 +167,6 @@ public class ManageSessionsTest {
     }
 
     @Given("the client has an existing spa session they wish to cancel")
-    @Test
     public void theClientHasAnExistingSpaSessionTheyWishToCancel() {
         assertTrue(clientController.showClientAppointments());}
     @When("the client chooses to cancel this session")

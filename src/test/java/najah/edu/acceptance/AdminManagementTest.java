@@ -73,7 +73,6 @@ public class AdminManagementTest {
     }
 
     @Then("the massage room should be added to the system")
-    @Test
     public void theMassageRoomShouldBeAddedToTheSystem() {
         emp_id="47";
         emp_name="ali";
@@ -161,7 +160,12 @@ public class AdminManagementTest {
     @Then("the system should edit this employee")
 
     public void the_system_should_edit_this_employee() {
-        assertTrue(EmployeeDB.editEmployee("31","procc","1234","1",7));
+        emp_id="33";
+        emp_name="ali";
+        emp_password="3214";
+        worker_type="1";
+        room_id="7";
+        assertTrue(EmployeeDB.editEmployee(emp_id,emp_name,emp_password,worker_type, Integer.parseInt(room_id)));
     }
 
 }
