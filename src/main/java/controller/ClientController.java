@@ -18,8 +18,8 @@ public class ClientController {
 
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
-     Scanner scanner = new Scanner(System.in);
-    private  Client client = new Client();
+    public Scanner scanner = new Scanner(System.in);
+    public   Client client = new Client();
     EmailSender emailSender;
    String subject ="Spa_Organization";
 
@@ -177,7 +177,9 @@ public class ClientController {
         {addAppointmentResult(1);return ;}
 
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
-        if(!employees.isEmpty()){showAvailableRooms(employees,dateInput,timeInput);}
+        if (!employees.isEmpty()) {
+            showAvailableRooms(employees, dateInput, timeInput);
+        }
 
         else {
 
