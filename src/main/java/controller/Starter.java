@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 public class Starter {
     private static final Logger LOGGER = LoggerUtility.getLogger();
-    Scanner scanner= new Scanner(System.in);
+    public Scanner scanner= new Scanner(System.in);
 
     public void homePage()   {
         int choice;
