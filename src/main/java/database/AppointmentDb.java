@@ -119,8 +119,11 @@ public class AppointmentDb {
                 }
 
             }
-            double employeeEarnings = totalEarnings * EMPLOYEE_PERCENTAGE;
-            double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
+            String a = EmployeeDB.getEmployeeProfitPercentage(employeeId);
+            double employeeProfitPercentage = Double.valueOf(a);
+            double employeeEarnings = totalEarnings * employeeProfitPercentage;
+            double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
+
             LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings+"\n"+
                             "Employee's Share (30%): $" + employeeEarnings+"\n"+
                             "Center's Share (70%): $" + centerEarnings

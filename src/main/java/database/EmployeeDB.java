@@ -5,7 +5,7 @@ import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
 import entity.Room;
-///
+//
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,7 +35,7 @@ public class EmployeeDB {
         RoomDb.rooms.add(employees.get(2).getRoom());
         RoomDb.rooms.add(employees.get(3).getRoom());
     }
-    public static boolean addServiceProviders(String id,String name,String password,String workerType) {
+    public static boolean addServiceProviders(String id,String name,String password,String workerType, String profitpercentage) {
         boolean flag = true;
         for (Employee employee: employees){
             if(employee.getId().equals(id)){
@@ -99,6 +99,15 @@ public class EmployeeDB {
         }
         return found;
     }
+    public static String getEmployeeProfitPercentage(String employeeId) {
+        for (Employee employee : employees) { // Assuming 'employees' is an iterable collection of Employee objects
+            if (employee.getId().equals(employeeId)) {
+                return employee.getProfitPercentage(); // Assuming Employee class has a getProfitPercentage method
+            }
+        }
+        return null; // Return a default value indicating not found
+    }
+
     public static boolean editEmployee(String id, String newName, String newPassword, String newWorkerType,int roomId) {
         for (Employee employee : employees) {
             if (employee.getId().equals(id)&&RoomDb.checkValidateID(roomId))

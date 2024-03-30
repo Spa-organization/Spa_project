@@ -265,7 +265,7 @@ public class AdminController {
     public void addEmployee(){
         LOGGER.info(COPY1+
                 "=== Add Employee ==="+"\n"+
-                        "Enter Employee ID: ");
+                "Enter Employee ID: ");
         String employeeId = scanner.next();
 
         LOGGER.info("\n"+"Enter Employee Name: ");
