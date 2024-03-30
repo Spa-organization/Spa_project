@@ -95,20 +95,19 @@ public class EmployeeDB {
         }
         return found;
     }
-    public static boolean editEmployee(String id, String newName, String newPassword, String newWorkerType) {
+    public static boolean editEmployee(String id, String newName, String newPassword, String newWorkerType,int roomId) {
         for (Employee employee : employees) {
-            if (employee.getId().equals(id)) {
+            if (employee.getId().equals(id)&&RoomDb.checkValidateID(roomId))
+            {
                 employee.setName(newName);
                 employee.setPassword(newPassword);
                 employee.setWorkerType(Integer.parseInt(newWorkerType));
-
-                // Log the update for auditing purposes
-                LOGGER.info("Employee%s has been updated. ".formatted(id)+"\n");
-
-                return true; // Indicate the employee was found and updated.
+                    employee.getRoom().setRoomNumber(roomId);
+                    LOGGER.info("Employee %s has been updated. ".formatted(id)+"\n");
+                    return true;
             }
         }
-        // Employee with the provided ID was not found.
+        LOGGER.info("NOT SUCCESS EDIT"+"\n");
         return false;
     }
 

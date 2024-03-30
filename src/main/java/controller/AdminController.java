@@ -4,10 +4,32 @@ import basic.LoggerUtility;
 import entity.*;
 import database.*;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Logger;
 public class AdminController {
     Starter starter=new Starter();
+    System.Logger a=new System.Logger() {
+        @Override
+        public String getName() {
+            return null;
+        }
+
+        @Override
+        public boolean isLoggable(Level level) {
+            return false;
+        }
+
+        @Override
+        public void log(Level level, ResourceBundle bundle, String msg, Throwable thrown) {
+
+        }
+
+        @Override
+        public void log(Level level, ResourceBundle bundle, String format, Object... params) {
+
+        }
+    };
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
@@ -111,7 +133,10 @@ public class AdminController {
 
                     LOGGER.info("Enter Employee Type (1.Sawna or 2.Massage): ");
                     String employeeType = scanner.next();
-                   EmployeeDB.editEmployee(empId,employeeName,employeePassword,employeeType);
+
+                    LOGGER.info("Enter NEW ROOM ID: ");
+                    int roomId = scanner.nextInt();
+                   EmployeeDB.editEmployee(empId,employeeName,employeePassword,employeeType, roomId);
                     break;
                 case 11:
                     showAllEmployees();
@@ -129,7 +154,7 @@ public class AdminController {
                             """);
             }
 
-        } while (choice != 11);
+        } while (choice != 12);
 
     }
 
@@ -205,17 +230,9 @@ public class AdminController {
     public void print(int id,Employee employee ){
 
         if(employee.getRooms().get(0).getRoomNumber() == id)
-        {
-            LOGGER.info(COPY+
-                    "The employee is already assigned to this room"+"\n"+
-                    COPY);
-        }
+        {LOGGER.info(COPY+ "The employee is already assigned to this room"+"\n"+ COPY);}
         else
-        {
-            LOGGER.info(COPY+
-                    "The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n"+
-                    COPY);
-        }
+        {LOGGER.info(COPY+ "The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n"+ COPY);}
 
     }
     public void addMassageRoom(){
@@ -302,6 +319,8 @@ public class AdminController {
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
+       // LOGGER.log("we have {} rooms", rooms.size());
+
         LOGGER.info("we have " +rooms.size()+ " rooms");
 
         for(Room room:rooms){
