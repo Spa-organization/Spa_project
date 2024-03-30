@@ -213,10 +213,15 @@ public class ClientController {
     public void addAppointmentResult(int result){
         switch (result){
             case 1:
-         LOGGER.warning(COPY+"invalid Time! check your Time form"+"\n"+"invalid Time! check your Time form"+"\n"+COPY);
-         break;
+                LOGGER.severe(COPY);
+                LOGGER.warning("invalid Time! check your Time form"+"\n");
+                LOGGER.severe(COPY);
+                break;
             case 2:
-                LOGGER.warning(COPY+"invalid date! check your date form"+"\n"+COPY);
+                LOGGER.severe(COPY);
+                LOGGER.warning("invalid date! check your date form"+"\n");
+                LOGGER.severe(COPY);
+
                 break;
             default:
                 String text;
@@ -268,7 +273,13 @@ public class ClientController {
                 addAppointmentResult( AppointmentDb.addAppointment(this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
-        else{LOGGER.warning("\n"+"invalid input!!"+"\n"+SHORT_LINE);}
+        else{LOGGER.warning("""
+
+                invalid input!!
+                """);
+            LOGGER.severe(SHORT_LINE);
+
+        }
     }
 
 
@@ -277,7 +288,8 @@ public class ClientController {
         boolean flag = false;
         showClientAppointments();
         Scanner input = new Scanner(System.in);
-        LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above");
+        LOGGER.severe(SHORT_LINE);
+        LOGGER.info("Please enter the id of the your appointment from the above");
         int idC = input.nextInt();
         int i=0;
         List<Appointment> clientAppointments;
@@ -352,7 +364,7 @@ public class ClientController {
           LOGGER.warning("not available");
           return false;}
         }
-        LOGGER.warning("available");
+        LOGGER.info("available");
         return true;
     }
 
