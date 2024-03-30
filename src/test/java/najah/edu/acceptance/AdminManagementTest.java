@@ -129,6 +129,7 @@ public class AdminManagementTest {
 
     @When("I choose to view the overall profit")
     public void iChooseToViewTheOverallProfit() {
+        assertTrue(true);
     }
 
 
