@@ -4,7 +4,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class EmailSender {
+public class EmailSender {//
     String receiveEmail;
     String from;
     public EmailSender(String receiveEmail){
