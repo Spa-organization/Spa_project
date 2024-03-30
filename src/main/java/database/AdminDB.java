@@ -13,10 +13,10 @@ public class AdminDB {
 		throw new IllegalStateException("Utility class");
 	}
 	static{
-		admins.add(new Admin("21","admin1","123"));
-		admins.add(new Admin("22","admin2","123"));
-		admins.add(new Admin("23","admin3","123"));
-		admins.add(new Admin("24","admin4","123"));
+		admins.add(new Admin("21","ali","123"));
+		admins.add(new Admin("22","eman","123"));
+		admins.add(new Admin("23","wadia","123"));
+		admins.add(new Admin("24","loay","123"));
 	}
 
 	public static boolean addAdmin(String id,String name,String password) {
