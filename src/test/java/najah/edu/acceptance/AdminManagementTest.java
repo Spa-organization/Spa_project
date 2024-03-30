@@ -150,7 +150,7 @@ public class AdminManagementTest {
     @When("I select the option to edit a specific employee,")
     public void i_select_the_option_to_edit_a_specific_employee() {
         assertTrue(true);
-    }
+    }//
     @When("I give the id and new name {string} new password {string} new type {string} and new room {string}")
     public void i_give_the_id_and_new_name_new_password_new_type_and_new_room(String string, String string2, String string3, String string4) {
         this.emp_name=string;
