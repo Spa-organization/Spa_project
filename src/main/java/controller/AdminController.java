@@ -300,10 +300,6 @@ public class AdminController {
         List<Room> rooms;
         rooms= RoomDb.rooms;
         LOGGER.log(Level.INFO, "we have {} rooms", rooms.size());
-
-
-        LOGGER.info("we have " +rooms.size()+ " rooms");
-
         for(Room room:rooms){
             LOGGER.info("-----------" +"\n"+
                     "Room Id: "+room.getRoomNumber()+
