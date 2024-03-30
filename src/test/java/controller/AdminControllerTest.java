@@ -26,17 +26,31 @@ public class AdminControllerTest {
 
 
     @Test
-    public void adminHomePage() {
+    public void adminHomePageaddsawna() {
         Mockito.doReturn(1, 1, 33, 4, 100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("100" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
     @Test
-    public void adminHomePage1() {
+    public void adminHomePage1addsawnawrong() {
         Mockito.doReturn(1, 1, 33, 4, 100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("31" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePageaddmassage() {
+        Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        Mockito.doReturn("100","Abdullah","Sawna" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
+    @Test
+    public void adminHomePageaddadmin() {
+        Mockito.doReturn(5 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
 }
