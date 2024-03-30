@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ClientController {
-    Starter starter=new Starter();
+    public Starter starter=new Starter();
     private static final String COPY="-----------------------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String SHORT_LINE ="--------------------\n";

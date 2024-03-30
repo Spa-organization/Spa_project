@@ -44,4 +44,18 @@ public class ClientControllerTest {
         Mockito.doReturn(2).when(mockScanner).nextInt();
         clientController.updateSession();
     }
+    @Test
+    public void loginPage() {
+        Mockito.doReturn("11", "123" ).when(mockScanner).nextLine();
+        Mockito.doReturn(6,4,100).when(mockScanner).nextInt();
+        clientController.starter.scanner = mockScanner;
+        clientController.loginPage();
+    }
+    @Test
+    public void cliientsingup() {
+        Mockito.doReturn("100", "Abdullah","1123","abdullah@gmail.com" ).when(mockScanner).nextLine();
+        //Mockito.doReturn(6,4,100).when(mockScanner).nextInt();
+        clientController.starter.scanner = mockScanner;
+        clientController.clientSignUp();
+    }
 }
