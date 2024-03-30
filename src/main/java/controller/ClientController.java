@@ -51,20 +51,22 @@ public class ClientController {
                 break;
             }
         }
-        if(!(isLoggedIn)){LOGGER.info("\n"+COPY+"LOGIN FAILD"+"\n");}
+        if(!(isLoggedIn)){LOGGER.warning("LOGIN FAILD"+"\n");}
     }
     public void loginPage(){
-        LOGGER.info(COPY1);
-        LOGGER.info("""
-                === Customer Login ===
-                Enter your ID:""");
+        LOGGER.severe(COPY1);
+        LOGGER.fine("""
+                === Admin Login ===
+                """);
+        LOGGER.info("Enter your ID:");
         String clientId = scanner.nextLine();
-        LOGGER.info("Enter your password:");
+        LOGGER.info("Enter your password: ");
         String password = scanner.nextLine();
         loggInCheck(clientId,password);
         if(isLoggedIn){
             clientHomePage();
         }
+        //
 
     }
     public void clientSignUp(){
@@ -81,19 +83,21 @@ public class ClientController {
         LOGGER.info("Enter client email: ");
         String email = scanner.nextLine();
         if(!ClientDB.addClient(clientId,clientName,password,email)){
-            LOGGER.info(COPY+"This ID is Already Exists\n"+COPY);
+            LOGGER.severe(COPY);
+            LOGGER.info("This ID is Already Exists\n");
+            LOGGER.severe(COPY);
         }else {
-            LOGGER.info(COPY+"Signup done successfully"+"\n"+"\n");
+            LOGGER.severe(COPY);
+            LOGGER.info("Signup done successfully"+"\n");
         }
     }
 
     public void clientHomePage(){
-        LOGGER.info(COPY1);
+        LOGGER.severe(COPY1);
         int choice;
-
+        LOGGER.fine("=== Client "+client.getName()+" Menu ==="+"\n");
         do {
-            LOGGER.info("""
-                ==== Customer Menu ====
+            LOGGER.severe("""
                 1. Book Appointment
                 2. Show My Appointments
                 3. Edit My Appointments
@@ -129,7 +133,7 @@ public class ClientController {
                     LOGGER.info("Logging out. Goodbye!");
                     break;
                 default:
-                    LOGGER.info("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again.");
             }
 
         } while (choice != 6);
@@ -140,12 +144,12 @@ public class ClientController {
         int appointmentType;
         do {
             LOGGER.info("""
-                    
                     Book Appointment
                     1. Massage
                     2. Sauna
                     3. Exit
-                    Enter your choice:""");
+                    """);
+            LOGGER.fine("Enter your choice:");
             appointmentType = scanner.nextInt();
             switch (appointmentType) {
                 case 1:
@@ -164,9 +168,9 @@ public class ClientController {
     }
     public void booking(String type){
         LOGGER.info("\n"+"Enter Date (format: dd/MM/yyyy): ");
-        scanner.nextLine();
+       // scanner.nextLine();
         String dateInput = scanner.nextLine();
-        LOGGER.info("Enter Time (format: HH:mm): ");
+        LOGGER.info("\n"+"Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
         if(!AppointmentDb.isValidDate(dateInput))
         {addAppointmentResult(2);return ;}
@@ -202,10 +206,10 @@ public class ClientController {
     public void addAppointmentResult(int result){
         switch (result){
             case 1:
-         LOGGER.info(COPY+"invalid Time! check your Time form"+"\n"+"invalid Time! check your Time form"+"\n"+COPY);
+         LOGGER.warning(COPY+"invalid Time! check your Time form"+"\n"+"invalid Time! check your Time form"+"\n"+COPY);
          break;
             case 2:
-                LOGGER.info(COPY+"invalid date! check your date form"+"\n"+COPY);
+                LOGGER.warning(COPY+"invalid date! check your date form"+"\n"+COPY);
                 break;
             default:
                 String text;
@@ -240,7 +244,7 @@ public class ClientController {
         }
     }
     public void showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
-        LOGGER.info("-----Available Rooms------");
+        LOGGER.fine("-----Available Rooms------");
         List<Room> rooms;
         for(Employee employee:employees)
         {
@@ -257,7 +261,7 @@ public class ClientController {
                 addAppointmentResult( AppointmentDb.addAppointment(this.client,dateInput,timeInput,room.getEmployee()));
             }
         }
-        else{LOGGER.info("\n"+"invalid input!!"+"\n"+SHORT_LINE);}
+        else{LOGGER.warning("\n"+"invalid input!!"+"\n"+SHORT_LINE);}
     }
 
 
@@ -289,14 +293,13 @@ public class ClientController {
             AppointmentDb.deleteAppointment(idC);
             LOGGER.info("\n"+"Successfully deleted and the email will send to you");
         }
-        else LOGGER.info("You don't have this room");
+        else LOGGER.warning("You don't have this room");
     }
 
     public void updateSession(){
         showClientAppointments();
         Scanner input =scanner;
-        LOGGER.info(SHORT_LINE);
-
+        LOGGER.severe(SHORT_LINE);
         LOGGER.info("Please enter the id of your appointment: ");
         int nextInt = input.nextInt();
         LOGGER.info("Please enter the new date (format: dd/MM/yyyy): ");
@@ -339,10 +342,10 @@ public class ClientController {
          String time= AppointmentDb.appointments.get(i).getTime();
         if(dateCheck.equals(date)&&timeCheck.equals(time)&&idC==roomId)
         {
-          LOGGER.info("not available");
+          LOGGER.warning("not available");
           return false;}
         }
-        LOGGER.info("available");
+        LOGGER.warning("available");
         return true;
     }
 

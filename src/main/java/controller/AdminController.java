@@ -14,6 +14,7 @@ public class AdminController {
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
     private  boolean isLoggedIn;
+
     public Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
     public AdminController() {

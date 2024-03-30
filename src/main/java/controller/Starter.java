@@ -5,14 +5,17 @@ import java.util.logging.Logger;
 public class Starter {
     private static final Logger LOGGER = LoggerUtility.getLogger();
     public Scanner scanner= new Scanner(System.in);
+    private static final String COPY1="-----------------------------------\n-----------------------------------\n";
+    private static final String COPY="-----------------------------------\n";
+
 
     public void homePage()   {
         int choice;
         do {
+            LOGGER.severe(COPY);
+            LOGGER.fine("Welcome to the Spa Event Planner\n");
+            LOGGER.severe(COPY);
             LOGGER.severe("""
-                    -----------------------------------
-                    Welcome to the Spa Event Planner
-                    -----------------------------------
                     1. Sign up for a client account
                     2. Log in
                     3. Exit
@@ -33,7 +36,7 @@ public class Starter {
                             """);
                     break;
                 default:
-                    LOGGER.info("""
+                    LOGGER.warning("""
                             Invalid choice. Please try again.
 
                             """);
@@ -47,10 +50,9 @@ public class Starter {
         int choice;
 
         do {
+            LOGGER.severe(COPY1);
+            LOGGER.fine("=== Spa Event Planner Main Menu ===");
             LOGGER.severe("""
-                    -------------------------------------
-                    -------------------------------------
-                    === Spa Event Planner Main Menu ===
                     1. Login as Admin
                     2. Login as Customer
                     3. Login as Employee
@@ -74,7 +76,7 @@ public class Starter {
                     LOGGER.info("Exiting Spa Event Planner. Goodbye!");
                     break;
                 default:
-                    LOGGER.info("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again.");
             }
 
         } while (choice != 4);

@@ -83,3 +83,5 @@ B
 WeddingPlanner.iml,1\4\1430846d3581da65eb033c5ad324d6a14929239f
 l
 <src/test/java/najah/edu/acceptance/ClientControllerTest.java,c\c\cc034052cb2c0b075b700349e47a9410a59c9365
+a
+1src/test/java/controller/AdminControllerTest.java,d\e\de974beb098acc07c55887f4de3d1d183c37035b
