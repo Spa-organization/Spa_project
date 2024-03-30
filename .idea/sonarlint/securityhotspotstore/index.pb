@@ -87,3 +87,7 @@ Z
 *src/test/java/database/EmployeeDBTest.java,c\9\c9b20df99206d846ca8a8b332411fa64cc3742f3
 B
 WeddingPlanner.iml,1\4\1430846d3581da65eb033c5ad324d6a14929239f
+h
+8src/test/java/najah/edu/acceptance/EmailConfirmTest.java,3\e\3e8f2efd2ea5161fecfbb5bbbf51e163c795441b
+N
+src/main/java/basic/color.java,b\0\b0690e3516fb34bf554aa794d0034482efa517fb

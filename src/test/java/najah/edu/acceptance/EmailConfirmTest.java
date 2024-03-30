@@ -23,8 +23,8 @@ public class EmailConfirmTest {
     @Then("a confirmation email is sent to the customer's email address")
     @Test
     public void aConfirmationEmailIsSentToTheCustomerSEmailAddress() {
-         subject="confirm email";
-         text="hello";
+         subject="testing";
+         text="pending test";
         assertTrue(email.sendEmail(subject,text));
     }
 
