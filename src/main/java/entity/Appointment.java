@@ -14,6 +14,5 @@ public class Appointment {
     private Room room;
     private String date;
     private String time;
-
     private boolean booked = false;
 }

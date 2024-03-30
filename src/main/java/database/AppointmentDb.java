@@ -8,12 +8,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AppointmentDb {
+
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final Logger LOGGER = LoggerUtility.getLogger();
     public static final double SAWNA_SESSION_COST = 200.0; // Example cost
@@ -68,6 +68,7 @@ public class AppointmentDb {
         }
         return employeeAppointments;
     }
+
     public static boolean isValidDate(String date) {
 
         String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";

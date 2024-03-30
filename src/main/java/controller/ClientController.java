@@ -274,10 +274,12 @@ public class ClientController {
         Scanner input = new Scanner(System.in);
         LOGGER.info(SHORT_LINE+"Please enter the id of the your appointment from the above");
         int idC = input.nextInt();
+        int i=0;
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
             if (appointment.getAppointmentId() == idC) {
+                AppointmentDb.appointments.get(i).setBooked(false);
                 emailSender=new EmailSender(this.client.getEmail());
                 text="\n"+S+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
                         AppointmentDb.appointments.get(idC).getEmployee().getWorkerType()+"appointment"+"at time:"+
@@ -286,7 +288,7 @@ public class ClientController {
                 emailSender.sendEmail(subject,text);
                 flag = true;
                 break;
-            }
+            }i++;
         }
         if(flag)
         {
