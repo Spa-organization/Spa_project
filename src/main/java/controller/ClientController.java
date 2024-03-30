@@ -302,7 +302,7 @@ public class ClientController {
 
     public void updateSession(){
         showClientAppointments();
-        Scanner input = new Scanner(System.in);
+        Scanner input =scanner;
         LOGGER.info(SHORT_LINE);
 
         LOGGER.info("Please enter the id of your appointment: ");
@@ -312,8 +312,13 @@ public class ClientController {
         String date = input.nextLine();
         LOGGER.info("Please enter the new time (format: HH:mm): ");
         String time = input.nextLine();
-        if(!AppointmentDb.isValidDate(date)) {addAppointmentResult(2); return;}
-        else if(!AppointmentDb.isValidTime(time)) {addAppointmentResult(1); return;}
+        if (!AppointmentDb.isValidDate(date)) {
+            addAppointmentResult(2);
+            return;
+        } else if (!AppointmentDb.isValidTime(time)) {
+            addAppointmentResult(1);
+            return;
+        }
 
 
         List<Appointment> clientAppointments;
