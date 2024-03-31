@@ -43,7 +43,7 @@ public class EmployeeDB {
             }
         }
         if(flag)
-            employees.add(new Employee(id, name,password,workerType,profitpercentage));
+            employees.add(new Employee(id, name,password,workerType));
 
         return flag;
     }
