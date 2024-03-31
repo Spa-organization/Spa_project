@@ -256,8 +256,6 @@ public class AdminController {
         return true;
     }
     // "room id: "+employee.getRoom().getRoomNumber()+
-    // String roomNumber = (employee.getRoom() != null) ? String.valueOf(employee.getRoom().getRoomNumber()) : "No Room";
-
 
     public void addEmployee(){
         LOGGER.severe(COPY1);

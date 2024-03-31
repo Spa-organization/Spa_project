@@ -12,6 +12,7 @@ public class Employee {
     private String name;
     private String password;
     private String workerType;
+    Room room;
 
     private double profitpercentage;
     private final List<Room> rooms = new ArrayList<>();
@@ -23,6 +24,7 @@ public class Employee {
         this.name = name;
         this.password = password;
         this.workerType = workerType;
+        this.room=null;
     }
 
     public void setAppointment(Appointment appointment) {
