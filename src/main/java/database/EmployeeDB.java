@@ -1,6 +1,4 @@
 package database;
-
-
 import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
@@ -81,6 +79,7 @@ public class EmployeeDB {
         return null;
     }
 
+
     public static boolean deleteEmployee( ) {
         showAllEmployees();
         LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
@@ -92,7 +91,7 @@ public class EmployeeDB {
             if (employee.getId().equals(employeeId)) {
                 employees.removeIf(h -> h.getId().equals(employeeId) );
 
-            employees.remove(employee);
+                employees.remove(employee);
                 AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
                 found = true;
                 LOGGER.info("employee deleted successful");
@@ -100,6 +99,7 @@ public class EmployeeDB {
         }
         return found;
     }
+
     public static double getEmployeeProfitPercentage(String employeeId) {
         for (Employee employee : employees) {
             if (employee.getId().equals(employeeId)) {
