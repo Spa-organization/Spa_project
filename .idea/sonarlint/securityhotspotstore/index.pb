@@ -85,3 +85,5 @@ l
 <src/test/java/najah/edu/acceptance/ClientControllerTest.java,c\c\cc034052cb2c0b075b700349e47a9410a59c9365
 a
 1src/test/java/controller/AdminControllerTest.java,d\e\de974beb098acc07c55887f4de3d1d183c37035b
+b
+2src/test/java/controller/ClientControllerTest.java,a\e\aea8570c1e0eb0dd41d05cc212347a2cd092eca3

@@ -1,4 +1,4 @@
-package najah.edu.acceptance;
+package controller;
 
 import controller.ClientController;
 import entity.Client;

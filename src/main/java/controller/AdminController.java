@@ -91,7 +91,6 @@ public class AdminController {
                     addAdmin();
                     break;
                 case 6:
-
                     EmployeeDB.deleteEmployee();
                     break;
                 case 7:
@@ -300,7 +299,7 @@ public class AdminController {
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
-        LOGGER.log(Level.INFO, "we have {} rooms", rooms.size());
+        if(LOGGER.isLoggable(Level.INFO)) {LOGGER.info("we have " + rooms.size() + " rooms" + "\n");}
         for(Room room:rooms){
             LOGGER.severe(SHORT_LINE);
             LOGGER.info(

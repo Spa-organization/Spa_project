@@ -133,7 +133,8 @@ public class EmployeeDB {
                 employee.setPassword(employeePassword);
                 employee.setWorkerType(Integer.parseInt(employeeType));
                     employee.getRoom().setRoomNumber(roomId);
-                LOGGER.log(Level.INFO, "Employee {} has been updated"+"\n",empId);
+                    if(LOGGER.isLoggable(Level.INFO))
+                    {    LOGGER.info("Employee "+empId+" has been updated"+"\n");}
                     return true;
             }
         }
