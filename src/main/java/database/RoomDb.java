@@ -1,5 +1,4 @@
 package database;
-
 import basic.LoggerUtility;
 import entity.Employee;
 import entity.Room;

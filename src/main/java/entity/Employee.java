@@ -13,7 +13,7 @@ public class Employee {
     private String password;
     private String workerType;
 
-    private String profitpercentage;
+    private double profitpercentage;
     private final List<Room> rooms = new ArrayList<>();
 
     private final List<Appointment> appointments =new ArrayList<>();
@@ -30,24 +30,25 @@ public class Employee {
     }
 
 
-    public String getProfitPercentage() {
+    public double getProfitPercentage() {
         return this.profitpercentage;
     }
-    public Employee(String id, String name, String password,String workerType,Room room) {
+    public Employee(String id, String name, String password,String workerType,Room room,double profitpercentage) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.workerType = workerType;
         this.rooms.add(room);
+        this.profitpercentage=profitpercentage;
     }
-    public Employee(String id, String name, String password,String workerType,String profitpercentage) {
+    public Employee(String id, String name, String password,String workerType,double profitpercentage) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.workerType = workerType;
-        this.profitpercentage = profitpercentage;
-
+        this.profitpercentage=profitpercentage;
     }
+
     public Room getRoom(){
         return rooms.get(0);
     }
@@ -64,7 +65,7 @@ public class Employee {
         }
     }
 
-    public void setProfitPercentage(String profitPercentage) {
+    public void setProfitPercentage(double profitPercentage) {
         this.profitpercentage = profitPercentage;
     }
 
