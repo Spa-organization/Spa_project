@@ -122,11 +122,11 @@ public class AppointmentDb {
 
             double employeeProfitPercentage = EmployeeDB.getEmployeeProfitPercentage(employeeId);
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
-            double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
+
 
             LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings+"\n"+
-                            "Employee's Share (30%): $" + employeeEarnings+"\n"+
-                            "Center's Share (70%): $" + centerEarnings+"\n"
+                            "Employee's earnings $" + employeeEarnings+"\n"
+
                     );
             return  flag;
         }
@@ -146,8 +146,10 @@ public class AppointmentDb {
                 }
             }
         }
-        double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
+        double centerEarnings = totalEarnings * (CENTER_PERCENTAGE);
+        LOGGER.info("Total Earnings "+ " from " + startDateStr + " to " + endDateStr + ": $  is" + centerEarnings+ "\n"
 
+        );
 
         return false;
     }

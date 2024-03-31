@@ -100,7 +100,9 @@ public class AdminController {
                 case 8 :
                     viewFeedbacks();
                     break;
-                case 9:viewCenterEarningsForRange();
+                case 9:
+               //     viewCenterEarningsForRange();
+                      viewCenterEarningsForRange();
                     break;
                 case 10:
                    EmployeeDB.editEmployee();
@@ -269,7 +271,7 @@ public class AdminController {
 
         LOGGER.info("Enter Employee Type (Sawna or Massage): ");
         String employeeType = scanner.nextLine();
-        LOGGER.info("Enter Employee Profit Percentage: ");
+        LOGGER.info("Enter Employee Profit Percentage<=0.30: ");
         double employeeProfitPercentage = scanner.nextDouble();
 
         if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
