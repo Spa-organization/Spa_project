@@ -149,7 +149,7 @@ public class AdminController {
                     addMassageRoom();
                     break;
                 case 3:
-                    showAllEmployees();
+                   showAllEmployees();
                     break;
                 case 4:
                     LOGGER.info("Exiting Room Management. Goodbye!");
@@ -247,17 +247,23 @@ public class AdminController {
         LOGGER.severe(COPY1);
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
+
         for(Employee employee :employees){
-            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+employee.getRoom().getRoomNumber()+"\n");
+
+            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
         }
         LOGGER.severe(COPY1);
         return true;
     }
+    // "room id: "+employee.getRoom().getRoomNumber()+
+    // String roomNumber = (employee.getRoom() != null) ? String.valueOf(employee.getRoom().getRoomNumber()) : "No Room";
+
+
     public void addEmployee(){
         LOGGER.severe(COPY1);
         LOGGER.fine("=== Add Employee ==="+"\n");
         LOGGER.info("Enter Employee ID: ");
-
+        scanner.nextLine();
         String employeeId = scanner.nextLine();
 
         LOGGER.info("Enter Employee Name: ");
@@ -299,12 +305,13 @@ public class AdminController {
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
-        if(LOGGER.isLoggable(Level.INFO)) {LOGGER.info("we have " + rooms.size() + " rooms" + "\n");}
+        if(LOGGER.isLoggable(Level.INFO)) {LOGGER.info(" we have " + rooms.size() + " rooms" + "\n");}
+        LOGGER.severe(SHORT_LINE);
         for(Room room:rooms){
-            LOGGER.severe(SHORT_LINE);
             LOGGER.info(
-                    "Room Id: "+room.getRoomNumber()+"\\t"+
-                    "Employee: "+room.getEmployee().getName());}
+                    "Room Id: "+room.getRoomNumber()+" "+
+                    "EmployeeName: "+room.getEmployee().getName());}
+        LOGGER.severe(SHORT_LINE);
         return true;
     }
     public void addAdmin(){
