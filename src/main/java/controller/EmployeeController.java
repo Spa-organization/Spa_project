@@ -7,6 +7,7 @@ import database.AppointmentDb;
 import database.EmployeeDB;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmployeeController {
@@ -54,7 +55,7 @@ public class EmployeeController {
         }
     }
     public void loginPage(){
-        LOGGER.warning(COPY1);
+        LOGGER.severe(COPY1);
         LOGGER.fine("=== Employee Login ==="+"\n");
         LOGGER.info("Enter your ID: ");
         String clientId = scanner.nextLine();
@@ -70,7 +71,7 @@ public class EmployeeController {
         LOGGER.severe(COPY1);
         int choice;
         do {
-            LOGGER.fine("=== Employee Menu ===");
+            LOGGER.fine("=== Employee Menu ==="+"\n");
             LOGGER.info("""
               1. View my schedule with my customers' reservations
               2. View my Finance for the month
@@ -111,7 +112,8 @@ public class EmployeeController {
 
     public static boolean printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
-            LOGGER.severe(shortLine);
+            if(LOGGER.isLoggable(Level.SEVERE))
+            {LOGGER.severe("\n"+shortLine);}
             logger.info("\n"+"Appointment_id: "+appointment.getAppointmentId()+"\n"+
             "Type: "+appointment.getEmployee().getWorkerType()+"\n"+
             "Date: "+appointment.getDate()+"\n"+

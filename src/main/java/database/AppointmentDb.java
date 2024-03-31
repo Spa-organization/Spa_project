@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -122,12 +123,13 @@ public class AppointmentDb {
 
             double employeeProfitPercentage = EmployeeDB.getEmployeeProfitPercentage(employeeId);
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
-
-
-            LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings+"\n"+
-                            "Employee's earnings $" + employeeEarnings+"\n"
-
-                    );
+            double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
+            if(LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("Total Earnings for Employee: " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings + "\n" +
+                        "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId) + "): $" + employeeEarnings + "\n" +
+                        "Center's Share (70%): $" + centerEarnings + "\n"
+                );
+            }
             return  flag;
         }
     public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
@@ -146,10 +148,8 @@ public class AppointmentDb {
                 }
             }
         }
-        double centerEarnings = totalEarnings * (CENTER_PERCENTAGE);
-        LOGGER.info("Total Earnings "+ " from " + startDateStr + " to " + endDateStr + ": $  is" + centerEarnings+ "\n"
+        double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
 
-        );
 
         return false;
     }

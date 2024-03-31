@@ -139,7 +139,7 @@ public class ClientController {
                     LOGGER.info("Logging out. Goodbye!");
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again."+"\n");
             }
 
         } while (choice != 6);
@@ -291,7 +291,7 @@ public class ClientController {
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentId() == idC) {
+            if (appointment.getAppointmentId() == idC&&i<clientAppointments.size()) {
                 AppointmentDb.appointments.get(i).setBooked(false);
                 emailSender=new EmailSender(this.client.getEmail());
                 text="\n"+S+AppointmentDb.appointments.get(idC).getClient().getName()+"your"+
@@ -333,18 +333,26 @@ public class ClientController {
 
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
-
+        String text;
+        int index=0;
         for (Appointment appointment:clientAppointments) {
-            if (appointment.getAppointmentId() == nextInt) {
+            if (appointment.getAppointmentId() == nextInt&&index<clientAppointments.size()) {
                int roomId=appointment.getRoom().getRoomNumber();
                if(check(date,time,roomId))
                {
                    appointment.setDate(date);
                    appointment.setTime(time);
+                   emailSender=new EmailSender(this.client.getEmail());
+                   text="\n"+S+"\\t"+AppointmentDb.appointments.get(index).getClient().getName()+"your"+
+                           AppointmentDb.appointments.get(index).getEmployee().getWorkerType()+"appointment"+"at time:"+
+                           AppointmentDb.appointments.get(index).getTime()+"and Date:"+
+                           AppointmentDb.appointments.get(index).getDate()+"was updated";
+                   emailSender.sendEmail(subject,text);
                }
                else return;
 
             }
+            index++;
         }
 
     }
