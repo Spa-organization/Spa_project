@@ -91,11 +91,9 @@ public class AdminController {
                     addAdmin();
                     break;
                 case 6:
-                    showAllEmployees();
-                    LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
-                    String employeeId = scanner.nextLine();
-                    scanner.nextLine();
-                   // EmployeeDB.deleteEmployee(employeeId); break;
+
+                    EmployeeDB.deleteEmployee();
+                    break;
                 case 7:
                     showALlRooms();
                     break;
@@ -105,23 +103,7 @@ public class AdminController {
                 case 9:viewCenterEarningsForRange();
                     break;
                 case 10:
-                    LOGGER.severe(COPY1);
-                    LOGGER.fine("=== edit Employee ===");
-                    LOGGER.info("\nEnter Employee ID: ");
-                    String empId = scanner.next();
-
-                    LOGGER.info("Enter Employee Name: ");
-                    String employeeName = scanner.next();
-
-                    LOGGER.info("Enter Employee Password: ");
-                    String employeePassword = scanner.next();
-
-                    LOGGER.info("Enter Employee Type (1.Sawna or 2.Massage): ");
-                    String employeeType = scanner.next();
-
-                    LOGGER.info("Enter NEW ROOM ID: ");
-                    int roomId = scanner.nextInt();
-                   EmployeeDB.editEmployee(empId,employeeName,employeePassword,employeeType, roomId);
+                   EmployeeDB.editEmployee();
                     break;
                 case 11:
                     showAllEmployees();
@@ -135,7 +117,7 @@ public class AdminController {
                 case 100:
                     return;
                 default:
-                    LOGGER.info("\n"+"""
+                    LOGGER.warning("\n"+"""
                             Invalid choice. Please try again.
 
                             """);
@@ -148,8 +130,7 @@ public class AdminController {
 
 
     public void addRoom()  {
-        LOGGER.info(COPY);
-        LOGGER.info(COPY);
+        LOGGER.severe(COPY1);
         int roomType;
         do {
             LOGGER.severe("""
@@ -176,7 +157,7 @@ public class AdminController {
                     adminHomePage();
                     break;
                 default:
-                    LOGGER.info("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again.");
             }
         } while (roomType != 4);
     }
@@ -268,7 +249,7 @@ public class AdminController {
         List<Employee> employees;
         employees=EmployeeDB.getServiceProviders();
         for(Employee employee :employees){
-            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
+            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+employee.getRoom().getRoomNumber()+"\n");
         }
         LOGGER.severe(COPY1);
         return true;
@@ -278,20 +259,21 @@ public class AdminController {
         LOGGER.fine("=== Add Employee ==="+"\n");
         LOGGER.info("Enter Employee ID: ");
 
-        String employeeId = scanner.next();
+        String employeeId = scanner.nextLine();
 
         LOGGER.info("Enter Employee Name: ");
-        String employeeName = scanner.next();
+        String employeeName = scanner.nextLine();
 
         LOGGER.info("Enter Employee Password: ");
-        String employeePassword = scanner.next();
+        String employeePassword = scanner.nextLine();
 
         LOGGER.info("Enter Employee Type (Sawna or Massage): ");
-        String employeeType = scanner.next();
+        String employeeType = scanner.nextLine();
         LOGGER.info("Enter Employee Profit Percentage: ");
-        String employeeProfitPercentage = scanner.next();
+        double employeeProfitPercentage = scanner.nextDouble();
+
         if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
-            LOGGER.severe(COPY);
+            LOGGER.severe("\n"+COPY);
             LOGGER.warning("This ID is Already Exists"+"\n");
             LOGGER.severe(COPY1);
 

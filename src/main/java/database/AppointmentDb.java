@@ -26,7 +26,7 @@ public class AppointmentDb {
         throw new IllegalStateException("Utility class");
     }
     static {
-        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/04/2012","08:00",true));
+        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/09/2012","08:00",true));
         appointments.add(new Appointment(2,ClientDB.clients.get(1),EmployeeDB.employees.get(1), EmployeeDB.employees.get(1).getRoom(),"01/09/2012","10:00",true));
         appointments.add(new Appointment(3,ClientDB.clients.get(2),EmployeeDB.employees.get(2), EmployeeDB.employees.get(2).getRoom(),"02/09/2012","09:00",true));
         appointments.add(new Appointment(4,ClientDB.clients.get(3),EmployeeDB.employees.get(3), EmployeeDB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
@@ -119,14 +119,14 @@ public class AppointmentDb {
                 }
 
             }
-            String a = EmployeeDB.getEmployeeProfitPercentage(employeeId);
-            double employeeProfitPercentage = Double.valueOf(a);
+
+            double employeeProfitPercentage = EmployeeDB.getEmployeeProfitPercentage(employeeId);
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
 
             LOGGER.info("Total Earnings for Employee " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings+"\n"+
                             "Employee's Share (30%): $" + employeeEarnings+"\n"+
-                            "Center's Share (70%): $" + centerEarnings
+                            "Center's Share (70%): $" + centerEarnings+"\n"
                     );
             return  flag;
         }

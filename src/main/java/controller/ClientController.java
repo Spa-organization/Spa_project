@@ -156,7 +156,6 @@ public class ClientController {
                     3. Exit
                     """);
             LOGGER.fine("Enter your choice:"+"\n");
-            LOGGER.severe(COPY1);
             appointmentType = scanner.nextInt();
             switch (appointmentType) {
                 case 1:
@@ -199,12 +198,9 @@ public class ClientController {
         booking(type);
     }
 
-
-
     public void bookSauna(String type){booking(type);}
 
     public boolean showClientAppointments(){
-        LOGGER.info(COPY1);
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
