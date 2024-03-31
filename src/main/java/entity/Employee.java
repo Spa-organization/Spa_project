@@ -12,13 +12,20 @@ public class Employee {
     private String name;
     private String password;
     private String workerType;
+    Room room;
 
     private double profitpercentage;
     private final List<Room> rooms = new ArrayList<>();
 
     private final List<Appointment> appointments =new ArrayList<>();
 
-
+    public Employee(String id, String name, String password, String workerType) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.workerType = workerType;
+        this.room=null;
+    }
 
     public void setAppointment(Appointment appointment) {
         this.appointments.add(appointment);
@@ -42,14 +49,6 @@ public class Employee {
         this.password = password;
         this.workerType = workerType;
         this.profitpercentage=profitpercentage;
-    }
-    public Room getRoom1() {
-        if (this.rooms != null && !this.rooms.isEmpty()) {
-            return rooms.get(0);
-        } else {
-
-            return null;
-        }
     }
     public Room getRoom(){
 

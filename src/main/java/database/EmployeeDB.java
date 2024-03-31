@@ -36,7 +36,7 @@ public class EmployeeDB {
         RoomDb.rooms.add(employees.get(2).getRoom());
         RoomDb.rooms.add(employees.get(3).getRoom());
     }
-    public static boolean addServiceProviders(String id,String name,String password,String workerType, double profitpercentage) {
+    public static boolean addServiceProviders(String id,String name,String password,String workerType,double profitpercentage) {
         boolean flag = true;
         for (Employee employee: employees){
             if(employee.getId().equals(id)){

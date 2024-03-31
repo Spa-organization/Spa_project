@@ -76,7 +76,7 @@ public class Starter {
                     LOGGER.info("Exiting Spa Event Planner. Goodbye!");
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning("Invalid choice. Please try again."+"\n");
             }
 
         } while (choice != 4);

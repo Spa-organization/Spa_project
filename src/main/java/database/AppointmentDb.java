@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AppointmentDb {
+    private static final String COPY="-----------------------------------\n";
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final Logger LOGGER = LoggerUtility.getLogger();
@@ -125,10 +126,11 @@ public class AppointmentDb {
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
             if(LOGGER.isLoggable(Level.INFO)) {
-                LOGGER.info("Total Earnings for Employee: " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings + "\n" +
-                        "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId) + "): $" + employeeEarnings + "\n" +
-                        "Center's Share (70%): $" + centerEarnings + "\n"
-                );
+                LOGGER.info( "EMP_ID is: "+employeeId + "   "+" from " + startDateStr + " to " + endDateStr + "\n"+
+                        "Total Earnings for Employee: "+ ": $" + totalEarnings + "\n" +
+                        "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId)*100+"%" + "): $" + employeeEarnings + "\n" +
+                        "Center's Share (70%): $" + centerEarnings + "\n");
+                        LOGGER.severe(COPY);
             }
             return  flag;
         }
