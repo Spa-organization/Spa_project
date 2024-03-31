@@ -126,7 +126,7 @@ public class AppointmentDb {
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
             if(LOGGER.isLoggable(Level.INFO)) {
                 LOGGER.info("Total Earnings for Employee: " + employeeId + " from " + startDateStr + " to " + endDateStr + ": $" + totalEarnings + "\n" +
-                        "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId) + "): $" + employeeEarnings + "\n" +
+                        "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId)*100+"%" + "): $" + employeeEarnings + "\n" +
                         "Center's Share (70%): $" + centerEarnings + "\n"
                 );
             }
