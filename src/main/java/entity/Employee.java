@@ -18,12 +18,7 @@ public class Employee {
 
     private final List<Appointment> appointments =new ArrayList<>();
 
-    public Employee(String id, String name, String password, String workerType) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.workerType = workerType;
-    }
+
 
     public void setAppointment(Appointment appointment) {
         this.appointments.add(appointment);
