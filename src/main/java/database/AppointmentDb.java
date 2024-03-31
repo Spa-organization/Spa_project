@@ -151,7 +151,7 @@ public class AppointmentDb {
             }
         }
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-
+        System.out.println("center earning = " +centerEarnings) ;
 
         return false;
     }
