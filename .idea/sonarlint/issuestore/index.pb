@@ -87,3 +87,5 @@ b
 2src/test/java/controller/ClientControllerTest.java,a\e\aea8570c1e0eb0dd41d05cc212347a2cd092eca3
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+h
+8src/test/java/najah/edu/acceptance/EmailConfirmTest.java,3\e\3e8f2efd2ea5161fecfbb5bbbf51e163c795441b
