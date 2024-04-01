@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -22,7 +23,7 @@ public class AppointmentDb {
     public static final double MASSAGE_SESSION_COST = 250.0;
     public static final double EMPLOYEE_PERCENTAGE = 0.30;
     public static final double CENTER_PERCENTAGE = 0.70;
-
+    static Scanner scanner = new Scanner(System.in);
    public static List<Appointment> appointments= new ArrayList<>();
     private AppointmentDb() {
         throw new IllegalStateException("Utility class");
@@ -100,7 +101,13 @@ public class AppointmentDb {
         appointments.removeIf(h -> h.getAppointmentId() == id);}
 
 
-        public static boolean calculateEarningsForEmployeeAndCenterInRange(String employeeId, String startDateStr, String endDateStr) {
+        public static boolean calculateEarningsForEmployeeAndCenterInRange() {
+            LOGGER.info("\n"+"Enter emp ID:");
+            String employeeId = scanner.nextLine();
+            LOGGER.info("start date: ");
+            String startDateStr = scanner.next();
+            LOGGER.info("end date: ");
+          String  endDateStr = scanner.next();
         boolean flag=false;
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
             LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
@@ -126,8 +133,8 @@ public class AppointmentDb {
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
             if(LOGGER.isLoggable(Level.INFO)) {
-                LOGGER.info( "\n"+"EMP_ID is: "+employeeId + "   "+" from " + startDateStr + " to " + endDateStr + "\n"+
-                        "Total Earnings : "+ ": $" + totalEarnings + "\n" +
+                LOGGER.info( "\n"+"EMP_ID is: "+employeeId + "   "+" from: " + startDateStr + " to: " + endDateStr + "\n"+
+                        "Total Earnings : "+"$" + totalEarnings + "\n" +
                         "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId)*100+"%" + "): $" + employeeEarnings + "\n" +
                         "Center's Share ("+(100-EmployeeDB.getEmployeeProfitPercentage(employeeId)*100)+"%" + " ): $"  + centerEarnings + "\n");
                         LOGGER.severe(COPY);
