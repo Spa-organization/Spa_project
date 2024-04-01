@@ -85,3 +85,5 @@ a
 1src/test/java/controller/AdminControllerTest.java,d\e\de974beb098acc07c55887f4de3d1d183c37035b
 b
 2src/test/java/controller/ClientControllerTest.java,a\e\aea8570c1e0eb0dd41d05cc212347a2cd092eca3
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

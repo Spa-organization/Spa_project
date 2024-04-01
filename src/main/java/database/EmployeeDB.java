@@ -14,8 +14,8 @@ public class EmployeeDB {
     static List<Employee> employees = new ArrayList<>();
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final Logger LOGGER = LoggerUtility.getLogger();
-    private static final String MASSAGE="massage";
-    private static final  String SAWNA="sawna";
+    private static final String MASSAGE="Massage";
+    private static final  String SAWNA="Sawna";
     static Scanner scan=new Scanner(System.in);
     private EmployeeDB() {
 
