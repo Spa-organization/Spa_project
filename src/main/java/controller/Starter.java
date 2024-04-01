@@ -20,7 +20,7 @@ public class Starter {
                     2. Log in
                     3. Exit
                     """);
-            LOGGER.info("Enter your choice:");
+            LOGGER.info("Enter your choice :");
 
             choice = scanner.nextInt();
             switch (choice) {
