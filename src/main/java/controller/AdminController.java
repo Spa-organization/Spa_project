@@ -83,7 +83,7 @@ public class AdminController {
                     showAppointments();
                     break;
                 case 4:
-                    //viewEmployeeEarningsForRange();
+                    viewCenterEarningsForRange();
                     break;
                 case 5:
                     addAdmin();

@@ -52,12 +52,12 @@ public class AdminControllerTest {
         adminController.adminHomePage();
     }
     //@Test
-    //public void adminHomePageshoowemployee() {
-       // Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
-       // Mockito.doReturn("" ).when(mockScanner).nextLine();
-       // Mockito.doReturn("100" ).when(mockScanner).next();
-        //adminController.adminHomePage();
-   // }
+    public void adminHomePageshoowemployee() {
+        Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
+       Mockito.doReturn("" ).when(mockScanner).nextLine();
+        //Mockito.doReturn("100" ).when(mockScanner).next();
+        adminController.adminHomePage();
+    }
     @Test
     public void adminHomePageaddadmin() {
         Mockito.doReturn(5 ,100).when(mockScanner).nextInt();
