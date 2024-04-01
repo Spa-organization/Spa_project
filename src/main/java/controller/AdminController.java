@@ -305,7 +305,8 @@ public class AdminController {
         LOGGER.info(COPY1);
         List<Room> rooms;
         rooms= RoomDb.rooms;
-        if(LOGGER.isLoggable(Level.INFO)) {LOGGER.info(" we have " + rooms.size() + " rooms" + "\n");}
+        if(LOGGER.isLoggable(Level.INFO))
+        {LOGGER.info(" we have " + rooms.size() + " rooms" + "\n");}
         LOGGER.severe(SHORT_LINE);
         for(Room room:rooms){
             LOGGER.info(
