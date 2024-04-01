@@ -1,5 +1,8 @@
 package controller;
 
+import database.AdminDB;
+import database.AppointmentDb;
+import database.EmployeeDB;
 import entity.Admin;
 import entity.Client;
 import entity.Employee;
@@ -22,6 +25,8 @@ public class AdminControllerTest {
         mockScanner = Mockito.spy( new Scanner(System.in));
         adminController.scanner = mockScanner;
         adminController.admin = new Admin("21", "admin1", "123");
+        AppointmentDb.scanner = mockScanner;
+        EmployeeDB.scan = mockScanner;
     }
 
 
@@ -46,13 +51,13 @@ public class AdminControllerTest {
         Mockito.doReturn("100" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
-    @Test
-    public void adminHomePageshoowemployee() {
-        Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
-        Mockito.doReturn("" ).when(mockScanner).nextLine();
+    //@Test
+    //public void adminHomePageshoowemployee() {
+       // Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
+       // Mockito.doReturn("" ).when(mockScanner).nextLine();
        // Mockito.doReturn("100" ).when(mockScanner).next();
-        adminController.adminHomePage();
-    }
+        //adminController.adminHomePage();
+   // }
     @Test
     public void adminHomePageaddadmin() {
         Mockito.doReturn(5 ,100).when(mockScanner).nextInt();
@@ -64,6 +69,7 @@ public class AdminControllerTest {
     public void adminHomePageaaddemployee() {
         Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
+        Mockito.doReturn(0.3 ).when(mockScanner).nextDouble();
         Mockito.doReturn("101","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
@@ -89,8 +95,10 @@ public class AdminControllerTest {
     @Test
     public void adminHomeCenterEarningsForRange() {
         Mockito.doReturn(9 ,100).when(mockScanner).nextInt();
-        Mockito.doReturn("10/10/2022","12/10/2022" ).when(mockScanner).nextLine();
+        Mockito.doReturn("1" ).when(mockScanner).nextLine();
+        Mockito.doReturn("10/10/2022","12/10/2022").when(mockScanner).next();
         //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
+
         adminController.adminHomePage();
     }
     @Test

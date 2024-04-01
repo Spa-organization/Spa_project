@@ -17,7 +17,7 @@ public class EmployeeDB {
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String MASSAGE="Massage";
     private static final  String SAWNA="Sawna";
-    static Scanner scan=new Scanner(System.in);
+   public static Scanner scan=new Scanner(System.in);
     private EmployeeDB() {
 
     }

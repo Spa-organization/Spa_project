@@ -23,7 +23,7 @@ public class AppointmentDb {
     public static final double MASSAGE_SESSION_COST = 250.0;
     public static final double EMPLOYEE_PERCENTAGE = 0.30;
     public static final double CENTER_PERCENTAGE = 0.70;
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
    public static List<Appointment> appointments= new ArrayList<>();
     private AppointmentDb() {
         throw new IllegalStateException("Utility class");
