@@ -17,7 +17,7 @@ public class ClientController {
 
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
-    public Scanner scanner = new Scanner(System.in);
+      Scanner scanner = new Scanner(System.in);
     public   Client client = new Client();
     EmailSender emailSender;
    String subject ="Spa_Organization";

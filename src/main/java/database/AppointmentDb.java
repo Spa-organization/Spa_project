@@ -21,9 +21,8 @@ public class AppointmentDb {
     private static final Logger LOGGER = LoggerUtility.getLogger();
     public static final double SAWNA_SESSION_COST = 200.0;
     public static final double MASSAGE_SESSION_COST = 250.0;
-    public static final double EMPLOYEE_PERCENTAGE = 0.30;
     public static final double CENTER_PERCENTAGE = 0.70;
-    public static Scanner scanner = new Scanner(System.in);
+     static Scanner scanner = new Scanner(System.in);
    public static List<Appointment> appointments= new ArrayList<>();
     private AppointmentDb() {
         throw new IllegalStateException("Utility class");
@@ -152,7 +151,8 @@ public class AppointmentDb {
             }
             return  flag;
         }
-    public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
+    //should be rename for only employee
+        public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
         double totalEarnings = 0;
@@ -168,6 +168,8 @@ public class AppointmentDb {
                 }
             }
         }
+
+
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
         if (LOGGER.isLoggable(Level.INFO))
         { LOGGER.info("center earning = " +centerEarnings);}

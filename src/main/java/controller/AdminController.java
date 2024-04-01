@@ -5,7 +5,6 @@ import entity.*;
 import database.*;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 public class AdminController {
     Starter starter=new Starter();
@@ -84,6 +83,7 @@ public class AdminController {
                     break;
                 case 4:
                     viewCenterEarningsForRange();
+                    //should delete
                     break;
                 case 5:
                     addAdmin();
@@ -270,7 +270,7 @@ public class AdminController {
 
         LOGGER.info("Enter Employee Type (Sawna or Massage): ");
         String employeeType = scanner.nextLine();
-        LOGGER.info("Enter Employee Profit Percentage<=0.30: ");
+        LOGGER.info("Enter Employee Profit Percentage--->: ");
         double employeeProfitPercentage = scanner.nextDouble();
 
         if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
@@ -326,16 +326,7 @@ public class AdminController {
         return true;
     }
 
-  //  public void viewEmployeeEarningsForRange() {
-     //   LOGGER.info("Enter Employee ID: ");
-     //   scanner.nextLine();
-     //   String employeeId = scanner.nextLine();
-      //  LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
-      //  String date = scanner.nextLine();
-      //  LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
-      //  String date2 = scanner.nextLine();
-  //      AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
-  //  }
+
 
     public void viewCenterEarningsForRange() {
         LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");

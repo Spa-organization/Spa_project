@@ -1,12 +1,10 @@
 package controller;
 import basic.LoggerUtility;
-
-import javax.swing.*;
 import java.util.Scanner;
 import java.util.logging.Logger;
 public class Starter {
     private static final Logger LOGGER = LoggerUtility.getLogger();
-    public Scanner scanner= new Scanner(System.in);
+     Scanner scanner= new Scanner(System.in);
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
 
