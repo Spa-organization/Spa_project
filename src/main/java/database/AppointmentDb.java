@@ -101,14 +101,14 @@ public class AppointmentDb {
         appointments.removeIf(h -> h.getAppointmentId() == id);}
 
 
-        public static boolean calculateEarningsForEmployeeAndCenterInRange() {
-            LOGGER.info("\n"+"Enter emp ID:");
+        public static boolean calculateEarningsForEmployeeAndCenterInRange(int choice) {
+            LOGGER.info("\n" + "Enter emp ID:");
             String employeeId = scanner.nextLine();
             LOGGER.info("start date: ");
             String startDateStr = scanner.next();
             LOGGER.info("end date: ");
-          String  endDateStr = scanner.next();
-        boolean flag=false;
+            String endDateStr = scanner.next();
+            boolean flag = false;
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
             LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
             double totalEarnings = 0;
@@ -117,11 +117,11 @@ public class AppointmentDb {
                 LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
                     if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                        flag=true;
-                        totalEarnings +=SAWNA_SESSION_COST;
+                        flag = true;
+                        totalEarnings += SAWNA_SESSION_COST;
 
                     } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-                        flag=true;
+                        flag = true;
                         totalEarnings += MASSAGE_SESSION_COST;
 
                     }
@@ -133,11 +133,22 @@ public class AppointmentDb {
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
             if(LOGGER.isLoggable(Level.INFO)) {
-                LOGGER.info( "\n"+"EMP_ID is: "+employeeId + "   "+" from: " + startDateStr + " to: " + endDateStr + "\n"+
-                        "Total Earnings : "+"$" + totalEarnings + "\n" +
-                        "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId)*100+"%" + "): $" + employeeEarnings + "\n" +
-                        "Center's Share ("+(100-EmployeeDB.getEmployeeProfitPercentage(employeeId)*100)+"%" + " ): $"  + centerEarnings + "\n");
-                        LOGGER.severe(COPY);
+                if (choice == 1) //all
+                {
+
+                    LOGGER.info("\n" + "EMP_ID is: " + employeeId + "   " + " from: " + startDateStr + " to: " + endDateStr + "\n" +
+                            "Total Earnings : " + "$" + totalEarnings + "\n" +
+                            "Employee's Share (" + EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100 + "%" + "): $" + employeeEarnings + "\n" +
+                            "Center's Share (" + (100 - EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100) + "%" + " ): $" + centerEarnings + "\n");
+                    LOGGER.severe(COPY);
+                }
+
+                if (choice == 2) //employee
+                {
+                    LOGGER.info("\n" + "EMP_ID is: " + employeeId + "   " + " from: " + startDateStr + " to: " + endDateStr + "\n" +
+                            "Employee's Share (" + EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100 + "%" + "): $" + employeeEarnings + "\n");
+                    LOGGER.severe(COPY);
+                }
             }
             return  flag;
         }

@@ -83,7 +83,7 @@ public class AdminController {
                     showAppointments();
                     break;
                 case 4:
-                    viewEmployeeEarningsForRange();
+                    //viewEmployeeEarningsForRange();
                     break;
                 case 5:
                     addAdmin();
@@ -98,8 +98,7 @@ public class AdminController {
                     viewFeedbacks();
                     break;
                 case 9:
-                     // viewCenterEarningsForRange();
-                   AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
+                   AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(1);
                     break;
                 case 10:
                    EmployeeDB.editEmployee();
@@ -327,7 +326,7 @@ public class AdminController {
         return true;
     }
 
-    public void viewEmployeeEarningsForRange() {
+  //  public void viewEmployeeEarningsForRange() {
      //   LOGGER.info("Enter Employee ID: ");
      //   scanner.nextLine();
      //   String employeeId = scanner.nextLine();
@@ -335,8 +334,8 @@ public class AdminController {
       //  String date = scanner.nextLine();
       //  LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
       //  String date2 = scanner.nextLine();
-        AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
-    }
+  //      AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
+  //  }
 
     public void viewCenterEarningsForRange() {
         LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");

@@ -38,7 +38,7 @@ public class ScheduleTest {
         id="31";
         start_date="01/03/2012";
         end_date="01/04/2012";
-        assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange());
+        assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(2));
 
     }
 

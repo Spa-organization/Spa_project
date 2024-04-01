@@ -85,13 +85,13 @@ public class EmployeeController {
                     showEmployeeAppointments();
                     break;
                 case 2:
-                    LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
-                    scanner.nextLine();
-                    String date = scanner.nextLine();
-                    LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
-                    String date2 = scanner.nextLine();
-                    LOGGER.severe("\n");
-                    AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
+                    //LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
+                    //scanner.nextLine();
+                    //String date = scanner.nextLine();
+                    //LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
+                    //String date2 = scanner.nextLine();
+                    //LOGGER.severe("\n");
+                    AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(2);
                     break;
                 case 3:
                     LOGGER.info("Logging out. Goodbye!");
