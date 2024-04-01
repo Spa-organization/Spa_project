@@ -56,7 +56,7 @@ public class ClientController {
     public void loginPage(){
         LOGGER.severe(COPY1);
         LOGGER.fine("""
-                === Admin Login ===
+                === Client Login ===
                 """);
         LOGGER.info("Enter your ID:");
         String clientId = scanner.nextLine();
