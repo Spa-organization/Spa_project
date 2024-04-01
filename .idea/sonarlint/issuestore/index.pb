@@ -89,3 +89,5 @@ b
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 h
 8src/test/java/najah/edu/acceptance/EmailConfirmTest.java,3\e\3e8f2efd2ea5161fecfbb5bbbf51e163c795441b
+Q
+!Myfeatures/ManageSessions.feature,0\f\0f7ceb6586660b49773581bd002c2b4ea9e206ee

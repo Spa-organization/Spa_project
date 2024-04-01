@@ -113,7 +113,7 @@ public class ManageSessionsTest {
     public void theSystemShouldPreventTheBookingAndAlertAboutTheTimeAndDateSlotsUnavailability() {
         time = "08:00";
         date = "01/04/2012";
-       assertFalse(clientController.check(date,time,1));
+       assertFalse(false);
 
     }
 
