@@ -12,6 +12,7 @@ import static controller.AdminController.showAllEmployees;
 
 public class EmployeeDB {
     static List<Employee> employees = new ArrayList<>();
+    private static final String SHORT_LINE ="--------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String MASSAGE="Massage";
@@ -140,6 +141,20 @@ public class EmployeeDB {
         }
         LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
         return false;
+    }
+    public static boolean showALlRooms(){
+        List<Room> rooms;
+        rooms= RoomDb.rooms;
+        if(LOGGER.isLoggable(Level.INFO))
+        {LOGGER.info("\n"+" we have " + rooms.size() + " rooms" + "\n");}
+        LOGGER.severe(SHORT_LINE);
+        for(Room room:rooms){
+            LOGGER.info(
+                    "Room Id: "+room.getRoomNumber()+" "+
+                            "EmployeeName: "+room.getEmployee().getName()+"\n");}
+
+        LOGGER.severe(SHORT_LINE);
+        return true;
     }
 
 }

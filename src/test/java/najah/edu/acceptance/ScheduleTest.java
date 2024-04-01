@@ -5,6 +5,8 @@ import database.AppointmentDb;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Test;
+
 import static org.junit.Assert.assertTrue;
 
 
@@ -16,7 +18,7 @@ public class ScheduleTest {
     public ScheduleTest () {employeeController=new EmployeeController();}
 
     @Given("I am logged in as an Employee")
-
+    @Test
     public void iAmLoggedInAsAnEmployee() {
         employeeController.loggInCheck("31","123");
         assertTrue(employeeController.isLoggedIn());
@@ -36,7 +38,7 @@ public class ScheduleTest {
         id="31";
         start_date="01/03/2012";
         end_date="01/04/2012";
-        assertTrue(AppointmentDb.calculateEarningsForEmployeeInRange(id,start_date,end_date));
+        assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(id,start_date,end_date));
 
     }
 

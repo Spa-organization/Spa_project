@@ -28,7 +28,7 @@ public class AppointmentDb {
         throw new IllegalStateException("Utility class");
     }
     static {
-        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/09/2012","08:00",true));
+        appointments.add(new Appointment(1,ClientDB.clients.get(0),EmployeeDB.employees.get(0), EmployeeDB.employees.get(0).getRoom(),"01/10/2012","08:00",true));
         appointments.add(new Appointment(2,ClientDB.clients.get(1),EmployeeDB.employees.get(1), EmployeeDB.employees.get(1).getRoom(),"01/09/2012","10:00",true));
         appointments.add(new Appointment(3,ClientDB.clients.get(2),EmployeeDB.employees.get(2), EmployeeDB.employees.get(2).getRoom(),"02/09/2012","09:00",true));
         appointments.add(new Appointment(4,ClientDB.clients.get(3),EmployeeDB.employees.get(3), EmployeeDB.employees.get(3).getRoom(),"01/09/2012","09:00",true));
@@ -100,7 +100,7 @@ public class AppointmentDb {
         appointments.removeIf(h -> h.getAppointmentId() == id);}
 
 
-        public static boolean calculateEarningsForEmployeeInRange(String employeeId, String startDateStr, String endDateStr) {
+        public static boolean calculateEarningsForEmployeeAndCenterInRange(String employeeId, String startDateStr, String endDateStr) {
         boolean flag=false;
             LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
             LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
@@ -126,10 +126,10 @@ public class AppointmentDb {
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
             if(LOGGER.isLoggable(Level.INFO)) {
-                LOGGER.info( "EMP_ID is: "+employeeId + "   "+" from " + startDateStr + " to " + endDateStr + "\n"+
-                        "Total Earnings for Employee: "+ ": $" + totalEarnings + "\n" +
+                LOGGER.info( "\n"+"EMP_ID is: "+employeeId + "   "+" from " + startDateStr + " to " + endDateStr + "\n"+
+                        "Total Earnings : "+ ": $" + totalEarnings + "\n" +
                         "Employee's Share ("   + EmployeeDB.getEmployeeProfitPercentage(employeeId)*100+"%" + "): $" + employeeEarnings + "\n" +
-                        "Center's Share (70%): $" + centerEarnings + "\n");
+                        "Center's Share ("+(100-EmployeeDB.getEmployeeProfitPercentage(employeeId)*100)+"%" + " ): $"  + centerEarnings + "\n");
                         LOGGER.severe(COPY);
             }
             return  flag;
@@ -151,8 +151,8 @@ public class AppointmentDb {
             }
         }
         double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-        System.out.println("center earning = " +centerEarnings) ;
-
+        if (LOGGER.isLoggable(Level.INFO))
+        { LOGGER.info("center earning = " +centerEarnings);}
         return false;
     }
 

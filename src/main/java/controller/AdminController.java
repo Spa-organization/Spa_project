@@ -9,8 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class AdminController {
     Starter starter=new Starter();
-    private static final String SHORT_LINE ="--------------------\n";
-
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String COPY="-----------------------------------\n";
@@ -67,7 +65,7 @@ public class AdminController {
                     6.delete Employee
                     7. Show All Rooms
                     8. View Feedbacks
-                    9. view CenterEarningsForRange
+                    9. view_CenterAndEmployee_EarningsForRange
                     10.edit employee
                     11.show all employee
                     12. logout
@@ -94,14 +92,14 @@ public class AdminController {
                     EmployeeDB.deleteEmployee();
                     break;
                 case 7:
-                    showALlRooms();
+                    EmployeeDB.showALlRooms();
                     break;
                 case 8 :
                     viewFeedbacks();
                     break;
                 case 9:
-               //     viewCenterEarningsForRange();
                       viewCenterEarningsForRange();
+                 //   AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
                     break;
                 case 10:
                    EmployeeDB.editEmployee();
@@ -134,8 +132,8 @@ public class AdminController {
         LOGGER.severe(COPY1);
         int roomType;
         do {
+            LOGGER.fine("Add Rooms\n");
             LOGGER.severe("""
-                    Add Rooms
                     1. sawna Room
                     2. Massage Room
                     3. Show All Employees with ID
@@ -225,7 +223,7 @@ public class AdminController {
             if(employees.getWorkerType().equalsIgnoreCase("Massage")){
                 if(!RoomDb.addRoom(employees, id)){
                     LOGGER.severe(COPY);
-                    LOGGER.warning("This ID_room is Already Exists");
+                    LOGGER.warning("This ID_room is Already Exists"+"\n");
                     LOGGER.severe(COPY);
                 }
                 else {
@@ -252,12 +250,11 @@ public class AdminController {
 
         for(Employee employee :employees){
 
-            LOGGER.info("Name: "+employee.getName()+"  ID: "+employee.getId()+" Type: "+employee.getWorkerType()+"\n");
+            LOGGER.info("Name: "+employee.getName()+"   "+"  ID: "+employee.getId()+"   "+" Type: "+employee.getWorkerType()+ "   " + "room id: "+employee.getRoom().getRoomNumber()+"\n");
         }
         LOGGER.severe(COPY1);
         return true;
     }
-    // "room id: "+employee.getRoom().getRoomNumber()+
 
     public void addEmployee(){
         LOGGER.severe(COPY1);
@@ -280,40 +277,25 @@ public class AdminController {
         if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
             LOGGER.severe("\n"+COPY);
             LOGGER.warning("This ID is Already Exists"+"\n");
-            LOGGER.severe(COPY1);
+            LOGGER.severe(COPY);
 
         }else
             LOGGER.info("Employee added successfully!"+"\n");
     }
 
     public static boolean showAppointments(){
-        LOGGER.severe(SHORT_LINE);
         LOGGER.fine("=== All Appointments ==="+"\n");
         List<Appointment> appointments;
         appointments = AppointmentDb.getAllAppointments();
         for(Appointment appointment:appointments){
             LOGGER.severe(COPY);
             LOGGER.info(
-                    " type: "+appointment.getEmployee().getWorkerType()+"\n"+
+                    "type: "+appointment.getEmployee().getWorkerType()+"\n"+
                             "Room: "+appointment.getRoom().getRoomNumber()+"\n"+
                             "Employee: "+appointment.getEmployee().getName()+"\n"+
-                            "Date: "+appointment.getDate()+"\n"+" Time"+appointment.getTime()
+                            "Date: "+appointment.getDate()+"\n"+"Time"+appointment.getTime()+"\n"
                     );
-        }return true;
-    }
-    public boolean showALlRooms(){
-        LOGGER.info(COPY1);
-        List<Room> rooms;
-        rooms= RoomDb.rooms;
-        if(LOGGER.isLoggable(Level.INFO))
-        {LOGGER.info(" we have " + rooms.size() + " rooms" + "\n");}
-        LOGGER.severe(SHORT_LINE);
-        for(Room room:rooms){
-            LOGGER.info(
-                    "Room Id: "+room.getRoomNumber()+" "+
-                    "EmployeeName: "+room.getEmployee().getName());}
-        LOGGER.severe(SHORT_LINE);
-        return true;
+        }LOGGER.severe("\n");return true;
     }
     public void addAdmin(){
         LOGGER.severe(COPY1);
@@ -331,15 +313,16 @@ public class AdminController {
             LOGGER.warning("This ID is Already Exists"+"\n");
             LOGGER.severe(COPY);
         }else
-            LOGGER.info("Admin added successfully");
+            LOGGER.info("Admin added successfully"+"\n");
     }
     public boolean viewFeedbacks(){
-        LOGGER.severe(COPY);
+        LOGGER.severe("\n");
         List<FeedBack>feedBacks;
         feedBacks= FeedbackDB.getFeedback();
         for (FeedBack feedback: feedBacks) {
+            LOGGER.info("Client id: "+feedback.getClientId()+"-------> "+feedback.getFeed()+"\n");
             LOGGER.severe(COPY);
-            LOGGER.info("Client id: "+feedback.getClientId()+"\n"+feedback.getFeed());
+
         }
         return true;
     }
@@ -352,7 +335,7 @@ public class AdminController {
         String date = scanner.nextLine();
         LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
         String date2 = scanner.nextLine();
-        AppointmentDb.calculateEarningsForEmployeeInRange(employeeId, date,date2);
+        AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(employeeId, date,date2);
     }
 
     public void viewCenterEarningsForRange() {

@@ -134,7 +134,7 @@ public class AdminManagementTest {
         emp_id="31";
         start_date="01/03/2012";
         end_date="01/04/2012";
-        assertTrue(AppointmentDb.calculateEarningsForEmployeeInRange(emp_id,start_date,end_date));
+        assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(emp_id,start_date,end_date));
     }
 
     @When("I choose to view the overall profit")

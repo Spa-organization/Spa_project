@@ -4,7 +4,12 @@ import java.util.logging.*;
 import static java.util.logging.Level.INFO;
 
 public class LoggerUtility {
-
+    public static final String RESET = "\033[0m";
+    public static final String RED = "\033[0;31m";
+    public static final String GREEN = "\033[0;32m";
+    public static final String YELLOW = "\033[0;33m";
+    public static final String BLUE = "\033[0;34m";
+    private static Logger logger;
 
 
     public static void setLevel(Logger logger)
@@ -14,12 +19,7 @@ public class LoggerUtility {
     private static void settleLogger(Logger logger) {
         logger.setLevel(INFO);
     }
-    public static final String RESET = "\033[0m";
-    public static final String RED = "\033[0;31m";
-    public static final String GREEN = "\033[0;32m";
-    public static final String YELLOW = "\033[0;33m";
-    public static final String BLUE = "\033[0;34m";
-    private static Logger logger;
+
 
     private LoggerUtility() {throw new IllegalStateException("Utility class");}
 
@@ -33,7 +33,7 @@ public class LoggerUtility {
 
     private static void setupLogger() {
         logger.setUseParentHandlers(false);
-        logger.setLevel(Level.ALL); // Set the desired default level
+        logger.setLevel(Level.ALL);
 
         ConsoleHandler consoleHandler = new ConsoleHandler();
         consoleHandler.setLevel(Level.ALL);

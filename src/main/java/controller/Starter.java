@@ -1,5 +1,7 @@
 package controller;
 import basic.LoggerUtility;
+
+import javax.swing.*;
 import java.util.Scanner;
 import java.util.logging.Logger;
 public class Starter {
@@ -42,7 +44,7 @@ public class Starter {
                             """);
             }
 
-        } while (choice != 0);
+        } while (choice != 3);
 
     }
 

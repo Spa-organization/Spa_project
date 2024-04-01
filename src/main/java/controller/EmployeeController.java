@@ -91,7 +91,7 @@ public class EmployeeController {
                     LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
                     String date2 = scanner.nextLine();
                     LOGGER.severe("\n");
-                    AppointmentDb.calculateEarningsForEmployeeInRange(employee.getId(),date,date2);
+                    AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(employee.getId(),date,date2);
                     break;
                 case 3:
                     LOGGER.info("Logging out. Goodbye!");
