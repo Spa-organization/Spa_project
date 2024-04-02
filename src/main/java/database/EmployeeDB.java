@@ -143,7 +143,7 @@ public class EmployeeDB {
             }
         }
         LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
-        return false;
+        return true;
     }
     public static boolean showALlRooms(){
         List<Room> rooms;

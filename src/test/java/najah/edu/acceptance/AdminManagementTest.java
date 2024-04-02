@@ -59,6 +59,11 @@ public class AdminManagementTest {
     public void theAdminShouldBeAddedToTheSystem() {
         assertTrue(AdminDB.addAdmin(admin_id, admin_name, admin_pass));}
 
+    @When("I choose to add an admin")
+    public void iChooseToAddAnAdmin() {
+       assertTrue(true);
+    }
+
     @When("I choose to add a massage room")
     public void iChooseToAddAMassageRoom() {assertTrue(true);}
 

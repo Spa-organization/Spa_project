@@ -134,9 +134,10 @@ public class AdminControllerTest {
     @Test
     public void adminHomePage_EditEmployee() {
 
-        Mockito.doReturn(9 ,1,100).when(mockScanner).nextInt();
+        Mockito.doReturn(9 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("31","SerPro1","123","1").when(mockScanner).next();
+        Mockito.doReturn(0.7).when(mockScanner).nextDouble();
         adminController.adminHomePage();
         assertTrue(EmployeeDB.editEmployee());
 
