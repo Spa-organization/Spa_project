@@ -287,7 +287,7 @@ public class ClientController {
         showClientAppointments();
 
         LOGGER.severe(SHORT_LINE);
-        LOGGER.info("Please enter the id of the your appointment from the above");
+        LOGGER.info("Please enter the id of the your appointment from the above:");
         int idC = scanner.nextInt();
         int i=0;
         List<Appointment> clientAppointments;
@@ -308,7 +308,10 @@ public class ClientController {
         if(flag)
         {
             AppointmentDb.deleteAppointment(idC);
-            LOGGER.info("\n"+"Successfully deleted and the email will send to you");
+            LOGGER.info("""
+
+                    Successfully deleted and the email will send to you
+                    """);
         }
         else LOGGER.warning("You don't have this room");
 

@@ -3,9 +3,6 @@ import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
 import entity.Room;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,7 +47,7 @@ public class EmployeeDB {
             }
         }
         if(flag)
-            employees.add(new Employee(id, name,password,workerType));
+            employees.add(new Employee(id, name,password,workerType,profitpercentage));
 
         return flag;
     }
@@ -112,6 +109,7 @@ public class EmployeeDB {
     }
 
     public static boolean editEmployee() {
+        boolean flag = true;
         LOGGER.severe(COPY1);
         LOGGER.fine("=== edit Employee ===");
         LOGGER.info("\nEnter Employee ID: ");
@@ -138,12 +136,14 @@ public class EmployeeDB {
 
                     employee.setProfitPercentage(per);
                     if(LOGGER.isLoggable(Level.INFO))
-                    {    LOGGER.info("Employee "+empId+" has been updated"+"\n");}
-                    return true;
+                    {
+                        LOGGER.info("Employee "+empId+" has been updated"+"\n");
+                    }
+            }
+            else {LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
             }
         }
-        LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
-        return true;
+       return  flag;
     }
     public static boolean showALlRooms(){
         List<Room> rooms;
