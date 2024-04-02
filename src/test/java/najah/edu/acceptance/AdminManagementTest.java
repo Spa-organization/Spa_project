@@ -197,6 +197,7 @@ public class AdminManagementTest {
         assertTrue(true);
     }
     @Then("the list of employees should show up")
+    @Test
     public void the_list_of_employees_should_show_up() {
        // assertTrue(AdminController.showAllEmployees());
     }
