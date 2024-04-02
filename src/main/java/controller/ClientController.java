@@ -320,15 +320,14 @@ public class ClientController {
 
     public boolean updateSession(){
         showClientAppointments();
-        Scanner input =scanner;
         LOGGER.severe(SHORT_LINE);
         LOGGER.info("Please enter the id of your appointment: ");
-        int nextInt = input.nextInt();
+        int nextInt = scanner.nextInt();
         LOGGER.info("Please enter the new date (format: dd/MM/yyyy): ");
-        input.nextLine();
-        String date = input.nextLine();
+        scanner.nextLine();
+        String date = scanner.nextLine();
         LOGGER.info("Please enter the new time (format: HH:mm): ");
-        String time = input.nextLine();
+        String time = scanner.nextLine();
         if (!AppointmentDb.isValidDate(date)) {
             addAppointmentResult(2);
             return false;

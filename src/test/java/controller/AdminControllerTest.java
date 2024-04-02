@@ -24,6 +24,7 @@ public class AdminControllerTest {
         mockScanner = Mockito.spy( new Scanner(System.in));
         AdminController.scanner = mockScanner;
         employeeController.scanner = mockScanner;
+        adminController.starter.scanner=mockScanner;
         adminController.admin = new Admin("21", "admin1", "123");
         AppointmentDb.scanner = mockScanner;
         EmployeeDB.scan = mockScanner;
@@ -45,7 +46,7 @@ public class AdminControllerTest {
         Mockito.doReturn("31" ).when(mockScanner).next();
         adminController.adminHomePage();
         assertTrue(true);
-        //yanal
+
     }
     @Test
     public void adminHomePageAddMassage() {
@@ -58,9 +59,9 @@ public class AdminControllerTest {
     @Test
     public void adminHomePageShowEmployee() {
         Mockito.doReturn(10, 100 ).when(mockScanner).nextInt();
-
         adminController.adminHomePage();
         assertTrue(AdminController.showAllEmployees());
+
 
     }
     @Test
@@ -148,15 +149,7 @@ public class AdminControllerTest {
 
     }
 
-    @Test
-    public void adminHomePage_case4() {
-        Mockito.doReturn(12 ,4,100).when(mockScanner).nextInt();
-        Mockito.doReturn("" ).when(mockScanner).nextLine();
-        adminController.starter.scanner = mockScanner;
-        adminController.adminHomePage();
-        assertTrue(true);
-        //yanal
-    }
+
     @Test
     public void adminHomePage_case100() {
         Mockito.doReturn(100 ).when(mockScanner).nextInt();

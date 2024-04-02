@@ -74,6 +74,7 @@ public class ClientControllerTest {
 
         Mockito.doReturn("", "10/10/2022", "10:10").when(mockScanner).nextLine();
         Mockito.doReturn(2).when(mockScanner).nextInt();
+
         assertTrue(clientController.book("Sawna"));
 
     }
@@ -91,6 +92,13 @@ public class ClientControllerTest {
         Mockito.doReturn(2).when(mockScanner).nextInt();
          assertTrue(clientController.updateSession());
     }
+    @Test
+    public void testing(){
+        Mockito.doReturn( 1).when(mockScanner).nextInt();
+        Mockito.doReturn( "10/10/2022", "10:10").when(mockScanner).nextLine();
+        assertFalse(clientController.updateSession());
+    }
+
     @Test
     public void loginPage() {
         Mockito.doReturn("11", "123" ).when(mockScanner).nextLine();
