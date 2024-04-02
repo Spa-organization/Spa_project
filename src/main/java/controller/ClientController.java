@@ -172,16 +172,16 @@ public class ClientController {
             }
         } while (appointmentType!=3);
     }
-    public void booking(String type){
+    public boolean booking(String type){
         LOGGER.info("\n"+"Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
         LOGGER.info("\n"+"Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
         if(!AppointmentDb.isValidDate(dateInput))
-        {addAppointmentResult(2);return ;}
+        {addAppointmentResult(2);return false;}
         else if(!AppointmentDb.isValidTime(timeInput))
-        {addAppointmentResult(1);return ;}
+        {addAppointmentResult(1);return false ;}
 
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
         if (!employees.isEmpty()) {
@@ -192,13 +192,15 @@ public class ClientController {
 
             LOGGER.warning(COPY + "NO Available Rooms In This Time" + "\n" + COPY);
         }
+        return true;
 
     }
-    public void bookMassage(String type){
+    public boolean bookMassage(String type){
         booking(type);
-    }
+        return true;    }
 
-    public void bookSauna(String type){booking(type);}
+    public boolean bookSauna(String type){booking(type);
+    return true;}
 
     public boolean showClientAppointments(){
         List<Appointment> clientAppointments;

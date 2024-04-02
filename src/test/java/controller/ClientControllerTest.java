@@ -31,6 +31,7 @@ public class ClientControllerTest {
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         clientController.starter.scanner = mockScanner;
         clientController.clientHomePage();
+        assertTrue(clientController.showClientAppointments());
     }
     @Test
     public void homepage_feedback() {
@@ -47,7 +48,9 @@ public class ClientControllerTest {
         assertTrue(true);
         Mockito.doReturn("", "10/10/2022", "10:10").when(mockScanner).nextLine();
         Mockito.doReturn(2).when(mockScanner).nextInt();
-        clientController.bookMassage("Sawna");
+
+        assertTrue(clientController.bookSauna("Sawna"));
+
     }
 
 
@@ -56,7 +59,7 @@ public class ClientControllerTest {
         assertTrue(true);
         Mockito.doReturn( "", "10/10/2026", "10:10").when(mockScanner).nextLine();
         Mockito.doReturn(2).when(mockScanner).nextInt();
-        clientController.bookMassage("Sawna");
+        assertTrue(clientController.bookMassage("Massage"));
 
         Mockito.doReturn("", "10/10/2022", "10:10").when(mockScanner).nextLine();
         Mockito.doReturn(2).when(mockScanner).nextInt();
