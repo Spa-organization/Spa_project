@@ -65,10 +65,11 @@ public class AdminControllerTest {
     }
     @Test
     public void adminHomePageaddadmin() {
-        Mockito.doReturn(5 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn(4 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
+        assertTrue(AdminController.addAdmin());
     }
     @Test
     public void adminHomePageaaddemployee() {

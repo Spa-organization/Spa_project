@@ -14,7 +14,7 @@ public class AdminController {
     private  boolean isLoggedIn;
 
     public Admin admin = new Admin();
-    Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     public AdminController() {
         isLoggedIn = false;
     }
@@ -296,7 +296,7 @@ public class AdminController {
                     );
         }LOGGER.severe("\n");return true;
     }
-    public void addAdmin(){
+    public static boolean addAdmin(){
         LOGGER.severe(COPY1);
         LOGGER.fine("=== Add Admin ===\n");
         LOGGER.info("Enter Admin ID:");
@@ -313,6 +313,7 @@ public class AdminController {
             LOGGER.severe(COPY);
         }else
             LOGGER.info("Admin added successfully"+"\n");
+        return true;
     }
     public boolean viewFeedbacks(){
         LOGGER.severe("\n");
