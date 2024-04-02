@@ -96,7 +96,10 @@ public class EmployeeController {
                     LOGGER.info("Logging out. Goodbye!");
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning("""
+
+                            Invalid choice. Please try again.
+                            """);
             }
 
         } while (choice != 3);
