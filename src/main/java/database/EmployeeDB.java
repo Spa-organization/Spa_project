@@ -109,6 +109,7 @@ public class EmployeeDB {
     }
 
     public static boolean editEmployee() {
+        boolean flag = false;
         LOGGER.severe(COPY1);
         LOGGER.fine("=== edit Employee ===");
         LOGGER.info("\nEnter Employee ID: ");
@@ -135,12 +136,16 @@ public class EmployeeDB {
 
                     employee.setProfitPercentage(per);
                     if(LOGGER.isLoggable(Level.INFO))
-                    {    LOGGER.info("Employee "+empId+" has been updated"+"\n");}
-                    return true;
+                    {
+                        LOGGER.info("Employee "+empId+" has been updated"+"\n");
+                        flag=true;
+                    }
+            }
+            else {LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
+                flag=false;
             }
         }
-        LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
-        return true;
+       return  flag;
     }
     public static boolean showALlRooms(){
         List<Room> rooms;

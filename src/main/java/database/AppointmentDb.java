@@ -15,6 +15,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AppointmentDb {
+    LocalDate startDate ;
+    LocalDate endDate ;
     private static final String COPY="-----------------------------------\n";
     private static final String MASSAGE="Massage";
     private static final  String SAWNA="Sawna";
