@@ -1,6 +1,7 @@
 package controller;
 
 import controller.ClientController;
+import database.AppointmentDb;
 import database.EmployeeDB;
 import entity.Client;
 import org.junit.Before;
@@ -36,6 +37,17 @@ public class ClientControllerTest {
     }
     @Test
     public void homepage_cancel() {
+        Mockito.doReturn(4,1,6,4 ).when(mockScanner).nextInt();
+        Mockito.doReturn("" ).when(mockScanner).nextLine();
+        clientController.starter.scanner = mockScanner;
+        clientController.clientHomePage();
+        assertTrue(clientController.cancelSession());
+    }
+
+    @Test
+    public void homepage_cancel2() {
+        clientController.client = AppointmentDb.appointments.get(0).getClient();
+
         Mockito.doReturn(4,1,6,4 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         clientController.starter.scanner = mockScanner;
