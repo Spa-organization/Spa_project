@@ -1,12 +1,8 @@
 package controller;
 
-import database.AdminDB;
 import database.AppointmentDb;
 import database.EmployeeDB;
 import entity.Admin;
-import entity.Client;
-import entity.Employee;
-import entity.Room;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -17,15 +13,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AdminControllerTest {
     AdminController adminController;
+    EmployeeController employeeController;
+
     Scanner mockScanner;
 
     @Before
     public void setup() {
-        //qusay
+        employeeController=new EmployeeController();
         adminController = new AdminController();
-
         mockScanner = Mockito.spy( new Scanner(System.in));
-        adminController.scanner = mockScanner;
+        AdminController.scanner = mockScanner;
         adminController.admin = new Admin("21", "admin1", "123");
         AppointmentDb.scanner = mockScanner;
         EmployeeDB.scan = mockScanner;
@@ -33,7 +30,7 @@ public class AdminControllerTest {
 
 
     @Test
-    public void adminHomePageaddsawna() {
+    public void adminHomePageAddSawna() {
         Mockito.doReturn(1, 1, 33, 4, 100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("100" ).when(mockScanner).next();
@@ -41,7 +38,7 @@ public class AdminControllerTest {
        assertTrue( adminController.addSawnaRoom());
     }
     @Test
-    public void adminHomePage1addsawnawrong() {
+    public void adminHomePage1AddSawnaWrong() {
         Mockito.doReturn(1, 1, 33, 4, 100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("31" ).when(mockScanner).next();
@@ -49,7 +46,7 @@ public class AdminControllerTest {
 
     }
     @Test
-    public void adminHomePageaddmassage() {
+    public void adminHomePageAddMassage() {
         Mockito.doReturn(1, 2, 60, 4, 100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("100" ).when(mockScanner).next();
@@ -57,14 +54,14 @@ public class AdminControllerTest {
         assertTrue(adminController.addMassageRoom());
     }
     //@Test
-    public void adminHomePageshoowemployee() {
+    public void adminHomePageShowEmployee() {
         Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
        Mockito.doReturn("" ).when(mockScanner).nextLine();
         //Mockito.doReturn("100" ).when(mockScanner).next();
         adminController.adminHomePage();
     }
     @Test
-    public void adminHomePageaddadmin() {
+    public void adminHomePageAddAdmin() {
         Mockito.doReturn(4 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
@@ -72,7 +69,7 @@ public class AdminControllerTest {
         assertTrue(AdminController.addAdmin());
     }
     @Test
-    public void adminHomePageaaddemployee() {
+    public void adminHomePageAddEmployee() {
         Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn(0.3 ).when(mockScanner).nextDouble();
@@ -81,7 +78,7 @@ public class AdminControllerTest {
         assertTrue(adminController.addEmployee());
     }
     @Test
-    public void adminHomePageshowappointments() {
+    public void adminHomePageShowAppointments() {
         Mockito.doReturn(3 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.adminHomePage();
@@ -97,15 +94,24 @@ public class AdminControllerTest {
         assertTrue(EmployeeDB.showALlRooms());
     }
     @Test
-    public void adminHomeCenterEarningsForRange() {
+    public void adminHomeCenterAndEmployeeEarningsForRange() {
         Mockito.doReturn(8 ,100).when(mockScanner).nextInt();
-        Mockito.doReturn("1" ).when(mockScanner).nextLine();
-        Mockito.doReturn("10/10/2022","12/10/2022").when(mockScanner).next();
+        Mockito.doReturn("31" ).when(mockScanner).nextLine();
+        Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
         //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
+        assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange());
     }
     @Test
-    public void loginpage() {
+    public void EmployeeHome_EmployeeEarningsForRange() {
+        Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn("31" ).when(mockScanner).nextLine();
+        Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
+        employeeController.employeeHomePage();
+        assertTrue(AppointmentDb.calculateEmployeeProfitPercentageForRange("31"));
+    }
+    @Test
+    public void LogInPage() {
         ;
         Mockito.doReturn("21","123" ).when(mockScanner).nextLine();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
@@ -113,7 +119,7 @@ public class AdminControllerTest {
         adminController.loginPage();
     }
     @Test
-    public void adminHomePage_shoowfeed() {
+    public void adminHomePage_ShowFeed() {
         Mockito.doReturn(7 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.adminHomePage();
@@ -121,7 +127,7 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void adminHomePage_editemployee() {
+    public void adminHomePage_EditEmployee() {
         Mockito.doReturn(9 ,1,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("31","SerPro1","123","1").when(mockScanner).next();
@@ -142,6 +148,7 @@ public class AdminControllerTest {
         Mockito.doReturn(100 ).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.adminHomePage();
+
     }
 
 

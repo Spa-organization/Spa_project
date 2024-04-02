@@ -95,6 +95,7 @@ public class EmployeeController {
                 case 3:
                     LOGGER.info("Logging out. Goodbye!");
                     break;
+                case 100:return;
                 default:
                     LOGGER.warning("""
 
