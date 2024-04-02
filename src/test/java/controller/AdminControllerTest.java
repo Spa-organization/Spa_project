@@ -55,14 +55,13 @@ public class AdminControllerTest {
         adminController.adminHomePage();
         assertTrue(adminController.addMassageRoom());
     }
-    //@Test
+    @Test
     public void adminHomePageShowEmployee() {
-        Mockito.doReturn(1, 3,4, 100 ).when(mockScanner).nextInt();
-       Mockito.doReturn("" ).when(mockScanner).nextLine();
-        //Mockito.doReturn("100" ).when(mockScanner).next();
+        Mockito.doReturn(10, 100 ).when(mockScanner).nextInt();
+
         adminController.adminHomePage();
-        assertTrue(true);
-        //yanal
+        assertTrue(AdminController.showAllEmployees());
+
     }
     @Test
     public void adminHomePageAddAdmin() {

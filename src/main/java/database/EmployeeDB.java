@@ -82,22 +82,7 @@ public class EmployeeDB {
     }
 
 
-    public static void deleteEmployee( ) {
-        showAllEmployees();
-        LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
-        String employeeId = scan.nextLine();
-        scan.nextLine();
-        for (Employee employee : employees)
-        {
-            if (employee.getId().equals(employeeId)) {
-                employees.removeIf(h -> h.getId().equals(employeeId) );
 
-                employees.remove(employee);
-                AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
-                LOGGER.info("employee deleted successful");
-                break;}
-        }
-    }
 
     public static double getEmployeeProfitPercentage(String employeeId) {
         for (Employee employee : employees) {

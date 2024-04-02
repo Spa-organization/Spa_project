@@ -84,7 +84,7 @@ public class AdminController {
                     addAdmin();
                     break;
                 case 5:
-                    EmployeeDB.deleteEmployee();
+                    //EmployeeDB.deleteEmployee();
                     break;
                 case 6:
                     EmployeeDB.showALlRooms();
