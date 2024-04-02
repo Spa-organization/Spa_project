@@ -85,6 +85,7 @@ public class EmployeeController {
                     showEmployeeAppointments();
                     break;
                 case 2:
+                    System.out.println(employee.getId());
                   //  AppointmentDb.calculateTotalCenterEarningsInRange();
                     AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(2);
                     break;

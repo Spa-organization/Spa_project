@@ -21,9 +21,10 @@ public class AdminControllerTest {
 
     @Before
     public void setup() {
+        //qusay
         adminController = new AdminController();
         mockScanner = Mockito.spy( new Scanner(System.in));
-        adminController.scanner = mockScanner;
+        AdminController.scanner = mockScanner;
         adminController.admin = new Admin("21", "admin1", "123");
         AppointmentDb.scanner = mockScanner;
         EmployeeDB.scan = mockScanner;
