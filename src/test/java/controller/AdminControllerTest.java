@@ -87,23 +87,18 @@ public class AdminControllerTest {
         adminController.adminHomePage();
         assertTrue(AdminController.showAppointments());
     }
-    @Test
-    public void adminHomePage_viewEmployeeEarningsForRange() {
-        Mockito.doReturn(4 ,100).when(mockScanner).nextInt();
-        Mockito.doReturn("31","10/10/2022","12/10/2022" ).when(mockScanner).nextLine();
-        //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
-        adminController.adminHomePage();
-    }
+
+
     @Test
     public void adminHomePage_showrooms() {
-        Mockito.doReturn(7 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn(6 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.adminHomePage();
         assertTrue(EmployeeDB.showALlRooms());
     }
     @Test
     public void adminHomeCenterEarningsForRange() {
-        Mockito.doReturn(9 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn(8 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("1" ).when(mockScanner).nextLine();
         Mockito.doReturn("10/10/2022","12/10/2022").when(mockScanner).next();
         //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
@@ -119,17 +114,19 @@ public class AdminControllerTest {
     }
     @Test
     public void adminHomePage_shoowfeed() {
-        Mockito.doReturn(8 ,100).when(mockScanner).nextInt();
+        Mockito.doReturn(7 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.adminHomePage();
+        assertTrue(adminController.viewFeedbacks());
     }
 
     @Test
     public void adminHomePage_editemployee() {
-        Mockito.doReturn(10 ,1,100).when(mockScanner).nextInt();
+        Mockito.doReturn(9 ,1,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
-        Mockito.doReturn("31","SerPro1","123","1" ).when(mockScanner).next();
+        Mockito.doReturn("31","SerPro1","123","1").when(mockScanner).next();
         adminController.adminHomePage();
+        assertTrue(EmployeeDB.editEmployee());
     }
     @Test
     public void adminHomePage_case12() {

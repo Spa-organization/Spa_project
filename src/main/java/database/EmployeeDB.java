@@ -140,6 +140,7 @@ public class EmployeeDB {
                 employee.setName(employeeName);
                 employee.setPassword(employeePassword);
                 employee.setWorkerType(Integer.parseInt(employeeType));
+                RoomDb.addRoom(employee,roomId);
                     employee.getRoom().setRoomNumber(roomId);
                     if(LOGGER.isLoggable(Level.INFO))
                     {    LOGGER.info("Employee "+empId+" has been updated"+"\n");}

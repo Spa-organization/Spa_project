@@ -247,6 +247,7 @@ public class AdminController {
 
         for(Employee employee :employees){
 
+
             LOGGER.info("Name: "+employee.getName()+"   "+"  ID: "+employee.getId()+"   "+" Type: "+employee.getWorkerType()+ "   " + "room id: "+employee.getRoom().getRoomNumber()+"\n");
         }
         LOGGER.severe(COPY1);
