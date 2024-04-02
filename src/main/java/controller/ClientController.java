@@ -206,7 +206,7 @@ public class ClientController {
         EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);
     return true;
     }
-    public void addAppointmentResult(int result){
+    public boolean addAppointmentResult(int result){
         switch (result){
             case 1:
                 LOGGER.severe(COPY);
@@ -250,6 +250,7 @@ public class ClientController {
                         Appointment was Booked :)---
                         """);
         }
+        return true;
     }
     public boolean showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
         LOGGER.fine("-----Available Rooms------"+"\n");

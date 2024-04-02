@@ -109,11 +109,13 @@ public class ManageSessionsTest {
 
     }
     @Then("the system should prevent the booking and alert about the time and date slots unavailability")
-
+@Test
     public void theSystemShouldPreventTheBookingAndAlertAboutTheTimeAndDateSlotsUnavailability() {
         time = "08:00";
         date = "01/04/2012";
        assertFalse(false);
+       assertTrue(clientController.addAppointmentResult(1));
+        assertTrue(clientController.addAppointmentResult(2));
 
     }
 
