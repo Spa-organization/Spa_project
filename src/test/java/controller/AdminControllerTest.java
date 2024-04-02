@@ -127,7 +127,9 @@ public class AdminControllerTest {
         Mockito.doReturn("31","SerPro1","123","1").when(mockScanner).next();
         adminController.adminHomePage();
         assertTrue(EmployeeDB.editEmployee());
+
     }
+
     @Test
     public void adminHomePage_case12() {
         Mockito.doReturn(12 ,4,100).when(mockScanner).nextInt();

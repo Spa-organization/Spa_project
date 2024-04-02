@@ -202,7 +202,7 @@ public class ClientController {
     public boolean bookSauna(String type){booking(type);
     return true;}
 
-    public boolean showClientAppointments(){
+    public  boolean showClientAppointments(){
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
         EmployeeController.printShowEmployeeAppointment(clientAppointments, LOGGER, SHORT_LINE);

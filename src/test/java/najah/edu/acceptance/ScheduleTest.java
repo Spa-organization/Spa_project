@@ -1,11 +1,14 @@
 package najah.edu.acceptance;
 
+import basic.LoggerUtility;
 import controller.EmployeeController;
 import database.AppointmentDb;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Test;
+
+import java.util.logging.Logger;
 
 import static org.junit.Assert.assertTrue;
 
@@ -48,5 +51,7 @@ public class ScheduleTest {
     }
 
     @Then("the appointment of this employee will shown")
-    public void theAppointmentOfThisEmployeeWillShown() {assertTrue(employeeController.showEmployeeAppointments());}
+    @Test
+    public void theAppointmentOfThisEmployeeWillShown() {assertTrue(employeeController.showEmployeeAppointments());
+    assertTrue(EmployeeController.printShowEmployeeAppointment(AppointmentDb.getAllAppointments(), LoggerUtility.getLogger(),"-----"));}
 }

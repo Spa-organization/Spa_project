@@ -134,16 +134,14 @@ public class EmployeeDB {
         LOGGER.info("Enter new Employee profit percantage: ");
         double per = scan.nextDouble();
 
-        LOGGER.info("Enter NEW ROOM ID: ");
-        int roomId = scan.nextInt();
+
         for (Employee employee : employees) {
-            if (employee.getId().equals(empId)&&RoomDb.checkValidateID(roomId))
+            if (employee.getId().equals(empId))
             {
                 employee.setName(employeeName);
                 employee.setPassword(employeePassword);
                 employee.setWorkerType(Integer.parseInt(employeeType));
-                RoomDb.addRoom(employee,roomId);
-                    employee.getRoom().setRoomNumber(roomId);
+
                     employee.setProfitPercentage(per);
                     if(LOGGER.isLoggable(Level.INFO))
                     {    LOGGER.info("Employee "+empId+" has been updated"+"\n");}

@@ -106,14 +106,14 @@ public class EmployeeController {
 
     }
 
-    public  boolean  showEmployeeAppointments(){
+    public   boolean  showEmployeeAppointments(){
         LOGGER.severe(COPY1);
         List<Appointment> employeeAppointments;
         employeeAppointments = AppointmentDb.getEmployeeAppointments(this.employee);
         printShowEmployeeAppointment(employeeAppointments, LOGGER, SHORT_LINE);
     return true;}
 
-    public static boolean printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
+    public  static boolean printShowEmployeeAppointment(List<Appointment> employeeAppointments, Logger logger, String shortLine) {
         for( Appointment appointment: employeeAppointments){
             if(LOGGER.isLoggable(Level.SEVERE))
             {LOGGER.severe("\n"+shortLine);}

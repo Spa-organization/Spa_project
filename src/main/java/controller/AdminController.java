@@ -248,10 +248,10 @@ public class AdminController {
         for(Employee employee :employees)
         {
         if(employee.getRoom1()==null)
-            LOGGER.info("Name: "+employee.getName()+"   "+"  ID: "+employee.getId()+"   "+" Type: "+employee.getWorkerType()+"  profit percantage is: "+"   "+employee.getProfitPercentage() +"\n");
+            LOGGER.info("Name: "+employee.getName()+"   "+"  ID: "+employee.getId()+"   "+" Type: "+employee.getWorkerType()+"  profit percentage is: "+"   "+employee.getProfitPercentage() +"\n");
 
         else
-            LOGGER.info("Name: "+employee.getName()+"   "+"  ID: "+employee.getId()+"   "+" Type: "+employee.getWorkerType()+ "   " + "room id: "+employee.getRoom().getRoomNumber()+"   profit percantage is: "+"    "+employee.getProfitPercentage()+"\n");
+            LOGGER.info("Name: "+employee.getName()+"   "+"  ID: "+employee.getId()+"   "+" Type: "+employee.getWorkerType()+ "   " + "room id: "+employee.getRoom().getRoomNumber()+"   profit percentage is: "+"    "+employee.getProfitPercentage()+"\n");
         }
         LOGGER.severe(COPY1);
         return true;
