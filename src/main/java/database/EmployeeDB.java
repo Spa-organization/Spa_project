@@ -109,7 +109,7 @@ public class EmployeeDB {
     }
 
     public static boolean editEmployee() {
-        boolean flag = false;
+        boolean flag = true;
         LOGGER.severe(COPY1);
         LOGGER.fine("=== edit Employee ===");
         LOGGER.info("\nEnter Employee ID: ");
@@ -129,7 +129,7 @@ public class EmployeeDB {
 
         for (Employee employee : employees) {
             if (employee.getId().equals(empId))
-            {flag=true;
+            {
                 employee.setName(employeeName);
                 employee.setPassword(employeePassword);
                 employee.setWorkerType(Integer.parseInt(employeeType));
