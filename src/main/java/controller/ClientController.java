@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class ClientController {
-    public Starter starter=new Starter();
+     Starter starter=new Starter();
     private static final String COPY="-----------------------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String SHORT_LINE ="--------------------\n";
@@ -17,7 +17,7 @@ public class ClientController {
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private  boolean isLoggedIn ;
       Scanner scanner = new Scanner(System.in);
-    public   Client client = new Client();
+       Client client = new Client();
     EmailSender emailSender;
    String subject ="Spa_Organization";
 
@@ -159,10 +159,10 @@ public class ClientController {
             appointmentType = scanner.nextInt();
             switch (appointmentType) {
                 case 1:
-                    bookMassage("Massage");
+                    book("Massage");
                     break;
                 case 2:
-                    bookSauna("Sawna");
+                    book("Sawna");
                     break;
                 case 3:
                     clientHomePage();
@@ -172,16 +172,16 @@ public class ClientController {
             }
         } while (appointmentType!=3);
     }
-    public boolean booking(String type){
+    public void booking(String type){
         LOGGER.info("\n"+"Enter Date (format: dd/MM/yyyy): ");
         scanner.nextLine();
         String dateInput = scanner.nextLine();
         LOGGER.info("\n"+"Enter Time (format: HH:mm): ");
         String timeInput = scanner.nextLine();
         if(!AppointmentDb.isValidDate(dateInput))
-        {addAppointmentResult(2);return false;}
+        {addAppointmentResult(2);return;}
         else if(!AppointmentDb.isValidTime(timeInput))
-        {addAppointmentResult(1);return false ;}
+        {addAppointmentResult(1);return;}
 
         List<Employee> employees=AppointmentDb.checkAvailability(dateInput,timeInput,type);
         if (!employees.isEmpty()) {
@@ -192,15 +192,13 @@ public class ClientController {
 
             LOGGER.warning(COPY + "NO Available Rooms In This Time" + "\n" + COPY);
         }
-        return true;
 
     }
-    public boolean bookMassage(String type){
+    public boolean book(String type){
         booking(type);
         return true;    }
 
-    public boolean bookSauna(String type){booking(type);
-    return true;}
+
 
     public  boolean showClientAppointments(){
         List<Appointment> clientAppointments;

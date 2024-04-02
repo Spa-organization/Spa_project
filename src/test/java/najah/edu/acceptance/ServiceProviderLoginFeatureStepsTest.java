@@ -17,6 +17,7 @@ public class ServiceProviderLoginFeatureStepsTest {
 
     public ServiceProviderLoginFeatureStepsTest() {app= new EmployeeController();}
     @Given("that the service provider is not logged in the app")
+    @Test
     public void thatTheServiceProviderIsNotLoggedInTheApp() {
         assertFalse(app.isLoggedIn());
     }

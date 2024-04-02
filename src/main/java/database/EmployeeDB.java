@@ -15,16 +15,13 @@ import static controller.AdminController.showAllEmployees;
 
 public class EmployeeDB {
     static List<Employee> employees = new ArrayList<>();
-
-
-
     private static final String SHORT_LINE ="--------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final Logger LOGGER = LoggerUtility.getLogger();
     private static final String MASSAGE="Massage";
     private static final  String SAWNA="Sawna";
 
-    public static Scanner scan=new Scanner(System.in);
+     public static Scanner scan=new Scanner(System.in);
     private EmployeeDB() {
 
     }
@@ -88,12 +85,11 @@ public class EmployeeDB {
     }
 
 
-    public static boolean deleteEmployee( ) {
+    public static void deleteEmployee( ) {
         showAllEmployees();
         LOGGER.info("\n"+"Inter the id of Employee you want to delete:");
         String employeeId = scan.nextLine();
         scan.nextLine();
-        boolean found = false;
         for (Employee employee : employees)
         {
             if (employee.getId().equals(employeeId)) {
@@ -101,11 +97,9 @@ public class EmployeeDB {
 
                 employees.remove(employee);
                 AppointmentDb.appointments.removeIf(appointment -> appointment.getEmployee().getId().equals(employeeId));
-                found = true;
                 LOGGER.info("employee deleted successful");
                 break;}
         }
-        return found;
     }
 
     public static double getEmployeeProfitPercentage(String employeeId) {

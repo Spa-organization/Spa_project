@@ -13,7 +13,7 @@ public class AdminController {
     private static final String COPY="-----------------------------------\n";
     private  boolean isLoggedIn;
 
-    public Admin admin = new Admin();
+     Admin admin = new Admin();
     static Scanner scanner = new Scanner(System.in);
     public AdminController() {
         isLoggedIn = false;
@@ -80,7 +80,6 @@ public class AdminController {
                 case 3:
                     showAppointments();
                     break;
-
                 case 4:
                     addAdmin();
                     break;
@@ -275,7 +274,7 @@ public class AdminController {
         LOGGER.info("Enter Employee Profit Percentage--->: ");
         double employeeProfitPercentage = scanner.nextDouble();
 
-        if(!EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
+        if(EmployeeDB.addServiceProviders(employeeId,employeeName,employeePassword,employeeType,employeeProfitPercentage)){
             LOGGER.severe("\n"+COPY);
             LOGGER.warning("This ID is Already Exists"+"\n");
             LOGGER.severe(COPY);

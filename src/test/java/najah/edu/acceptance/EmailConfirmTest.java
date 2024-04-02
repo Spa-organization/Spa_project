@@ -6,6 +6,7 @@ import io.cucumber.java.en.But;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.ja.但し;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -16,6 +17,7 @@ public class EmailConfirmTest {
      public EmailConfirmTest(){email=new EmailSender("qsay.3w@gmail.com");}
 
     @Given("The customer has completed the booking process")
+    @Test
     public void theCustomerHasCompletedTheBookingProcess() {assertTrue(AppointmentDb.appointments.get(0).isBooked());}
     @When("the booking is confirmed  subject {string} text  {string}")
     public void theBookingIsConfirmedSubjectText(String subject, String text) {

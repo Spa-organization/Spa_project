@@ -5,9 +5,6 @@ import entity.Appointment;
 import entity.Employee;
 import database.AppointmentDb;
 import database.EmployeeDB;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -23,7 +20,6 @@ public class EmployeeController {
     private boolean isLoggedIn;
     private final Scanner scanner = new Scanner(System.in);
     private Employee employee = new Employee();
-
 
     public EmployeeController() {
         this.isLoggedIn = false;

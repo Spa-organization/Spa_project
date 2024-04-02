@@ -115,7 +115,7 @@ public class AppointmentDb {
             for (Appointment appointment : AppointmentDb.getAllAppointments()) {
                 LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
-                    if (MASSAGE.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    if (SAWNA.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                         flag = true;
                         totalEarnings += SAWNA_SESSION_COST;
 

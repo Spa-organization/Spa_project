@@ -23,6 +23,7 @@ public class ClientsignupTest {
     String email;
 
     @Given("the client does not have an account")
+    @Test
     public void theClientDoesNotHaveAnAccount() {
         assertFalse(app.isLoggedUp());
     }

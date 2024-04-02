@@ -21,6 +21,7 @@ public class ClientLoginFeatureStepsTest {
 	}
 
 	@Given("that the client is not logged in the app")
+	@Test
 	public void thatTheClientIsNotLoggedInTheApp()
 	{
         assertFalse(app.isLoggedIn());

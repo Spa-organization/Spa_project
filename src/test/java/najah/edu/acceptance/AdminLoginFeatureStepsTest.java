@@ -3,6 +3,8 @@ package najah.edu.acceptance;
 import controller.AdminController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Test;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -15,7 +17,7 @@ public class AdminLoginFeatureStepsTest {
 	}
 
 	@Given("that the admin is not logged in the app")
-
+	@Test
 	public void thatTheAdminIsNotLoggedInTheApp() {
 	assertFalse(app.isLoggedIn());
 	}

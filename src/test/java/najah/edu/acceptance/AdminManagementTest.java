@@ -2,7 +2,6 @@ package najah.edu.acceptance;
 import controller.AdminController;
 import entity.Employee;
 import database.AdminDB;
-import database.AppointmentDb;
 import database.EmployeeDB;
 import database.RoomDb;
 import io.cucumber.java.en.And;
@@ -14,8 +13,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 public class AdminManagementTest {
     AdminController Admin_controller;
-    int roomType ;
-    int choice;
     String emp_id, emp_name, emp_password, worker_type, admin_id, admin_name, admin_pass, room_id,start_date,end_date;
 
     public AdminManagementTest() {
@@ -47,10 +44,7 @@ public class AdminManagementTest {
          double percantage=0.20;
         assertTrue(EmployeeDB.addServiceProviders(emp_id, emp_name, emp_password, worker_type,percantage));}
 
-    @When("I choose to add an admin")
-    public void iChooseToAddAnAdmin() {
 
-        }
 
 
     @When("I enter the admin {string} and it should be unique and name {string} and pass {string}")
@@ -66,10 +60,7 @@ public class AdminManagementTest {
         assertTrue(AdminDB.addAdmin(admin_id, admin_name, admin_pass));}
 
     @When("I choose to add a massage room")
-    public void iChooseToAddAMassageRoom() {
-
-
-    }
+    public void iChooseToAddAMassageRoom() {assertTrue(true);}
 
     @When("I enter the a unique room {string} and Employee {string} that not add yet any room")
     public void iEnterTheAUniqueRoomAndEmployeeThatNotAddYetAnyRoom(String id1, String id2) {
@@ -96,10 +87,8 @@ public class AdminManagementTest {
     }
 
     @When("I choose to add a  sawna room")
-    public void iChooseToAddASawnaRoom() {
-
-
-    }
+    public void iChooseToAddASawnaRoom()
+        {assertTrue(true);}
 
     @Then("the sawna room should be added to the system")
     public void theSawnaRoomShouldBeAddedToTheSystem() {
@@ -121,10 +110,10 @@ public class AdminManagementTest {
 
 
     @When("I select the option to view financial profits for a specific period,")
-    public void i_select_the_option_to_view_financial_profits_for_a_specific_period() {
+    public void i_select_the_option_to_view_financial_profits_for_a_specific_period()
+    {assertTrue(true);}
 
 
-    }
     @When("I enter a valid employee {string}, the start date {string}, and the end date {string} for the period I wish to analyze,")
     public void i_enter_a_valid_employee_the_start_date_and_the_end_date_for_the_period_i_wish_to_analyze(String id, String start_date, String end_date) {
         this.start_date=start_date;this.end_date=end_date;this.emp_id=id;
@@ -134,7 +123,7 @@ public class AdminManagementTest {
         emp_id="31";
         start_date="01/03/2012";
         end_date="01/04/2012";
-        assertTrue(true);
+
     }
 
     @When("I choose to view the overall profit")
@@ -199,8 +188,7 @@ public class AdminManagementTest {
     @Then("the list of employees should show up")
     @Test
     public void the_list_of_employees_should_show_up() {
-       // assertTrue(AdminController.showAllEmployees());
-    }
+        assertTrue(AdminController.showAllEmployees());}
 
 
     @When("I choose to view the rooms")
@@ -211,6 +199,7 @@ public class AdminManagementTest {
     public void the_list_of_rooms_should_show_up() {
         assertTrue(true);
         //assertTrue(Admin_controller.showALlRooms());
+        //yet
     }
 
 

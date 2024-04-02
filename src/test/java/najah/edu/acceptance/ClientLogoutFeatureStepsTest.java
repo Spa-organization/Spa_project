@@ -19,6 +19,7 @@ public class ClientLogoutFeatureStepsTest {
         app.login();
     }
     @Given("the client chose to sign out")
+    @Test
     public void theClientChoseToSignOut() {
         assertTrue(app.isLoggedIn());
     }
