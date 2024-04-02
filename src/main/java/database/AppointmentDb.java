@@ -22,7 +22,7 @@ public class AppointmentDb {
     private static final Logger LOGGER = LoggerUtility.getLogger();
     public static final double SAWNA_SESSION_COST = 200.0;
     public static final double MASSAGE_SESSION_COST = 250.0;
-     public static Scanner scanner = new Scanner(System.in);
+      public static Scanner scanner = new Scanner(System.in);
    public static List<Appointment> appointments= new ArrayList<>();
     private AppointmentDb() {
         throw new IllegalStateException("Utility class");
@@ -142,8 +142,6 @@ public class AppointmentDb {
             }
             return  flag;
         }
-
-
 
     public static boolean calculateEmployeeProfitPercentageForRange(String employeeId) {
         LOGGER.info("start date: ");

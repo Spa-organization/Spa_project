@@ -35,7 +35,7 @@ public class AdminController {
             LOGGER.warning("LOGIN FAILD"+"\n");
         }
     }
-//
+
     public void loginPage()  {
         LOGGER.severe(COPY1);
         LOGGER.fine("""
