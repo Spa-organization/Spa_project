@@ -23,6 +23,7 @@ public class AdminControllerTest {
         adminController = new AdminController();
         mockScanner = Mockito.spy( new Scanner(System.in));
         AdminController.scanner = mockScanner;
+        employeeController.scanner = mockScanner;
         adminController.admin = new Admin("21", "admin1", "123");
         AppointmentDb.scanner = mockScanner;
         EmployeeDB.scan = mockScanner;
@@ -102,15 +103,14 @@ public class AdminControllerTest {
         Mockito.doReturn(8 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("31" ).when(mockScanner).nextLine();
         Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
-        //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
         assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange());
     }
     @Test
     public void EmployeeHome_EmployeeEarningsForRange() {
         Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
-        Mockito.doReturn("31" ).when(mockScanner).nextLine();
         Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
+
         employeeController.employeeHomePage();
         assertTrue(AppointmentDb.calculateEmployeeProfitPercentageForRange("31"));
     }
@@ -143,7 +143,7 @@ public class AdminControllerTest {
     }
 
     @Test
-    public void adminHomePage_case12() {
+    public void adminHomePage_case4() {
         Mockito.doReturn(12 ,4,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         adminController.starter.scanner = mockScanner;

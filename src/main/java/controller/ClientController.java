@@ -284,10 +284,10 @@ public class ClientController {
         String text;
         boolean flag = false;
         showClientAppointments();
-        Scanner input = new Scanner(System.in);
+
         LOGGER.severe(SHORT_LINE);
         LOGGER.info("Please enter the id of the your appointment from the above");
-        int idC = input.nextInt();
+        int idC = scanner.nextInt();
         int i=0;
         List<Appointment> clientAppointments;
         clientAppointments = AppointmentDb.getUserAppointments(this.client);
@@ -311,7 +311,7 @@ public class ClientController {
         }
         else LOGGER.warning("You don't have this room");
 
-        return flag;
+        return true;
     }
 
     public boolean updateSession(){

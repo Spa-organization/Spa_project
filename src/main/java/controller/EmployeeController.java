@@ -18,7 +18,7 @@ public class EmployeeController {
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String SHORT_LINE ="--------------------\n";
     private boolean isLoggedIn;
-    private final Scanner scanner = new Scanner(System.in);
+     Scanner scanner = new Scanner(System.in);
     private Employee employee = new Employee();
 
     public EmployeeController() {
