@@ -1,5 +1,4 @@
 package controller;
-
 import basic.EmailSender;
 import basic.LoggerUtility;
 import database.*;
@@ -124,7 +123,8 @@ public class ClientController {
                 case 3:
                     updateSession();
                     break;
-                case 4: cancelSession();
+                case 4:
+                    cancelSession();
                     break;
                 case 5:
                     LOGGER.info("Enter your Id : ");

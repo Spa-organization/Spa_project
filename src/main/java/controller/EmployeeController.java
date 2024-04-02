@@ -5,16 +5,21 @@ import entity.Appointment;
 import entity.Employee;
 import database.AppointmentDb;
 import database.EmployeeDB;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmployeeController {
+
+    private static final Logger LOGGER = LoggerUtility.getLogger();
+
     private static final String COPY="-----------------------------------\n";
     private static final String COPY1="-----------------------------------\n-----------------------------------\n";
     private static final String SHORT_LINE ="--------------------\n";
-    private static final Logger LOGGER = LoggerUtility.getLogger();
     private boolean isLoggedIn;
     private final Scanner scanner = new Scanner(System.in);
     private Employee employee = new Employee();
@@ -85,9 +90,7 @@ public class EmployeeController {
                     showEmployeeAppointments();
                     break;
                 case 2:
-                    System.out.println(employee.getId());
-                  //  AppointmentDb.calculateTotalCenterEarningsInRange();
-                    AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(2);
+                    AppointmentDb.calculateEmployeeProfitPercentageForRange(employee.getId());
                     break;
                 case 3:
                     LOGGER.info("Logging out. Goodbye!");
@@ -120,6 +123,8 @@ public class EmployeeController {
         }
         return true;
     }
+
+
 
 
 }

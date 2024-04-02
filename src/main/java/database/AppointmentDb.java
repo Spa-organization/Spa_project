@@ -16,12 +16,12 @@ import java.util.regex.Pattern;
 
 public class AppointmentDb {
     private static final String COPY="-----------------------------------\n";
-
+    private static final String MASSAGE="Massage";
+    private static final  String SAWNA="Sawna";
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final Logger LOGGER = LoggerUtility.getLogger();
     public static final double SAWNA_SESSION_COST = 200.0;
     public static final double MASSAGE_SESSION_COST = 250.0;
-    public static final double CENTER_PERCENTAGE = 0.70;
      public static Scanner scanner = new Scanner(System.in);
    public static List<Appointment> appointments= new ArrayList<>();
     private AppointmentDb() {
@@ -100,7 +100,7 @@ public class AppointmentDb {
         appointments.removeIf(h -> h.getAppointmentId() == id);}
 
 
-        public static boolean calculateEarningsForEmployeeAndCenterInRange(int choice) {
+        public static boolean calculateEarningsForEmployeeAndCenterInRange( ) {
             LOGGER.info("\n" + "Enter emp ID:");
             String employeeId = scanner.nextLine();
             LOGGER.info("start date: ");
@@ -115,11 +115,11 @@ public class AppointmentDb {
             for (Appointment appointment : AppointmentDb.getAllAppointments()) {
                 LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
                 if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
-                    if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    if (MASSAGE.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                         flag = true;
                         totalEarnings += SAWNA_SESSION_COST;
 
-                    } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    } else if (MASSAGE.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
                         flag = true;
                         totalEarnings += MASSAGE_SESSION_COST;
 
@@ -132,49 +132,58 @@ public class AppointmentDb {
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
             double centerEarnings = totalEarnings * (1 - employeeProfitPercentage);
             if(LOGGER.isLoggable(Level.INFO)) {
-                if (choice == 1) //all
-                {
 
                     LOGGER.info("\n" + "EMP_ID is: " + employeeId + "   " + " from: " + startDateStr + " to: " + endDateStr + "\n" +
                             "Total Earnings : " + "$" + totalEarnings + "\n" +
                             "Employee's Share (" + EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100 + "%" + "): $" + employeeEarnings + "\n" +
                             "Center's Share (" + (100 - EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100) + "%" + " ): $" + centerEarnings + "\n");
                     LOGGER.severe(COPY);
-                }
 
-                if (choice == 2) //employee
-                {
-                    LOGGER.info("\n" + "EMP_ID is: " + employeeId + "   " + " from: " + startDateStr + " to: " + endDateStr + "\n" +
-                            "Employee's Share (" + EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100 + "%" + "): $" + employeeEarnings + "\n");
-                    LOGGER.severe(COPY);
-                }
             }
             return  flag;
         }
-    //should be rename for only employee
-        public static boolean calculateTotalCenterEarningsInRange(String startDateStr, String endDateStr) {
+
+
+
+    public static boolean calculateEmployeeProfitPercentageForRange(String employeeId) {
+        LOGGER.info("start date: ");
+        String startDateStr = scanner.next();
+        LOGGER.info("end date: ");
+        String endDateStr = scanner.next();
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
-        double totalEarnings = 0;
+        double totalEarnings = 0.0;
+        boolean flag=false;
 
         for (Appointment appointment : AppointmentDb.getAllAppointments()) {
             LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
-            if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate)) {
-                if ("Sawna".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+            if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
+                if (SAWNA.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    flag = true;
                     totalEarnings += SAWNA_SESSION_COST;
 
-                } else if ("Massage".equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                } else if (MASSAGE.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+                    flag = true;
                     totalEarnings += MASSAGE_SESSION_COST;
+
                 }
             }
+
+        }
+        double employeeProfitPercentage = EmployeeDB.getEmployeeProfitPercentage(employeeId);
+        double employeeEarnings = totalEarnings * employeeProfitPercentage;
+        if(LOGGER.isLoggable(Level.INFO))
+        {
+            LOGGER.info("\n" + "EMP_ID is: " + employeeId + "   " + " from: " + startDateStr + " to: " + endDateStr + "\n" +
+                    "Employee's Share (" + EmployeeDB.getEmployeeProfitPercentage(employeeId) * 100 + "%" + "): $" + employeeEarnings + "\n");
+            LOGGER.severe(COPY);
         }
 
-
-        double centerEarnings = totalEarnings * CENTER_PERCENTAGE;
-        if (LOGGER.isLoggable(Level.INFO))
-        { LOGGER.info("center earning = " +centerEarnings);}
-        return false;
+        return flag;
     }
+
+
+
 
 
 

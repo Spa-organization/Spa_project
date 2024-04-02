@@ -23,8 +23,9 @@ public class AdminControllerTest {
     public void setup() {
         //qusay
         adminController = new AdminController();
+
         mockScanner = Mockito.spy( new Scanner(System.in));
-        AdminController.scanner = mockScanner;
+        adminController.scanner = mockScanner;
         adminController.admin = new Admin("21", "admin1", "123");
         AppointmentDb.scanner = mockScanner;
         EmployeeDB.scan = mockScanner;
@@ -99,7 +100,6 @@ public class AdminControllerTest {
         Mockito.doReturn("1" ).when(mockScanner).nextLine();
         Mockito.doReturn("10/10/2022","12/10/2022").when(mockScanner).next();
         //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
-
         adminController.adminHomePage();
     }
     @Test

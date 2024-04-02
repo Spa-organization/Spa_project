@@ -14,7 +14,7 @@ public class AdminController {
     private  boolean isLoggedIn;
 
     public Admin admin = new Admin();
-  public   static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
     public AdminController() {
         isLoggedIn = false;
     }
@@ -59,15 +59,14 @@ public class AdminController {
                     1. Add Rooms
                     2. Add Employee
                     3. View Appointments
-                    4. View Finance
-                    5. Add Admin
-                    6.delete Employee
-                    7. Show All Rooms
-                    8. View Feedbacks
-                    9. view_CenterAndEmployee_EarningsForRange
-                    10.edit employee
-                    11.show all employee
-                    12. logout
+                    4. Add Admin
+                    5.delete Employee
+                    6. Show All Rooms
+                    7. View Feedbacks
+                    8. view_CenterAndEmployee_EarningsForRange
+                    9.edit employee
+                    10.show all employee
+                    11. logout
                     """);
             LOGGER.info("Enter your choice:");
             choice = scanner.nextInt();
@@ -81,32 +80,29 @@ public class AdminController {
                 case 3:
                     showAppointments();
                     break;
+
                 case 4:
-                    viewCenterEarningsForRange();
-                    //should delete
-                    break;
-                case 5:
                     addAdmin();
                     break;
-                case 6:
+                case 5:
                     EmployeeDB.deleteEmployee();
                     break;
-                case 7:
+                case 6:
                     EmployeeDB.showALlRooms();
                     break;
-                case 8 :
+                case 7 :
                     viewFeedbacks();
                     break;
-                case 9:
-                   AppointmentDb.calculateEarningsForEmployeeAndCenterInRange(1);
+                case 8:
+                   AppointmentDb.calculateEarningsForEmployeeAndCenterInRange();
                     break;
-                case 10:
+                case 9:
                    EmployeeDB.editEmployee();
                     break;
-                case 11:
+                case 10:
                     showAllEmployees();
                     break;
-                case 12:LOGGER.info("\n"+"""
+                case 11:LOGGER.info("\n"+"""
                             Logging out. Goodbye!
                             
                             """);
@@ -325,19 +321,5 @@ public class AdminController {
         }
         return true;
     }
-
-
-
-    public void viewCenterEarningsForRange() {
-        LOGGER.info("Enter Start_Date (format: dd/MM/yyyy): ");
-        scanner.nextLine();
-        String date = scanner.nextLine();
-        LOGGER.info("Enter End_Date (format: dd/MM/yyyy): ");
-        String date2 = scanner.nextLine();
-        AppointmentDb.calculateTotalCenterEarningsInRange(date,date2);
-    }
-
-
-
 
 }
