@@ -97,12 +97,13 @@ public class AdminControllerTest {
         assertTrue(EmployeeDB.showALlRooms());
     }
     @Test
-    public void adminHomeCenterEarningsForRange() {
+    public void adminHomeCenterAndEmployeeEarningsForRange() {
         Mockito.doReturn(8 ,100).when(mockScanner).nextInt();
-        Mockito.doReturn("1" ).when(mockScanner).nextLine();
-        Mockito.doReturn("10/10/2022","12/10/2022").when(mockScanner).next();
+        Mockito.doReturn("31" ).when(mockScanner).nextLine();
+        Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
         //Mockito.doReturn("100","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
+        assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange());
     }
     @Test
     public void loginpage() {
