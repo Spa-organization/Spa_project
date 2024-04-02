@@ -155,7 +155,7 @@ public class AdminController {
             }
         } while (roomType != 4);
     }
-    public void addSawnaRoom() {
+    public boolean addSawnaRoom() {
         LOGGER.info("\n"+"Enter Room ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -188,6 +188,7 @@ public class AdminController {
             LOGGER.warning("employee not found!!"+"\n");
             LOGGER.severe(COPY);
         }
+        return true;
     }
     public void print(int id,Employee employee ){
 
@@ -203,7 +204,7 @@ public class AdminController {
             LOGGER.warning("The employee is already assigned to a different room: " + employee.getRooms().get(0).getRoomNumber()+"\n");}
             LOGGER.severe(COPY);
     }
-    public void addMassageRoom(){
+    public boolean addMassageRoom(){
         LOGGER.info("\n"+"Enter Room ID:");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -237,6 +238,7 @@ public class AdminController {
             LOGGER.warning("employee not found!!"+"\n");
             LOGGER.severe(COPY);
         }
+        return true;
     }
     public static boolean showAllEmployees(){
         LOGGER.severe(COPY1);
@@ -251,7 +253,7 @@ public class AdminController {
         return true;
     }
 
-    public void addEmployee(){
+    public boolean addEmployee(){
         LOGGER.severe(COPY1);
         LOGGER.fine("=== Add Employee ==="+"\n");
         LOGGER.info("Enter Employee ID: ");
@@ -276,6 +278,8 @@ public class AdminController {
 
         }else
             LOGGER.info("Employee added successfully!"+"\n");
+
+        return true;
     }
 
     public static boolean showAppointments(){
