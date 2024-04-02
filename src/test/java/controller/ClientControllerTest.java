@@ -63,7 +63,7 @@ public class ClientControllerTest {
 
         Mockito.doReturn("", "10/10/2022", "10:10").when(mockScanner).nextLine();
         Mockito.doReturn(2).when(mockScanner).nextInt();
-        clientController.updateSession();
+         assertTrue(clientController.updateSession());
     }
     @Test
     public void loginPage() {

@@ -253,7 +253,7 @@ public class ClientController {
                         """);
         }
     }
-    public void showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
+    public boolean showAvailableRooms(List<Employee> employees, String dateInput,String timeInput){
         LOGGER.fine("-----Available Rooms------"+"\n");
         List<Room> rooms;
         for(Employee employee:employees)
@@ -278,6 +278,7 @@ public class ClientController {
             LOGGER.severe(SHORT_LINE);
 
         }
+        return true;
     }
 
 
@@ -313,7 +314,7 @@ public class ClientController {
         else LOGGER.warning("You don't have this room");
     }
 
-    public void updateSession(){
+    public boolean updateSession(){
         showClientAppointments();
         Scanner input =scanner;
         LOGGER.severe(SHORT_LINE);
@@ -326,10 +327,10 @@ public class ClientController {
         String time = input.nextLine();
         if (!AppointmentDb.isValidDate(date)) {
             addAppointmentResult(2);
-            return;
+            return false;
         } else if (!AppointmentDb.isValidTime(time)) {
             addAppointmentResult(1);
-            return;
+            return false;
         }
 
 
@@ -351,12 +352,13 @@ public class ClientController {
                            AppointmentDb.appointments.get(index).getDate()+"was updated";
                    emailSender.sendEmail(subject,text);
                }
-               else return;
+               else return false;
 
             }
             index++;
-        }
 
+        }
+    return true;
     }
     public boolean check(String dateCheck,String timeCheck,int roomId)
     {

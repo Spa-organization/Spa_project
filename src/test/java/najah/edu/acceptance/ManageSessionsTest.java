@@ -2,6 +2,7 @@ package najah.edu.acceptance;
 
 import controller.ClientController;
 import database.AppointmentDb;
+import database.EmployeeDB;
 import entity.Employee;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -72,6 +73,7 @@ public class ManageSessionsTest {
         this.id = string3;
     }
     @When("the client schedules a new sawna session specifying the date and time and employee")
+    @Test
     public void theClientSchedulesANewSawnaSessionSpecifyingTheDateAndTimeAndEmployee() {
 
         id="31";
@@ -79,6 +81,7 @@ public class ManageSessionsTest {
         date="12/12/2024";
         assertTrue(AppointmentDb.isValidDate(date));
         assertTrue(AppointmentDb.isValidTime(time));
+
 
 
     }
