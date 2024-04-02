@@ -55,7 +55,7 @@ public class EmployeeController {
             LOGGER.severe(COPY);
         }
     }
-    public void loginPage(){
+    public boolean loginPage(){
         LOGGER.severe(COPY1);
         LOGGER.fine("=== Employee Login ==="+"\n");
         LOGGER.info("Enter your ID: ");
@@ -66,6 +66,7 @@ public class EmployeeController {
         if(isLoggedIn){
             employeeHomePage();
         }
+        return true;
     }
 
     public void employeeHomePage(){

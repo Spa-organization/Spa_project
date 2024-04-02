@@ -107,6 +107,12 @@ public class AdminControllerTest {
         assertTrue(AppointmentDb.calculateEarningsForEmployeeAndCenterInRange());
     }
     @Test
+    public void employeeHomePage(){
+        Mockito.doReturn("31","123" ).when(mockScanner).nextLine();
+        Mockito.doReturn(3 ).when(mockScanner).nextInt();
+        assertTrue(employeeController.loginPage());
+    }
+    @Test
     public void EmployeeHome_EmployeeEarningsForRange() {
         Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
