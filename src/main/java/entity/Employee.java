@@ -48,6 +48,13 @@ public class Employee {
         this.workerType = workerType;
         this.profitpercentage=profitpercentage;
     }
+
+    public Room getRoom1() {
+        if (rooms != null && !rooms.isEmpty()) {
+            return rooms.get(0);
+        }
+        return null;
+    }
     public Room getRoom(){
 
         return rooms.get(0);

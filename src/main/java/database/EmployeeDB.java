@@ -123,14 +123,16 @@ public class EmployeeDB {
         LOGGER.info("\nEnter Employee ID: ");
         String empId = scan.next();
 
-        LOGGER.info("Enter Employee Name: ");
+        LOGGER.info("Enter new Employee Name: ");
         String employeeName = scan.next();
 
-        LOGGER.info("Enter Employee Password: ");
+        LOGGER.info("Enter new Employee Password: ");
         String employeePassword = scan.next();
 
-        LOGGER.info("Enter Employee Type (1.Sawna or 2.Massage): ");
+        LOGGER.info("Enter new Employee Type (1.Sawna or 2.Massage): ");
         String employeeType = scan.next();
+        LOGGER.info("Enter new Employee profit percantage: ");
+        double per = scan.nextDouble();
 
         LOGGER.info("Enter NEW ROOM ID: ");
         int roomId = scan.nextInt();
@@ -142,6 +144,7 @@ public class EmployeeDB {
                 employee.setWorkerType(Integer.parseInt(employeeType));
                 RoomDb.addRoom(employee,roomId);
                     employee.getRoom().setRoomNumber(roomId);
+                    employee.setProfitPercentage(per);
                     if(LOGGER.isLoggable(Level.INFO))
                     {    LOGGER.info("Employee "+empId+" has been updated"+"\n");}
                     return true;
