@@ -129,7 +129,7 @@ public class EmployeeDB {
 
         for (Employee employee : employees) {
             if (employee.getId().equals(empId))
-            {
+            {flag=true;
                 employee.setName(employeeName);
                 employee.setPassword(employeePassword);
                 employee.setWorkerType(Integer.parseInt(employeeType));
@@ -138,11 +138,9 @@ public class EmployeeDB {
                     if(LOGGER.isLoggable(Level.INFO))
                     {
                         LOGGER.info("Employee "+empId+" has been updated"+"\n");
-                        flag=true;
                     }
             }
             else {LOGGER.warning("NOT A SUCCESSFUL EDIT"+"\n");
-                flag=false;
             }
         }
        return  flag;
