@@ -76,7 +76,7 @@ public class AdminControllerTest {
         Mockito.doReturn(2 ,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn(0.3 ).when(mockScanner).nextDouble();
-        Mockito.doReturn("101","Abdullah","12345" ).when(mockScanner).next();
+        Mockito.doReturn("200","Abdullah","12345" ).when(mockScanner).next();
         adminController.adminHomePage();
         assertTrue(adminController.addEmployee());
     }
@@ -87,6 +87,7 @@ public class AdminControllerTest {
         adminController.adminHomePage();
         assertTrue(AdminController.showAppointments());
     }
+
 
 
     @Test
@@ -132,6 +133,7 @@ public class AdminControllerTest {
 
     @Test
     public void adminHomePage_EditEmployee() {
+
         Mockito.doReturn(9 ,1,100).when(mockScanner).nextInt();
         Mockito.doReturn("" ).when(mockScanner).nextLine();
         Mockito.doReturn("31","SerPro1","123","1").when(mockScanner).next();

@@ -280,7 +280,7 @@ public class ClientController {
     }
 
 
-    public void cancelSession(){
+    public boolean cancelSession(){
         String text;
         boolean flag = false;
         showClientAppointments();
@@ -310,6 +310,8 @@ public class ClientController {
             LOGGER.info("\n"+"Successfully deleted and the email will send to you");
         }
         else LOGGER.warning("You don't have this room");
+
+        return flag;
     }
 
     public boolean updateSession(){
