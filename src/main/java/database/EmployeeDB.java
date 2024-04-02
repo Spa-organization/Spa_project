@@ -3,9 +3,6 @@ import basic.LoggerUtility;
 import entity.Appointment;
 import entity.Employee;
 import entity.Room;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -50,7 +47,7 @@ public class EmployeeDB {
             }
         }
         if(flag)
-            employees.add(new Employee(id, name,password,workerType));
+            employees.add(new Employee(id, name,password,workerType,profitpercentage));
 
         return flag;
     }
