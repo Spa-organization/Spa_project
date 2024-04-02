@@ -33,7 +33,9 @@ public class AdminManagementTest {
         this.worker_type = type;
         this.emp_id = id;
         this.emp_name = name;
-        this.emp_password = pass;}
+        this.emp_password = pass;
+
+    }
 
     @Then("the employee should be added to the system")
     public void theEmployeeShouldBeAddedToTheSystem() {

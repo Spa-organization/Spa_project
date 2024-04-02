@@ -1,15 +1,20 @@
 package entity;
 
+import io.cucumber.java.eo.Se;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-@Data
+@Getter
 @NoArgsConstructor
 public class Employee {
     private String id ;
+    @Setter
     private String name;
+    @Setter
     private String password;
     private String workerType;
 

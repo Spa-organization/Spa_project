@@ -93,3 +93,7 @@ Q
 !Myfeatures/ManageSessions.feature,0\f\0f7ceb6586660b49773581bd002c2b4ea9e206ee
 ;
 qodana.yaml,8\5\85c3a901608a6b9adf48d245fa84828b66304e51
+S
+#src/test/java/entity/AdminTest.java,6\3\6303e0585ce5ebec897bcc6f68a2b2e9e4016438
+V
+&src/test/java/entity/FeedBackTest.java,9\2\925fef10152e2cd5ce20976cd1e71d4654555bbe
