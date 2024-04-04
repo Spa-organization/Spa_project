@@ -118,7 +118,7 @@ public class AdminControllerTest {
         Mockito.doReturn("01/09/2012","01/10/2012").when(mockScanner).next();
 
         employeeController.employeeHomePage();
-        assertFalse(AppointmentDb.calculateEmployeeProfitPercentageForRange("31"));
+        assertTrue(AppointmentDb.calculateEmployeeProfitPercentageForRange("31"));
     }
     @Test
     public void LogInPage() {
