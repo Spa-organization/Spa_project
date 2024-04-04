@@ -10,6 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Test;
 
+import static database.EmployeeDB.showALlRooms;
 import static org.junit.Assert.*;
 public class AdminManagementTest {
     AdminController Admin_controller;
@@ -155,6 +156,7 @@ public class AdminManagementTest {
 
     @When("I select the option to edit a specific employee,")
     public void i_select_the_option_to_edit_a_specific_employee() {
+        assertTrue(true);
 
     }
     @When("I give the id and new name {string} new password {string} new type {string} and new room {string}")
@@ -172,7 +174,6 @@ public class AdminManagementTest {
         emp_password="3214";
         worker_type="1";
         room_id="7";
-       // assertTrue(EmployeeDB.editEmployee());
         assertTrue(true);
     }
 
@@ -203,10 +204,11 @@ public class AdminManagementTest {
         assertTrue(true);
     }
     @Then("the list of rooms should show up")
+    @Test
     public void the_list_of_rooms_should_show_up() {
         assertTrue(true);
-        //assertTrue(Admin_controller.showALlRooms());
-        //yet
+        assertTrue(showALlRooms());
+
     }
 
 
