@@ -110,25 +110,7 @@ public class AppointmentDb {
             LOGGER.info("end date: ");
             String endDateStr = scanner.next();
 
-            LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
-            LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
-            double totalEarnings = 0;
-
-            for (Appointment appointment : AppointmentDb.getAllAppointments()) {
-                LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
-                if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
-                    if (SAWNA.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-
-                        totalEarnings += SAWNA_SESSION_COST;
-
-                    } else if (MASSAGE.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
-
-                        totalEarnings += MASSAGE_SESSION_COST;
-
-                    }
-                }
-
-            }
+            final var totalEarnings = getTotalEarnings(startDateStr, endDateStr, employeeId);
 
             double employeeProfitPercentage = EmployeeDB.getEmployeeProfitPercentage(employeeId);
             double employeeEarnings = totalEarnings * employeeProfitPercentage;
@@ -145,15 +127,40 @@ public class AppointmentDb {
             return  true;
         }
 
+    public static double getTotalEarnings(String startDateStr, String endDateStr, String employeeId) {
+        LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
+        LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
+        double totalEarnings = 0;
+
+        for (Appointment appointment : AppointmentDb.getAllAppointments()) {
+            LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
+            if (!appointmentDate.isBefore(startDate) && !appointmentDate.isAfter(endDate) && appointment.getEmployee().getId().equals(employeeId)) {
+                if (SAWNA.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+
+                    totalEarnings += SAWNA_SESSION_COST;
+
+                } else if (MASSAGE.equalsIgnoreCase(appointment.getEmployee().getWorkerType())) {
+
+                    totalEarnings += MASSAGE_SESSION_COST;
+
+                }
+            }
+
+        }
+        return totalEarnings;
+    }
+
     public static boolean calculateEmployeeProfitPercentageForRange(String employeeId) {
         LOGGER.info("start date: ");
         String startDateStr = scanner.next();
         LOGGER.info("end date: ");
         String endDateStr = scanner.next();
+        boolean flag=false;
+
         LocalDate startDate = LocalDate.parse(startDateStr, DATE_FORMATTER);
         LocalDate endDate = LocalDate.parse(endDateStr, DATE_FORMATTER);
         double totalEarnings = 0.0;
-        boolean flag=false;
+
 
         for (Appointment appointment : AppointmentDb.getAllAppointments()) {
             LocalDate appointmentDate = LocalDate.parse(appointment.getDate(), DATE_FORMATTER);
