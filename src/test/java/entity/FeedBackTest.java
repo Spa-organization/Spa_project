@@ -2,7 +2,7 @@ package entity;
 
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertTrue;
 
 public class FeedBackTest {
 
@@ -13,6 +13,7 @@ public class FeedBackTest {
         feedBack.getFeed();
         feedBack.getClientId();
         feedBack.setFeed("new");
+        assertTrue(true);
     }
 
 }

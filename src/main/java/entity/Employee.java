@@ -1,7 +1,4 @@
 package entity;
-
-import io.cucumber.java.eo.Se;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
