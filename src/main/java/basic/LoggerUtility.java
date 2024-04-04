@@ -1,8 +1,6 @@
 package basic;
 
 import java.util.logging.*;
-import static java.util.logging.Level.INFO;
-
 public class LoggerUtility {
     public static final String RESET = "\033[0m";
     public static final String RED = "\033[0;31m";
@@ -11,14 +9,6 @@ public class LoggerUtility {
     public static final String BLUE = "\033[0;34m";
     private static Logger logger;
 
-
-    public static void setLevel(Logger logger)
-    {
-        settleLogger(logger);
-    }
-    private static void settleLogger(Logger logger) {
-        logger.setLevel(INFO);
-    }
 
 
     private LoggerUtility() {throw new IllegalStateException("Utility class");}
